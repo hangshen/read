@@ -3,6 +3,8 @@ package org.lanqiao.mapper;
 import org.lanqiao.entity.BookType;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 @Repository
 public interface BookTypeMapper {
     int deleteByPrimaryKey(Integer booktypeId);
@@ -12,6 +14,7 @@ public interface BookTypeMapper {
     int insertSelective(BookType record);
 
     BookType selectByPrimaryKey(Integer booktypeId);
+    List<BookType> selectAll();
 
     int updateByPrimaryKeySelective(BookType record);
 
