@@ -21,6 +21,7 @@ public class UserServiceImpl implements UserService{
      */
     @Override
     public boolean checkUserLogin(UserLogin login) {
+        //有返回true  无返回false
         return userLoginMapper.selectByAccount(login.getUserLoginAccount())!= null?true:false;
     }
 
