@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="org.lanqiao.mapper.UserLoginMapper" >
-  <resultMap id="BaseResultMap" type="org.lanqiao.entity.UserLogin" >
+  <resultMap id="UserLoginResultMap" type="org.lanqiao.entity.UserLogin" >
     <id column="user_login_id" property="userLoginId" jdbcType="INTEGER" />
     <result column="user_login_account" property="userLoginAccount" jdbcType="VARCHAR" />
     <result column="user_login_password" property="userLoginPassword" jdbcType="VARCHAR" />
@@ -10,11 +10,11 @@
   <sql id="Base_Column_List" >
     user_login_id, user_login_account, user_login_password, user_login_user_id
   </sql>
-  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+  <select id="selectByPrimaryKey" resultMap="UserLoginResultMap" parameterType="java.lang.String" >
     select 
     <include refid="Base_Column_List" />
     from userlogin
-    where user_login_id = #{userLoginId,jdbcType=INTEGER}
+    where  user_login_account = #{userLoginAccount,jdbcType=INTEGER}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from userlogin

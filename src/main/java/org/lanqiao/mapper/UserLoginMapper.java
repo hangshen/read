@@ -11,7 +11,7 @@ public interface UserLoginMapper {
 
     int insertSelective(UserLogin record);
 
-    UserLogin selectByPrimaryKey(Integer userLoginId);
+    UserLogin selectByPrimaryKey(String userLoginAccount);
 
     int updateByPrimaryKeySelective(UserLogin record);
 
