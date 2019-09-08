@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="org.lanqiao.mapper.AuthorMapper" >
+  <resultMap id="BaseResultMap" type="org.lanqiao.entity.Author" >
+    <id column="author_id" property="authorId" jdbcType="INTEGER" />
+    <result column="author_name" property="authorName" jdbcType="VARCHAR" />
+    <result column="author_identity" property="authorIdentity" jdbcType="VARCHAR" />
+    <result column="author_qq" property="authorQq" jdbcType="VARCHAR" />
+    <result column="author_img" property="authorImg" jdbcType="VARCHAR" />
+    <result column="author_money" property="authorMoney" jdbcType="INTEGER" />
+    <result column="author_introduce" property="authorIntroduce" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    author_id, author_name, author_identity, author_qq, author_img, author_money, author_introduce
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from author
+    where author_id = #{authorId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from author
+    where author_id = #{authorId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="org.lanqiao.entity.Author" >
+    insert into author (author_id, author_name, author_identity, 
+      author_qq, author_img, author_money, 
+      author_introduce)
+    values (#{authorId,jdbcType=INTEGER}, #{authorName,jdbcType=VARCHAR}, #{authorIdentity,jdbcType=VARCHAR}, 
+      #{authorQq,jdbcType=VARCHAR}, #{authorImg,jdbcType=VARCHAR}, #{authorMoney,jdbcType=INTEGER}, 
+      #{authorIntroduce,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="org.lanqiao.entity.Author" >
+    insert into author
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="authorId != null" >
+        author_id,
+      </if>
+      <if test="authorName != null" >
+        author_name,
+      </if>
+      <if test="authorIdentity != null" >
+        author_identity,
+      </if>
+      <if test="authorQq != null" >
+        author_qq,
+      </if>
+      <if test="authorImg != null" >
+        author_img,
+      </if>
+      <if test="authorMoney != null" >
+        author_money,
+      </if>
+      <if test="authorIntroduce != null" >
+        author_introduce,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="authorId != null" >
+        #{authorId,jdbcType=INTEGER},
+      </if>
+      <if test="authorName != null" >
+        #{authorName,jdbcType=VARCHAR},
+      </if>
+      <if test="authorIdentity != null" >
+        #{authorIdentity,jdbcType=VARCHAR},
+      </if>
+      <if test="authorQq != null" >
+        #{authorQq,jdbcType=VARCHAR},
+      </if>
+      <if test="authorImg != null" >
+        #{authorImg,jdbcType=VARCHAR},
+      </if>
+      <if test="authorMoney != null" >
+        #{authorMoney,jdbcType=INTEGER},
+      </if>
+      <if test="authorIntroduce != null" >
+        #{authorIntroduce,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="org.lanqiao.entity.Author" >
+    update author
+    <set >
+      <if test="authorName != null" >
+        author_name = #{authorName,jdbcType=VARCHAR},
+      </if>
+      <if test="authorIdentity != null" >
+        author_identity = #{authorIdentity,jdbcType=VARCHAR},
+      </if>
+      <if test="authorQq != null" >
+        author_qq = #{authorQq,jdbcType=VARCHAR},
+      </if>
+      <if test="authorImg != null" >
+        author_img = #{authorImg,jdbcType=VARCHAR},
+      </if>
+      <if test="authorMoney != null" >
+        author_money = #{authorMoney,jdbcType=INTEGER},
+      </if>
+      <if test="authorIntroduce != null" >
+        author_introduce = #{authorIntroduce,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where author_id = #{authorId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="org.lanqiao.entity.Author" >
+    update author
+    set author_name = #{authorName,jdbcType=VARCHAR},
+      author_identity = #{authorIdentity,jdbcType=VARCHAR},
+      author_qq = #{authorQq,jdbcType=VARCHAR},
+      author_img = #{authorImg,jdbcType=VARCHAR},
+      author_money = #{authorMoney,jdbcType=INTEGER},
+      author_introduce = #{authorIntroduce,jdbcType=VARCHAR}
+    where author_id = #{authorId,jdbcType=INTEGER}
+  </update>
+</mapper>

@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="org.lanqiao.mapper.BookShelfMapper" >
+  <resultMap id="BaseResultMap" type="org.lanqiao.entity.BookShelf" >
+    <id column="shelf_id" property="shelfId" jdbcType="INTEGER" />
+    <result column="shelf_book_flag" property="shelfBookFlag" jdbcType="INTEGER" />
+    <result column="shelf_user_id" property="shelfUserId" jdbcType="INTEGER" />
+    <result column="shelf_book_id" property="shelfBookId" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    shelf_id, shelf_book_flag, shelf_user_id, shelf_book_id
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from bookshelf
+    where shelf_id = #{shelfId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from bookshelf
+    where shelf_id = #{shelfId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="org.lanqiao.entity.BookShelf" >
+    insert into bookshelf (shelf_id, shelf_book_flag, shelf_user_id, 
+      shelf_book_id)
+    values (#{shelfId,jdbcType=INTEGER}, #{shelfBookFlag,jdbcType=INTEGER}, #{shelfUserId,jdbcType=INTEGER}, 
+      #{shelfBookId,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="org.lanqiao.entity.BookShelf" >
+    insert into bookshelf
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="shelfId != null" >
+        shelf_id,
+      </if>
+      <if test="shelfBookFlag != null" >
+        shelf_book_flag,
+      </if>
+      <if test="shelfUserId != null" >
+        shelf_user_id,
+      </if>
+      <if test="shelfBookId != null" >
+        shelf_book_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="shelfId != null" >
+        #{shelfId,jdbcType=INTEGER},
+      </if>
+      <if test="shelfBookFlag != null" >
+        #{shelfBookFlag,jdbcType=INTEGER},
+      </if>
+      <if test="shelfUserId != null" >
+        #{shelfUserId,jdbcType=INTEGER},
+      </if>
+      <if test="shelfBookId != null" >
+        #{shelfBookId,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="org.lanqiao.entity.BookShelf" >
+    update bookshelf
+    <set >
+      <if test="shelfBookFlag != null" >
+        shelf_book_flag = #{shelfBookFlag,jdbcType=INTEGER},
+      </if>
+      <if test="shelfUserId != null" >
+        shelf_user_id = #{shelfUserId,jdbcType=INTEGER},
+      </if>
+      <if test="shelfBookId != null" >
+        shelf_book_id = #{shelfBookId,jdbcType=INTEGER},
+      </if>
+    </set>
+    where shelf_id = #{shelfId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="org.lanqiao.entity.BookShelf" >
+    update bookshelf
+    set shelf_book_flag = #{shelfBookFlag,jdbcType=INTEGER},
+      shelf_user_id = #{shelfUserId,jdbcType=INTEGER},
+      shelf_book_id = #{shelfBookId,jdbcType=INTEGER}
+    where shelf_id = #{shelfId,jdbcType=INTEGER}
+  </update>
+</mapper>

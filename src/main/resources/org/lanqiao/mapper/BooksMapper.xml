@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="org.lanqiao.mapper.BooksMapper" >
+  <resultMap id="BaseResultMap" type="org.lanqiao.entity.Books" >
+    <id column="book_id" property="bookId" jdbcType="INTEGER" />
+    <result column="book_name" property="bookName" jdbcType="VARCHAR" />
+    <result column="book_img" property="bookImg" jdbcType="VARCHAR" />
+    <result column="book_introduce" property="bookIntroduce" jdbcType="VARCHAR" />
+    <result column="book_up_date" property="bookUpDate" jdbcType="TIMESTAMP" />
+    <result column="book_finish_date" property="bookFinishDate" jdbcType="DATE" />
+    <result column="book_score" property="bookScore" jdbcType="DOUBLE" />
+    <result column="book_flag" property="bookFlag" jdbcType="VARCHAR" />
+    <result column="book_word" property="bookWord" jdbcType="DOUBLE" />
+    <result column="book_click" property="bookClick" jdbcType="DOUBLE" />
+    <result column="book_reward" property="bookReward" jdbcType="BIGINT" />
+    <result column="book_type_id" property="bookTypeId" jdbcType="INTEGER" />
+    <result column="book_author_id" property="bookAuthorId" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    book_id, book_name, book_img, book_introduce, book_up_date, book_finish_date, book_score, 
+    book_flag, book_word, book_click, book_reward, book_type_id, book_author_id
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from books
+    where book_id = #{bookId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from books
+    where book_id = #{bookId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="org.lanqiao.entity.Books" >
+    insert into books (book_id, book_name, book_img, 
+      book_introduce, book_up_date, book_finish_date, 
+      book_score, book_flag, book_word, 
+      book_click, book_reward, book_type_id, 
+      book_author_id)
+    values (#{bookId,jdbcType=INTEGER}, #{bookName,jdbcType=VARCHAR}, #{bookImg,jdbcType=VARCHAR}, 
+      #{bookIntroduce,jdbcType=VARCHAR}, #{bookUpDate,jdbcType=TIMESTAMP}, #{bookFinishDate,jdbcType=DATE}, 
+      #{bookScore,jdbcType=DOUBLE}, #{bookFlag,jdbcType=VARCHAR}, #{bookWord,jdbcType=DOUBLE}, 
+      #{bookClick,jdbcType=DOUBLE}, #{bookReward,jdbcType=BIGINT}, #{bookTypeId,jdbcType=INTEGER}, 
+      #{bookAuthorId,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="org.lanqiao.entity.Books" >
+    insert into books
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="bookId != null" >
+        book_id,
+      </if>
+      <if test="bookName != null" >
+        book_name,
+      </if>
+      <if test="bookImg != null" >
+        book_img,
+      </if>
+      <if test="bookIntroduce != null" >
+        book_introduce,
+      </if>
+      <if test="bookUpDate != null" >
+        book_up_date,
+      </if>
+      <if test="bookFinishDate != null" >
+        book_finish_date,
+      </if>
+      <if test="bookScore != null" >
+        book_score,
+      </if>
+      <if test="bookFlag != null" >
+        book_flag,
+      </if>
+      <if test="bookWord != null" >
+        book_word,
+      </if>
+      <if test="bookClick != null" >
+        book_click,
+      </if>
+      <if test="bookReward != null" >
+        book_reward,
+      </if>
+      <if test="bookTypeId != null" >
+        book_type_id,
+      </if>
+      <if test="bookAuthorId != null" >
+        book_author_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="bookId != null" >
+        #{bookId,jdbcType=INTEGER},
+      </if>
+      <if test="bookName != null" >
+        #{bookName,jdbcType=VARCHAR},
+      </if>
+      <if test="bookImg != null" >
+        #{bookImg,jdbcType=VARCHAR},
+      </if>
+      <if test="bookIntroduce != null" >
+        #{bookIntroduce,jdbcType=VARCHAR},
+      </if>
+      <if test="bookUpDate != null" >
+        #{bookUpDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="bookFinishDate != null" >
+        #{bookFinishDate,jdbcType=DATE},
+      </if>
+      <if test="bookScore != null" >
+        #{bookScore,jdbcType=DOUBLE},
+      </if>
+      <if test="bookFlag != null" >
+        #{bookFlag,jdbcType=VARCHAR},
+      </if>
+      <if test="bookWord != null" >
+        #{bookWord,jdbcType=DOUBLE},
+      </if>
+      <if test="bookClick != null" >
+        #{bookClick,jdbcType=DOUBLE},
+      </if>
+      <if test="bookReward != null" >
+        #{bookReward,jdbcType=BIGINT},
+      </if>
+      <if test="bookTypeId != null" >
+        #{bookTypeId,jdbcType=INTEGER},
+      </if>
+      <if test="bookAuthorId != null" >
+        #{bookAuthorId,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="org.lanqiao.entity.Books" >
+    update books
+    <set >
+      <if test="bookName != null" >
+        book_name = #{bookName,jdbcType=VARCHAR},
+      </if>
+      <if test="bookImg != null" >
+        book_img = #{bookImg,jdbcType=VARCHAR},
+      </if>
+      <if test="bookIntroduce != null" >
+        book_introduce = #{bookIntroduce,jdbcType=VARCHAR},
+      </if>
+      <if test="bookUpDate != null" >
+        book_up_date = #{bookUpDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="bookFinishDate != null" >
+        book_finish_date = #{bookFinishDate,jdbcType=DATE},
+      </if>
+      <if test="bookScore != null" >
+        book_score = #{bookScore,jdbcType=DOUBLE},
+      </if>
+      <if test="bookFlag != null" >
+        book_flag = #{bookFlag,jdbcType=VARCHAR},
+      </if>
+      <if test="bookWord != null" >
+        book_word = #{bookWord,jdbcType=DOUBLE},
+      </if>
+      <if test="bookClick != null" >
+        book_click = #{bookClick,jdbcType=DOUBLE},
+      </if>
+      <if test="bookReward != null" >
+        book_reward = #{bookReward,jdbcType=BIGINT},
+      </if>
+      <if test="bookTypeId != null" >
+        book_type_id = #{bookTypeId,jdbcType=INTEGER},
+      </if>
+      <if test="bookAuthorId != null" >
+        book_author_id = #{bookAuthorId,jdbcType=INTEGER},
+      </if>
+    </set>
+    where book_id = #{bookId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="org.lanqiao.entity.Books" >
+    update books
+    set book_name = #{bookName,jdbcType=VARCHAR},
+      book_img = #{bookImg,jdbcType=VARCHAR},
+      book_introduce = #{bookIntroduce,jdbcType=VARCHAR},
+      book_up_date = #{bookUpDate,jdbcType=TIMESTAMP},
+      book_finish_date = #{bookFinishDate,jdbcType=DATE},
+      book_score = #{bookScore,jdbcType=DOUBLE},
+      book_flag = #{bookFlag,jdbcType=VARCHAR},
+      book_word = #{bookWord,jdbcType=DOUBLE},
+      book_click = #{bookClick,jdbcType=DOUBLE},
+      book_reward = #{bookReward,jdbcType=BIGINT},
+      book_type_id = #{bookTypeId,jdbcType=INTEGER},
+      book_author_id = #{bookAuthorId,jdbcType=INTEGER}
+    where book_id = #{bookId,jdbcType=INTEGER}
+  </update>
+</mapper>

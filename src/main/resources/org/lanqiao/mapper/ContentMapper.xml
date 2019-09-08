@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="org.lanqiao.mapper.ContentMapper" >
+  <resultMap id="BaseResultMap" type="org.lanqiao.entity.Content" >
+    <id column="content_id" property="contentId" jdbcType="INTEGER" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="org.lanqiao.entity.Content" extends="BaseResultMap" >
+    <result column="content_text" property="contentText" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    content_id
+  </sql>
+  <sql id="Blob_Column_List" >
+    content_text
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from content
+    where content_id = #{contentId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from content
+    where content_id = #{contentId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="org.lanqiao.entity.Content" >
+    insert into content (content_id, content_text)
+    values (#{contentId,jdbcType=INTEGER}, #{contentText,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="org.lanqiao.entity.Content" >
+    insert into content
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="contentId != null" >
+        content_id,
+      </if>
+      <if test="contentText != null" >
+        content_text,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="contentId != null" >
+        #{contentId,jdbcType=INTEGER},
+      </if>
+      <if test="contentText != null" >
+        #{contentText,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="org.lanqiao.entity.Content" >
+    update content
+    <set >
+      <if test="contentText != null" >
+        content_text = #{contentText,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where content_id = #{contentId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="org.lanqiao.entity.Content" >
+    update content
+    set content_text = #{contentText,jdbcType=LONGVARCHAR}
+    where content_id = #{contentId,jdbcType=INTEGER}
+  </update>
+</mapper>

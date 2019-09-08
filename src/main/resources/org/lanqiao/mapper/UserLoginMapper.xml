@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="org.lanqiao.mapper.UserLoginMapper" >
+  <resultMap id="BaseResultMap" type="org.lanqiao.entity.UserLogin" >
+    <id column="user_login_id" property="userLoginId" jdbcType="INTEGER" />
+    <result column="user_login_account" property="userLoginAccount" jdbcType="VARCHAR" />
+    <result column="user_login_password" property="userLoginPassword" jdbcType="VARCHAR" />
+    <result column="user_login_user_id" property="userLoginUserId" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    user_login_id, user_login_account, user_login_password, user_login_user_id
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from userlogin
+    where user_login_id = #{userLoginId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from userlogin
+    where user_login_id = #{userLoginId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="org.lanqiao.entity.UserLogin" >
+    insert into userlogin (user_login_id, user_login_account, user_login_password, 
+      user_login_user_id)
+    values (#{userLoginId,jdbcType=INTEGER}, #{userLoginAccount,jdbcType=VARCHAR}, #{userLoginPassword,jdbcType=VARCHAR}, 
+      #{userLoginUserId,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="org.lanqiao.entity.UserLogin" >
+    insert into userlogin
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="userLoginId != null" >
+        user_login_id,
+      </if>
+      <if test="userLoginAccount != null" >
+        user_login_account,
+      </if>
+      <if test="userLoginPassword != null" >
+        user_login_password,
+      </if>
+      <if test="userLoginUserId != null" >
+        user_login_user_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="userLoginId != null" >
+        #{userLoginId,jdbcType=INTEGER},
+      </if>
+      <if test="userLoginAccount != null" >
+        #{userLoginAccount,jdbcType=VARCHAR},
+      </if>
+      <if test="userLoginPassword != null" >
+        #{userLoginPassword,jdbcType=VARCHAR},
+      </if>
+      <if test="userLoginUserId != null" >
+        #{userLoginUserId,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="org.lanqiao.entity.UserLogin" >
+    update userlogin
+    <set >
+      <if test="userLoginAccount != null" >
+        user_login_account = #{userLoginAccount,jdbcType=VARCHAR},
+      </if>
+      <if test="userLoginPassword != null" >
+        user_login_password = #{userLoginPassword,jdbcType=VARCHAR},
+      </if>
+      <if test="userLoginUserId != null" >
+        user_login_user_id = #{userLoginUserId,jdbcType=INTEGER},
+      </if>
+    </set>
+    where user_login_id = #{userLoginId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="org.lanqiao.entity.UserLogin" >
+    update userlogin
+    set user_login_account = #{userLoginAccount,jdbcType=VARCHAR},
+      user_login_password = #{userLoginPassword,jdbcType=VARCHAR},
+      user_login_user_id = #{userLoginUserId,jdbcType=INTEGER}
+    where user_login_id = #{userLoginId,jdbcType=INTEGER}
+  </update>
+</mapper>

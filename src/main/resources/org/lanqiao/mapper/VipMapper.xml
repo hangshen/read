@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="org.lanqiao.mapper.VipMapper" >
+  <resultMap id="BaseResultMap" type="org.lanqiao.entity.Vip" >
+    <id column="vip_id" property="vipId" jdbcType="INTEGER" />
+    <result column="vip_user_id" property="vipUserId" jdbcType="INTEGER" />
+    <result column="vip_book_id" property="vipBookId" jdbcType="INTEGER" />
+    <result column="vip_chapter_id" property="vipChapterId" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    vip_id, vip_user_id, vip_book_id, vip_chapter_id
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from vip
+    where vip_id = #{vipId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from vip
+    where vip_id = #{vipId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="org.lanqiao.entity.Vip" >
+    insert into vip (vip_id, vip_user_id, vip_book_id, 
+      vip_chapter_id)
+    values (#{vipId,jdbcType=INTEGER}, #{vipUserId,jdbcType=INTEGER}, #{vipBookId,jdbcType=INTEGER}, 
+      #{vipChapterId,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="org.lanqiao.entity.Vip" >
+    insert into vip
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="vipId != null" >
+        vip_id,
+      </if>
+      <if test="vipUserId != null" >
+        vip_user_id,
+      </if>
+      <if test="vipBookId != null" >
+        vip_book_id,
+      </if>
+      <if test="vipChapterId != null" >
+        vip_chapter_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="vipId != null" >
+        #{vipId,jdbcType=INTEGER},
+      </if>
+      <if test="vipUserId != null" >
+        #{vipUserId,jdbcType=INTEGER},
+      </if>
+      <if test="vipBookId != null" >
+        #{vipBookId,jdbcType=INTEGER},
+      </if>
+      <if test="vipChapterId != null" >
+        #{vipChapterId,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="org.lanqiao.entity.Vip" >
+    update vip
+    <set >
+      <if test="vipUserId != null" >
+        vip_user_id = #{vipUserId,jdbcType=INTEGER},
+      </if>
+      <if test="vipBookId != null" >
+        vip_book_id = #{vipBookId,jdbcType=INTEGER},
+      </if>
+      <if test="vipChapterId != null" >
+        vip_chapter_id = #{vipChapterId,jdbcType=INTEGER},
+      </if>
+    </set>
+    where vip_id = #{vipId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="org.lanqiao.entity.Vip" >
+    update vip
+    set vip_user_id = #{vipUserId,jdbcType=INTEGER},
+      vip_book_id = #{vipBookId,jdbcType=INTEGER},
+      vip_chapter_id = #{vipChapterId,jdbcType=INTEGER}
+    where vip_id = #{vipId,jdbcType=INTEGER}
+  </update>
+</mapper>

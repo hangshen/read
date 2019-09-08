@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="org.lanqiao.mapper.BookTypeMapper" >
+  <resultMap id="BaseResultMap" type="org.lanqiao.entity.BookType" >
+    <id column="booktype_id" property="booktypeId" jdbcType="INTEGER" />
+    <result column="booktype_name" property="booktypeName" jdbcType="VARCHAR" />
+    <result column="booktype_father_id" property="booktypeFatherId" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    booktype_id, booktype_name, booktype_father_id
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from booktype
+    where booktype_id = #{booktypeId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from booktype
+    where booktype_id = #{booktypeId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="org.lanqiao.entity.BookType" >
+    insert into booktype (booktype_id, booktype_name, booktype_father_id
+      )
+    values (#{booktypeId,jdbcType=INTEGER}, #{booktypeName,jdbcType=VARCHAR}, #{booktypeFatherId,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="org.lanqiao.entity.BookType" >
+    insert into booktype
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="booktypeId != null" >
+        booktype_id,
+      </if>
+      <if test="booktypeName != null" >
+        booktype_name,
+      </if>
+      <if test="booktypeFatherId != null" >
+        booktype_father_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="booktypeId != null" >
+        #{booktypeId,jdbcType=INTEGER},
+      </if>
+      <if test="booktypeName != null" >
+        #{booktypeName,jdbcType=VARCHAR},
+      </if>
+      <if test="booktypeFatherId != null" >
+        #{booktypeFatherId,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="org.lanqiao.entity.BookType" >
+    update booktype
+    <set >
+      <if test="booktypeName != null" >
+        booktype_name = #{booktypeName,jdbcType=VARCHAR},
+      </if>
+      <if test="booktypeFatherId != null" >
+        booktype_father_id = #{booktypeFatherId,jdbcType=INTEGER},
+      </if>
+    </set>
+    where booktype_id = #{booktypeId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="org.lanqiao.entity.BookType" >
+    update booktype
+    set booktype_name = #{booktypeName,jdbcType=VARCHAR},
+      booktype_father_id = #{booktypeFatherId,jdbcType=INTEGER}
+    where booktype_id = #{booktypeId,jdbcType=INTEGER}
+  </update>
+</mapper>

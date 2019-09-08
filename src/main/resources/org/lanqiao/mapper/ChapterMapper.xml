@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="org.lanqiao.mapper.ChapterMapper" >
+  <resultMap id="BaseResultMap" type="org.lanqiao.entity.Chapter" >
+    <id column="chapter_id" property="chapterId" jdbcType="INTEGER" />
+    <result column="chapter_sort" property="chapterSort" jdbcType="INTEGER" />
+    <result column="chapter_name" property="chapterName" jdbcType="VARCHAR" />
+    <result column="chapter_date" property="chapterDate" jdbcType="TIMESTAMP" />
+    <result column="chapter_fee" property="chapterFee" jdbcType="INTEGER" />
+    <result column="chapter_content_id" property="chapterContentId" jdbcType="INTEGER" />
+    <result column="chapter_book_id" property="chapterBookId" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    chapter_id, chapter_sort, chapter_name, chapter_date, chapter_fee, chapter_content_id, 
+    chapter_book_id
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from chapter
+    where chapter_id = #{chapterId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from chapter
+    where chapter_id = #{chapterId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="org.lanqiao.entity.Chapter" >
+    insert into chapter (chapter_id, chapter_sort, chapter_name, 
+      chapter_date, chapter_fee, chapter_content_id, 
+      chapter_book_id)
+    values (#{chapterId,jdbcType=INTEGER}, #{chapterSort,jdbcType=INTEGER}, #{chapterName,jdbcType=VARCHAR}, 
+      #{chapterDate,jdbcType=TIMESTAMP}, #{chapterFee,jdbcType=INTEGER}, #{chapterContentId,jdbcType=INTEGER}, 
+      #{chapterBookId,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="org.lanqiao.entity.Chapter" >
+    insert into chapter
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="chapterId != null" >
+        chapter_id,
+      </if>
+      <if test="chapterSort != null" >
+        chapter_sort,
+      </if>
+      <if test="chapterName != null" >
+        chapter_name,
+      </if>
+      <if test="chapterDate != null" >
+        chapter_date,
+      </if>
+      <if test="chapterFee != null" >
+        chapter_fee,
+      </if>
+      <if test="chapterContentId != null" >
+        chapter_content_id,
+      </if>
+      <if test="chapterBookId != null" >
+        chapter_book_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="chapterId != null" >
+        #{chapterId,jdbcType=INTEGER},
+      </if>
+      <if test="chapterSort != null" >
+        #{chapterSort,jdbcType=INTEGER},
+      </if>
+      <if test="chapterName != null" >
+        #{chapterName,jdbcType=VARCHAR},
+      </if>
+      <if test="chapterDate != null" >
+        #{chapterDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="chapterFee != null" >
+        #{chapterFee,jdbcType=INTEGER},
+      </if>
+      <if test="chapterContentId != null" >
+        #{chapterContentId,jdbcType=INTEGER},
+      </if>
+      <if test="chapterBookId != null" >
+        #{chapterBookId,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="org.lanqiao.entity.Chapter" >
+    update chapter
+    <set >
+      <if test="chapterSort != null" >
+        chapter_sort = #{chapterSort,jdbcType=INTEGER},
+      </if>
+      <if test="chapterName != null" >
+        chapter_name = #{chapterName,jdbcType=VARCHAR},
+      </if>
+      <if test="chapterDate != null" >
+        chapter_date = #{chapterDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="chapterFee != null" >
+        chapter_fee = #{chapterFee,jdbcType=INTEGER},
+      </if>
+      <if test="chapterContentId != null" >
+        chapter_content_id = #{chapterContentId,jdbcType=INTEGER},
+      </if>
+      <if test="chapterBookId != null" >
+        chapter_book_id = #{chapterBookId,jdbcType=INTEGER},
+      </if>
+    </set>
+    where chapter_id = #{chapterId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="org.lanqiao.entity.Chapter" >
+    update chapter
+    set chapter_sort = #{chapterSort,jdbcType=INTEGER},
+      chapter_name = #{chapterName,jdbcType=VARCHAR},
+      chapter_date = #{chapterDate,jdbcType=TIMESTAMP},
+      chapter_fee = #{chapterFee,jdbcType=INTEGER},
+      chapter_content_id = #{chapterContentId,jdbcType=INTEGER},
+      chapter_book_id = #{chapterBookId,jdbcType=INTEGER}
+    where chapter_id = #{chapterId,jdbcType=INTEGER}
+  </update>
+</mapper>
