@@ -7,15 +7,38 @@
     <result column="user_login_password" property="userLoginPassword" jdbcType="VARCHAR" />
     <result column="user_login_user_id" property="userLoginUserId" jdbcType="INTEGER" />
   </resultMap>
+
+
+  <resultMap id="UserResultMap" type="org.lanqiao.entity.Users" >
+    <id column="user_id" property="userId" jdbcType="INTEGER" />
+    <result column="user_name" property="userName" jdbcType="VARCHAR" />
+    <result column="user_sex" property="userSex" jdbcType="VARCHAR" />
+    <result column="user_money" property="userMoney" jdbcType="INTEGER" />
+    <result column="user_img" property="userImg" jdbcType="VARCHAR" />
+    <result column="user_introduce" property="userIntroduce" jdbcType="VARCHAR" />
+  </resultMap>
+
   <sql id="Base_Column_List" >
     user_login_id, user_login_account, user_login_password, user_login_user_id
   </sql>
-  <select id="selectByPrimaryKey" resultMap="UserLoginResultMap" parameterType="java.lang.String" >
+  <select id="selectByAccount" resultMap="UserLoginResultMap" parameterType="java.lang.String" >
     select 
     <include refid="Base_Column_List" />
     from userlogin
     where  user_login_account = #{userLoginAccount,jdbcType=INTEGER}
   </select>
+
+  <select id="selectByPrimaryKey" resultMap="UserLoginResultMap" parameterType="java.lang.Integer" >
+    select
+    <include refid="Base_Column_List" />
+    from userlogin
+    where user_login_id = #{userLoginId,jdbcType=INTEGER}
+  </select>
+
+  <select id="selectUser" resultMap="UserResultMap" parameterType="org.lanqiao.entity.UserLogin">
+    SELECT * from users where user_id=(SELECT user_login_user_id from userlogin where user_login_account=#{userLoginAccount} and user_login_password=#{userLoginPassword})
+  </select>
+
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from userlogin
     where user_login_id = #{userLoginId,jdbcType=INTEGER}
