@@ -8,9 +8,11 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class BookTypeServiceImpl {
+public class BookTypeServiceImpl implements BookTypeService{
     @Autowired
     BookTypeMapper bookTypeMapper;
+
+    @Override
     public List<BookType> selectAll(){
         return  bookTypeMapper.selectAll();
     }
