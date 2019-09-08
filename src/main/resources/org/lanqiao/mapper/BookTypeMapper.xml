@@ -2,13 +2,18 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="org.lanqiao.mapper.BookTypeMapper" >
   <resultMap id="BaseResultMap" type="org.lanqiao.entity.BookType" >
-    <id column="booktype_id" property="booktypeId" jdbcType="INTEGER" />
-    <result column="booktype_name" property="booktypeName" jdbcType="VARCHAR" />
-    <result column="booktype_father_id" property="booktypeFatherId" jdbcType="INTEGER" />
-  </resultMap>
+  <id column="booktype_id" property="booktypeId" jdbcType="INTEGER" />
+  <result column="booktype_name" property="booktypeName" jdbcType="VARCHAR" />
+  <result column="booktype_father_id" property="booktypeFatherId" jdbcType="INTEGER" />
+</resultMap>
   <sql id="Base_Column_List" >
     booktype_id, booktype_name, booktype_father_id
   </sql>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select * from booktype WHERE booktype_father_id in
+(select bt.booktype_father_id from booktype bt
+WHERE bt.booktype_father_id = bt.booktype_id)
+  </select>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
     <include refid="Base_Column_List" />
