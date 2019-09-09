@@ -13,21 +13,36 @@
   <sql id="Base_Column_List" >
     author_id, author_name, author_identity, author_qq, author_img, author_money, author_introduce
   </sql>
-  <select id="selectByPrimaryKey" resultMap="AuthorMap" parameterType="java.lang.Integer" >
+
+<!--==================================================查询操作====================================================-->
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
     <include refid="Base_Column_List" />
     from author
     where author_id = #{authorId,jdbcType=INTEGER}
   </select>
+
+  <select id="selectByAuthorAccount" resultType="org.lanqiao.entity.Author" parameterType="java.lang.Integer" >
+    select
+    <include refid="Base_Column_List" />
+    from author
+    where author_login_author_id = #{authorLoginAuthorId,jdbcType=INTEGER}
+  </select>
+
+
+  <!--==================================================删除操作====================================================-->
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from author
     where author_id = #{authorId,jdbcType=INTEGER}
   </delete>
+
+  <!--==================================================插入操作====================================================-->
+
   <insert id="insert" parameterType="org.lanqiao.entity.Author" >
-    insert into author (author_id, author_name, author_identity, 
+    insert into author (author_name, author_identity,
       author_qq, author_img, author_money, 
       author_introduce)
-    values (#{authorId,jdbcType=INTEGER}, #{authorName,jdbcType=VARCHAR}, #{authorIdentity,jdbcType=VARCHAR}, 
+    values (#{authorName,jdbcType=VARCHAR}, #{authorIdentity,jdbcType=VARCHAR},
       #{authorQq,jdbcType=VARCHAR}, #{authorImg,jdbcType=VARCHAR}, #{authorMoney,jdbcType=INTEGER}, 
       #{authorIntroduce,jdbcType=VARCHAR})
   </insert>

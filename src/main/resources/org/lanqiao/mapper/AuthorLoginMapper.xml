@@ -10,12 +10,30 @@
   <sql id="Base_Column_List" >
     author_login_id, author_login_account, author_login_password, author_login_author_id
   </sql>
+
+
+  <!--==========================================================查询操作==========================================================-->
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
     <include refid="Base_Column_List" />
     from authorlogin
     where author_login_id = #{authorLoginId,jdbcType=INTEGER}
   </select>
+
+  <select id="login" resultType="org.lanqiao.entity.AuthorLogin" parameterType="java.lang.String" >
+    select
+    <include refid="Base_Column_List" />
+    from authorlogin
+    where author_login_account = #{authorAccount,jdbcType=VARCHAR}
+  </select>
+
+
+
+
+
+
+<!--===========================================================删除操作=========================================================-->
+
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from authorlogin
     where author_login_id = #{authorLoginId,jdbcType=INTEGER}
