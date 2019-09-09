@@ -13,20 +13,24 @@
     <result column="book_word" property="bookWord" jdbcType="DOUBLE" />
     <result column="book_click" property="bookClick" jdbcType="DOUBLE" />
     <result column="book_reward" property="bookReward" jdbcType="BIGINT" />
-    <result column="book_author_id" property="bookAuthorId" jdbcType="INTEGER" />
-    <association property="bookType" resultMap="BookTypeMap"></association>
+    <result column="book_type_id" property="bookTypeId" jdbcType="INTEGER" />
+    <association property="author" resultMap="AuthorMap"></association>
   </resultMap>
-  <resultMap id="BookTypeMap" type="org.lanqiao.entity.BookType" >
-    <id column="booktype_id" property="booktypeId" jdbcType="INTEGER" />
-    <result column="booktype_name" property="booktypeName" jdbcType="VARCHAR" />
-    <result column="booktype_father_id" property="booktypeFatherId" jdbcType="INTEGER" />
+  <resultMap id="AuthorMap" type="org.lanqiao.entity.Author" >
+    <id column="author_id" property="authorId" jdbcType="INTEGER" />
+    <result column="author_name" property="authorName" jdbcType="VARCHAR" />
+    <result column="author_identity" property="authorIdentity" jdbcType="VARCHAR" />
+    <result column="author_qq" property="authorQq" jdbcType="VARCHAR" />
+    <result column="author_img" property="authorImg" jdbcType="VARCHAR" />
+    <result column="author_money" property="authorMoney" jdbcType="INTEGER" />
+    <result column="author_introduce" property="authorIntroduce" jdbcType="VARCHAR" />
   </resultMap>
   <sql id="Base_Column_List" >
     book_id, book_name, book_img, book_introduce, book_up_date, book_finish_date, book_score, 
     book_flag, book_word, book_click, book_reward, book_type_id, book_author_id
   </sql>
   <select id="selectAllBooks" resultMap="BooksMap" >
-    select * from books
+    SELECT * from books,author WHERE book_author_id=author_id
   </select>
   <select id="selectByPrimaryKey" resultMap="BooksMap" parameterType="java.lang.Integer" >
     select 

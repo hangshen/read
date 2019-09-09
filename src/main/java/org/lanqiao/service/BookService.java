@@ -8,4 +8,5 @@ import java.util.List;
 @Repository
 public interface BookService {
     List<Books> selectAllBooks();
+    List<Books> queryByCondition(String de);
 }
