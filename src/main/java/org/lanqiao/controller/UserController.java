@@ -3,6 +3,7 @@ package org.lanqiao.controller;
 import org.lanqiao.entity.UserLogin;
 import org.lanqiao.entity.Users;
 import org.lanqiao.service.UserService;
+import org.lanqiao.util.RedisUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -11,6 +12,9 @@ import org.springframework.web.bind.annotation.RestController;
 public class UserController {
     @Autowired
     UserService userService;
+
+    @Autowired
+    RedisUtil redisUtil;
 
     /*
      *注册 检测账号是否已被注册  传入参数String 账号
@@ -23,9 +27,12 @@ public class UserController {
     /*
     * 注册成功  进行数据库插入数据  传入参数  账号：账号密码
      */
-    @RequestMapping("/loginsuccess")
+    @RequestMapping("/register")
     public int loginSuccess(UserLogin login){
-        return userService.insertUser(login);
+        //获取注册信息  插入数据库
+        userService.insertUser(login);
+        //返回userid
+        return userService.chenkPassword(login).getUserId();
     }
 
     /*
@@ -33,6 +40,12 @@ public class UserController {
      */
     @RequestMapping("/checkuser")
     public Users checkUser(UserLogin login){
+//        Users user=(Users)redisUtil.get(login.getUserLoginAccount());
+////        if(user == null){
+////            System.out.println("redis");
+////            user=userService.chenkPassword(login);
+////            redisUtil.set(login.getUserLoginAccount(),user);
+////        }
         return userService.chenkPassword(login);
     }
 
