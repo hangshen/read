@@ -22,9 +22,12 @@ public class BookTypeServiceImpl implements BookTypeService{
             {
                 bookTypeVo.setFirstSelect(first.getBooktypeFatherId());
                 for (BookType second:list){
-                    if(first.getBooktypeFatherId() == second.getBooktypeFatherId())
+                    if(second.getBooktypeFatherId() != second.getBooktypeId())
                     {
-                        s.add(second);
+                        if(first.getBooktypeFatherId() == second.getBooktypeFatherId())
+                        {
+                            s.add(second);
+                        }
                     }
                 }
                 bookTypeVo.setSecondSelect(s);
