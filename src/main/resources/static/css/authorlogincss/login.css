@@ -55,21 +55,6 @@
 /*
 顶部字体
  */
-.top_word{
-    float: left;
-    display: block;
-    padding: 20px 20px 20px;
-    font-size: 24px;
-    font-weight: 200;
-    color: #000000;
-    text-shadow: 0 1px 0 #ffffff;
-
-}
-.login_w{
-    padding-left: 6px;
-    line-height:22px;
-    text-shadow: none;
-}
 .login_a{
     color: #16a4fa;
     text-decoration: none;
@@ -102,9 +87,6 @@
     top: 22px;
     right: 0;
 }
-
-
-
 
 
 
