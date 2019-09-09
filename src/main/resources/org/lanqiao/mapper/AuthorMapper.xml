@@ -15,7 +15,7 @@
   </sql>
 
 <!--==================================================查询操作====================================================-->
-  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+  <select id="selectByPrimaryKey" resultMap="AuthorMap" parameterType="java.lang.Integer" >
     select 
     <include refid="Base_Column_List" />
     from author
