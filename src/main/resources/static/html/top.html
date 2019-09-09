@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:v-bind="http://www.w3.org/1999/xhtml">
 <head>
     <meta http-equiv="content-type" content="text/html;charset=utf-8"/>
     <meta http-equiv="X-UA-Compatible" content="IE=Edge"/>
@@ -64,7 +64,9 @@
 
                     <div id="first_2_3_1">
                         <input name="key" type="text" style="width: 425px; height: 26px" id="i1">
-                        <input name="find" type="submit" value=" " style="width: 58px; height: 34px" id="i2">
+                        <a href="search.html">
+                            <input name="find" type="button" value=" " style="width: 58px; height: 34px" id="i2">
+                        </a>
                     </div>
 
                     <div class="m-clouds">
@@ -162,19 +164,18 @@
 
             <div class="g-sec">
                 <div class="left">
-                    <header><h2>精品小说</h2><a class="more" href="/book">更多&gt;</a></header>
+                    <header><h2>精品小说</h2><a class="more" href="">更多&gt;</a></header>
                     <div id="J_Publish" class="m-book-ten">
                         <div class="tabs">
                         </div>
                         <div class="contents">
                             <div class="tab-item">
                                 <ul class="book f-cb">
-                                    <li v-for="(book, index) in books"><a href="" target="_blank" data-model="jptu"
-                                                                          data-opration="jpts_img"><img
-                                            alt="如何有效阅读一本书" v-on="add(index)"/></a>
+                                    <li v-for="(book, index) in books" class="bookface"><a href="" target="_blank" data-model="jptu"
+                                                                          data-opration="jpts_img"><img v-bind:src="book.bookImg"></a>
                                         <h3><a href="" target="_blank" data-model="jptu" data-opration="jpts_txt">{{book.bookName}}</a>
                                         </h3>
-                                        <p>{{book.authorName}}</p>
+                                        <p>作者：{{book.author.authorName}}</p>
                                     </li>
                                 </ul>
                             </div>
@@ -419,7 +420,7 @@
         data: {books: {}},
         created: function () {
             $.ajax({
-                url: "http://localhost:8080",
+                url: "http://localhost:8080/getBooks",
                 type: "post",
                 data: {},
                 datatype: "json",
@@ -427,10 +428,6 @@
                     mv2.books = data;
                 }
             })
-        },methods:{
-            add:function (i) {
-                alert($("book f-cb").html());
-            }
         }
     })
 </script>
