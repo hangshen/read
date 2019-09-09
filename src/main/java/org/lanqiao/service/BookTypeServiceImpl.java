@@ -25,7 +25,7 @@ public class BookTypeServiceImpl implements BookTypeService{
             {
                 //        s存放一级分类下的二级分类
                 List<BookType> s = new ArrayList<BookType>();
-                bookTypeVo.setFirstSelect(first.getBooktypeFatherId());
+                bookTypeVo.setFirstSelect(first);
                 for (BookType second:list){
                     if(second.getBooktypeFatherId() != second.getBooktypeId())
                     {
@@ -37,7 +37,7 @@ public class BookTypeServiceImpl implements BookTypeService{
                 }
                 bookTypeVo.setSecondSelect(s);
             }
-            if (bookTypeVo.getFirstSelect() != 0){
+            if (bookTypeVo.getFirstSelect() != null){
                 bookTypeVoList.add(bookTypeVo);
             }
         }

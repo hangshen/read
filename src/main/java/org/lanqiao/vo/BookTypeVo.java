@@ -5,14 +5,14 @@ import org.lanqiao.entity.BookType;
 import java.util.List;
 
 public class BookTypeVo {
-    private int firstSelect;
+    private BookType firstSelect;
     private List<BookType> secondSelect;
 
-    public int getFirstSelect() {
+    public BookType getFirstSelect() {
         return firstSelect;
     }
 
-    public void setFirstSelect(int firstSelect) {
+    public void setFirstSelect(BookType firstSelect) {
         this.firstSelect = firstSelect;
     }
 
