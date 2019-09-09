@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="org.lanqiao.mapper.BooksMapper" >
-  <resultMap id="BaseResultMap" type="org.lanqiao.entity.Books" >
+  <resultMap id="BooksMap" type="org.lanqiao.entity.Books" >
     <id column="book_id" property="bookId" jdbcType="INTEGER" />
     <result column="book_name" property="bookName" jdbcType="VARCHAR" />
     <result column="book_img" property="bookImg" jdbcType="VARCHAR" />
@@ -13,14 +13,22 @@
     <result column="book_word" property="bookWord" jdbcType="DOUBLE" />
     <result column="book_click" property="bookClick" jdbcType="DOUBLE" />
     <result column="book_reward" property="bookReward" jdbcType="BIGINT" />
-    <result column="book_type_id" property="bookTypeId" jdbcType="INTEGER" />
     <result column="book_author_id" property="bookAuthorId" jdbcType="INTEGER" />
+    <association property="bookType" resultMap="BookTypeMap"></association>
+  </resultMap>
+  <resultMap id="BookTypeMap" type="org.lanqiao.entity.BookType" >
+    <id column="booktype_id" property="booktypeId" jdbcType="INTEGER" />
+    <result column="booktype_name" property="booktypeName" jdbcType="VARCHAR" />
+    <result column="booktype_father_id" property="booktypeFatherId" jdbcType="INTEGER" />
   </resultMap>
   <sql id="Base_Column_List" >
     book_id, book_name, book_img, book_introduce, book_up_date, book_finish_date, book_score, 
     book_flag, book_word, book_click, book_reward, book_type_id, book_author_id
   </sql>
-  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+  <select id="selectAllBooks" resultMap="BooksMap" >
+    select * from books
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BooksMap" parameterType="java.lang.Integer" >
     select 
     <include refid="Base_Column_List" />
     from books

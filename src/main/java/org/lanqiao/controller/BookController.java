@@ -1,7 +1,7 @@
 package org.lanqiao.controller;
 
-import org.lanqiao.service.BookTypeService;
-import org.lanqiao.vo.BookTypeVo;
+import org.lanqiao.entity.Books;
+import org.lanqiao.service.BookService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -9,11 +9,12 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-public class BookTypeController {
+public class BookController {
+
     @Autowired
-    BookTypeService bookTypeService;
-    @RequestMapping("/getAllType")
-    public List<BookTypeVo> selectAll(){
-        return bookTypeService.selectAll();
+    BookService bookService;
+    @RequestMapping("/getBooks")
+    public List<Books> selectAllBooks(){
+       return  bookService.selectAllBooks();
     }
 }

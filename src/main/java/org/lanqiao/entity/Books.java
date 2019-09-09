@@ -25,7 +25,7 @@ public class Books {
 
     private Long bookReward;
 
-    private Integer bookTypeId;
+    private BookType bookType;
 
     private Integer bookAuthorId;
 
@@ -117,12 +117,12 @@ public class Books {
         this.bookReward = bookReward;
     }
 
-    public Integer getBookTypeId() {
-        return bookTypeId;
+    public BookType getBookType() {
+        return bookType;
     }
 
-    public void setBookTypeId(Integer bookTypeId) {
-        this.bookTypeId = bookTypeId;
+    public void setBookType(BookType bookType) {
+        this.bookType = bookType;
     }
 
     public Integer getBookAuthorId() {
