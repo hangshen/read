@@ -21,7 +21,7 @@ public class EmailFindServiceImpl implements EmailFindService{
         if(userLogin != null) {
             //设置收件人和消息内容
             mySendMail.sendMail(email, "活阅读系统提醒，您的密码为："+userLogin.getUserLoginPassword());
-            return "恭喜，找回成功";
+            return "恭喜，密码找回成功！请登录邮箱查看";
         } else {
             return "该邮箱尚未注册";
         }
