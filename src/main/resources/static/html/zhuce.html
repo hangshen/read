@@ -2,98 +2,287 @@
 <html>
 <head>
     <title>网易邮箱注册</title>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
     <link
             rel="icon"
             href="https://ursdoccdn.nosdn.127.net/naqfav.ico"
             type="image/x-icon"
     />
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <meta name="renderer" content="webkit" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="renderer" content="webkit"/>
     <meta
             name="viewport"
             content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
     />
-<!--    <script type="text/javascript">-->
-<!--        (function() {-->
-<!--            var userAgent = navigator.userAgent.toLowerCase();-->
-<!--            var msie = /msie/.test(userAgent) && !/opera/.test(userAgent);-->
-<!--            var version = (userAgent.match(/.+(?:rv|it|ra|ie)[/: ]([d.]+)/) || [-->
-<!--                0,-->
-<!--                "0"-->
-<!--            ])[1];-->
-<!--            var _test = {-->
-<!--                6: "2.0",-->
-<!--                7: "3.0",-->
-<!--                8: "4.0",-->
-<!--                9: "5.0",-->
-<!--                10: "6.0",-->
-<!--                11: "7.0"-->
-<!--            };-->
-<!--            var release = _test[document.documentMode] || _test[parseInt(version)];-->
-<!--            if (msie && parseInt(release, 10) < 5) {-->
-<!--                location.href = "https://ursdoccdn.nosdn.127.net/reg/ieUpdate02.html";-->
-<!--            }-->
-<!--            if (msie && parseInt(release, 10) === 5 && window.performance) {-->
-<!--                // 修复IE9不支持performance.now()，导致tranfer无效，左侧主菜单不显示、poptip错位等问题-->
-<!--                window.performance.now = function() {-->
-<!--                    return +new Date() - performance.timing.navigationStart;-->
-<!--                };-->
-<!--            }-->
-<!--        })();-->
-<!--    </script>-->
+    <!--    <script type="text/javascript">-->
+    <!--        (function() {-->
+    <!--            var userAgent = navigator.userAgent.toLowerCase();-->
+    <!--            var msie = /msie/.test(userAgent) && !/opera/.test(userAgent);-->
+    <!--            var version = (userAgent.match(/.+(?:rv|it|ra|ie)[/: ]([d.]+)/) || [-->
+    <!--                0,-->
+    <!--                "0"-->
+    <!--            ])[1];-->
+    <!--            var _test = {-->
+    <!--                6: "2.0",-->
+    <!--                7: "3.0",-->
+    <!--                8: "4.0",-->
+    <!--                9: "5.0",-->
+    <!--                10: "6.0",-->
+    <!--                11: "7.0"-->
+    <!--            };-->
+    <!--            var release = _test[document.documentMode] || _test[parseInt(version)];-->
+    <!--            if (msie && parseInt(release, 10) < 5) {-->
+    <!--                location.href = "https://ursdoccdn.nosdn.127.net/reg/ieUpdate02.html";-->
+    <!--            }-->
+    <!--            if (msie && parseInt(release, 10) === 5 && window.performance) {-->
+    <!--                // 修复IE9不支持performance.now()，导致tranfer无效，左侧主菜单不显示、poptip错位等问题-->
+    <!--                window.performance.now = function() {-->
+    <!--                    return +new Date() - performance.timing.navigationStart;-->
+    <!--                };-->
+    <!--            }-->
+    <!--        })();-->
+    <!--    </script>-->
     <script
             type="text/javascript"
             src="../js/zhucejs/fingerprint2.min-1.6.1.js"
     ></script>
     <script src="../js/zhucejs/finger.js"></script>
     <script src="../js/zhucejs/load.min.js" async></script>
-    <link href="../css/zhucecss/zhuce.css" rel="stylesheet"></head>
+    <link href="../css/zhucecss/zhuce.css" rel="stylesheet">
+</head>
 
 
-<body><svg aria-hidden="true" style="position: absolute; width: 0px; height: 0px; overflow: hidden;"><symbol id="icon-ic-right" viewBox="0 0 1024 1024"><path d="M887.904744 298.20852c-12.863647-12.063755-33.151673-11.487488-45.215428 1.408843L415.935493 753.983819 182.815858 524.287381c-12.607338-12.416396-32.8644-12.287381-45.280796 0.319957-12.416396 12.576374-12.256417 32.8644 0.352641 45.248112l256.479935 252.671415c0.096331 0.096331 0.223626 0.127295 0.319957 0.223626s0.127295 0.223626 0.223626 0.319957c2.016073 1.919742 4.448434 3.008628 6.784464 4.288456 1.152533 0.672598 2.143368 1.663432 3.359548 2.143368 3.775837 1.47249 7.775299 2.239699 11.743798 2.239699 4.192125 0 8.384249-0.832576 12.287381-2.496009 1.312512-0.543583 2.33603-1.663432 3.552211-2.368714 2.399677-1.408843 4.895686-2.59234 6.944443-4.67206 0.096331-0.096331 0.127295-0.25631 0.223626-0.352641 0.063647-0.096331 0.192662-0.127295 0.287273-0.223626L889.277463 343.420508C901.439269 330.591265 900.768391 310.335923 887.904744 298.20852z" fill="#fff" width="10" height="10"></path></symbol>
-    <symbol id="icon-ic-lock" viewBox="0 0 1024 1024"><path d="M809.6 416.64h-53.76V308.48c0-135.68-108.096-243.84-243.2-243.84-135.04 0-243.2 108.16-243.2 243.84v108.16h-53.76c-29.44 0-53.76 24.32-53.76 53.76v433.28c0 29.44 24.32 53.76 53.76 53.76h593.92c30.08 0 54.4-24.32 54.4-53.76V470.4c0-29.44-24.32-53.76-54.4-53.76z m-135.04 0H350.72V308.48c0-89.6 72.96-162.56 161.92-162.56a162.56 162.56 0 0 1 161.92 162.56v108.16z" p-id="755" fill="#999" width="15" height="15"></path></symbol><symbol id="icon-ic-clear" viewBox="0 0 1024 1024"><path d="M512 39.385C250.092 39.385 39.385 250.092 39.385 512S250.092 984.615 512 984.615 984.615 773.908 984.615 512 773.908 39.385 512 39.385z m96.492 488.369l153.6 153.6c7.877 7.877 7.877 19.692 0 27.57l-55.138 55.138c-7.877 7.876-19.692 7.876-27.57 0l-153.6-153.6c-7.876-7.877-19.692-7.877-27.569 0l-153.6 153.6c-7.877 7.876-19.692 7.876-27.569 0l-55.138-55.139c-7.877-7.877-7.877-19.692 0-27.57l153.6-153.6c7.877-7.876 7.877-19.691 0-27.568l-155.57-155.57c-7.876-7.877-7.876-19.692 0-27.569l55.139-55.138c7.877-7.877 19.692-7.877 27.57 0l155.568 155.569c7.877 7.877 19.693 7.877 27.57 0l153.6-153.6c7.877-7.877 19.692-7.877 27.569 0l55.138 55.138c7.877 7.877 7.877 19.693 0 27.57l-153.6 153.6c-5.907 7.877-5.907 19.692 0 27.569z"></path></symbol>
-    <symbol id="icon-ic-search" viewBox="0 0 1024 1024"><path d="M771.165 751.895l176.687 176.687-65.816 65.815-181.992-181.9a418.91 418.91 0 1 1 71.028-60.602z m-305.71 39.378a325.818 325.818 0 1 0 0-651.637 325.818 325.818 0 0 0 0 651.637z" fill="#BBBBBB"></path></symbol>
-    <symbol id="icon-ic-close" viewBox="0 0 1024 1024"><path d="M512 2.62144C230.67761778 2.62144 2.62144 230.67761778 2.62144 512c0 281.32010667 228.05617778 509.37856 509.37856 509.37856S1021.37856 793.32238222 1021.37856 512 793.32238222 2.62144 512 2.62144z m225.83978667 683.76234667c14.21198222 14.21198222 14.21084445 37.23946667-0.00227556 51.45031111-7.10769778 7.10769778-16.41813333 10.66211555-25.72743111 10.66211555s-18.61859555-3.55100445-25.72515555-10.65642666L512 563.45372445 337.6128 737.83978667c-7.10656 7.10656-16.41813333 10.65642667-25.72743111 10.65642666s-18.62087111-3.55555555-25.72743111-10.66097778c-14.21198222-14.21312-14.21198222-37.23946667 0-51.45144888L460.544 512 286.15907555 337.6128c-14.21198222-14.21198222-14.21084445-37.23946667 0.00227556-51.45031111s37.23946667-14.21767111 51.45144889-0.00568889L512 460.54286222l174.38606222-174.38606222c14.21198222-14.21198222 37.23946667-14.20743111 51.45031111 0.00455111s14.21539555 37.23946667 0.00341334 51.45144889L563.456 512l174.38378667 174.38378667z"></path></symbol>
-    <symbol id="icon-ic-closeEye" viewBox="0 0 1024 1024"><path d="M941.677 391.71c9.338-14.006 6.225-32.681-6.225-43.575-14.006-10.894-32.681-7.781-43.575 6.225-1.557 1.556-174.3 205.426-379.728 205.426-199.2 0-379.727-205.426-381.283-206.982-10.895-12.45-31.125-14.006-43.576-3.113-12.45 10.894-14.006 31.125-3.113 43.576 3.113 4.668 40.463 46.687 99.6 93.375l-79.37 82.482c-12.45 12.45-10.893 32.681 1.557 43.575 3.113 6.225 10.894 9.338 18.676 9.338 7.78 0 15.562-3.113 21.787-9.338l85.594-88.706c40.463 28.013 88.707 54.47 141.62 73.144l-32.682 110.495c-4.668 17.118 4.67 34.237 21.788 38.906h9.337c14.006 0 26.457-9.338 29.569-23.344l32.681-110.495c24.9 4.669 51.357 7.782 77.813 7.782s52.913-3.113 77.814-7.782l32.68 108.939c3.114 14.006 17.12 23.343 29.57 23.343 3.113 0 6.225 0 7.782-1.556 17.118-4.67 26.456-21.787 21.788-38.906L649.099 595.58c52.914-18.676 101.157-45.132 141.62-73.144l84.038 87.15c6.225 6.225 14.006 9.338 21.787 9.338 7.781 0 15.563-3.113 21.787-9.337 12.45-12.451 12.45-31.125 1.557-43.576l-79.37-82.481c63.808-46.689 101.16-91.82 101.16-91.82z"></path></symbol>
-    <symbol id="icon-ic-openEye" viewBox="0 0 1024 1024"><path d="M512 192C229.216 192 0 512 0 512s229.216 320 512 320 512-320 512-320-229.216-320-512-320z m0 512c-106.016 0-192-85.984-192-192s85.984-192 192-192 192 85.984 192 192-85.984 192-192 192z m0-320c-70.688 0-128 57.312-128 128s57.312 128 128 128 128-57.312 128-128-57.312-128-128-128z"></path></symbol>
-    <symbol id="icon-ic-loading" viewBox="0 0 1024 1024"><path d="M514 71c16.569 0 30 13.431 30 30v133c0 16.569-13.431 30-30 30-16.569 0-30-13.431-30-30V101c0-16.569 13.431-30 30-30z m0 689c16.569 0 30 13.431 30 30v133c0 16.569-13.431 30-30 30-16.569 0-30-13.431-30-30V790c0-16.569 13.431-30 30-30zM202.166 200.166c11.716-11.716 30.71-11.716 42.426 0l94.046 94.045c11.715 11.716 11.715 30.71 0 42.427-11.716 11.715-30.711 11.715-42.427 0l-94.045-94.046c-11.716-11.715-11.716-30.71 0-42.426z m487.196 487.196c11.716-11.715 30.711-11.715 42.427 0l94.045 94.046c11.716 11.715 11.716 30.71 0 42.426-11.716 11.716-30.71 11.716-42.426 0l-94.046-94.045c-11.715-11.716-11.715-30.71 0-42.427zM73 512c0-16.569 13.431-30 30-30h133c16.569 0 30 13.431 30 30 0 16.569-13.431 30-30 30H103c-16.569 0-30-13.431-30-30z m689 0c0-16.569 13.431-30 30-30h133c16.569 0 30 13.431 30 30 0 16.569-13.431 30-30 30H792c-16.569 0-30-13.431-30-30zM202.166 823.834c-11.716-11.716-11.716-30.71 0-42.426l94.045-94.046c11.716-11.715 30.71-11.715 42.427 0 11.715 11.716 11.715 30.711 0 42.427l-94.046 94.045c-11.715 11.716-30.71 11.716-42.426 0z m487.196-487.196c-11.715-11.716-11.715-30.711 0-42.427l94.046-94.045c11.715-11.716 30.71-11.716 42.426 0 11.716 11.716 11.716 30.71 0 42.426l-94.045 94.046c-11.716 11.715-30.71 11.715-42.427 0z" fill="#ffffff"></path></symbol>
-    <symbol id="icon-ic-loading-defalut" viewBox="0 0 1024 1024"><path d="M514 71c16.569 0 30 13.431 30 30v133c0 16.569-13.431 30-30 30-16.569 0-30-13.431-30-30V101c0-16.569 13.431-30 30-30z m0 689c16.569 0 30 13.431 30 30v133c0 16.569-13.431 30-30 30-16.569 0-30-13.431-30-30V790c0-16.569 13.431-30 30-30zM202.166 200.166c11.716-11.716 30.71-11.716 42.426 0l94.046 94.045c11.715 11.716 11.715 30.71 0 42.427-11.716 11.715-30.711 11.715-42.427 0l-94.045-94.046c-11.716-11.715-11.716-30.71 0-42.426z m487.196 487.196c11.716-11.715 30.711-11.715 42.427 0l94.045 94.046c11.716 11.715 11.716 30.71 0 42.426-11.716 11.716-30.71 11.716-42.426 0l-94.046-94.045c-11.715-11.716-11.715-30.71 0-42.427zM73 512c0-16.569 13.431-30 30-30h133c16.569 0 30 13.431 30 30 0 16.569-13.431 30-30 30H103c-16.569 0-30-13.431-30-30z m689 0c0-16.569 13.431-30 30-30h133c16.569 0 30 13.431 30 30 0 16.569-13.431 30-30 30H792c-16.569 0-30-13.431-30-30zM202.166 823.834c-11.716-11.716-11.716-30.71 0-42.426l94.045-94.046c11.716-11.715 30.71-11.715 42.427 0 11.715 11.716 11.715 30.711 0 42.427l-94.046 94.045c-11.715 11.716-30.71 11.716-42.426 0z m487.196-487.196c-11.715-11.716-11.715-30.711 0-42.427l94.046-94.045c11.715-11.716 30.71-11.716 42.426 0 11.716 11.716 11.716 30.71 0 42.426l-94.045 94.046c-11.716 11.715-30.71 11.715-42.427 0z" fill="rgba(71,144,255,0.5)"></path></symbol>
-    <symbol id="icon-ic-close1" viewBox="0 0 1024 1024"><path d="M548.25 475.75l398.233 398.336-72.397 72.397L475.75 548.147 77.517 946.483 5.12 874.086 403.456 475.75 5.12 77.517 77.517 5.12l398.336 398.336L873.984 5.12l72.397 72.397-398.336 398.336z"></path></symbol>
-    <symbol id="icon-ic-arrow" viewBox="0 0 1024 1024"><path d="M118.153846 201.688615V846.769231a59.076923 59.076923 0 0 1-118.153846 0v-787.692308A59.076923 59.076923 0 0 1 59.076923 0h787.692308a59.076923 59.076923 0 0 1 0 118.153846H201.688615l785.329231 785.329231a59.076923 59.076923 0 0 1-83.574154 83.495385L118.153846 201.728z" fill="#D0D4DA" p-id="3532"></path></symbol>
-    <symbol id="icon-ic-question" viewBox="0 0 1024 1024"><path d="M512 962A450 450 0 1 1 512 62a450 450 0 0 1 0 900z m0-64.28571416A385.71428584 385.71428584 0 1 0 512 126.28571416a385.71428584 385.71428584 0 0 0 0 771.42857168z m12.72857168-143.35714336a51.94285752 51.94285752 0 1 1 0-103.95 51.94285752 51.94285752 0 0 1 0 103.88571504z m0-450c86.01428584 0 155.76428584 44.22857168 155.76428584 124.58571504 0 0-2.12142833 49.95-44.55 83.05714248-0.38571416 1.02857168-41.14285752 29.95714248-66.85714336 62.74285752-0.19285752 22.69285752-19.92857167 41.14285752-44.35714249 41.14285664-24.62142833 0-44.55-18.64285752-44.55-41.59285664 0 0.12857168-7.77857167-21.53571416 44.48571417-62.29285752 22.5-20.12142832 68.85-39.6 66.79285664-83.05714248 0-34.45714248-29.89285752-62.35714248-66.79285664-62.35714336-36.83571416 0-66.72857168 27.9-66.72857168 62.35714336 0 22.88571416-19.92857167 41.52857168-44.48571416 41.5285708-24.62142833 0-44.55-18.64285752-44.55-41.5285708 0-2.95714248 0.32142832-5.78571416 0.96428584-8.55 4.95-74.63571416 72-116.1 154.8-116.1z" p-id="1667"></path></symbol></svg>
-<div class="m-wrapper"><div class="m-head"><div class="u-cnt clearfix"><div class="u-logo"><img src="../images/registerimages/logo-906b3317.png" class="u-img"></div> <a target="_blank" href="https://haoma.163.com/?from=zcb" class="u-lh"><span class="u-lh-txt">
+<body>
+<svg aria-hidden="true" style="position: absolute; width: 0px; height: 0px; overflow: hidden;">
+    <symbol id="icon-ic-right" viewBox="0 0 1024 1024">
+        <path d="M887.904744 298.20852c-12.863647-12.063755-33.151673-11.487488-45.215428 1.408843L415.935493 753.983819 182.815858 524.287381c-12.607338-12.416396-32.8644-12.287381-45.280796 0.319957-12.416396 12.576374-12.256417 32.8644 0.352641 45.248112l256.479935 252.671415c0.096331 0.096331 0.223626 0.127295 0.319957 0.223626s0.127295 0.223626 0.223626 0.319957c2.016073 1.919742 4.448434 3.008628 6.784464 4.288456 1.152533 0.672598 2.143368 1.663432 3.359548 2.143368 3.775837 1.47249 7.775299 2.239699 11.743798 2.239699 4.192125 0 8.384249-0.832576 12.287381-2.496009 1.312512-0.543583 2.33603-1.663432 3.552211-2.368714 2.399677-1.408843 4.895686-2.59234 6.944443-4.67206 0.096331-0.096331 0.127295-0.25631 0.223626-0.352641 0.063647-0.096331 0.192662-0.127295 0.287273-0.223626L889.277463 343.420508C901.439269 330.591265 900.768391 310.335923 887.904744 298.20852z"
+              fill="#fff" width="10" height="10"></path>
+    </symbol>
+    <symbol id="icon-ic-lock" viewBox="0 0 1024 1024">
+        <path d="M809.6 416.64h-53.76V308.48c0-135.68-108.096-243.84-243.2-243.84-135.04 0-243.2 108.16-243.2 243.84v108.16h-53.76c-29.44 0-53.76 24.32-53.76 53.76v433.28c0 29.44 24.32 53.76 53.76 53.76h593.92c30.08 0 54.4-24.32 54.4-53.76V470.4c0-29.44-24.32-53.76-54.4-53.76z m-135.04 0H350.72V308.48c0-89.6 72.96-162.56 161.92-162.56a162.56 162.56 0 0 1 161.92 162.56v108.16z"
+              p-id="755" fill="#999" width="15" height="15"></path>
+    </symbol>
+    <symbol id="icon-ic-clear" viewBox="0 0 1024 1024">
+        <path d="M512 39.385C250.092 39.385 39.385 250.092 39.385 512S250.092 984.615 512 984.615 984.615 773.908 984.615 512 773.908 39.385 512 39.385z m96.492 488.369l153.6 153.6c7.877 7.877 7.877 19.692 0 27.57l-55.138 55.138c-7.877 7.876-19.692 7.876-27.57 0l-153.6-153.6c-7.876-7.877-19.692-7.877-27.569 0l-153.6 153.6c-7.877 7.876-19.692 7.876-27.569 0l-55.138-55.139c-7.877-7.877-7.877-19.692 0-27.57l153.6-153.6c7.877-7.876 7.877-19.691 0-27.568l-155.57-155.57c-7.876-7.877-7.876-19.692 0-27.569l55.139-55.138c7.877-7.877 19.692-7.877 27.57 0l155.568 155.569c7.877 7.877 19.693 7.877 27.57 0l153.6-153.6c7.877-7.877 19.692-7.877 27.569 0l55.138 55.138c7.877 7.877 7.877 19.693 0 27.57l-153.6 153.6c-5.907 7.877-5.907 19.692 0 27.569z"></path>
+    </symbol>
+    <symbol id="icon-ic-search" viewBox="0 0 1024 1024">
+        <path d="M771.165 751.895l176.687 176.687-65.816 65.815-181.992-181.9a418.91 418.91 0 1 1 71.028-60.602z m-305.71 39.378a325.818 325.818 0 1 0 0-651.637 325.818 325.818 0 0 0 0 651.637z"
+              fill="#BBBBBB"></path>
+    </symbol>
+    <symbol id="icon-ic-close" viewBox="0 0 1024 1024">
+        <path d="M512 2.62144C230.67761778 2.62144 2.62144 230.67761778 2.62144 512c0 281.32010667 228.05617778 509.37856 509.37856 509.37856S1021.37856 793.32238222 1021.37856 512 793.32238222 2.62144 512 2.62144z m225.83978667 683.76234667c14.21198222 14.21198222 14.21084445 37.23946667-0.00227556 51.45031111-7.10769778 7.10769778-16.41813333 10.66211555-25.72743111 10.66211555s-18.61859555-3.55100445-25.72515555-10.65642666L512 563.45372445 337.6128 737.83978667c-7.10656 7.10656-16.41813333 10.65642667-25.72743111 10.65642666s-18.62087111-3.55555555-25.72743111-10.66097778c-14.21198222-14.21312-14.21198222-37.23946667 0-51.45144888L460.544 512 286.15907555 337.6128c-14.21198222-14.21198222-14.21084445-37.23946667 0.00227556-51.45031111s37.23946667-14.21767111 51.45144889-0.00568889L512 460.54286222l174.38606222-174.38606222c14.21198222-14.21198222 37.23946667-14.20743111 51.45031111 0.00455111s14.21539555 37.23946667 0.00341334 51.45144889L563.456 512l174.38378667 174.38378667z"></path>
+    </symbol>
+    <symbol id="icon-ic-closeEye" viewBox="0 0 1024 1024">
+        <path d="M941.677 391.71c9.338-14.006 6.225-32.681-6.225-43.575-14.006-10.894-32.681-7.781-43.575 6.225-1.557 1.556-174.3 205.426-379.728 205.426-199.2 0-379.727-205.426-381.283-206.982-10.895-12.45-31.125-14.006-43.576-3.113-12.45 10.894-14.006 31.125-3.113 43.576 3.113 4.668 40.463 46.687 99.6 93.375l-79.37 82.482c-12.45 12.45-10.893 32.681 1.557 43.575 3.113 6.225 10.894 9.338 18.676 9.338 7.78 0 15.562-3.113 21.787-9.338l85.594-88.706c40.463 28.013 88.707 54.47 141.62 73.144l-32.682 110.495c-4.668 17.118 4.67 34.237 21.788 38.906h9.337c14.006 0 26.457-9.338 29.569-23.344l32.681-110.495c24.9 4.669 51.357 7.782 77.813 7.782s52.913-3.113 77.814-7.782l32.68 108.939c3.114 14.006 17.12 23.343 29.57 23.343 3.113 0 6.225 0 7.782-1.556 17.118-4.67 26.456-21.787 21.788-38.906L649.099 595.58c52.914-18.676 101.157-45.132 141.62-73.144l84.038 87.15c6.225 6.225 14.006 9.338 21.787 9.338 7.781 0 15.563-3.113 21.787-9.337 12.45-12.451 12.45-31.125 1.557-43.576l-79.37-82.481c63.808-46.689 101.16-91.82 101.16-91.82z"></path>
+    </symbol>
+    <symbol id="icon-ic-openEye" viewBox="0 0 1024 1024">
+        <path d="M512 192C229.216 192 0 512 0 512s229.216 320 512 320 512-320 512-320-229.216-320-512-320z m0 512c-106.016 0-192-85.984-192-192s85.984-192 192-192 192 85.984 192 192-85.984 192-192 192z m0-320c-70.688 0-128 57.312-128 128s57.312 128 128 128 128-57.312 128-128-57.312-128-128-128z"></path>
+    </symbol>
+    <symbol id="icon-ic-loading" viewBox="0 0 1024 1024">
+        <path d="M514 71c16.569 0 30 13.431 30 30v133c0 16.569-13.431 30-30 30-16.569 0-30-13.431-30-30V101c0-16.569 13.431-30 30-30z m0 689c16.569 0 30 13.431 30 30v133c0 16.569-13.431 30-30 30-16.569 0-30-13.431-30-30V790c0-16.569 13.431-30 30-30zM202.166 200.166c11.716-11.716 30.71-11.716 42.426 0l94.046 94.045c11.715 11.716 11.715 30.71 0 42.427-11.716 11.715-30.711 11.715-42.427 0l-94.045-94.046c-11.716-11.715-11.716-30.71 0-42.426z m487.196 487.196c11.716-11.715 30.711-11.715 42.427 0l94.045 94.046c11.716 11.715 11.716 30.71 0 42.426-11.716 11.716-30.71 11.716-42.426 0l-94.046-94.045c-11.715-11.716-11.715-30.71 0-42.427zM73 512c0-16.569 13.431-30 30-30h133c16.569 0 30 13.431 30 30 0 16.569-13.431 30-30 30H103c-16.569 0-30-13.431-30-30z m689 0c0-16.569 13.431-30 30-30h133c16.569 0 30 13.431 30 30 0 16.569-13.431 30-30 30H792c-16.569 0-30-13.431-30-30zM202.166 823.834c-11.716-11.716-11.716-30.71 0-42.426l94.045-94.046c11.716-11.715 30.71-11.715 42.427 0 11.715 11.716 11.715 30.711 0 42.427l-94.046 94.045c-11.715 11.716-30.71 11.716-42.426 0z m487.196-487.196c-11.715-11.716-11.715-30.711 0-42.427l94.046-94.045c11.715-11.716 30.71-11.716 42.426 0 11.716 11.716 11.716 30.71 0 42.426l-94.045 94.046c-11.716 11.715-30.71 11.715-42.427 0z"
+              fill="#ffffff"></path>
+    </symbol>
+    <symbol id="icon-ic-loading-defalut" viewBox="0 0 1024 1024">
+        <path d="M514 71c16.569 0 30 13.431 30 30v133c0 16.569-13.431 30-30 30-16.569 0-30-13.431-30-30V101c0-16.569 13.431-30 30-30z m0 689c16.569 0 30 13.431 30 30v133c0 16.569-13.431 30-30 30-16.569 0-30-13.431-30-30V790c0-16.569 13.431-30 30-30zM202.166 200.166c11.716-11.716 30.71-11.716 42.426 0l94.046 94.045c11.715 11.716 11.715 30.71 0 42.427-11.716 11.715-30.711 11.715-42.427 0l-94.045-94.046c-11.716-11.715-11.716-30.71 0-42.426z m487.196 487.196c11.716-11.715 30.711-11.715 42.427 0l94.045 94.046c11.716 11.715 11.716 30.71 0 42.426-11.716 11.716-30.71 11.716-42.426 0l-94.046-94.045c-11.715-11.716-11.715-30.71 0-42.427zM73 512c0-16.569 13.431-30 30-30h133c16.569 0 30 13.431 30 30 0 16.569-13.431 30-30 30H103c-16.569 0-30-13.431-30-30z m689 0c0-16.569 13.431-30 30-30h133c16.569 0 30 13.431 30 30 0 16.569-13.431 30-30 30H792c-16.569 0-30-13.431-30-30zM202.166 823.834c-11.716-11.716-11.716-30.71 0-42.426l94.045-94.046c11.716-11.715 30.71-11.715 42.427 0 11.715 11.716 11.715 30.711 0 42.427l-94.046 94.045c-11.715 11.716-30.71 11.716-42.426 0z m487.196-487.196c-11.715-11.716-11.715-30.711 0-42.427l94.046-94.045c11.715-11.716 30.71-11.716 42.426 0 11.716 11.716 11.716 30.71 0 42.426l-94.045 94.046c-11.716 11.715-30.71 11.715-42.427 0z"
+              fill="rgba(71,144,255,0.5)"></path>
+    </symbol>
+    <symbol id="icon-ic-close1" viewBox="0 0 1024 1024">
+        <path d="M548.25 475.75l398.233 398.336-72.397 72.397L475.75 548.147 77.517 946.483 5.12 874.086 403.456 475.75 5.12 77.517 77.517 5.12l398.336 398.336L873.984 5.12l72.397 72.397-398.336 398.336z"></path>
+    </symbol>
+    <symbol id="icon-ic-arrow" viewBox="0 0 1024 1024">
+        <path d="M118.153846 201.688615V846.769231a59.076923 59.076923 0 0 1-118.153846 0v-787.692308A59.076923 59.076923 0 0 1 59.076923 0h787.692308a59.076923 59.076923 0 0 1 0 118.153846H201.688615l785.329231 785.329231a59.076923 59.076923 0 0 1-83.574154 83.495385L118.153846 201.728z"
+              fill="#D0D4DA" p-id="3532"></path>
+    </symbol>
+    <symbol id="icon-ic-question" viewBox="0 0 1024 1024">
+        <path d="M512 962A450 450 0 1 1 512 62a450 450 0 0 1 0 900z m0-64.28571416A385.71428584 385.71428584 0 1 0 512 126.28571416a385.71428584 385.71428584 0 0 0 0 771.42857168z m12.72857168-143.35714336a51.94285752 51.94285752 0 1 1 0-103.95 51.94285752 51.94285752 0 0 1 0 103.88571504z m0-450c86.01428584 0 155.76428584 44.22857168 155.76428584 124.58571504 0 0-2.12142833 49.95-44.55 83.05714248-0.38571416 1.02857168-41.14285752 29.95714248-66.85714336 62.74285752-0.19285752 22.69285752-19.92857167 41.14285752-44.35714249 41.14285664-24.62142833 0-44.55-18.64285752-44.55-41.59285664 0 0.12857168-7.77857167-21.53571416 44.48571417-62.29285752 22.5-20.12142832 68.85-39.6 66.79285664-83.05714248 0-34.45714248-29.89285752-62.35714248-66.79285664-62.35714336-36.83571416 0-66.72857168 27.9-66.72857168 62.35714336 0 22.88571416-19.92857167 41.52857168-44.48571416 41.5285708-24.62142833 0-44.55-18.64285752-44.55-41.5285708 0-2.95714248 0.32142832-5.78571416 0.96428584-8.55 4.95-74.63571416 72-116.1 154.8-116.1z"
+              p-id="1667"></path>
+    </symbol>
+</svg>
+<div class="m-wrapper">
+    <div class="m-head">
+        <div class="u-cnt clearfix">
+            <div class="u-logo"><img src="../images/registerimages/logo-906b3317.png" class="u-img"></div>
+            <a target="_blank" href="https://haoma.163.com/?from=zcb" class="u-lh"><span class="u-lh-txt">
                     靓号注册
                 </span> <span class="u-lh-new">
                     new
-                </span></a></div></div> <div id="app" class="m-app"><div><div class="stepguide clearfix"><div><div class="step stepcurrent"><div class="number">
-    1
-    <p class="right"><div class="iconfont icon-ic-right"><svg aria-hidden="true" class="icon "><use xlink:href="#icon-ic-right"></use></svg> </div></p></div> <div class="line"><p class="line-state"></p></div> <div>填写帐号密码</div></div><div class="step"><div class="number">
-    2
-    <p class="right"><div class="iconfont icon-ic-right"><svg aria-hidden="true" class="icon "><use xlink:href="#icon-ic-right"></use></svg> </div></p></div> <div class="line"><p class="line-state"></p></div> <div>验证手机号码</div></div><div class="step"><div class="number">
-    3
-    <p class="right"><div class="iconfont icon-ic-right"><svg aria-hidden="true" class="icon "><use xlink:href="#icon-ic-right"></use></svg> </div></p></div> <!----> <div>完成注册</div></div></div></div> <div class="box"><form><div class="nop-form-item nop-form-item-"><!----> <div class="nop-form-item-input"><div class="nop-form-item-input-inner"><div class="suggest-wrapper"><div class="bview-input-wrapper" style="width: 100%;"><!----> <!----> <!----> <input placeholder="请输入邮箱地址" autocomplete="off" type="text" class="bview-input"> <span class="ieplaceholder" style="display: none;">请输入邮箱地址</span> <!----> </div> <div class="m-select" style="display: none;"><div class="select-value">
-    @163.com
-    <div class="triangle"></div></div> <div class="item-box" style="display: none;"><div data-code="@163.com" class="item">
-    @163.com
-</div><div data-code="@126.com" class="item">
-    @126.com
-</div><div data-code="@yeah.net" class="item">
-    @yeah.net
-</div></div></div> <ul class="suggest-view" style="display: none;"></ul></div> <div class="extra-tip">
+                </span></a></div>
+    </div>
+    <div id="app" class="m-app">
+        <div>
+            <div class="stepguide clearfix">
+                <div>
+                    <div id="first" class="step stepcurrent">
+                        <div class="number">
+                            1
+                            <p class="right">
+                            <div class="iconfont icon-ic-right">
+                                <svg aria-hidden="true" class="icon ">
+                                    <use xlink:href="#icon-ic-right"></use>
+                                </svg>
+                            </div>
+                            </p></div>
+                        <div class="line"><p class="line-state"></p></div>
+                        <div>填写帐号密码</div>
+                    </div>
+                    <div class="step">
+                        <div class="number">
+                            2
+                            <p class="right">
+                            <div class="iconfont icon-ic-right">
+                                <svg aria-hidden="true" class="icon ">
+                                    <use xlink:href="#icon-ic-right"></use>
+                                </svg>
+                            </div>
+                            </p></div>
+                        <div class="line"><p class="line-state"></p></div>
+                        <div>验证手机号码</div>
+                    </div>
+                    <div class="step">
+                        <div class="number">
+                            3
+                            <p class="right">
+                            <div class="iconfont icon-ic-right">
+                                <svg aria-hidden="true" class="icon ">
+                                    <use xlink:href="#icon-ic-right"></use>
+                                </svg>
+                            </div>
+                            </p></div> <!---->
+                        <div>完成注册</div>
+                    </div>
+                </div>
+            </div>
+            <div class="box">
+                <form>
+                    <div id="second" class="nop-form-item nop-form-item-"><!---->
+                        <div class="nop-form-item-input">
+                            <div class="nop-form-item-input-inner">
+                                <div class="suggest-wrapper">
+                                    <div class="bview-input-wrapper" style="width: 100%;"><!----> <!----> <!----> <input
+                                            placeholder="请输入邮箱地址" autocomplete="off" type="text" class="bview-input">
+                                        <span class="ieplaceholder" style="display: none;">请输入邮箱地址</span> <!----> </div>
+                                    <div class="m-select" style="display: none;">
+                                        <div class="select-value">
+                                            @163.com
+                                            <div class="triangle"></div>
+                                        </div>
+                                        <div class="item-box" style="display: none;">
+                                            <div data-code="@163.com" class="item">
+                                                @163.com
+                                            </div>
+                                            <div data-code="@126.com" class="item">
+                                                @126.com
+                                            </div>
+                                            <div data-code="@yeah.net" class="item">
+                                                @yeah.net
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <ul class="suggest-view" style="display: none;"></ul>
+                                </div>
+                                <div class="extra-tip">
 
-</div></div> <div class="nop-form-item-tip"></div></div></div> <!----> <div class="nop-form-item nop-form-item-"><!----> <div class="nop-form-item-input"><div class="nop-form-item-input-inner"><div class="bview-input-wrapper" value="" style="width: 100%;"><!----> <div class="bview-input-icon"><svg aria-hidden="true" class="icon "><use xlink:href="#icon-ic-closeEye"></use></svg> </div> <!----> <input placeholder="请输入6-16位密码" autocomplete="off" type="password" class="bview-input"> <span class="ieplaceholder" style="display: none;">请输入6-16位密码</span> <!----> </div> <div class="extra-tip">
+                                </div>
+                            </div>
+                            <div class="nop-form-item-tip" ></div>
+                        </div>
+                    </div> <!---->
+                    <div class="nop-form-item nop-form-item-"><!---->
+                        <div class="nop-form-item-input">
+                            <div class="nop-form-item-input-inner">
+                                <div class="bview-input-wrapper" value="" style="width: 100%;"><!---->
+                                    <div class="bview-input-icon">
+                                        <svg aria-hidden="true" class="icon ">
+                                            <use xlink:href="#icon-ic-closeEye"></use>
+                                        </svg>
+                                    </div> <!----> <input placeholder="请输入6-16位密码" autocomplete="off" type="password"
+                                                          class="bview-input"> <span class="ieplaceholder"
+                                                                                     style="display: none;">请输入6-16位密码</span>
+                                    <!----> </div>
+                                <div class="extra-tip">
 
-</div></div> <div class="nop-form-item-tip"></div></div></div></form> <button class="step0-btn bview-button bview-button-size bview-button-primary">
-    下一步
-    <span></span> <div class="bButton-mask" style="display: none;"><div class="bButton-loading"><div class="bview-switch-loading"><svg aria-hidden="true" class="icon "><use xlink:href="#icon-ic-loading"></use></svg> </div></div></div></button> <div class="m-gologin">
-    已有帐号？<a href="http://yuedu.163.com/" class="u-href">去登录</a></div></div> <!----> <!----></div></div>
-    <div class="g-ft"><div class="g-in"><div class="m-cp"><p><a href="http://corp.163.com/eng/about/overview.html" target="_blank">About NetEase</a>&nbsp;|&nbsp;<a href="http://gb.corp.163.com/gb/about/overview.html" target="_blank">公司简介</a>&nbsp;|&nbsp;<a href="http://gb.corp.163.com/gb/contactus.html" target="_blank">联系方式</a>&nbsp;|&nbsp;<a href="http://reg.163.com/help/help_oauth2.html?v=20141215" target="_blank">OAuth2.0认证</a>
-        &nbsp;|&nbsp;<a href="http://corp.163.com/gb/job/job.html" target="_blank">招聘信息</a>&nbsp;|&nbsp;<a href="http://help.163.com/" target="_blank">客户服务</a>&nbsp;|&nbsp;<a href="http://gb.corp.163.com/gb/legal.html" target="_blank">相关法律</a>&nbsp;|&nbsp;<a href="http://emarketing.biz.163.com/" target="_blank">网络营销</a></p> <p class="nopo">
-    网易公司版权所有 ©1997-2019
-</p></div></div></div></div>
-<script type="text/javascript" src="../js/zhucejs/base.js?"></script><script type="text/javascript" src="/webzc/mail/js/index.5da5243b.js?"></script><div id="ajaxLoading" style="display: none;"> <div class="m-loading"><div class="bLoading1"><div class="spinner"><div class="rect1"></div><div class="rect2"></div><div class="rect3"></div><div class="rect4"></div><div class="rect5"></div></div></div></div></div>
+                                </div>
+                            </div>
+                            <div class="nop-form-item-tip"></div>
+                        </div>
+                    </div>
+                </form>
+                <button class="step0-btn bview-button bview-button-size bview-button-primary">
+                    下一步
+                    <span></span>
+                    <div class="bButton-mask" style="display: none;">
+                        <div class="bButton-loading">
+                            <div class="bview-switch-loading">
+                                <svg aria-hidden="true" class="icon ">
+                                    <use xlink:href="#icon-ic-loading"></use>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+                </button>
+                <div class="m-gologin">
+                    已有帐号？<a href="http://yuedu.163.com/" class="u-href">去登录</a></div>
+            </div> <!----> <!----></div>
+    </div>
+    <div class="g-ft">
+        <div class="g-in">
+            <div class="m-cp"><p><a href="http://corp.163.com/eng/about/overview.html" target="_blank">About NetEase</a>&nbsp;|&nbsp;<a
+                    href="http://gb.corp.163.com/gb/about/overview.html" target="_blank">公司简介</a>&nbsp;|&nbsp;<a
+                    href="http://gb.corp.163.com/gb/contactus.html" target="_blank">联系方式</a>&nbsp;|&nbsp;<a
+                    href="http://reg.163.com/help/help_oauth2.html?v=20141215" target="_blank">OAuth2.0认证</a>
+                &nbsp;|&nbsp;<a href="http://corp.163.com/gb/job/job.html" target="_blank">招聘信息</a>&nbsp;|&nbsp;<a
+                        href="http://help.163.com/" target="_blank">客户服务</a>&nbsp;|&nbsp;<a
+                        href="http://gb.corp.163.com/gb/legal.html" target="_blank">相关法律</a>&nbsp;|&nbsp;<a
+                        href="http://emarketing.biz.163.com/" target="_blank">网络营销</a></p>
+                <p class="nopo">
+                    网易公司版权所有 ©1997-2019
+                </p></div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript" src="../js/zhucejs/base.js?"></script>
+<!--<script type="text/javascript" src="../js/zhucejs/index.js?"></script>-->
+<div id="ajaxLoading" style="display: none;">
+    <div class="m-loading">
+        <div class="bLoading1">
+            <div class="spinner">
+                <div class="rect1"></div>
+                <div class="rect2"></div>
+                <div class="rect3"></div>
+                <div class="rect4"></div>
+                <div class="rect5"></div>
+            </div>
+        </div>
+    </div>
+</div>
 
 
 </body>
+<script src="../js/topjs/jquery-3.4.1.js"></script>
+<script>
+    $(".bview-input").blur(function () {
+        $("#second").removeClass("nop-form-item-error");
+        $("#second").addClass("nop-form-item-");
+        $("#first").removeClass("stepError");
+        $("#first").addClass("stepcurrent");
+        $(".nop-form-item-tip").eq(0).html("");
+        $.ajax({
+            url: "http://localhost:8080/checklogin",
+            type: "post",
+            data: {
+                "userLoginAccount":$(".bview-input").val(),
+            },
+            datatype: "json",
+            success: function (data) {
+                if(data){
+                    $("#first").removeClass("stepcurrent");
+                    $("#first").addClass("stepError");
+                    $("#second").removeClass("nop-form-item-");
+                    $("#second").addClass("nop-form-item-error");
+                    $(".nop-form-item-tip").eq(0).html("该账号已被注册");
+                }
+            }
+        })
+    })
+</script>
 </html>
