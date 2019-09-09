@@ -14,7 +14,7 @@
     author_id, author_name, author_identity, author_qq, author_img, author_money, author_introduce
   </sql>
 
-<!--==================================================查询操作====================================================-->
+<!--==================================================查询操作===================================================-->
   <select id="selectByPrimaryKey" resultMap="AuthorMap" parameterType="java.lang.Integer" >
     select 
     <include refid="Base_Column_List" />
