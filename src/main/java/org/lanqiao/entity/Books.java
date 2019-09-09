@@ -1,10 +1,14 @@
 package org.lanqiao.entity;
 
+import org.apache.solr.client.solrj.beans.Field;
+import org.springframework.data.solr.core.mapping.SolrDocument;
+
 import java.util.Date;
 
+@SolrDocument(solrCoreName = "books")
 public class Books {
     private Integer bookId;
-
+    @Field
     private String bookName;
 
     private String bookImg;
@@ -27,7 +31,9 @@ public class Books {
 
     private BookType bookType;
 
-    private Integer bookAuthorId;
+    private Integer bookTypeId;
+
+    private Author author;
 
     public Integer getBookId() {
         return bookId;
@@ -125,11 +131,19 @@ public class Books {
         this.bookType = bookType;
     }
 
-    public Integer getBookAuthorId() {
-        return bookAuthorId;
+    public Integer getBookTypeId() {
+        return bookTypeId;
     }
 
-    public void setBookAuthorId(Integer bookAuthorId) {
-        this.bookAuthorId = bookAuthorId;
+    public void setBookTypeId(Integer bookTypeId) {
+        this.bookTypeId = bookTypeId;
+    }
+
+    public Author getAuthor() {
+        return author;
+    }
+
+    public void setAuthor(Author author) {
+        this.author = author;
     }
 }

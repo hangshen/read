@@ -5,6 +5,12 @@ spring:
     password: root
     url: jdbc:mysql://123.57.235.72:3306/read?useUnicode=true&characterEncoding=utf-8
     driver-class-name: com.mysql.jdbc.Driver
+  data:
+    solr:
+      host: http://127.0.0.1:8983/solr/books
+  thymeleaf:
+    prefix: classpath:/templates/
+    suffix: .html
 
 mybatis:
   mapper-locations: classpath:org.lanqiao.mapper/*Mapper.xml
