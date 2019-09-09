@@ -15,7 +15,7 @@ public class EmailFindPasswordController {
     @Autowired
     EmailFindService emailFindService;
 
-    @RequestMapping("/sendemail")
+    @RequestMapping("/getpassword")
     public String EmailSend(String email){
         return emailFindService.sendEmail(email);
     }
