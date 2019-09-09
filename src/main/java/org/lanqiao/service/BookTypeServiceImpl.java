@@ -6,6 +6,7 @@ import org.lanqiao.vo.BookTypeVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -13,13 +14,17 @@ public class BookTypeServiceImpl implements BookTypeService{
     @Autowired
     BookTypeMapper bookTypeMapper;
     public List<BookTypeVo> selectAll(){
+//        list存放所有数据
         List<BookType> list = bookTypeMapper.selectAll();
-        List<BookTypeVo> bookTypeVoList = null;
-        List<BookType> s = null;
-        BookTypeVo bookTypeVo = null;
+//        bookTypeVoList存放封装好的所有对象
+        List<BookTypeVo> bookTypeVoList = new ArrayList<BookTypeVo>();
         for(BookType first:list){
+            //        bookTypeVo为一个重新封装的对象
+            BookTypeVo bookTypeVo = new BookTypeVo();
             if (first.getBooktypeFatherId() == first.getBooktypeId())
             {
+                //        s存放一级分类下的二级分类
+                List<BookType> s = new ArrayList<BookType>();
                 bookTypeVo.setFirstSelect(first.getBooktypeFatherId());
                 for (BookType second:list){
                     if(second.getBooktypeFatherId() != second.getBooktypeId())
@@ -32,7 +37,9 @@ public class BookTypeServiceImpl implements BookTypeService{
                 }
                 bookTypeVo.setSecondSelect(s);
             }
-            bookTypeVoList.add(bookTypeVo);
+            if (bookTypeVo.getFirstSelect() != 0){
+                bookTypeVoList.add(bookTypeVo);
+            }
         }
         return  bookTypeVoList;
     }
