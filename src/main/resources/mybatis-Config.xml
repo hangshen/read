@@ -23,5 +23,6 @@
 	</environments>
 	<!-- 映射文件 -->
 	<mappers>
+		<mapper resource="org/lanqiao/mapper/BooksMapper.xml"/>
 	</mappers>
 </configuration>
