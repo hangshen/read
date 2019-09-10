@@ -39,11 +39,9 @@
     book_flag, book_word, book_click, book_reward, book_type_id, book_author_id
   </sql>
   <select id="selectBooksByType" resultMap="BooksMap" parameterType="org.lanqiao.vo.SelectTypeVo">
-    SELECT * from books b,chapter c,author a
+    SELECT * from books b,chapter c,author a,(SELECT MAX(chapter_sort) cs,chapter_book_id from chapter GROUP BY chapter_book_id) d
     <where>
-      c.chapter_sort in
-      (SELECT MAX(chapter_sort) from chapter GROUP BY chapter_book_id)
-      and c.chapter_book_id = b.book_id and b.book_author_id = a.author_id
+      c.chapter_book_id = b.book_id and b.book_author_id = a.author_id and c.chapter_book_id = d.chapter_book_id and c.chapter_sort =d.cs
         <if test="bookTypeId != null">
           and b.book_type_id = #{bookTypeId,jdbcType=INTEGER}
         </if>
@@ -72,7 +70,7 @@
         and b.book_word>100
       </if>
     </where>
-    GROUP BY c.chapter_sort
+    GROUP BY book_id
   </select>
   <select id="selectAllBooks" resultMap="BooksMap" >
     SELECT * from books,author WHERE book_author_id=author_id
