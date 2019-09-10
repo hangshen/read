@@ -6,6 +6,7 @@ public class SelectTypeVo {
     private Integer bookFee;
     private Integer bookFlag;
     private Double  bookWord;
+    private Integer pageNum;
 
     public Integer getBookTypeId() {
         return bookTypeId;
@@ -37,5 +38,13 @@ public class SelectTypeVo {
 
     public void setBookWord(Double bookWord) {
         this.bookWord = bookWord;
+    }
+
+    public Integer getPageNum() {
+        return pageNum;
+    }
+
+    public void setPageNum(Integer pageNum) {
+        this.pageNum = pageNum;
     }
 }

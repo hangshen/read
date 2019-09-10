@@ -43,9 +43,9 @@
     <where>
       c.chapter_sort in
       (SELECT MAX(chapter_sort) from chapter GROUP BY chapter_book_id)
-      and c.chapter_book_id = b.book_id and b.book_author_id = a.author_id and
+      and c.chapter_book_id = b.book_id and b.book_author_id = a.author_id
         <if test="bookTypeId != null">
-          b.book_type_id = #{bookTypeId,jdbcType=INTEGER}
+          and b.book_type_id = #{bookTypeId,jdbcType=INTEGER}
         </if>
       <if test="bookFee!=null and bookFee == 0">
         and c.chapter_fee = 0
