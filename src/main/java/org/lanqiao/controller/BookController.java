@@ -25,11 +25,10 @@ public class BookController {
         return bookService.queryByCondition("民国");
     }
     @RequestMapping("/getBooksByType")
-    public String selectBooksByType(@RequestBody SelectTypeVo selectTypeVo, Model model){
+    public PageInfo<Books> selectBooksByType(@RequestBody SelectTypeVo selectTypeVo){
         PageHelper.startPage(selectTypeVo.getPageNum(),5);
         List<Books> list = bookService.selectBooksByType(selectTypeVo);
         PageInfo<Books> pageInfo = new PageInfo<Books>(list);
-        model.addAttribute("pageInfo",pageInfo);
-        return "list";
+        return pageInfo;
     }
 }
