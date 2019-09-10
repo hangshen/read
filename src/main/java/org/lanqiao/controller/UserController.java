@@ -38,7 +38,7 @@ public class UserController {
     /*
      *用户登录接口 检测密码是否正确 传入参数用户账号+密码 返回用户的个人信息，
      */
-    @RequestMapping("/checkuser")
+    @RequestMapping("/userlogin")
     public Users checkUser(UserLogin login){
 //        Users user=(Users)redisUtil.get(login.getUserLoginAccount());
 ////        if(user == null){
