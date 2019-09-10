@@ -15,6 +15,26 @@ public class Author {
 
     private String authorIntroduce;
 
+    private String realName;
+
+    private String realID;
+
+    public String getRealName() {
+        return realName;
+    }
+
+    public void setRealName(String realName) {
+        this.realName = realName;
+    }
+
+    public String getRealID() {
+        return realID;
+    }
+
+    public void setRealID(String realID) {
+        this.realID = realID;
+    }
+
     public Integer getAuthorId() {
         return authorId;
     }
