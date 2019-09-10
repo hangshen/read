@@ -8,6 +8,7 @@ import org.apache.solr.client.solrj.response.QueryResponse;
 import org.apache.solr.common.SolrDocumentList;
 import org.lanqiao.entity.Books;
 import org.lanqiao.service.BookService;
+import org.lanqiao.vo.SelectTypeVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -24,8 +25,12 @@ public class BookController {
        return  bookService.selectAllBooks();
     }
 
-    @RequestMapping("solrSelect")
+    @RequestMapping("/solrSelect")
     public List<Books> queryByCondition(String de) {
         return bookService.queryByCondition("民国");
+    }
+    @RequestMapping("/getBooksByType")
+    public List<Books> selectBooksByType(SelectTypeVo selectTypeVo){
+        return bookService.selectBooksByType(selectTypeVo);
     }
 }
