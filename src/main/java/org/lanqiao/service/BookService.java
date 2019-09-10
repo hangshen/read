@@ -15,5 +15,4 @@ public interface BookService {
     List<Books> selectBooksByAuthorId(Integer authorId);
     //作者发表作品
     int insertBooks(Books books);
-    List<Books> selectBooksByType(SelectTypeVo selectTypeVo);
 }
