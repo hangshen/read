@@ -216,6 +216,7 @@
 <script src="../js/zhucejs/jquery.validate.js"></script>
 <script>
     $(function () {
+        //form表单vcalidate验证  账号必须为邮箱格式，密码为6-12位
         $("#formlogin").validate({
             rules: {
                 bviewinputemail: {
@@ -225,7 +226,7 @@
 
                 bviewinputpassword: {
                     required: true,
-                    rangelength: [6, 20],
+                    rangelength: [6, 12],
                 }
             },
             messages: {
@@ -240,7 +241,7 @@
             }
         })
 
-
+        //ajax账号检测功能 检测用户注册账号是否已经被注册过
         $("#bviewinputemail").blur(function () {
                 $("#second").removeClass("nop-form-item-error");
                 $("#second").addClass("nop-form-item-");
@@ -265,6 +266,7 @@
                     }
                 })
             })
+        //注册功能 将账号+密码传给后端 更新数据库的注册表
         $("#button-step0").click(function () {
             $.ajax({
                 url: "http://localhost:8080/register",
