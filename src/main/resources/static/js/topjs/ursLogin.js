@@ -16,9 +16,9 @@ $(function () {
         },
         capPadding: 2,
         capBarHeight: 40,
-        includeBox: "login-container",
+        includeBox: "authorloginimages-container",
         skin: 1,
-        page: "login",
+        page: "authorloginimages",
         placeholder: {account: "邮箱帐号(含手机邮箱)", pwd: "6-16位密码，区分大小写"},
         needUnLogin: 1,
         defaultUnLogin: 0,
@@ -38,8 +38,8 @@ $(function () {
         },
         errMsg: ""
     };
-    if (!$("#login-layer").length) {
-        $('<div id="login-layer" class="m-login-layer m-login-layer-wy" style="display: none;">			    <div class="lytt yy"><a class="lyclose j-close" style="display:block;">关闭</a>			        <h4>网易邮箱登录</h4></div>			    <div class="content">			        <div class="m-loginwrap">			        	<div class="m-loginwrap__main">			        		<div class="m-login" id="login-container"></div>			        	</div>			            <div class="m-loginswitch">			                <h6>其他帐号登录：</h6>			                <ul>			                    <li class="sj"><a><span class="login-icon"></span><div>手机号</div></a></li>			                    <li class="xl xllogin"><a><span class="login-icon"></span><div>新浪微博</div></a></li>			                    <li class="wx wxlogin"><a><span class="login-icon"></span><div>微信</div></a></li>			                </ul>			            </div>			        </div>			    </div>			</div>').appendTo($("body"))
+    if (!$("#authorloginimages-layer").length) {
+        $('<div id="authorloginimages-layer" class="m-authorloginimages-layer m-authorloginimages-layer-wy" style="display: none;">			    <div class="lytt yy"><a class="lyclose j-close" style="display:block;">关闭</a>			        <h4>网易邮箱登录</h4></div>			    <div class="content">			        <div class="m-loginwrap">			        	<div class="m-loginwrap__main">			        		<div class="m-authorloginimages" id="authorloginimages-container"></div>			        	</div>			            <div class="m-loginswitch">			                <h6>其他帐号登录：</h6>			                <ul>			                    <li class="sj"><a><span class="authorloginimages-icon"></span><div>手机号</div></a></li>			                    <li class="xl xllogin"><a><span class="authorloginimages-icon"></span><div>新浪微博</div></a></li>			                    <li class="wx wxlogin"><a><span class="authorloginimages-icon"></span><div>微信</div></a></li>			                </ul>			            </div>			        </div>			    </div>			</div>').appendTo($("body"))
     }
     window.ursLoad = {
         init: function () {
@@ -157,7 +157,7 @@ $(function () {
         switch (g) {
             case 0:
                 YD.popTip("密码修改成功");
-                $("#login-layer").hide();
+                $("#authorloginimages-layer").hide();
                 location.reload();
                 break;
             case -1005:
@@ -195,27 +195,27 @@ $(function () {
     f.prototype.showEmailLogin = function () {
         console.log("showEmailLogin");
         if (!$("#x-URS-iframe").length) {
-            $("#login-layer .content").html('<div class="m-loginwrap">									            <div class="m-loginwrap__main">									            	<div class="m-login" id="login-container"></div>									            </div>									            <div class="m-loginswitch">									                <h6>其他帐号登录：</h6>									                <ul>									                    <li class="sj"><a><span class="login-icon"></span><div>手机号</div></a></li>									                    <li class="xl xllogin"><a><span class="login-icon"></span><div>新浪微博</div></a></li>									                    <li class="wx wxlogin"><a><span class="login-icon"></span><div>微信</div></a></li>									                </ul>									            </div>									        </div>');
+            $("#authorloginimages-layer .content").html('<div class="m-loginwrap">									            <div class="m-loginwrap__main">									            	<div class="m-authorloginimages" id="authorloginimages-container"></div>									            </div>									            <div class="m-loginswitch">									                <h6>其他帐号登录：</h6>									                <ul>									                    <li class="sj"><a><span class="authorloginimages-icon"></span><div>手机号</div></a></li>									                    <li class="xl xllogin"><a><span class="authorloginimages-icon"></span><div>新浪微博</div></a></li>									                    <li class="wx wxlogin"><a><span class="authorloginimages-icon"></span><div>微信</div></a></li>									                </ul>									            </div>									        </div>');
             var h = new URS(ursConfig)
         }
-        var g = $("#login-layer");
-        g.attr("class", "m-login-layer m-login-layer-wy").find("h4").text("网易邮箱登录");
+        var g = $("#authorloginimages-layer");
+        g.attr("class", "m-authorloginimages-layer m-authorloginimages-layer-wy").find("h4").text("网易邮箱登录");
         if ($(".m-loginswitch li.wy").length) {
             $(".m-loginswitch li.wy").attr("class", "sj").find("div").text("手机号")
         }
         g.show()
     };
     f.prototype.showMobileLogin = function () {
-        var g = $("#login-layer"), h;
-        if (g.find("#login-container").length) {
-            h = '<iframe name="cellPhoneLoginTarget" style="display:none;">						     #document							   <html>							     <head></head>							     <body></body>							   </html>						   </iframe>						   <form action="//' + location.host + '/cellPhoneLogin.do" method="post" target="cellPhoneLoginTarget">						       <input type="hidden" name="operation" value="login">						       <div class="row" style="z-index:99999;margin-bottom:16px;">						           <div>						               <div class="cxt-input"><span class="ipt-wrap"><input type="text" name="cellPhone" class="ipt" autocomplete="off" placeholder="手机号码登录"></span></div>						           </div>						       </div>						       <div class="row"><span class="ipt-wrap"><input type="password" placeholder="登录密码" class="ipt" name="password"></span></div>						       <div class="row-3 errortip" style="display:none;"></div>						       <div class="row row-1">						           <input id="mobiLogCookie" type="checkbox" name="remember_me">						           <label for="mobiLogCookie" class="auto">两周内自动登录</label><a class="j-mobilereg" type="pw">忘记密码？</a></div>						       <div class="row j-checkarea" style="display:none;">						           <input type="text" placeholder="验证码" class="ipt checkcodeipt" name="checkCode"><img width="60" height="30" class="checkcodeimg"></div>						       <div class="row row-2">						           <button><span>登录</span></button>						       </div>						       <div class="row"><a class="wyt j-mobilereg">没有帐号？免费注册</a></div>						   </form>';
+        var g = $("#authorloginimages-layer"), h;
+        if (g.find("#authorloginimages-container").length) {
+            h = '<iframe name="cellPhoneLoginTarget" style="display:none;">						     #document							   <html>							     <head></head>							     <body></body>							   </html>						   </iframe>						   <form action="//' + location.host + '/cellPhoneLogin.do" method="post" target="cellPhoneLoginTarget">						       <input type="hidden" name="operation" value="authorloginimages">						       <div class="row" style="z-index:99999;margin-bottom:16px;">						           <div>						               <div class="cxt-input"><span class="ipt-wrap"><input type="text" name="cellPhone" class="ipt" autocomplete="off" placeholder="手机号码登录"></span></div>						           </div>						       </div>						       <div class="row"><span class="ipt-wrap"><input type="password" placeholder="登录密码" class="ipt" name="password"></span></div>						       <div class="row-3 errortip" style="display:none;"></div>						       <div class="row row-1">						           <input id="mobiLogCookie" type="checkbox" name="remember_me">						           <label for="mobiLogCookie" class="auto">两周内自动登录</label><a class="j-mobilereg" type="pw">忘记密码？</a></div>						       <div class="row j-checkarea" style="display:none;">						           <input type="text" placeholder="验证码" class="ipt checkcodeipt" name="checkCode"><img width="60" height="30" class="checkcodeimg"></div>						       <div class="row row-2">						           <button><span>登录</span></button>						       </div>						       <div class="row"><a class="wyt j-mobilereg">没有帐号？免费注册</a></div>						   </form>';
             $(".m-loginswitch li.sj").attr("class", "wy").find("div").text("邮箱登录");
-            g.find("#login-container").html(h)
+            g.find("#authorloginimages-container").html(h)
         } else {
-            h = '<div class="m-loginwrap">								<div class="m-loginwrap__main">							       <div class="m-login" id="login-container">									   <iframe name="cellPhoneLoginTarget" style="display:none;">									       #document										   <html>										     <head></head>										     <body></body>										   </html>									   </iframe>									   <form action="//' + location.host + '/cellPhoneLogin.do" method="post" target="cellPhoneLoginTarget">									       <input type="hidden" name="operation" value="login">									       <div class="row" style="z-index:99999;margin-bottom:16px;">									           <div>									               <div class="cxt-input"><span class="ipt-wrap"><input type="text" name="cellPhone" class="ipt" autocomplete="off" placeholder="手机号码登录"></span></div>									           </div>									       </div>									       <div class="row"><span class="ipt-wrap"><input type="password" placeholder="登录密码" class="ipt" name="password"></span></div>									       <div class="row-3 errortip" style="display:none;"></div>									       <div class="row row-1">									           <input id="mobiLogCookie" type="checkbox" name="remember_me">									           <label for="mobiLogCookie" class="auto">两周内自动登录</label><a class="j-mobilereg" type="pw">忘记密码？</a></div>									       <div class="row j-checkarea" style="display:none;">									           <input type="text" placeholder="验证码" class="ipt checkcodeipt" name="checkCode"><img width="60" height="30" class="checkcodeimg"></div>									       <div class="row row-2">									           <button><span>登录</span></button>									       </div>									       <div class="row"><a class="wyt j-mobilereg">没有帐号？免费注册</a></div>									   </form>								   </div>								</div>							   <div class="m-loginswitch">							       <h6>其他帐号登录：</h6>							       <ul>							           <li class="wy"><a><span class="login-icon"></span><div>邮箱登录</div></a></li>							           <li class="xl xllogin"><a><span class="login-icon"></span><div>新浪微博</div></a></li>							           <li class="wx wxlogin"><a><span class="login-icon"></span><div>微信</div></a></li>							       </ul>							   </div>						   </div>';
+            h = '<div class="m-loginwrap">								<div class="m-loginwrap__main">							       <div class="m-authorloginimages" id="authorloginimages-container">									   <iframe name="cellPhoneLoginTarget" style="display:none;">									       #document										   <html>										     <head></head>										     <body></body>										   </html>									   </iframe>									   <form action="//' + location.host + '/cellPhoneLogin.do" method="post" target="cellPhoneLoginTarget">									       <input type="hidden" name="operation" value="authorloginimages">									       <div class="row" style="z-index:99999;margin-bottom:16px;">									           <div>									               <div class="cxt-input"><span class="ipt-wrap"><input type="text" name="cellPhone" class="ipt" autocomplete="off" placeholder="手机号码登录"></span></div>									           </div>									       </div>									       <div class="row"><span class="ipt-wrap"><input type="password" placeholder="登录密码" class="ipt" name="password"></span></div>									       <div class="row-3 errortip" style="display:none;"></div>									       <div class="row row-1">									           <input id="mobiLogCookie" type="checkbox" name="remember_me">									           <label for="mobiLogCookie" class="auto">两周内自动登录</label><a class="j-mobilereg" type="pw">忘记密码？</a></div>									       <div class="row j-checkarea" style="display:none;">									           <input type="text" placeholder="验证码" class="ipt checkcodeipt" name="checkCode"><img width="60" height="30" class="checkcodeimg"></div>									       <div class="row row-2">									           <button><span>登录</span></button>									       </div>									       <div class="row"><a class="wyt j-mobilereg">没有帐号？免费注册</a></div>									   </form>								   </div>								</div>							   <div class="m-loginswitch">							       <h6>其他帐号登录：</h6>							       <ul>							           <li class="wy"><a><span class="authorloginimages-icon"></span><div>邮箱登录</div></a></li>							           <li class="xl xllogin"><a><span class="authorloginimages-icon"></span><div>新浪微博</div></a></li>							           <li class="wx wxlogin"><a><span class="authorloginimages-icon"></span><div>微信</div></a></li>							       </ul>							   </div>						   </div>';
             g.find(".content").html(h)
         }
-        g.attr("class", "m-login-layer m-login-layer-mb").find("h4").text("手机号登录");
+        g.attr("class", "m-authorloginimages-layer m-authorloginimages-layer-mb").find("h4").text("手机号登录");
         g.show()
     };
     f.prototype.sinaLogin = function () {
@@ -256,7 +256,7 @@ $(function () {
         }
     };
     f.prototype.checkMobile = function () {
-        var h = $("#login-layer");
+        var h = $("#authorloginimages-layer");
         var i = "";
         var g = h.data("type");
         if (g == "mobileForget") {
@@ -264,7 +264,7 @@ $(function () {
         } else {
             i = "手机号注册"
         }
-        h.attr("class", "m-login-layer m-login-layer-mb");
+        h.attr("class", "m-authorloginimages-layer m-authorloginimages-layer-mb");
         h.find("h4").text(i);
         h.find(".content").html('<div class="m-regwrap">											<div class="m-regstep-1">											  <p>需要验证你的手机号码，该号码不会对其他人公开</p>											  <p style="display: none;" id="mobileCodeTip"><em></em></p>											  <p class="check-code">											      <input type="text" class="text J_CheckCodeInput">											      <img src="/captcha.do">											  </p>											  <p class="inputpara">											    <input type="text" placeholder="请输入手机号码">											    <a class="next j-getma">获取验证码</a>											  </p>											</div>											<div class="m-regback">											  <a class="backtolog">&lt;&lt;返回登录</a>											</div>										  </div>')
     };
@@ -282,7 +282,7 @@ $(function () {
         g.errorCode["902"] = "对不起，您的短信请求次数超过限制。";
         g.errorCode["905"] = "对不起，您的手机号码格式错误。";
         g.errorCode["-769"] = "参数错误。";
-        var i = $("#login-layer");
+        var i = $("#authorloginimages-layer");
         var h = function () {
             var j = 59;
             g.Timer = setInterval(function () {
@@ -305,10 +305,10 @@ $(function () {
         });
         i.on("click", "li.sj", function () {
             g.showMobileLogin();
-            $(this).attr("class", "wy").html('<a><span class="login-icon"></span><div>邮箱登录</div></a>')
+            $(this).attr("class", "wy").html('<a><span class="authorloginimages-icon"></span><div>邮箱登录</div></a>')
         }).on("click", "li.wy", function () {
             g.showEmailLogin();
-            $(this).attr("class", "sj").html('<a><span class="login-icon"></span><div>手机号</div></a>')
+            $(this).attr("class", "sj").html('<a><span class="authorloginimages-icon"></span><div>手机号</div></a>')
         }).on("click", "li.xl", function () {
             g.sinaLogin()
         }).on("click", "li.tx", function () {
@@ -508,24 +508,24 @@ $(function () {
             }
         } else {
             if (g === "notRegistered") {
-                $("#login-container .errortip").text("手机号未注册").show()
+                $("#authorloginimages-container .errortip").text("手机号未注册").show()
             } else {
                 if (g === "authenticationFailed") {
-                    $("#login-container .errortip").text("密码错误").show()
+                    $("#authorloginimages-container .errortip").text("密码错误").show()
                 } else {
                     if (g === "notRegisteredNeedCode") {
-                        $("#login-container .errortip").text("手机号未注册").show();
+                        $("#authorloginimages-container .errortip").text("手机号未注册").show();
                         c()
                     } else {
                         if (g === "authFailNeedCode") {
-                            $("#login-container .errortip").text("密码错误").show();
+                            $("#authorloginimages-container .errortip").text("密码错误").show();
                             c()
                         } else {
                             if (g === "errorCaptcha") {
-                                $("#login-container .errortip").text("验证码错误").show();
+                                $("#authorloginimages-container .errortip").text("验证码错误").show();
                                 c()
                             } else {
-                                $("#login-container .errortip").text("错误").show()
+                                $("#authorloginimages-container .errortip").text("错误").show()
                             }
                         }
                     }

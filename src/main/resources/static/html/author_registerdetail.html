@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>信息登记 - 注册 - 网易云阅读作者中心</title>
+    <link rel="shortcut icon" href="/favicon.ico?v=4.0">
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=1" name="viewport" />
+    <!-- @NOPARSE -->
+    <script src="/assets/components/modernizr/modernizr.js"></script>
+    <script type="text/javascript">var _gaq = _gaq || [];_gaq.push(['_setAccount', 'UA-37566636-1'],['_setLocalGifPath', 'https://yuedu.163.com/UA-37566636-1/__utm.gif'],['_setLocalServerMode']);_gaq.push(['_addOrganic','baidu','word']);_gaq.push(['_addOrganic','soso','w']);_gaq.push(['_addOrganic','youdao','q']);_gaq.push(['_addOrganic','sogou','query']);_gaq.push(['_addOrganic','so.360.cn','q']);_gaq.push(['_trackPageview']);_gaq.push(['trackPageLoadTime']);(function() {var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;ga.src = 'https://wr.da.netease.com/ga.js';var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);})();</script>
+
+    <script>
+        window.cfail = {};
+        window.cfail.config = {
+            id: "537aff29d05380020052a816",
+            onBeforeStore: function(failOccurrence) {
+
+            },
+            processInterval: 2
+        };
+        (function() {var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;ga.src = 'https://easyreadfs.nos.netease.com/cHfOZGsmnGq81HBssqZY8A==/7916572780429690507.js';var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);})();
+    </script>
+
+    <!-- /@NOPARSE -->
+
+    <!-- @STYLE -->
+    <link rel="stylesheet" href="https://open.yuedu.163.com/assets/css/provider.css">
+    <link rel="stylesheet" href="https://open.yuedu.163.com/assets/css/common/core.css">
+    <link rel="stylesheet" href="https://open.yuedu.163.com/assets/css/components/menu.css">
+    <!-- @STYLE {core:true} -->
+    <!-- @STYLE -->
+    <link rel="stylesheet" href="https://open.yuedu.163.com/assets/css/modules/form.css"/>
+    <link rel="stylesheet" href="https://open.yuedu.163.com/assets/css/page/upload.css"/>
+    <link rel="stylesheet" href="https://open.yuedu.163.com/assets/css/modules/identify.css"/>
+    <!-- @STYLE -->
+    <link type="text/css" rel="stylesheet" href="https://open.yuedu.163.com/assets/js/libs/imgareaselect/css/imgareaselect-default.css"/>
+    <link rel="stylesheet" href="https://open.yuedu.163.com/assets/css/register/register.css"/>
+    <link type="text/css" rel="stylesheet" href="https://open.yuedu.163.com/assets/css/phui/phui-uploader.css"/>
+
+
+
+    <!-- @NOPARSE -->
+    <!--[if lt IE 9]>
+
+    <![endif]-->
+    <!-- /@NOPARSE -->
+</head>
+
+<body class="page-reg-info">
+<div class="navbar navbar-inverse" id="header">
+    <div class="navbar-inner">
+        <div class="container">
+            <div class="header brand-wrapper">
+                <a href="https://yuedu.163.com" class="brand brand-primary" title="网易云阅读"></a>
+                <a href="/contentIndex.do" class="brand brand-secondary" title="作者中心">作者中心</a>
+            </div>
+            <div>
+
+            </div>
+
+            <div class="user-center">
+                <div class="login">
+                    <p>
+                        <a href="/logoutRedir.do?target=https://open.yuedu.163.com" class="w-link"><span class="w-icon phui-power sprites-app-1"></span>退出</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container" id="content">
+
+    <ol class="ap-register-crumb ah-crumb">
+        <li class="first-child ">1. 登录网易邮箱<i></i></li>
+        <li class="active">2. 信息登记<i></i></li>
+        <li class="last-child ">3. 选择类型<i></i></li>
+    </ol>
+
+    <div class="ap-register-body">
+        <form action="/reg.do" method="POST" class="form-horizontal ah-form-horizontal-1 ap-register-info-form" id="ap-register-info-form">
+            <div class="control-group">
+                <label class="control-label">运营主体</label>
+                <div class="controls">
+                    <div class="ah-fancy-radios" id="ap-register-info-type">
+                        <a class="ah-fancy-radio ah-fancy-radio-1 ah-fancy-radio-selected" href="javascript:" data-type="personal">
+                            <div class="phui-fancy-radio"></div>
+                            <div class="ah-fancy-radio-body">
+                                <div class="ah-fancy-radio-heading">个人</div>
+                                <div class="muted">个人作者请选此身份</div>
+                            </div>
+                        </a>
+                        <a class="ah-fancy-radio ah-fancy-radio-1" href="javascript:" data-type="organization">
+                            <div class="phui-fancy-radio"></div>
+                            <div class="ah-fancy-radio-body">
+                                <div class="ah-fancy-radio-heading">组织</div>
+                                <div class="muted">出版社、媒体机构等请选此身份</div>
+                            </div>
+                        </a>
+                        <input type="hidden" name="isPersonal" value="1">
+                    </div>
+                </div>
+            </div>
+
+            <div class="control-group" id="ap-register-info-nickname">
+                <label class="control-label" for="nickname-input">笔名</label>
+                <div class="controls">
+                    <input type="text" id="nickname-input" name="name" data-pattern="^([\w\u4e00-\u9fa5-\(\)（）])+$" data-required="true" maxlength="20" data-remote="/contentCheckParam.do?operation=1" />
+                    <div class="muted help-text help-text-block">发布作品时显示，限20字，提交后不可修改</div>
+                </div>
+            </div>
+
+            <div class="control-group" id="ap-register-info-organization-name" style="display:none">
+                <label class="control-label" for="organization-name-input">组织名称</label>
+                <div class="controls">
+                    <input type="text" id="organization-name-input" data-pattern="^([\w\u4e00-\u9fa5-\(\)（）])+$" name="companyName" data-required="true" maxlength="25" data-remote="/contentCheckParam.do?operation=1" />
+                    <div class="muted help-text help-text-block">25字以内<br>注意事项：请填写营业执照上的公司全称。此名称仅作为用户身份登记，以及授权方展示使用。</div>
+                </div>
+            </div>
+
+            <div class="control-group" id="ap-register-info-organization-material" style="display:none">
+                <label class="control-label" for="organization-material-input">组织认证资料</label>
+                <div class="controls">
+
+                    <div id="uploader" class="uploader uploader-singleton">
+                        <div id="thelist" class="uploader-list"></div>
+                        <a id="picker" href="javascript:">上传认证资料</a>
+                        <input type="hidden" name="credentialName" class="J_fileName">
+
+                        <div style="position:absolute;left:86px;top:0;width:190px;">
+                            <input type="text" name="credentialId" class="J_fileId" style="visibility:hidden;width:1px;float:left" data-required="true">
+                            <span class="js-mhd js-error js-nej-er" style="display: none;">请上传认证资料</span>
+                        </div>
+                    </div>
+
+                    <p class="muted help-text"> <span class="text-attention">认证资料不可随意修改</span>，支持.rar .zip .png .jpg格式，5M以下。<br>
+                        营业执照副本扫描、媒体信息登记表或机构机构代码三选一上传。</p>
+
+                </div>
+            </div>
+
+            <div class="control-group" id="ap-register-info-qq">
+                <label class="control-label" for="qq-input">联系QQ</label>
+                <div class="controls">
+                    <input type="text" id="qq-input" name="contactAddr" data-required="true" data-message="请输入合法的QQ" data-type="number">
+                </div>
+            </div>
+
+
+            <div class="control-group agreement" id="ap-register-info-contract">
+                <label class="control-label"></label>
+                <div class="controls">
+                    <div class="agreement-content">
+                        <h3>网易云阅读作者中心注册协议<i>更新时间：2015年3月23日</i></h3>
+                        <dl>
+                            <dt class="b">重要提示</dt>
+                            <dd>
+                                <p>欢迎使用网易云阅读作者中心服务，请您仔细阅读以下全部内容<span class="b">（特别是加粗部分）</span>如您不同意《网易云阅读作者中心注册协议》（以下简称“本协议”）任意内容的，请不要使用本服务。</p>
+                                <p><span class="b">如您（未成年人应在监护人陪同下）选择使用并点击“同意”的，即表示已经与网易云阅读作者中心已达成协议，自愿接受本协议的所有内容。</span>此后，您不得以未阅读本协议内容作任何形式的抗辩。本协议是《网易邮箱服务条款》不可分割的组成部分，本协议未明确约定的，均依照《网易邮箱服务条款》执行。</p>
+                                <p class="b">网易云阅读作者中心的所有权、经营管理权归网易公司所有。网易公司有权根据法律规范及运营的合理需要，不断修改和完善本协议。如您继续使用本服务，即意味着同意并自愿遵守修改后的服务协议。</p>
+                            </dd>
+                            <dt class="b">一、定义：</dt>
+                            <dd>
+                                <p>1.1 您：指有效申请并经网易公司审核同意后，在网易云阅读作者中心发布作品的自然人、法人、其他组织。</p>
+                                <p>1.2 网易云阅读：指网易公司所有和经营的数字内容聚合、管理和分发的平台产品，旨在为用户提供书籍、杂志、网络媒体等的数字内容服务。</p>
+                                <p>1.3 网易云阅读作者中心：作为网易云阅读平台的组成部分，供著作权人或其合法授权人发布、查询、管理数字内容的聚合平台。</p>
+                                <p>1.4 作品：指您在网易云阅读作者中心所发布的文字、图片等内容。</p>
+                            </dd>
+                            <dt class="b">二、您的权利和义务</dt>
+                            <dd>
+                                <p>2.1 您同意：按照网易云阅读作者中心公布和提示的规则、流程进行注册操作。注册完成后，您应妥善保存有关帐号和密码，并对该帐号进行的所有活动和行为负法律责任。如因您自身过错（包括但不限于转让帐号、与他人共用、自己泄露等）或您所用计算机或其他终端产品感染病毒或木马，导致帐号密码泄漏、遗失或其他损失后果均由您独自承担。<span class="b">网易公司有完全的权利判断是否同意发布或终止发布作品，包括在不通知您的情况下，不同意发布作品，或对已经发布的作品进行删除、屏蔽等处理，由此产生的损失由您自行承担。</span></p>
+                                <p>2.2 您明确知悉在任何时候，上传、发布或发表的作品不得含有任何破坏公序良俗、违反法律、法规、政策指令的内容，包括但不限于以下内容：</p>
+                                <p class="indent1">(一)反对宪法确定的基本原则的；</p>
+                                <p class="indent1">(二)危害国家统一、主权和领土完整的；</p>
+                                <p class="indent1">(三)泄露国家秘密、危害国家安全或者损害国家荣誉和利益的；</p>
+                                <p class="indent1">(四)煽动民族仇恨、民族歧视，破坏民族团结，或者侵害民族风俗、习惯的；</p>
+                                <p class="indent1">(五)宣扬邪教、迷信的；</p>
+                                <p class="indent1">(六)散布谣言，扰乱社会秩序，破坏社会稳定的；</p>
+                                <p class="indent1">(七)宣扬淫秽、色情、赌博、暴力或者教唆犯罪的；</p>
+                                <p class="indent1">(八)侮辱或者诽谤他人，侵害他人合法权益的；</p>
+                                <p class="indent1">(九)危害社会公德或者民族优秀文化传统的；</p>
+                                <p class="indent1">(十)有法律、行政法规和国家规定禁止的其他内容的。</p>
+                                <p>如一旦由于您发布的作品存在以上违法或不当内容的，责任由您本人承担，因此给网易云阅读或其关联公司等第三方造成损失的，您应负责全额赔偿。</p>
+                                <p>2.3 <span class="b">您保证：对在网易云阅读作者中心发布的作品享有合法权益，是该作品的著作权人或已获得著作权人的合法授权，可以对该作品行使相关权利；一旦由于您发布的作品发生权利纠纷或侵犯了任何第三方的合法权益，责任由您本人承担，因此给网易云阅读或其关联公司等第三方造成损失的，您应负责全额赔偿。</span></p>
+                                <p>2.4 您保证：提供给网易公司的所有信息、数据，包括但不限于其姓名（名称）、地址、链接、电子邮箱等相关资料真实、合法、准确；若有更新的，您应在三个工作日内通知网易公司。如网易公司发现不真实、不合法或不准确的，则有权暂停或终止向您提供本协议下服务,由此产生的一切法律责任由您自行承担。</p>
+                                <p>2.5 您完全理解并同意，网易公司和网易云阅读作者中心无须就您上传、发布或发表的任何作品支付稿酬或任何其他费用，您和网易公司另行书面约定的除外。</p>
+                            </dd>
+                            <dt class="b">三、网易公司的权利和义务</dt>
+                            <dd>
+                                <p>3.1 网易公司有权对您发布的作品进行事先及\或事后的审核，<span class="b">但该审核仅以合理程度为限，网易公司并不实际控制您或您的作品，不对其审核结果承担任何法律责任，亦不对您作品的合法性、不侵权、完整性做出任何明示或暗示的担保、保证责任。</span></p>
+                                <p>3.2 网易公司有权知悉您的身份信息、注册数据，如发现该等信息、数据中存在任何问题或怀疑，可要求您改正，或者直接做出删除、屏蔽等处理。</p>
+                                <p>3.3 网易公司为网易云阅读作者中心的开发、运营提供技术支持和信息存储的空间，并对该平台的开发和运营等过程中产生的所有信息（不包括您在网易云阅读作者中心所发布的作品）等享有完整、全部权利，包括但不限于著作权、专利权、商标权、商业秘密及其他知识财产和其他权利。</p>
+                                <p>3.4 <span class="b">网易公司保留随时变更或终止网易云阅读作者中心服务的权利，并无需对行使该权利向您承担责任。</span>网易公司可通过网页公告、电子邮件、电话或信件传送等方式向您发出通知，该等通知在发送时即视为已送达收件人。</p>
+                                <p>3.5 网易公司对不可抗力导致的损失不承担责任。本服务条款所指不可抗力包括：天灾、法律法规或政府指令的变更，因网络服务特性而特有的原因，例如境内外基础电信运营商的故障、计算机或互联网相关技术缺陷、互联网覆盖范围限制、计算机病毒、黑客攻击等因素，及其他合法范围内的不能预见、不能避免并不能克服的客观情况。<span class="b"/>网易公司建议您自行对所发布作品进行额外的保存、备份，网易公司不对您作品的丢失、删除负责。</p>
+                            </dd>
+                            <dt class="b">四、网易云阅读作者中心的使用规则</dt>
+                            <dd>
+                                <p>4.1 网易公司反对任何侵犯著作权的行为，严禁剽窃、抄袭或未经同意的转载行为，否则因此产生的一起后果、责任由行为人承担。网易公司保留追究行为人责任的权利。</p>
+                                <p class="b">4.2 如您或您的作品违反下述规则，网易公司有完全的权利在不通知您的情况下，删除您帐号及或您的帐号下发表的全部或部分内容，由此产生的损失由您承担。</p>
+                                <p class="indent1 b">1)	您的行为干扰了网易云阅读作者中心任何部分或功能的正常运行。</p>
+                                <p class="indent1 b">2)	您未经网易公司允许，利用网易云阅读作者中心开展未经网易公司同意的行为，包括但不限于对通过网易云阅读作者中心获得的信息进行商业化活动，如附加广告、商业内容或链接等。</p>
+                                <p class="indent1 b">3)	您的个人信息、作品内容等违反国家法律法规规定，有悖社会道德伦理、公序良俗、政治色彩强烈，引起任何争议，或违反本协议、网易云阅读作者中心公示的要求的。</p>
+                                <p class="indent1 b">4)	您利用网易云阅读作者中心进行任何其他违法行为的。</p>
+                                <p>4.3 <span class="b">您同意：您自行负责对发布到网易云阅读作者中心的作品进行校对和审核。您使用网易云阅读作者中心服务过程的所有行为，均以该平台服务器记录的数据为准。</span></p>
+                                <p>4.4 如您对本协议内容有任何疑问，可邮件至yuedu@188.com 或登录帮助中心<a href="https://open.yuedu.163.com/contentUserGuide.do" target="_blank">https://open.yuedu.163.com/contentUserGuide.do</a>进行查询。</p>
+                            </dd>
+                        </dl>
+                        <div><cite>网易公司</cite></div>
+                    </div>
+
+                    <div class="checkbox">
+                        <input type="checkbox" class="ah-checkbox" id="ap-register-info-contract-checkbox" name="contract" data-required="true" data-message="请阅读并同意以上协议">
+                        <label for="ap-register-info-contract-checkbox">我已经阅读并同意《网易云阅读作者中心注册协议》</label>
+                        <div class="js-nej-er"></div>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="control-group">
+                <div class="controls">
+                    <input type="submit" value="下一步" class="btn btn-primary btn-large">
+                </div>
+            </div>
+
+        </form>
+
+        <div class="img-select-mask" id="J_ImgSelectMask"></div>
+        <div class="img-select clearfix" id="J_ImgSelect">
+            <div class="orgin-img J_OrginImg"></div>
+            <div class="cut-result">
+                <div class="tip">图标将按预览图效果截取，请注意是否清晰。</div>
+                <div class="preview-img J_PreviewImg"></div>
+                <div class="pxtip">200x200像素</div>
+            </div>
+            <div class="buttons"><button class="ok btn btn-primary">确定</button><button class="cancel btn">取消</button></div>
+            <div class="close"><a href="javascript:">关闭</a></div>
+        </div>
+
+        <!-- @NOPARSE -->
+        <script src="../js/author_login_js/jquery.js"></script>
+        <script src="../js/author_login_js/vue.min.js"></script>
+        <script src="../js/author_register_js/jquery.uploadify.min.js"></script>
+        <!-- /@NOPARSE -->
+
+        <!-- @DEFINE {core:true, nodep:true} -->
+        <script src="../js/author_register_js/jquery-ui-1.10.4.custom.js"></script>
+        <script src="../js/author_register_js/datepicker.js"></script>
+        <script src="../js/author_register_js/bootstrap-alert.js"></script>
+        <script src="../js/author_register_js/bootstrap-tooltip.js"></script>
+        <script src="../js/author_register_js/bootstrap-popover.js"></script>
+        <script src="../js/author_register_js/jquery.noty.js"></script>
+        <script src="../js/author_register_js/topCenter.js"></script>
+        <script src="../js/author_register_js/default.js"></script>
+        <script src="../js/author_register_js/vanadium.js"></script>
+        <script src=../js/author_register_js/primer.js"></script>
+        <script src="../js/author_register_js/bacon.js"></script>
+
+        <!-- @DEFINE -->
+        <script src="../js/author_register_js/define.js?pro=/assets/js/provider/&jsroot=/assets/js/&static=/assets/"></script>
+        <script src="../js/author_register_js/uploader.bundle.js"></script>
+
+        <script>
+            define(['{pro}register/register-info/register-info.js'], function() {
+                NEJ.P('ap.register').InfoPage._$allocate({
+                    el: document.getElementById('ap-register-info-form'),
+                    prefix: 'ap-register-info-'
+                });
+            });
+        </script>
+    </div>
+</div>
+
+<div id="footer" class="footer">
+    <div class="container">
+        <a href="http://gb.corp.163.com/gb/about/overview.html" target="_blank">公司简介</a> - <a target="_blank" href="http://gb.corp.163.com/gb/contactus.html">联系我们</a> - <a href="http://corp.163.com/gb/job/job.html" target="_blank">招聘信息</a> - <a href="http://gb.corp.163.com/gb/legal.html" target="_blank">相关法律</a> - <a href="http://fankui.163.com/ft/comment.fb?pid=11001&fid=35001"
+                                                                                                                                                                                                                                                                                                                               target="_blank">不良信息举报</a> - <a href="https://yuedu.163.com" target="_blank">网易云阅读官网</a> - <a href="http://fankui.163.com/ft/comment.fb?pid=11001&fid=35001" class="feedback" target="_blank">意见反馈</a> - <a href="/contentUserGuide.do">帮助中心</a><br>
+        网易公司版权所有
+        <span class="cDRed">&copy;1997-2019</span>
+    </div>
+</div>
+</body>
+</html>

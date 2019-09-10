@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>网易邮箱注册</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <link
+            rel="icon"
+            href="https://ursdoccdn.nosdn.127.net/naqfav.ico"
+            type="image/x-icon"
+    />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="renderer" content="webkit"/>
+    <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
+    <!--    <script type="text/javascript">-->
+    <!--        (function() {-->
+    <!--            var userAgent = navigator.userAgent.toLowerCase();-->
+    <!--            var msie = /msie/.test(userAgent) && !/opera/.test(userAgent);-->
+    <!--            var version = (userAgent.match(/.+(?:rv|it|ra|ie)[/: ]([d.]+)/) || [-->
+    <!--                0,-->
+    <!--                "0"-->
+    <!--            ])[1];-->
+    <!--            var _test = {-->
+    <!--                6: "2.0",-->
+    <!--                7: "3.0",-->
+    <!--                8: "4.0",-->
+    <!--                9: "5.0",-->
+    <!--                10: "6.0",-->
+    <!--                11: "7.0"-->
+    <!--            };-->
+    <!--            var release = _test[document.documentMode] || _test[parseInt(version)];-->
+    <!--            if (msie && parseInt(release, 10) < 5) {-->
+    <!--                location.href = "https://ursdoccdn.nosdn.127.net/reg/ieUpdate02.html";-->
+    <!--            }-->
+    <!--            if (msie && parseInt(release, 10) === 5 && window.performance) {-->
+    <!--                // 修复IE9不支持performance.now()，导致tranfer无效，左侧主菜单不显示、poptip错位等问题-->
+    <!--                window.performance.now = function() {-->
+    <!--                    return +new Date() - performance.timing.navigationStart;-->
+    <!--                };-->
+    <!--            }-->
+    <!--        })();-->
+    <!--    </script>-->
+    <script
+            type="text/javascript"
+            src="../js/zhucejs/fingerprint2.min-1.6.1.js"
+    ></script>
+    <script src="../js/zhucejs/finger.js"></script>
+    <script src="../js/zhucejs/load.min.js" async></script>
+    <link href="../css/zhucecss/zhuce.css" rel="stylesheet">
+</head>
+
+<body>
+<div class="m-wrapper">
+    <div class="m-head">
+        <div class="u-cnt clearfix">
+            <div class="u-logo"><img src="../images/registerimages/logo-906b3317.png" class="u-img"></div>
+            <a target="_blank" href="https://haoma.163.com/?from=zcb" class="u-lh"><span class="u-lh-txt">
+                    靓号注册
+                </span> <span class="u-lh-new">
+                    new
+                </span></a></div>
+    </div>
+    <div id="app" class="m-app">
+        <div>
+            <div class="stepguide clearfix">
+                <div>
+                    <div id="first" class="step stepcurrent">
+                        <div class="number">
+                            1
+                            <p class="right">
+                            <div class="iconfont icon-ic-right">
+                                <svg aria-hidden="true" class="icon ">
+                                    <use xlink:href="#icon-ic-right"></use>
+                                </svg>
+                            </div>
+                            </p></div>
+                        <div class="line"><p class="line-state"></p></div>
+                        <div>填写帐号密码</div>
+                    </div>
+                    <div class="step">
+                        <div class="number">
+                            2
+                            <p class="right">
+                            <div class="iconfont icon-ic-right">
+                                <svg aria-hidden="true" class="icon ">
+                                    <use xlink:href="#icon-ic-right"></use>
+                                </svg>
+                            </div>
+                            </p></div>
+                        <div class="line"><p class="line-state"></p></div>
+                        <div>验证手机号码</div>
+                    </div>
+                    <div class="step">
+                        <div class="number">
+                            3
+                            <p class="right">
+                            <div class="iconfont icon-ic-right">
+                                <svg aria-hidden="true" class="icon ">
+                                    <use xlink:href="#icon-ic-right"></use>
+                                </svg>
+                            </div>
+                            </p></div> <!---->
+                        <div>完成注册</div>
+                    </div>
+                </div>
+            </div>
+            <div class="box">
+                <form id="formlogin">
+                    <div id="second" class="nop-form-item nop-form-item-"><!---->
+                        <div class="nop-form-item-input">
+                            <div class="nop-form-item-input-inner">
+                                <div class="suggest-wrapper">
+                                    <div class="bview-input-wrapper" style="width: 100%;"><!----> <!----> <!---->
+                                        <input id="bviewinputemail" name="bviewinputemail" placeholder="请输入邮箱地址" autocomplete="off" type="text" class="bview-input">
+                                        <span class="ieplaceholder" style="display: none;">请输入邮箱地址</span> <!----> </div>
+                                    <div class="m-select" style="display: none;">
+                                        <div class="select-value">
+                                            @163.com
+                                            <div class="triangle"></div>
+                                        </div>
+                                        <div class="item-box" style="display: none;">
+                                            <div data-code="@163.com" class="item">
+                                                @163.com
+                                            </div>
+                                            <div data-code="@126.com" class="item">
+                                                @126.com
+                                            </div>
+                                            <div data-code="@yeah.net" class="item">
+                                                @yeah.net
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <ul class="suggest-view" style="display: none;"></ul>
+                                </div>
+                                <div class="extra-tip">
+
+                                </div>
+                            </div>
+                            <div class="nop-form-item-tip" ></div>
+                        </div>
+                    </div> <!---->
+                    <div class="nop-form-item nop-form-item-"><!---->
+                        <div class="nop-form-item-input">
+                            <div class="nop-form-item-input-inner">
+                                <div class="bview-input-wrapper" value="" style="width: 100%;"><!---->
+                                    <div class="bview-input-icon">
+                                        <svg aria-hidden="true" class="icon ">
+                                            <use xlink:href="#icon-ic-closeEye"></use>
+                                        </svg>
+                                    </div> <!---->
+                                    <input id="bviewinputpassword"name="bviewinputpassword" placeholder="请输入6-16位密码" autocomplete="off" type="password" class="bview-input">
+                                    <span class="ieplaceholder" style="display: none;">请输入6-16位密码</span>
+                                    <!----> </div>
+                                <div class="extra-tip">
+
+                                </div>
+                            </div>
+                            <div class="nop-form-item-tip"></div>
+                        </div>
+                    </div>
+                </form>
+                <button id="button-step0" class="step0-btn bview-button bview-button-size bview-button-primary">
+                    下一步
+                    <span></span>
+                    <div class="bButton-mask" style="display: none;">
+                        <div class="bButton-loading">
+                            <div class="bview-switch-loading">
+                                <svg aria-hidden="true" class="icon ">
+                                    <use xlink:href="#icon-ic-loading"></use>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+                </button>
+                <div class="m-gologin">
+                    已有帐号？<a href="http://yuedu.163.com/" class="u-href">去登录</a></div>
+            </div> <!----> <!----></div>
+    </div>
+    <div class="g-ft">
+        <div class="g-in">
+            <div class="m-cp"><p><a href="http://corp.163.com/eng/about/overview.html" target="_blank">About NetEase</a>&nbsp;|&nbsp;<a
+                    href="http://gb.corp.163.com/gb/about/overview.html" target="_blank">公司简介</a>&nbsp;|&nbsp;<a
+                    href="http://gb.corp.163.com/gb/contactus.html" target="_blank">联系方式</a>&nbsp;|&nbsp;<a
+                    href="http://reg.163.com/help/help_oauth2.html?v=20141215" target="_blank">OAuth2.0认证</a>
+                &nbsp;|&nbsp;<a href="http://corp.163.com/gb/job/job.html" target="_blank">招聘信息</a>&nbsp;|&nbsp;<a
+                        href="http://help.163.com/" target="_blank">客户服务</a>&nbsp;|&nbsp;<a
+                        href="http://gb.corp.163.com/gb/legal.html" target="_blank">相关法律</a>&nbsp;|&nbsp;<a
+                        href="http://emarketing.biz.163.com/" target="_blank">网络营销</a></p>
+                <p class="nopo">
+                    网易公司版权所有 ©1997-2019
+                </p></div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript" src="../js/zhucejs/base.js?"></script>
+<!--<script type="text/javascript" src="../js/zhucejs/index.js?"></script>-->
+<div id="ajaxLoading" style="display: none;">
+    <div class="m-loading">
+        <div class="bLoading1">
+            <div class="spinner">
+                <div class="rect1"></div>
+                <div class="rect2"></div>
+                <div class="rect3"></div>
+                <div class="rect4"></div>
+                <div class="rect5"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+</body>
+<script src="../js/topjs/jquery-3.4.1.js"></script>
+<script src="../js/zhucejs/jquery.validate.js"></script>
+<script>
+    $(function () {
+        //form表单vcalidate验证  账号必须为邮箱格式，密码为6-12位
+        $("#formlogin").validate({
+            rules: {
+                bviewinputemail: {
+                    required: true,
+                    email: true,
+                },
+
+                bviewinputpassword: {
+                    required: true,
+                    rangelength: [6, 12],
+                }
+            },
+            messages: {
+                bviewinputemail: {
+                    required: "请輸入姓名",
+                    email: "请输入正确的邮箱地址"
+                },
+                bviewinputpassword: {
+                    required: "请输入密码",
+                    rangelength: "密码格式不正确"
+                }
+            }
+        })
+
+        //ajax账号检测功能 检测用户注册账号是否已经被注册过
+        $("#bviewinputemail").blur(function () {
+                $("#second").removeClass("nop-form-item-error");
+                $("#second").addClass("nop-form-item-");
+                $("#first").removeClass("stepError");
+                $("#first").addClass("stepcurrent");
+                $(".nop-form-item-tip").eq(0).html("");
+                $.ajax({
+                    url: "http://localhost:8080/checklogin",
+                    type: "post",
+                    data: {
+                        "userLoginAccount":$(this).val(),
+                    },
+                    datatype: "json",
+                    success: function (data) {
+                        if(data){
+                            $("#first").removeClass("stepcurrent");
+                            $("#first").addClass("stepError");
+                            $("#second").removeClass("nop-form-item-");
+                            $("#second").addClass("nop-form-item-error");
+                            $(".nop-form-item-tip").eq(0).html("该账号已被注册");
+                        }
+                    }
+                })
+            })
+        //注册功能 将账号+密码传给后端 更新数据库的注册表
+        $("#button-step0").click(function () {
+            $.ajax({
+                url: "http://localhost:8080/register",
+                type: "post",
+                data: {
+                    "userLoginAccount":$("#bviewinputemail").val(),
+                    "userLoginPassword":$("#bviewinputpassword").val(),
+                },
+                datatype: "json",
+                success: function (data) {
+                    sessionStorage.setItem("useeid",data);
+                    sessionStorage.setItem("useraccount",$("#bviewinputemail").val());
+                    window.location.href="http://localhost:8080/html/user_register_success.html";
+                }
+            })
+
+        })
+    })
+
+
+</script>
+</html>

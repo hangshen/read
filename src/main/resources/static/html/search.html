@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<html xmlns:v-bind="http://www.w3.org/1999/xhtml">
 <html>
 <head>
     <meta http-equiv="content-type" content="text/html;charset=utf-8"/>
@@ -10,12 +11,13 @@
     <meta name="baidu-site-verification" content="e6ugMtwRnP" />
     <!--    <link rel="shortcut icon" href="//yuedust.yuedu.126.net/favicon.ico?20190908094745" />-->
     <link type="text/css" rel="stylesheet" href="../css/topcss/top1.css"/>
+    <link type="text/css" rel="stylesheet" href="../css/topcss/search1.css"/>
+    <link type="text/css" rel="stylesheet" href="../css/topcss/search2.css"/>
     <!--[if lt IE 9]>
     <script src="../js/topjs/html5shiv.js"></script>
-    <script src="https://cdn.bootcss.com/es5-shim/4.1.9/es5-sham.min.js"></script>
-    <script src="https://cdn.bootcss.com/es5-shim/4.1.9/es5-shim.min.js"></script>
     <![endif]-->
     <script type="text/javascript" src="../js/topjs/libs.js"></script>
+
 </head>
 <body id="page-163-com" class="page-index">
 <noscript>请使用支持脚本的浏览器！</noscript>
@@ -62,10 +64,10 @@
                     </div>
 
                     <div id="first_2_3_1">
-                        <input name="key" type="text" style="width: 425px; height: 26px" id="i1">
-                        <a href="/html/shophtml/search.html">
+                        <label for="i1"></label><input id="i1" name="key" style="width: 425px; height: 26px" type="text" value="好人">
+<!--                        <a href="/html/shophtml/search.html">-->
                             <input name="find" type="button" value=" " style="width: 58px; height: 34px" id="i2">
-                        </a>
+<!--                        </a>-->
                     </div>
 
                     <div class="m-clouds">
@@ -76,7 +78,7 @@
             <div class="m-headerbottom">
                 <div class="inner">
                     <ul class="m-mianlist">
-                        <li><a class="crt" href="/top.html">首页</a></li>
+                        <li><a class="" href="/html/top.html">首页</a></li>
                         <li><a class="" href="">全部作品</a></li>
                         <li><a class="" href="">排行榜</a></li>
                         <li class="fr"><a href=""><b class="icon-recharge"></b>充值</a></li>
@@ -99,7 +101,30 @@
             </div>
         </div>
     </div>
-<!--    搜索-->
+
+    <div id="J_SearchBox" class="m-searchrlt">
+        <div class="contents">
+            <div>
+                <ul id="J_Container" class="m-resultlist">
+                    <li class="searchItem" v-for="(book,index) in books">
+                        <div class="book"><a class="cover" href="" target="_blank"> <img width="114" height="160" v-bind:src="book.bookImg">
+                            <span class="png wan"></span> </a> <h5><a href="" target="_blank">{{book.bookName}}</a></h5>
+                            <p class="author">作者：{{book.author.authorName}}</p>
+                            <div class="w-star w-star1" v-for="index in {1,2,3,4,5}">
+                                <span class="yes" v-if="index < book.bookScore">&nbsp;</span>
+                                <span class="no" v-else>&nbsp;</span>
+                            </div>
+                            <p class="price"><em> {{books.bookWord}}字 </em></p>
+                            <p class="disc"><span class="j-cutted" words="72">{{book.bookIntroduce}}</span>
+                            </p></div>
+                    </li>
+                </ul>
+                <div class="no-reault" style="display:none;">
+                    <p>很抱歉没有找到相关的内容，请换个关键词试试！</p>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <!-- 尾部导航 -->
     <div class="g-ftw">
@@ -156,6 +181,26 @@
 <script src="../js/topjs/jquery-3.4.1.js"></script>
 <script src="../js/topjs/vue.min.js"></script>
 <script type="text/javascript">
+
+    var temp;
+    $("input[name='find']").click(function () {
+        $.ajax({
+            url: "http://localhost:8080",
+            type: "post",
+            data: {
+                key:$("input[id='i1']").val()},
+            datatype: "json",
+            success: function (data) {
+                temp = data;
+            }
+        })
+    })
+
+    var mv2;
+    mv2 = new Vue({
+        el: '.m-searchrlt',
+        data: {books: {}}
+    });
 </script>
 </body>
 </html>

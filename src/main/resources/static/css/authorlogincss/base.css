@@ -60,3 +60,21 @@ baby{
 }
 
 .footer a{margin: 0 18px;}
+
+.top_word{
+    float: left;
+    display: block;
+    padding: 20px 20px 20px;
+    font-size: 24px;
+    font-weight: 200;
+    text-shadow: 0 1px 0 #ffffff;
+
+}
+.login_w{
+    padding-left: 6px;
+    line-height:22px;
+    text-shadow: none;
+}
+.black{
+    color: #000000;
+}

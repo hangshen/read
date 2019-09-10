@@ -1,0 +1,38 @@
+#re_box{
+    width: 100%;
+    height: 860px;
+    background-color: #f1f4f7;
+
+}
+#re_top{
+    width: 100%;
+    height: 64px;
+    margin: 0;
+    float: left;
+    background-color: #354052;
+}
+#re_top1{
+    width: 1000px;
+    height: 64px;
+    margin-left: 16%;
+    margin-right: auto;
+    float: left;
+}
+#re_top2{
+    width: 195px;
+    height: 64px;
+    float: left;
+    background: url("../../images/authorregisterimages/logo-inverse.png") 20px 19.5px no-repeat;
+    font: 0/0 a;
+    color: transparent;
+    text-shadow: none;
+    border: 0;
+}
+#re_top3{
+    width: 122px;
+    height: 64px;
+    float: left;
+}
+.white{
+    color: #ffffff;
+}
