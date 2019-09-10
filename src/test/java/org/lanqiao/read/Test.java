@@ -6,6 +6,7 @@ import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 import org.lanqiao.mapper.BooksMapper;
 import org.lanqiao.entity.Books;
+import org.lanqiao.vo.SelectTypeVo;
 
 
 import java.io.Reader;
@@ -41,7 +42,10 @@ public class Test {
 //////          GetAuthorCount
 ////            int temp = authorDao.GetAuthorCount();
 ////            System.out.println(temp);
-            List<Books> u= booksMapper.selectAllBooks();
+            SelectTypeVo selectTypeVo = new SelectTypeVo();
+            selectTypeVo.setBookTypeId(4);
+            selectTypeVo.setBookFlag(0);
+            List<Books> u= booksMapper.selectBooksByType(selectTypeVo);
             System.out.println(u.size());
         } finally {
             session.close();
