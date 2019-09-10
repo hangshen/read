@@ -76,4 +76,19 @@ public class BookServiceImpl implements BookService{
         }
         return list;
     }
+
+    /**
+     * by lhw
+     * @param authorId
+     * @return 作者的作品
+     */
+    @Override
+    public List<Books> selectBooksByAuthorId(Integer authorId) {
+        return booksMapper.selectBooksByAuthorId(authorId);
+    }
+
+    @Override
+    public int insertBooks(Books books) {
+        return booksMapper.insert(books);
+    }
 }

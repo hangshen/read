@@ -10,7 +10,7 @@ import java.util.List;
 public interface BooksMapper {
     int deleteByPrimaryKey(Integer bookId);
 
-    int insert(Books record);
+    int insert(Books books);
 
     int insertSelective(Books record);
 
@@ -20,4 +20,5 @@ public interface BooksMapper {
     int updateByPrimaryKeySelective(Books record);
 
     int updateByPrimaryKey(Books record);
+    List<Books> selectBooksByAuthorId(Integer authorId);
 }
