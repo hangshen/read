@@ -55,4 +55,58 @@
         $('#loginz_go6').show();
     })
 </script>
+<script>
+    $(function () {
+        $("#logins").click(function () {
+            var accunt = $("input[name='loginname']").val();
+            $.ajax({
+                url: "http://localhost:8080/login",
+                type: "post",
+                data: {
+                    'authorAccount': accunt,
+                    'authorPassword': $("input[name='loginpassword']").val()
+                },
+                dataType: "json",
+                success: function (result) {
+                    if(result!=null){
+                        sessionStorage.setItem("authorId",result.userId);
+                        window.location.href="/authormsg.html";
+                    }
+                },
+                error: function () {
+                    alert("登录失败！");
+
+                }
+            });
+        });
+
+        $("#formlogin").validate({
+            rules: {
+                loginname: {
+                    required: true,
+                    rangelength: [11, 12],
+                    regex:/ ^(((13[0-9]{1})|159|153)+\d{8})$/g
+
+                },
+
+                loginpassword: {
+                    required: true,
+                    rangelength: [6, 16],
+                    regex:/^(?![a-zA-Z]+$)(?!\d+$)(?![\W_]+$)\S{6,16}$/
+                }
+            },
+            messages: {
+                loginname: {
+                    required: "请输入手机号",
+
+                    rangelength: "手机号格式不正确"
+                },
+                nloginpwd: {
+                    required: "请输入密码",
+                    rangelength: "密码格式不正确"
+                }
+            }
+        })
+    })
+</script>
 </html>
