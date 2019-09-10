@@ -1,6 +1,7 @@
 package org.lanqiao.mapper;
 
 import org.lanqiao.entity.Books;
+import org.lanqiao.vo.SelectTypeVo;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -15,7 +16,7 @@ public interface BooksMapper {
 
     Books selectByPrimaryKey(Integer bookId);
     List<Books> selectAllBooks();
-
+    List<Books> selectBooksByType(SelectTypeVo selectTypeVo);
     int updateByPrimaryKeySelective(Books record);
 
     int updateByPrimaryKey(Books record);

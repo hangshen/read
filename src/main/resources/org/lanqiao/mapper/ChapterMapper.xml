@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="org.lanqiao.mapper.ChapterMapper" >
-  <resultMap id="BaseResultMap" type="org.lanqiao.entity.Chapter" >
+  <resultMap id="ChapterMap" type="org.lanqiao.entity.Chapter" >
     <id column="chapter_id" property="chapterId" jdbcType="INTEGER" />
     <result column="chapter_sort" property="chapterSort" jdbcType="INTEGER" />
     <result column="chapter_name" property="chapterName" jdbcType="VARCHAR" />
@@ -14,7 +14,7 @@
     chapter_id, chapter_sort, chapter_name, chapter_date, chapter_fee, chapter_content_id, 
     chapter_book_id
   </sql>
-  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+  <select id="selectByPrimaryKey" resultMap="ChapterMap" parameterType="java.lang.Integer" >
     select 
     <include refid="Base_Column_List" />
     from chapter
