@@ -101,6 +101,26 @@
                 </div>
             </div>
 
+            <div class="control-group" id="ap-register-info-nickidword">
+                <label class="control-label" for="nickname-input">身份证号 </label>
+                <div class="controls">
+                    <input type="text" id="nickname-inputid" name="idword" data-pattern="^([\w\u4e00-\u9fa5-\(\)（）])+$" data-required="true" maxlength="20" data-remote="/contentCheckParam.do?operation=1" />
+                    <div class="muted help-text help-text-block">提交后不可修改</div>
+                </div>
+            </div>
+            <div class="control-group" id="ap-register-info-nickidname">
+                <label class="control-label" for="nickname-input">真实姓名 </label>
+                <div class="controls">
+                    <input type="text" id="nickname-inputname" name="idname" data-pattern="^([\w\u4e00-\u9fa5-\(\)（）])+$" data-required="true" maxlength="20" data-remote="/contentCheckParam.do?operation=1" />
+                    <div class="muted help-text help-text-block">提交后不可修改</div>
+                </div>
+            </div>
+
+
+
+
+
+
             <div class="control-group" id="ap-register-info-nickname">
                 <label class="control-label" for="nickname-input">笔名</label>
                 <div class="controls">

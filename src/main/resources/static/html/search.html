@@ -64,9 +64,9 @@
                     </div>
 
                     <div id="first_2_3_1">
-                        <label for="i1"></label><input id="i1" name="key" style="width: 425px; height: 26px" type="text" value="好人">
+                        <input id="i1" name="key" style="width: 425px; height: 26px" type="text">
 <!--                        <a href="/html/shophtml/search.html">-->
-                            <input name="find" type="button" value=" " style="width: 58px; height: 34px" id="i2">
+                        <input name="find" type="button" value=" " style="width: 58px; height: 34px" id="i2">
 <!--                        </a>-->
                     </div>
 
@@ -171,9 +171,23 @@
 <!-- 共用结构 -->
 <!-- 右侧悬浮 -->
 <div id="J_BonusPack"></div>
-<div id="J_rightsidebar"></div>
+<div id="J_rightsidebar">
+    <div data-reactid=".0"><a href="javascript:;" class="m-gotop" style="display: block; right: 0px;" title="回到顶部"
+                              data-reactid=".0.0"></a>
+        <div data-reactid=".0.1"><a class="m-qr" target="_blank" href="/download?act=rdpages_20130925_02"
+                                    style="display:none;" data-reactid=".0.1.0"><img
+                src="https://yuedu.163.com/images/down/QR_All.png" data-reactid=".0.1.0.0"></a>
+            <div class="m-qr-icon" href="javascript:;" style="display:block;right:0px;" data-reactid=".0.1.1"><a
+                    class="m-qr-hover" href="/download?act=rdpages_20130925_02" style="display: none; right: 50px;"
+                    data-reactid=".0.1.1.0"><img src="https://yuedu.163.com/images/down/QR_All.png"
+                                                 data-reactid=".0.1.1.0.0"></a></div>
+        </div>
+        <a href="/report.do" target="_blank" style="right:0px;" title="举报中心" class="m-report" data-reactid=".0.2"></a>
+    </div>
+</div>
 <div class="m-mask" style="z-index: 8000"></div>
 <div class="m-bonus-success"></div>
+
 
 <script src="../js/topjs/ursLogin.js"></script>
 <script src="../js/topjs/components.js"></script>
@@ -181,7 +195,6 @@
 <script src="../js/topjs/jquery-3.4.1.js"></script>
 <script src="../js/topjs/vue.min.js"></script>
 <script type="text/javascript">
-
     var temp;
     $("input[name='find']").click(function () {
         $.ajax({
