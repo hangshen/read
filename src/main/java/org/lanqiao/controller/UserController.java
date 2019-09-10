@@ -3,7 +3,7 @@ package org.lanqiao.controller;
 import org.lanqiao.entity.UserLogin;
 import org.lanqiao.entity.Users;
 import org.lanqiao.service.UserService;
-import org.lanqiao.util.RedisUtil;
+//import org.lanqiao.util.RedisUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -13,8 +13,8 @@ public class UserController {
     @Autowired
     UserService userService;
 
-    @Autowired
-    RedisUtil redisUtil;
+//    @Autowired
+//    RedisUtil redisUtil;
 
     /*
      *注册 检测账号是否已被注册  传入参数String 账号
