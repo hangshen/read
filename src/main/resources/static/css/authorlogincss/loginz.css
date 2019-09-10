@@ -1,15 +1,15 @@
 #loginz{
     width: 420px;
     height: 354px;
-
+background-color: #ffffff;
 }
 
 
 #loginz_go4{
     width: 420px;
-    height: 88px;
+    height: 40px;
     float: left;
-    background-color: #1b78bb;
+
 }
 #loginz_go2{
     width: 320px;
@@ -21,7 +21,7 @@
     font-size: 24px;
     text-align: left;
     line-height: 48px;
-    padding: 40px 50px 0px;
+   padding-left: 50px;
 }
 
 
@@ -29,7 +29,7 @@
     width: 420px;
     height: 240px;
     float: left;
-    background-color: #777777;
+
 }
 #loginz_go3{
     width: 320px;
@@ -38,18 +38,25 @@
    padding: 0px 50px;
 }
 
-
+#loginz_go7{
+    width: 320px;
+    height: 140px;
+    float: left;
+}
 
 
 
 
 #loginz_go6{
-    width: 420px;
-    height: 22px;
+    width: 320px;
+    height: 40px;
     float: left;
-    background-color: #c81623;
+    margin-left: 50px;
+    margin-top: 10px;
+
 }
  .inputbox {
+     width: 320px;
     z-index: 19;
     position: relative;
     height: 44px;
@@ -58,12 +65,14 @@
     background: #fff;
     font-size: 12px;
     line-height: 44px;
+     margin-bottom: 5px;
 }
+
 .u-logo {
     float: left;
     width: 21px;
     text-align: center;
-    padding: 0 5px 0 10px;
+    padding: 0 5px 0 0px;
 }
 
 .u-input {
@@ -71,6 +80,44 @@
     float: left;
 }
 .u-logo-img1{
+    width: 26px;
+    height: 40px;
+    padding: 1px 5px 1px 10px;
+background: url("../../images/authorloginimages/uers.png") ;
+
+}
 
 
+.inputbox input{
+    line-height: 42px;
+    padding-left: 8px;
+    background: #fff;
+    color: #333;
+    border: 0;
+    font-size: 16px;
+    font-weight: bold;
+    height: 42px;
+
+}
+.u-logo-img2{
+    width: 26px;
+    height: 40px;
+    padding: 1px 5px 1px 10px;
+    background: url("../../images/authorloginimages/pass.png") ;
+
+}
+#msg {
+    width: 100%;
+    line-height: 40px;
+    font-size: 14px;
+    text-align: center;
+}
+.u-loginbtn {
+    display: block;
+    width: 100%;
+    height: 40px;
+    cursor: pointer;
+    text-align: center;
+    font-size: 18px;
+    line-height: 40px;
 }

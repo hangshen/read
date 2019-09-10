@@ -9,9 +9,11 @@
     <result column="author_img" property="authorImg" jdbcType="VARCHAR" />
     <result column="author_money" property="authorMoney" jdbcType="INTEGER" />
     <result column="author_introduce" property="authorIntroduce" jdbcType="VARCHAR" />
+    <result column="real_name" property="realName" jdbcType="VARCHAR" />
+    <result column="real_ID" property="realID" jdbcType="VARCHAR" />
   </resultMap>
   <sql id="Base_Column_List" >
-    author_id, author_name, author_identity, author_qq, author_img, author_money, author_introduce
+    author_id, author_name, author_identity, author_qq, author_img, author_money, author_introduce,real_name ,real_ID
   </sql>
 
 <!--==================================================查询操作===================================================-->

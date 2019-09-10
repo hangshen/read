@@ -15,6 +15,7 @@
     <result column="book_reward" property="bookReward" jdbcType="BIGINT" />
     <result column="book_type_id" property="bookTypeId" jdbcType="INTEGER" />
     <association property="author" resultMap="AuthorMap"></association>
+    <collection property="chapterSet" resultMap="ChapterMap"></collection>
   </resultMap>
   <resultMap id="AuthorMap" type="org.lanqiao.entity.Author" >
     <id column="author_id" property="authorId" jdbcType="INTEGER" />
@@ -25,10 +26,54 @@
     <result column="author_money" property="authorMoney" jdbcType="INTEGER" />
     <result column="author_introduce" property="authorIntroduce" jdbcType="VARCHAR" />
   </resultMap>
+  <resultMap id="ChapterMap" type="org.lanqiao.entity.Chapter" >
+    <id column="chapter_id" property="chapterId" jdbcType="INTEGER" />
+    <result column="chapter_sort" property="chapterSort" jdbcType="INTEGER" />
+    <result column="chapter_name" property="chapterName" jdbcType="VARCHAR" />
+    <result column="chapter_date" property="chapterDate" jdbcType="TIMESTAMP" />
+    <result column="chapter_fee" property="chapterFee" jdbcType="INTEGER" />
+    <result column="chapter_content_id" property="chapterContentId" jdbcType="INTEGER" />
+  </resultMap>
   <sql id="Base_Column_List" >
     book_id, book_name, book_img, book_introduce, book_up_date, book_finish_date, book_score, 
     book_flag, book_word, book_click, book_reward, book_type_id, book_author_id
   </sql>
+  <select id="selectBooksByType" resultMap="BooksMap" parameterType="org.lanqiao.vo.SelectTypeVo">
+    SELECT * from books b,chapter c,author a
+    <where>
+      c.chapter_sort in
+      (SELECT MAX(chapter_sort) from chapter GROUP BY chapter_book_id)
+      and c.chapter_book_id = b.book_id and b.book_author_id = a.author_id
+        <if test="bookTypeId != null">
+          and b.book_type_id = #{bookTypeId,jdbcType=INTEGER}
+        </if>
+      <if test="bookFee!=null and bookFee == 0">
+        and c.chapter_fee = 0
+      </if>
+      <if test="bookFee!=null and bookFee == 1">
+        and c.chapter_fee > 0
+      </if>
+      <if test="bookFlag!=null and bookFlag == 0">
+        and b.book_flag = '连载中'
+      </if>
+      <if test="bookFlag!=null and bookFlag == 1">
+        and b.book_flag = '已完结'
+      </if>
+      <if test="bookWord!=null and 30>=bookWord">
+        and b.book_word between 0 and 30
+      </if>
+      <if test="bookWord!=null and bookWord > 30 and 50>=bookWord">
+        and b.book_word between 30 and 50
+      </if>
+      <if test="bookWord!=null and bookWord > 50 and 100>=bookWord">
+        and b.book_word between 50 and 100
+      </if>
+      <if test="bookWord!=null and bookWord > 100 ">
+        and b.book_word>100
+      </if>
+    </where>
+    GROUP BY c.chapter_sort
+  </select>
   <select id="selectAllBooks" resultMap="BooksMap" >
     SELECT * from books,author WHERE book_author_id=author_id
   </select>

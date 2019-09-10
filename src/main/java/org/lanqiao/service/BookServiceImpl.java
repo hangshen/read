@@ -5,10 +5,14 @@ import com.google.gson.reflect.TypeToken;
 import org.apache.solr.client.solrj.SolrClient;
 import org.apache.solr.client.solrj.SolrQuery;
 import org.apache.solr.client.solrj.SolrServerException;
+import org.apache.solr.client.solrj.impl.HttpSolrClient;
 import org.apache.solr.client.solrj.response.QueryResponse;
+import org.apache.solr.common.SolrDocument;
 import org.apache.solr.common.SolrDocumentList;
+import org.apache.solr.common.SolrInputDocument;
 import org.lanqiao.entity.Books;
 import org.lanqiao.mapper.BooksMapper;
+import org.lanqiao.vo.SelectTypeVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.slf4j.Logger;
@@ -36,9 +40,18 @@ public class BookServiceImpl implements BookService{
         }
         return booksList;
     }
-    @Autowired
-    SolrClient solrClient;
+
+    public List<Books> selectBooksByType(SelectTypeVo selectTypeVo){
+        return booksMapper.selectBooksByType(selectTypeVo);
+    }
+
+
+    private static final String solrUrl = "http://localhost:8983/solr/book";
     public List<Books> queryByCondition(String de) {
+        HttpSolrClient solrClient = new HttpSolrClient.Builder(solrUrl)
+                .withConnectionTimeout(10000)
+                .withSocketTimeout(60000)
+                .build();
         List<Books> list = null;
         // 关键字模糊查询
         SolrQuery query = new SolrQuery();
@@ -62,5 +75,20 @@ public class BookServiceImpl implements BookService{
             LOGGER.error(e.getMessage(),e);
         }
         return list;
+    }
+
+    /**
+     * by lhw
+     * @param authorId
+     * @return 作者的作品
+     */
+    @Override
+    public List<Books> selectBooksByAuthorId(Integer authorId) {
+        return booksMapper.selectBooksByAuthorId(authorId);
+    }
+
+    @Override
+    public int insertBooks(Books books) {
+        return booksMapper.insert(books);
     }
 }
