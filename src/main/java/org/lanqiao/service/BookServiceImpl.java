@@ -12,8 +12,15 @@ import org.apache.solr.common.SolrDocumentList;
 import org.apache.solr.common.SolrInputDocument;
 import org.lanqiao.entity.Books;
 import org.lanqiao.mapper.BooksMapper;
+import org.lanqiao.util.SolrUtil;
 import org.lanqiao.vo.SelectTypeVo;
+import org.lanqiao.vo.SolrBooksVo;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.solr.core.SolrTemplate;
+import org.springframework.data.solr.core.query.Criteria;
+import org.springframework.data.solr.core.query.SimpleQuery;
+import org.springframework.data.solr.core.query.result.ScoredPage;
 import org.springframework.stereotype.Service;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -25,6 +32,9 @@ import java.util.List;
 public class BookServiceImpl implements BookService{
     @Autowired
     BooksMapper booksMapper;
+    @Autowired
+    SolrTemplate solrTemplate;
+
     private final static Logger LOGGER = LoggerFactory.getLogger(BookServiceImpl.class);
     public List<Books> selectAllBooks(){
         List<Books> list= booksMapper.selectAllBooks();
@@ -45,36 +55,31 @@ public class BookServiceImpl implements BookService{
         return booksMapper.selectBooksByType(selectTypeVo);
     }
 
+    @Override
+    public List<SolrBooksVo> queryByKeyword(String keyword) {
 
-    private static final String solrUrl = "http://localhost:8983/solr/book";
-    public List<Books> queryByCondition(String de) {
-        HttpSolrClient solrClient = new HttpSolrClient.Builder(solrUrl)
-                .withConnectionTimeout(10000)
-                .withSocketTimeout(60000)
-                .build();
-        List<Books> list = null;
-        // 关键字模糊查询
-        SolrQuery query = new SolrQuery();
-        String nameLike = "name:*" + de +  "*";
-        query.set("q",nameLike);
-        query.setStart(0);
-        query.setRows(20);
-        try {
-            QueryResponse response = solrClient.query(query);
-            SolrDocumentList documentList = response.getResults();
-            if (!documentList.isEmpty()) {
-                Gson gson = new Gson();
-                String listString = gson.toJson(documentList);
-                list = gson.fromJson(listString, new TypeToken<List<Books>>() {}.getType());
-            } else {
-                LOGGER.info(">>>> no result returned by the filter query word: " + de + " <<<<");
+
+        SolrUtil solrUtil=new SolrUtil();
+        List<SolrBooksVo> content1=solrUtil.searchKeyValue("bookName",keyword,solrTemplate);
+        List<SolrBooksVo> content2=solrUtil.searchKeyValue("authorName",keyword,solrTemplate);
+        if(content1.size() >= content2.size()){
+            if(content1.size() == 0){
+                return content1;
             }
-        } catch (SolrServerException e) {
-            LOGGER.error(e.getMessage(),e);
-        } catch (IOException e) {
-            LOGGER.error(e.getMessage(),e);
+            for (SolrBooksVo sb:content2) {
+                if(!content1.contains(sb)){
+                    content1.add(sb);
+                }
+            }
+            return content1;
+        } else {
+            for (SolrBooksVo sb:content1) {
+                if(!content2.contains(sb)){
+                    content2.add(sb);
+                }
+            }
+            return content2;
         }
-        return list;
     }
 
     /**

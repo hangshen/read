@@ -5,6 +5,7 @@ import com.github.pagehelper.PageInfo;
 import org.lanqiao.entity.Books;
 import org.lanqiao.service.BookService;
 import org.lanqiao.vo.SelectTypeVo;
+import org.lanqiao.vo.SolrBooksVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -20,9 +21,10 @@ public class BookController {
     public List<Books> selectAllBooks(){
        return  bookService.selectAllBooks();
     }
+    //solr模糊查询接口
     @RequestMapping("/solrSelect")
-    public List<Books> queryByCondition(String de) {
-        return bookService.queryByCondition("民国");
+    public List<SolrBooksVo> searchBooks(String keyword) {
+        return bookService.queryByKeyword(keyword);
     }
     @RequestMapping("/getBooksByType")
     public PageInfo<Books> selectBooksByType(@RequestBody SelectTypeVo selectTypeVo){
