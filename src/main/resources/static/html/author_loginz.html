@@ -3,10 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <title>登录子页面</title>
-    <script src="../js/author_login_js/jquery.js"></script>
-    <script src="../js/author_login_js/vue.min.js"></script>
+
     <link rel="stylesheet" href="../css/authorlogincss/loginz.css">
     <link href="../css/authorlogincss/base.css" rel="stylesheet">
+    <link href="../css/authorlogincss/jigsaw.css" rel="stylesheet">
+    <link href="../css/authorlogincss/jquery.slider.css" rel="stylesheet">
 </head>
 <body>
 <div id="loginz">
@@ -16,10 +17,42 @@
 <div id="loginz_go5">
     <div id="loginz_go3">
         <div class="u-logo" >
-            <div class="u-logo-img1" ></div></div>
+            <div class="inputbox">
+            <div class="u-logo-img1 u-input" ></div>
+                    <input type="text" class="u-input" >
+        </div>
+            <div class="u-logo" >
+                <div class="inputbox">
+                    <div class="u-logo-img2 u-input" ></div>
+                    <input type="password" class="u-input" >
+                </div>
+        </div>
     </div>
+<div id="loginz_go7">
+    <div id="captcha" style="position: relative"></div>
+    <div id="msg"></div>
 </div>
-<div id="loginz_go6"></div>
+
+</div>
+<div id="loginz_go6" class="inputbox">
+    <a class="u-loginbtn">登录</a>
+</div>
+</div>
 </div>
 </body>
+
+<script src="../js/author_login_js/jigsaw.js"></script>
+<script src="../js/author_login_js/jquery.js"></script>
+<script src="../js/author_login_js/vue.min.js"></script>
+<script src="../js/author_login_js/jquery.slider.min.js"></script>
+<script>
+    $(document).ready(function(){
+        $('#loginz_go6').hide();
+    })</script>
+<script>
+    jigsaw.init(document.getElementById('captcha'), function () {
+        document.getElementById('msg').innerHTML = '';
+        $('#loginz_go6').show();
+    })
+</script>
 </html>
