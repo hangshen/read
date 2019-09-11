@@ -1,0 +1,118 @@
+#msg_box{
+    width: 100%;
+    height: 1140px;
+    margin: 0;
+    background-color: #FFFFFF;
+}
+/*顶部*/
+#msg_top{
+    width: 100%;
+    height: 72px;
+    margin: 0;
+    float: left;
+    background-color: #354052;
+}
+
+#msg_top1{
+    width: 1000px;
+    height: 72px;
+    margin-left: 16%;
+    margin-right: auto;
+    float: left;
+}
+#msg_top2{
+    width: 195px;
+    height: 72px;
+    float: left;
+    background: url("../../images/authormsgimages/logo-inverse.png") 20px 19.5px no-repeat;
+    font: 0/0 a;
+    color: transparent;
+    text-shadow: none;
+    border: 0;
+}
+#msg_top3{
+    width: 122px;
+    height: 72px;
+    float: left;
+}
+
+
+#msg_top4{
+    width: 400px;
+    height: 72px;
+    left: 0;
+    top: 10px;
+    display: block;
+    float: left;
+    margin: 0 10px 0 0;
+}
+#msg_top4 ul{
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    padding-inline-start: 40px;
+}
+.bgwrite{
+    background-color:#ffffff;
+}
+.wordsize{
+    padding: 19.5px 20px 19.5px;
+    font-size: 18px;
+    font-family: "Microsoft YaHei", \5FAE\8F6F\96C5\9ED1, arial, sans-serif;
+    list-style: none;
+    text-align: -webkit-match-parent;
+    border-top-right-radius: 5px;
+    border-top-left-radius: 5px;
+}
+#noselect a:hover{
+    color: #f1f4f7;
+    outline: medium none;
+}
+#select a:hover{
+    color: #000000;
+}
+
+
+
+
+/*内容*/
+#msg_middle{
+    width: 68%;
+    height: 750px;
+    margin-left: 17%;
+    float: left;
+    margin-top: 30px;
+}
+
+#msg_table{
+    width: 198px;
+    height: 360px;
+    float: left;
+    background-color: #f8f9fb;
+}
+#msg_content{
+    width: 689px;
+    height: 750px;
+    float: left;
+    padding: 20px 20px 20px 20px;
+background-color: #f8f9fb;
+    margin-left: 10px;
+}
+
+
+
+
+
+
+
+
+
+/*底部*/
+#msg_bottom{
+    width: 1000px;
+    height: 136px;
+    float: left;
+    margin-left: 17%;
+margin-top: 40px;
+}

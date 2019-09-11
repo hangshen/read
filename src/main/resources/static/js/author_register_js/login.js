@@ -3,14 +3,14 @@ var f = function() {
   var _  = NEJ.P,
       _p = _('nej.ui');
 
-  var neteaselogin_posts = ['@163.com','@126.com','@yeah.net','@vip.163.com','@vip.126.com','@popo.163.com','@188.com','@qq.com','@yahoo.com','@sina.com'];
+  // var neteaselogin_posts = ['@163.com','@126.com','@yeah.net','@vip.163.com','@vip.126.com','@popo.163.com','@188.com','@qq.com','@yahoo.com','@sina.com'];
 
   new _p.CxtInput('username-control-group', {
       inputId   : 'username-input',
       className : 'username-w',
       onchange  : function (value, cb){
               if(value == undefined || value == '' || !cb) return;
-              var arr   = /([^@]*)(.*)/.exec(value),
+              var arr   = value
                 list  = [],
                 pre   = arr[1],
                 post  = arr[2];
@@ -48,5 +48,5 @@ var f = function() {
   });
 };
 
-define(['{pro}modules/droplist.js',
-        '{lib}base/global.js'], f);
+define(['../../js/author_register_js/droplist.js',
+        '../../js/author_register_js/global.js'], f);

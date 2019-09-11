@@ -69,7 +69,7 @@
 <div class="container" id="content">
 
     <ol class="ap-register-crumb ah-crumb">
-        <li class="first-child ">1. 登录网易邮箱<i></i></li>
+        <li class="first-child ">1. 登录网易账号<i></i></li>
         <li >2. 信息登记<i></i></li>
         <li class="last-child active">3. 选择类型<i></i></li>
     </ol>
@@ -174,4 +174,36 @@
     </div>
 </div>
 </body>
+
+
+<script>
+    $(function () {
+        $(".submit_btn").click(function () {
+
+            $.ajax({
+                type: "POST",
+                url: "http://localhost:8080/addUser",
+                dataType: "json",
+                data: {
+                    userName: $("input[name='userName']").val(),
+                    sex: $("input[name='sex']").val(),
+                    password: $("input[name='password']").val(),
+                    birthday: $("input[name='birthday']").val(),
+                    userPid: $("input[name='ID']").val(),
+                    email: $("input[name='email']").val(),
+                    userType: $('input:radio[name="userType"]:checked').val(),
+                    account: $("input[name='phone']").val(),
+                    love: $("input[name='love']").val()
+                },
+                success: function (data){
+                    window.location.href="login.html";
+                },
+                error: function () {
+                    alert("注册错误！");
+                }
+            });
+
+        })
+    })
+</script>
 </html>

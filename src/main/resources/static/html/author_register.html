@@ -66,7 +66,7 @@
 <div class="container" id="content">
 
     <ol class="ap-register-crumb ah-crumb">
-        <li class="first-child active">1. 登录网易邮箱<i></i></li>
+        <li class="first-child active">1. 登录网易账号<i></i></li>
         <li >2. 信息登记<i></i></li>
         <li class="last-child ">3. 选择类型<i></i></li>
     </ol>
@@ -79,11 +79,11 @@
                     <input type="hidden" name="type" value="1" />
                     <input type="hidden" name="product" value="easyread" />
                     <fieldset>
-                        <p class="register-guide">您是否已有网易邮箱帐号，如果没有，请先<a href="http://reg.163.com/reg0.shtml?product=easyread&url=https://open.yuedu.163.com/reg.do" target="_blank">注册网易邮箱<span class="f-ff0">&gt;&gt;</span></a></p>
+                        <p class="register-guide">您是否已有网易帐号，如果没有，请先<a href="http://reg.163.com/reg0.shtml?product=easyread&url=https://open.yuedu.163.com/reg.do" target="_blank">注册网易账号<span class="f-ff0">&gt;&gt;</span></a></p>
                         <div class="control-group" id="username-control-group">
                             <label class="control-label" for="username-input">账号</label>
                             <div class="controls">
-                                <input type="text" tabindex="1" autocomplete="off" name="username" class="input-text" id="username-input" placeholder="网易邮箱" required>
+                                <input type="text" tabindex="1" autocomplete="off" name="username" class="input-text" id="username-input" placeholder="网易账号" required>
                             </div>
                         </div>
                         <div class="control-group" id="control-group-password" style="margin-bottom: 2px;">
@@ -104,7 +104,7 @@
                         <hr class="phui-hr">
                         <div class="control-group">
                             <div class="controls controls-first-child">
-                                <input type="submit" tabindex="4" class="btn btn-primary btn-large submit-btn input-submit" value="下一步" style="padding-left:36px;padding-right:36px;">
+                                <input type="submit" name="next" tabindex="4" class="btn btn-primary btn-large submit-btn input-submit" value="下一步" style="padding-left:36px;padding-right:36px;">
                             </div>
                         </div>
                     </fieldset>
@@ -138,7 +138,7 @@
 
         <!-- @DEFINE -->
         <script src="../js/author_register_js/define.js"></script>
-        <script src="../js/author_register_js/login.js"></script>
+<!--        <script src="../js/author_register_js/login.js"></script>-->
     </div>
 </div>
 
@@ -151,4 +151,60 @@
     </div>
 </div>
 </body>
+<script>
+    $(function () {
+        $("#logins").click(function () {
+            var accunt = $("input[name='loginname']").val();
+            $.ajax({
+                url: "http://localhost:8080/login",
+                type: "post",
+                data: {
+                    'authorAccount': accunt,
+                    'authorPassword': $("input[name='loginpassword']").val()
+                },
+                dataType: "json",
+                success: function (result) {
+                    if(result!=null){
+                        sessionStorage.setItem("authorId",result.userId);
+                        window.location.href="/authormsg.html";
+                    }
+                },
+                error: function () {
+                    alert("登录失败！");
+
+                }
+            });
+        });
+
+        $("#formlogin").validate({
+            rules: {
+                loginname: {
+                    required: true,
+                    rangelength: [11, 12],
+                    regex:/ ^(((13[0-9]{1})|159|153)+\d{8})$/g
+
+                },
+
+                loginpassword: {
+                    required: true,
+                    rangelength: [6, 16],
+                    regex:/^(?![a-zA-Z]+$)(?!\d+$)(?![\W_]+$)\S{6,16}$/
+                }
+            },
+            messages: {
+                loginname: {
+                    required: "请输入手机号",
+
+                    rangelength: "手机号格式不正确"
+                },
+                nloginpwd: {
+                    required: "请输入密码",
+                    rangelength: "密码格式不正确"
+                }
+            }
+        })
+    })
+</script>
+
+
 </html>
