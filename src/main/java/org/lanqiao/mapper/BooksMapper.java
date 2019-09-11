@@ -1,6 +1,7 @@
 package org.lanqiao.mapper;
 
 import org.lanqiao.entity.Books;
+import org.lanqiao.vo.LeiBooksVo;
 import org.lanqiao.vo.SelectTypeVo;
 import org.springframework.stereotype.Repository;
 
@@ -22,4 +23,6 @@ public interface BooksMapper {
 
     int updateByPrimaryKey(Books record);
     List<Books> selectBooksByAuthorId(Integer authorId);
+
+    List<LeiBooksVo> leiSelectShelfBooksByUserId(Integer userId);
 }
