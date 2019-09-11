@@ -195,25 +195,34 @@
 <script src="../js/topjs/jquery-3.4.1.js"></script>
 <script src="../js/topjs/vue.min.js"></script>
 <script type="text/javascript">
-    var temp;
+    var mv1 = new Vue({
+        el: '.m-searchrlt',
+        data: {books: {}},
+        created:function () {
+            // $.ajax({
+            //     url: "http://localhost:8080/solrSelect",
+            //     type: "post",
+            //     data: {
+            //         keyword:$("input[id='i1']").val()},
+            //     datatype: "json",
+            //     success: function (data) {
+            //         temp = data;
+            //     }
+            // })
+        }
+    });
+
     $("input[name='find']").click(function () {
         $.ajax({
-            url: "http://localhost:8080",
+            url: "http://localhost:8080/solrSelect",
             type: "post",
-            data: {
-                key:$("input[id='i1']").val()},
+            data: {keyword:$("input[id='i1']").val()},
             datatype: "json",
             success: function (data) {
-                temp = data;
+                alert(data[0].bookName);
             }
         })
     })
-
-    var mv2;
-    mv2 = new Vue({
-        el: '.m-searchrlt',
-        data: {books: {}}
-    });
 </script>
 </body>
 </html>
