@@ -72,6 +72,9 @@
     </where>
     GROUP BY book_id
   </select>
+  <select id="selectAllChapters" resultMap="BooksMap" parameterType="java.lang.Integer">
+    SELECT * from books b,chapter c,author a where c.chapter_book_id = b.book_id and b.book_id=#{bookId,jdbcType=INTEGER} and b.book_author_id = a.author_id
+  </select>
   <select id="selectAllBooks" resultMap="BooksMap" >
     SELECT * from books,author WHERE book_author_id=author_id
   </select>

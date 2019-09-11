@@ -33,4 +33,8 @@ public class BookController {
         PageInfo<Books> pageInfo = new PageInfo<Books>(list);
         return pageInfo;
     }
+    @RequestMapping("/getBooksById")
+    public Books selectAllChapters(Integer bookId){
+        return  bookService.selectAllChapters(5);
+    }
 }

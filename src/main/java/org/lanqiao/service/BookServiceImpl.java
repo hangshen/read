@@ -67,7 +67,7 @@ public class BookServiceImpl implements BookService{
             b.setBookUpDate(new Timestamp(te1));
         }
         for(int i = 0;i<list.size();i++){
-            Set<Chapter> c = list.get(i).getChapterSet();
+            List<Chapter> c = list.get(i).getChapterSet();
             for(Chapter chapter:c){
                 long te2 = chapter.getChapterDate().getTime();
                 te2 = te2 + 8 * 3600 * 1000;
@@ -76,6 +76,18 @@ public class BookServiceImpl implements BookService{
         }
         return list;
     }
+
+    public Books selectAllChapters(Integer bookId){
+        Books books = booksMapper.selectAllChapters(bookId);
+        List<Chapter> c = books.getChapterSet();
+        for (Chapter chapter : c){
+            long te2 = chapter.getChapterDate().getTime();
+            te2 = te2 + 8 * 3600 * 1000;
+            chapter.setChapterDate(new Timestamp(te2));
+        }
+        return  books;
+    }
+
 
     @Override
     public List<SolrBooksVo> queryByKeyword(String keyword) {
