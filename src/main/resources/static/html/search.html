@@ -216,10 +216,10 @@
         $.ajax({
             url: "http://localhost:8080/solrSelect",
             type: "post",
-            data: {keyword:$("input[id='i1']").val()},
+            data: {keyword:$("input[id='i1']").val(),pageNum:1},
             datatype: "json",
             success: function (data) {
-                alert(data[0].bookName);
+                alert(data.list.length);
             }
         })
     })
