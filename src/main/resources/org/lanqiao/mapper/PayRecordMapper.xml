@@ -1,19 +1,38 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="org.lanqiao.mapper.PayRecordMapper" >
-  <resultMap id="BaseResultMap" type="org.lanqiao.entity.PayRecord" >
+  <resultMap id="PayRecordMap" type="org.lanqiao.entity.PayRecord" >
     <id column="payrecord_id" property="payrecordId" jdbcType="INTEGER" />
     <result column="payrecord_flag" property="payrecordFlag" jdbcType="VARCHAR" />
     <result column="payrecord_money" property="payrecordMoney" jdbcType="INTEGER" />
     <result column="payrecord_introduce" property="payrecordIntroduce" jdbcType="VARCHAR" />
     <result column="payrecord_date" property="payrecordDate" jdbcType="TIMESTAMP" />
     <result column="payrecord_user_id" property="payrecordUserId" jdbcType="INTEGER" />
+    <association property="userLogin" resultMap="UserLoginResultMap"></association>
+  </resultMap>
+  <resultMap id="UserLoginResultMap" type="org.lanqiao.entity.UserLogin" >
+    <id column="user_login_id" property="userLoginId" jdbcType="INTEGER" />
+    <result column="user_login_account" property="userLoginAccount" jdbcType="VARCHAR" />
+    <result column="user_login_password" property="userLoginPassword" jdbcType="VARCHAR" />
+    <result column="user_login_user_id" property="userLoginUserId" jdbcType="INTEGER" />
   </resultMap>
   <sql id="Base_Column_List" >
     payrecord_id, payrecord_flag, payrecord_money, payrecord_introduce, payrecord_date, 
     payrecord_user_id
   </sql>
-  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+  <select id="selectPayRecord" resultMap="PayRecordMap" parameterType="org.lanqiao.vo.PayRecordVo" >
+    select * from userlogin ul,payrecord pr 
+    <where>
+      ul.user_login_user_id = pr.payrecord_user_id and ul.user_login_id = #{userLoginId,jdbcType=INTEGER}
+      <if test="flag!=null and flag==0">
+        and pr.payrecord_flag = '打赏'
+      </if>
+      <if test="flag!=null and flag==1">
+        and pr.payrecord_flag = '购买'
+      </if>
+    </where>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="PayRecordMap" parameterType="java.lang.Integer" >
     select 
     <include refid="Base_Column_List" />
     from payrecord

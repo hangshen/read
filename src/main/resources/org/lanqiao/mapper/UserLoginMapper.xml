@@ -6,6 +6,7 @@
     <result column="user_login_account" property="userLoginAccount" jdbcType="VARCHAR" />
     <result column="user_login_password" property="userLoginPassword" jdbcType="VARCHAR" />
     <result column="user_login_user_id" property="userLoginUserId" jdbcType="INTEGER" />
+    <association property="users" resultMap="UserResultMap"></association>
   </resultMap>
 
 
@@ -25,7 +26,7 @@
     select 
     <include refid="Base_Column_List" />
     from userlogin
-    where  user_login_account = #{userLoginAccount,jdbcType=INTEGER}
+    where  user_login_account = #{userLoginAccount,jdbcType=VARCHAR}
   </select>
 
   <select id="selectByPrimaryKey" resultMap="UserLoginResultMap" parameterType="java.lang.Integer" >
@@ -34,7 +35,10 @@
     from userlogin
     where user_login_id = #{userLoginId,jdbcType=INTEGER}
   </select>
-
+  <select id="selectUserInfo" resultMap="UserLoginResultMap" parameterType="java.lang.Integer">
+   select * from users u,userlogin ul where u.user_id = ul.user_login_user_id AND
+ul.user_login_id  = #{userLoginId,jdbcType=INTEGER}
+  </select>
   <select id="selectUser" resultMap="UserResultMap" parameterType="org.lanqiao.entity.UserLogin">
     SELECT * from users where user_id=(SELECT user_login_user_id from userlogin where user_login_account=#{userLoginAccount} and user_login_password=#{userLoginPassword})
   </select>

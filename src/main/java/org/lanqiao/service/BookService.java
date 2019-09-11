@@ -1,6 +1,7 @@
 package org.lanqiao.service;
 
 import org.lanqiao.entity.Books;
+import org.lanqiao.vo.LeiBooksVo;
 import org.lanqiao.vo.SelectTypeVo;
 import org.lanqiao.vo.SolrBooksVo;
 import org.springframework.stereotype.Repository;
@@ -18,4 +19,6 @@ public interface BookService {
     List<Books> selectBooksByAuthorId(Integer authorId);
     //作者发表作品
     int insertBooks(Books books);
+
+    List<LeiBooksVo> selectShelfBooks(Integer userId);
 }

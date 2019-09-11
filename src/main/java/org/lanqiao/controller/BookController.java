@@ -4,9 +4,11 @@ import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import org.lanqiao.entity.Books;
 import org.lanqiao.service.BookService;
+import org.lanqiao.vo.LeiBooksVo;
 import org.lanqiao.vo.SelectTypeVo;
 import org.lanqiao.vo.SolrBooksVo;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -43,5 +45,10 @@ public class BookController {
     @RequestMapping("/getBooksInfoById")
     public Books selectByPrimaryKey(Integer bookId){
         return bookService.selectByPrimaryKey(5);
+    }
+
+    @RequestMapping("/getshelfbooks")
+    public List<LeiBooksVo> searchShelfBooks(Integer userId){
+        return bookService.selectShelfBooks(userId);
     }
 }

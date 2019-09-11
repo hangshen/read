@@ -40,6 +40,18 @@
     <result column="booktype_name" property="booktypeName" jdbcType="VARCHAR" />
     <result column="booktype_father_id" property="booktypeFatherId" jdbcType="INTEGER" />
   </resultMap>
+
+
+  <resultMap id="LeiBooksVoMap" type="org.lanqiao.vo.LeiBooksVo" >
+    <id column="book_id" property="bookId" jdbcType="INTEGER" />
+    <result column="book_name" property="bookName" jdbcType="VARCHAR" />
+    <result column="author_name" property="authorName" jdbcType="VARCHAR" />
+    <result column="book_img" property="bookImg" jdbcType="VARCHAR" />
+    <result column="book_score" property="bookScore" jdbcType="DOUBLE" />
+    <result column="book_flag" property="bookFlag" jdbcType="VARCHAR" />
+  </resultMap>
+
+
   <sql id="Base_Column_List" >
     book_id, book_name, book_img, book_introduce, book_up_date, book_finish_date, book_score, 
     book_flag, book_word, book_click, book_reward, book_type_id, book_author_id
@@ -79,7 +91,7 @@
     GROUP BY book_id
   </select>
   <select id="selectAllChapters" resultMap="BooksMap" parameterType="java.lang.Integer">
-    SELECT * from books b,chapter c,author a where c.chapter_book_id = b.book_id and b.book_id=#{bookId,jdbcType=INTEGER} and b.book_author_id = a.author_id
+         SELECT id AS book_id,book_name,author_name,book_img,book_flag,book_score FROM solrquery WHERE solrquery.id IN(SELECT bookshelf.shelf_book_id FROM bookshelf WHERE bookshelf.shelf_book_flag=0 AND bookshelf.shelf_user_id=#{userId})
   </select>
   <select id="selectAllBooks" resultMap="BooksMap" >
     SELECT * from books,author WHERE book_author_id=author_id
@@ -89,6 +101,12 @@
     WHERE b.book_author_id = a.author_id AND b.book_type_id = bt.booktype_id and b.book_id = #{bookId,jdbcType=INTEGER} and b.book_id = c.chapter_book_id and c.chapter_sort = d.cs
     and c.chapter_book_id=d.chapter_book_id
   </select>
+
+  <select id="leiSelectShelfBooksByUserId" resultMap="LeiBooksVoMap" parameterType="java.lang.Integer">
+     SELECT id AS book_id,book_name,author_name,book_img,book_flag,book_score FROM solrquery WHERE solrquery.id IN(SELECT bookshelf.shelf_book_id FROM bookshelf WHERE bookshelf.shelf_user_id=#{userId})
+  </select>
+
+
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from books
     where book_id = #{bookId,jdbcType=INTEGER}

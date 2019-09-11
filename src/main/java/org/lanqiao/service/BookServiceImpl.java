@@ -3,6 +3,7 @@ import org.lanqiao.entity.Books;
 import org.lanqiao.entity.Chapter;
 import org.lanqiao.mapper.BooksMapper;
 import org.lanqiao.util.SolrUtil;
+import org.lanqiao.vo.LeiBooksVo;
 import org.lanqiao.vo.SelectTypeVo;
 import org.lanqiao.vo.SolrBooksVo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -115,5 +116,10 @@ public class BookServiceImpl implements BookService{
     @Override
     public int insertBooks(Books books) {
         return booksMapper.insert(books);
+    }
+
+    @Override
+    public List<LeiBooksVo> selectShelfBooks(Integer userId) {
+        return booksMapper.leiSelectShelfBooksByUserId(userId);
     }
 }
