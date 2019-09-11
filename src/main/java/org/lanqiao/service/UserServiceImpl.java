@@ -46,4 +46,8 @@ public class UserServiceImpl implements UserService{
 
         return userLoginMapper.selectUser(login);
     }
+    @Override
+    public UserLogin selectUserInfo(Integer userLoginId){
+        return userLoginMapper.selectUserInfo(userLoginId);
+    }
 }

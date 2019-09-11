@@ -15,6 +15,7 @@ public interface UserLoginMapper {
     UserLogin selectByAccount(String userLoginAccount);
 
     UserLogin selectByPrimaryKey(Integer userLoginId);
+    UserLogin selectUserInfo(Integer userLoginId);
 
     Users selectUser(UserLogin userLogin);
 

@@ -15,6 +15,8 @@ public class PayRecord {
 
     private Integer payrecordUserId;
 
+    private UserLogin userLogin;
+
     public Integer getPayrecordId() {
         return payrecordId;
     }
@@ -61,5 +63,13 @@ public class PayRecord {
 
     public void setPayrecordUserId(Integer payrecordUserId) {
         this.payrecordUserId = payrecordUserId;
+    }
+
+    public UserLogin getUserLogin() {
+        return userLogin;
+    }
+
+    public void setUserLogin(UserLogin userLogin) {
+        this.userLogin = userLogin;
     }
 }
