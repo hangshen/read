@@ -20,7 +20,7 @@
         where author_login_id = #{authorLoginId,jdbcType=INTEGER}
     </select>
 
-    <select id="login" resultType="org.lanqiao.entity.AuthorLogin" parameterType="java.lang.String">
+    <select id="login" resultMap="BaseResultMap" parameterType="java.lang.String">
         select
         <include refid="Base_Column_List"/>
         from authorlogin
