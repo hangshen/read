@@ -13,7 +13,7 @@ public class SolrBooksVo {
     @Indexed
     private Double bookWord;
     @Indexed
-    private String bookIntrodece;
+    private String bookIntroduce;
     @Indexed
     private Double bookClick;
     @Indexed
@@ -44,12 +44,12 @@ public class SolrBooksVo {
         this.bookWord = bookWord;
     }
 
-    public String getBookIntrodece() {
-        return bookIntrodece;
+    public String getBookIntroduce() {
+        return bookIntroduce;
     }
 
-    public void setBookIntrodece(String bookIntrodece) {
-        this.bookIntrodece = bookIntrodece;
+    public void setBookIntroduce(String bookIntrodece) {
+        this.bookIntroduce = bookIntrodece;
     }
 
     public Double getBookClick() {
