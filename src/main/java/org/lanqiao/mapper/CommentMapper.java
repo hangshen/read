@@ -1,7 +1,10 @@
 package org.lanqiao.mapper;
 
 import org.lanqiao.entity.Comment;
+import org.lanqiao.vo.CommentPageVo;
 import org.springframework.stereotype.Repository;
+
+import java.util.List;
 
 @Repository
 public interface CommentMapper {
@@ -11,7 +14,7 @@ public interface CommentMapper {
 
     int insertSelective(Comment record);
 
-    Comment selectByPrimaryKey(Integer commentId);
+    List<Comment> selectAllComment(CommentPageVo commentPageVo);
 
     int updateByPrimaryKeySelective(Comment record);
 

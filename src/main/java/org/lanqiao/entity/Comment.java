@@ -9,6 +9,9 @@ public class Comment {
 
     private Date commentDate;
 
+    private Books books;
+    private Users users;
+
     private Integer commentBookId;
 
     private Integer commentUserId;
@@ -51,5 +54,21 @@ public class Comment {
 
     public void setCommentUserId(Integer commentUserId) {
         this.commentUserId = commentUserId;
+    }
+
+    public Books getBooks() {
+        return books;
+    }
+
+    public void setBooks(Books books) {
+        this.books = books;
+    }
+
+    public Users getUsers() {
+        return users;
+    }
+
+    public void setUsers(Users users) {
+        this.users = users;
     }
 }
