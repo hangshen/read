@@ -11,6 +11,7 @@ import org.apache.solr.common.SolrDocument;
 import org.apache.solr.common.SolrDocumentList;
 import org.apache.solr.common.SolrInputDocument;
 import org.lanqiao.entity.Books;
+import org.lanqiao.entity.Chapter;
 import org.lanqiao.mapper.BooksMapper;
 import org.lanqiao.util.SolrUtil;
 import org.lanqiao.vo.SelectTypeVo;
@@ -25,8 +26,10 @@ import org.springframework.stereotype.Service;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import java.io.IOException;
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 @Service
 public class BookServiceImpl implements BookService{
@@ -48,11 +51,30 @@ public class BookServiceImpl implements BookService{
                 booksList.add(list.get(i));
             }
         }
+        for(Books b : booksList){
+            long te1 = b.getBookUpDate().getTime();
+            te1 = te1 + 8 * 3600 * 1000;
+            b.setBookUpDate(new Timestamp(te1));
+        }
         return booksList;
     }
 
     public List<Books> selectBooksByType(SelectTypeVo selectTypeVo){
-        return booksMapper.selectBooksByType(selectTypeVo);
+        List<Books> list = booksMapper.selectBooksByType(selectTypeVo);
+        for(Books b : list){
+            long te1 = b.getBookUpDate().getTime();
+            te1 = te1 + 8 * 3600 * 1000;
+            b.setBookUpDate(new Timestamp(te1));
+        }
+        for(int i = 0;i<list.size();i++){
+            Set<Chapter> c = list.get(i).getChapterSet();
+            for(Chapter chapter:c){
+                long te2 = chapter.getChapterDate().getTime();
+                te2 = te2 + 8 * 3600 * 1000;
+                chapter.setChapterDate(new Timestamp(te2));
+            }
+        }
+        return list;
     }
 
     @Override
