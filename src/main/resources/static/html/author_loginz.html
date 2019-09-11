@@ -19,12 +19,12 @@
         <div class="u-logo" >
             <div class="inputbox">
             <div class="u-logo-img1 u-input" ></div>
-                    <input type="text" class="u-input" >
+                    <input type="text" name="loginname" class="u-input" >
         </div>
             <div class="u-logo" >
                 <div class="inputbox">
                     <div class="u-logo-img2 u-input" ></div>
-                    <input type="password" class="u-input" >
+                    <input type="password" name="loginpassword" class="u-input" >
                 </div>
         </div>
     </div>
@@ -57,20 +57,23 @@
 </script>
 <script>
     $(function () {
-        $("#logins").click(function () {
-            var accunt = $("input[name='loginname']").val();
+        $("#loginz_go6").click(function () {
+            var account = $("input[name='loginname']").val();
             $.ajax({
-                url: "http://localhost:8080/login",
+                url: "http://localhost:8080/author/login",
                 type: "post",
                 data: {
-                    'authorAccount': accunt,
+                    'authorAccount': account,
                     'authorPassword': $("input[name='loginpassword']").val()
                 },
                 dataType: "json",
                 success: function (result) {
-                    if(result!=null){
-                        sessionStorage.setItem("authorId",result.userId);
-                        window.location.href="/authormsg.html";
+                    if(result.author==null||result.author==false){
+                        alert("邮箱或密码错误！");
+                    }else {
+                        // sessionStorage.setItem("authorId",result.userId);
+                        // window.location.href="/authormsg.html";
+                        alert("登录成功！");
                     }
                 },
                 error: function () {

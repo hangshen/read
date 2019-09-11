@@ -8,15 +8,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 
 @Service
 public class AuthorLoginServiceImpl implements AuthorLoginService {
 
-    AuthorLogin authorLogin = new AuthorLogin();
-    Map map = new HashMap();
 
+    Map map = new HashMap();
 
 
     @Autowired
@@ -30,16 +30,24 @@ public class AuthorLoginServiceImpl implements AuthorLoginService {
         return authorLoginMapper.insert(authorLogin);
     }
 
+
+
     @Override
-    public Map loginCheck(String authorAccount,String authorPassword) {
-       authorLogin = authorLoginMapper.login(authorAccount);
+    public Map loginCheck(String authorAccount, String authorPassword) {
+        System.out.println(authorAccount);
+
+        AuthorLogin authorLogin = authorLoginMapper.login(authorAccount);
+
+        System.out.println(authorLogin);
         if (authorLogin == null) {
             map.put("author", null);
-        } else if (authorPassword.equals(authorLogin.getAuthorLoginPassword())) {
-            map.put("author", authorMapper.selectByAuthorLoginAuthorId(authorLogin.getAuthorLoginAuthorId()));
         } else {
-            map.put("author", false);
+            if (authorPassword.equals(authorLogin.getAuthorLoginPassword()))
+                map.put("author", authorMapper.selectByAuthorLoginAuthorId(authorLogin.getAuthorLoginAuthorId()));
+            else
+                map.put("author", false);
         }
         return map;
     }
+
 }
