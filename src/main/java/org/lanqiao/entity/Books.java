@@ -34,7 +34,7 @@ public class Books {
     private BookType bookType;
 
     private Integer bookTypeId;
-
+    private Integer bookAuthorId;
     private Author author;
     private List<Chapter> chapterSet;
 
@@ -156,5 +156,13 @@ public class Books {
 
     public void setChapterSet(List<Chapter> chapterSet) {
         this.chapterSet = chapterSet;
+    }
+
+    public Integer getBookAuthorId() {
+        return bookAuthorId;
+    }
+
+    public void setBookAuthorId(Integer bookAuthorId) {
+        this.bookAuthorId = bookAuthorId;
     }
 }

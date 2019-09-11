@@ -37,4 +37,8 @@ public class BookController {
     public Books selectAllChapters(Integer bookId){
         return  bookService.selectAllChapters(5);
     }
+    @RequestMapping("/getBooksInfoById")
+    public Books selectByPrimaryKey(Integer bookId){
+        return bookService.selectByPrimaryKey(5);
+    }
 }

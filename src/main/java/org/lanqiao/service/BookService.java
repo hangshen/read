@@ -13,6 +13,7 @@ public interface BookService {
     List<SolrBooksVo> queryByKeyword(String keyword);
     List<Books> selectBooksByType(SelectTypeVo selectTypeVo);
     Books selectAllChapters(Integer bookId);
+    Books selectByPrimaryKey(Integer bookId);
     //根据作者Id查询全部作品
     List<Books> selectBooksByAuthorId(Integer authorId);
     //作者发表作品

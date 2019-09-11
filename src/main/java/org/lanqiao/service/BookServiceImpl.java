@@ -88,6 +88,9 @@ public class BookServiceImpl implements BookService{
         return  books;
     }
 
+    public Books selectByPrimaryKey(Integer bookId){
+        return booksMapper.selectByPrimaryKey(bookId);
+    }
 
     @Override
     public List<SolrBooksVo> queryByKeyword(String keyword) {

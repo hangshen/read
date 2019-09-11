@@ -14,6 +14,7 @@
     <result column="book_click" property="bookClick" jdbcType="DOUBLE" />
     <result column="book_reward" property="bookReward" jdbcType="BIGINT" />
     <result column="book_type_id" property="bookTypeId" jdbcType="INTEGER" />
+    <association property="bookType" resultMap="BookTypeMap"></association>
     <association property="author" resultMap="AuthorMap"></association>
     <collection property="chapterSet" resultMap="ChapterMap"></collection>
   </resultMap>
@@ -33,6 +34,11 @@
     <result column="chapter_date" property="chapterDate" jdbcType="TIMESTAMP" />
     <result column="chapter_fee" property="chapterFee" jdbcType="INTEGER" />
     <result column="chapter_content_id" property="chapterContentId" jdbcType="INTEGER" />
+  </resultMap>
+  <resultMap id="BookTypeMap" type="org.lanqiao.entity.BookType" >
+    <id column="booktype_id" property="booktypeId" jdbcType="INTEGER" />
+    <result column="booktype_name" property="booktypeName" jdbcType="VARCHAR" />
+    <result column="booktype_father_id" property="booktypeFatherId" jdbcType="INTEGER" />
   </resultMap>
   <sql id="Base_Column_List" >
     book_id, book_name, book_img, book_introduce, book_up_date, book_finish_date, book_score, 
@@ -79,10 +85,8 @@
     SELECT * from books,author WHERE book_author_id=author_id
   </select>
   <select id="selectByPrimaryKey" resultMap="BooksMap" parameterType="java.lang.Integer" >
-    select 
-    <include refid="Base_Column_List" />
-    from books
-    where book_id = #{bookId,jdbcType=INTEGER}
+    select * from books b,author a,booktype bt,chapter c,(select booktype_name,booktype_father_id from booktype bt WHERE bt.booktype_father_id = bt.booktype_id) f,(SELECT MAX(chapter_sort) cs,chapter_book_id from chapter GROUP BY chapter.chapter_book_id) d WHERE b.book_author_id = a.author_id AND
+b.book_type_id = bt.booktype_id and bt.booktype_father_id = f.booktype_father_id and b.book_id = #{bookId,jdbcType=INTEGER} and b.book_id = c.chapter_book_id and c.chapter_sort = d.cs and c.chapter_book_id=d.chapter_book_id
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from books
