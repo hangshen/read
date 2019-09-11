@@ -1,6 +1,5 @@
 package org.lanqiao.controller;
 
-import org.apache.commons.io.FilenameUtils;
 import org.lanqiao.entity.Author;
 import org.lanqiao.entity.AuthorLogin;
 import org.lanqiao.entity.Books;
@@ -41,6 +40,7 @@ public class AuthorController {
      */
     @RequestMapping("/login")
     public Map loginCheck(String authorAccount, String authorPassword) {
+        System.out.println(authorAccount+" and "+authorPassword);
         return authorLoginService.loginCheck(authorAccount,authorPassword);
 
     }
@@ -80,4 +80,6 @@ public class AuthorController {
     public int insertBook(Books books){
         return bookService.insertBooks(books);
     }
+
+
 }

@@ -4,6 +4,7 @@ import org.apache.solr.client.solrj.beans.Field;
 import org.springframework.data.solr.core.mapping.SolrDocument;
 
 import java.util.Date;
+import java.util.List;
 import java.util.Set;
 
 @SolrDocument(solrCoreName = "books")
@@ -33,9 +34,9 @@ public class Books {
     private BookType bookType;
 
     private Integer bookTypeId;
-
+    private Integer bookAuthorId;
     private Author author;
-    private Set<Chapter> chapterSet;
+    private List<Chapter> chapterSet;
 
     public Integer getBookId() {
         return bookId;
@@ -149,11 +150,19 @@ public class Books {
         this.author = author;
     }
 
-    public Set<Chapter> getChapterSet() {
+    public List<Chapter> getChapterSet() {
         return chapterSet;
     }
 
-    public void setChapterSet(Set<Chapter> chapterSet) {
+    public void setChapterSet(List<Chapter> chapterSet) {
         this.chapterSet = chapterSet;
+    }
+
+    public Integer getBookAuthorId() {
+        return bookAuthorId;
+    }
+
+    public void setBookAuthorId(Integer bookAuthorId) {
+        this.bookAuthorId = bookAuthorId;
     }
 }

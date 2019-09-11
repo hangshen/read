@@ -17,6 +17,7 @@ public interface BooksMapper {
     Books selectByPrimaryKey(Integer bookId);
     List<Books> selectAllBooks();
     List<Books> selectBooksByType(SelectTypeVo selectTypeVo);
+    Books selectAllChapters(Integer bookId);
     int updateByPrimaryKeySelective(Books record);
 
     int updateByPrimaryKey(Books record);

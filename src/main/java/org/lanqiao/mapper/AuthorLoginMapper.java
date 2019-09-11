@@ -1,8 +1,11 @@
 package org.lanqiao.mapper;
 
-import org.lanqiao.entity.Author;
+
 import org.lanqiao.entity.AuthorLogin;
 import org.springframework.stereotype.Repository;
+
+import java.util.List;
+
 
 @Repository
 public interface AuthorLoginMapper {
@@ -18,7 +21,8 @@ public interface AuthorLoginMapper {
 //
 //    int updateByPrimaryKey(AuthorLogin record);
 
-    AuthorLogin login(String authorAccount);
+    AuthorLogin login(String authorLoginAccount);
 
     int insert(AuthorLogin authorLogin);
+
 }

@@ -24,11 +24,11 @@
     where author_id = #{authorId,jdbcType=INTEGER}
   </select>
 
-  <select id="selectByAuthorAccount" resultType="org.lanqiao.entity.Author" parameterType="java.lang.Integer" >
+  <select id="selectByAuthorLoginAuthorId" resultMap="AuthorMap" parameterType="java.lang.Integer" >
     select
     <include refid="Base_Column_List" />
     from author
-    where author_login_author_id = #{authorLoginAuthorId,jdbcType=INTEGER}
+    where author_id = #{authorLoginAuthorId,jdbcType=INTEGER}
   </select>
 
 
