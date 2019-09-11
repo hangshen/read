@@ -220,19 +220,17 @@
                                 </tr>
                                 </tbody>
                             </table>
+
                             <div class="m-page m-page-b">
-		<span class="nums">
-				<a href="" class="j-crt">1</a>
-				<a href="">2</a>
-				<a href="">3</a>
-				<a href="">4</a>
-				<a href="">5</a>
-		</span>
-                                <span class="dian">...</span>
+                                <a class="go go-n" v-if="current != 1" @click="change(1)">首页</a>
+                                <a class="go go-n" v-if="current != 1" @click="change(current - 1)">上一页</a>
                                 <span class="nums">
-					<a href="">100</a>
-				</span>
-                                <a href="" class="go go-n">下一页</a>
+                                    <a v-for="index in books.pages" :class="{'j-crt':current==index}" @click="change(index)">{{index}}</a>
+                                </span>
+                                <a class="go go-n" v-if="current !=  books.pages" @click="change(current + 1)">下一页</a>
+                                <a class="go go-n" v-if="current !=  books.pages" @click="change(books.pages)">尾页</a>
+                                <input name="page" type="number" v-model="input" style="width: 40px">
+                                <a class="go go-n" @click="change(input)">跳转</a>
                             </div>
                         </div>
 
@@ -418,7 +416,11 @@
 
     var mv2 = new Vue({
         el: '.yd-store-content-container',
-        data: {books: {}},
+        data: {
+            books: {},
+            current:1,
+            input:1
+            },
         created: function () {
             $.ajax({
                 url: "http://localhost:8080/getBooksByType",
@@ -433,8 +435,38 @@
                     mv2.books = data;
                 }
             })
+        },methods:{
+            change:function (i) {
+                if(i <= this.books.pages && i >= 1){
+                    this.current = i;
+                }else if(i < 1){
+                    this.current = 1;
+                }else{
+                    this.current = this.books.pages;
+                }
+                if(this.input < 1){
+                    this.input = 1;
+                }else if(this.input > this.books.pages){
+                    this.input = this.books.pages;
+                }
+                factor.pageNum = this.current;
+                $.ajax({
+                    url: "http://localhost:8080/getBooksByType",
+                    type: "post",
+                    data: JSON.stringify(factor),
+                    datatype: "json",
+                    contentType: 'application/json;charset=UTF-8',
+                    success: function (data) {
+                        for (var i = 0; i < data.list.length; i++) {
+                            data.list[i].chapterSet[0].chapterDate = data.list[i].chapterSet[0].chapterDate.substring(5, 10) + " " + data.list[i].chapterSet[0].chapterDate.substring(11, 19);
+                        }
+                        mv2.books = data;
+                    }
+                })
+            }
         }
     })
+    
 </script>
 </body>
 </html>
