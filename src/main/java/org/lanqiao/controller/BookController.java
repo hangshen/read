@@ -35,7 +35,7 @@ public class BookController {
     }
     @RequestMapping("/getBooksById")
     public Books selectAllChapters(Integer bookId){
-        return  bookService.selectAllChapters(5);
+        return  bookService.selectAllChapters(bookId);
     }
     @RequestMapping("/getBooksInfoById")
     public Books selectByPrimaryKey(Integer bookId){

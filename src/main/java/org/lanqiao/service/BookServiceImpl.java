@@ -1,15 +1,4 @@
 package org.lanqiao.service;
-
-import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
-import org.apache.solr.client.solrj.SolrClient;
-import org.apache.solr.client.solrj.SolrQuery;
-import org.apache.solr.client.solrj.SolrServerException;
-import org.apache.solr.client.solrj.impl.HttpSolrClient;
-import org.apache.solr.client.solrj.response.QueryResponse;
-import org.apache.solr.common.SolrDocument;
-import org.apache.solr.common.SolrDocumentList;
-import org.apache.solr.common.SolrInputDocument;
 import org.lanqiao.entity.Books;
 import org.lanqiao.entity.Chapter;
 import org.lanqiao.mapper.BooksMapper;
@@ -17,19 +6,12 @@ import org.lanqiao.util.SolrUtil;
 import org.lanqiao.vo.SelectTypeVo;
 import org.lanqiao.vo.SolrBooksVo;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Sort;
 import org.springframework.data.solr.core.SolrTemplate;
-import org.springframework.data.solr.core.query.Criteria;
-import org.springframework.data.solr.core.query.SimpleQuery;
-import org.springframework.data.solr.core.query.result.ScoredPage;
 import org.springframework.stereotype.Service;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import java.io.IOException;
 import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Set;
+
 
 @Service
 public class BookServiceImpl implements BookService{
@@ -37,8 +19,7 @@ public class BookServiceImpl implements BookService{
     BooksMapper booksMapper;
     @Autowired
     SolrTemplate solrTemplate;
-
-    private final static Logger LOGGER = LoggerFactory.getLogger(BookServiceImpl.class);
+    @Override
     public List<Books> selectAllBooks(){
         List<Books> list= booksMapper.selectAllBooks();
         List<Books> booksList =new ArrayList<Books>();
@@ -58,7 +39,7 @@ public class BookServiceImpl implements BookService{
         }
         return booksList;
     }
-
+    @Override
     public List<Books> selectBooksByType(SelectTypeVo selectTypeVo){
         List<Books> list = booksMapper.selectBooksByType(selectTypeVo);
         for(Books b : list){
@@ -67,18 +48,25 @@ public class BookServiceImpl implements BookService{
             b.setBookUpDate(new Timestamp(te1));
         }
         for(int i = 0;i<list.size();i++){
-            List<Chapter> c = list.get(i).getChapterSet();
-            for(Chapter chapter:c){
-                long te2 = chapter.getChapterDate().getTime();
-                te2 = te2 + 8 * 3600 * 1000;
-                chapter.setChapterDate(new Timestamp(te2));
-            }
+            changeTime(list.get(i));
         }
         return list;
     }
-
+    @Override
     public Books selectAllChapters(Integer bookId){
         Books books = booksMapper.selectAllChapters(bookId);
+        changeTime(books);
+        return  books;
+    }
+    @Override
+    public Books selectByPrimaryKey(Integer bookId){
+        Books books = booksMapper.selectByPrimaryKey(bookId);
+        changeTime(books);
+        return  books;
+    }
+//改变更新时间
+    private Books changeTime(Books books)
+    {
         List<Chapter> c = books.getChapterSet();
         for (Chapter chapter : c){
             long te2 = chapter.getChapterDate().getTime();
@@ -87,11 +75,6 @@ public class BookServiceImpl implements BookService{
         }
         return  books;
     }
-
-    public Books selectByPrimaryKey(Integer bookId){
-        return booksMapper.selectByPrimaryKey(bookId);
-    }
-
     @Override
     public List<SolrBooksVo> queryByKeyword(String keyword) {
 

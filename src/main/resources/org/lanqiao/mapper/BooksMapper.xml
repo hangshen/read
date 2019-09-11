@@ -85,8 +85,9 @@
     SELECT * from books,author WHERE book_author_id=author_id
   </select>
   <select id="selectByPrimaryKey" resultMap="BooksMap" parameterType="java.lang.Integer" >
-    select * from books b,author a,booktype bt,chapter c,(select booktype_name,booktype_father_id from booktype bt WHERE bt.booktype_father_id = bt.booktype_id) f,(SELECT MAX(chapter_sort) cs,chapter_book_id from chapter GROUP BY chapter.chapter_book_id) d WHERE b.book_author_id = a.author_id AND
-b.book_type_id = bt.booktype_id and bt.booktype_father_id = f.booktype_father_id and b.book_id = #{bookId,jdbcType=INTEGER} and b.book_id = c.chapter_book_id and c.chapter_sort = d.cs and c.chapter_book_id=d.chapter_book_id
+    select * from books b,author a,booktype bt,chapter c,(SELECT MAX(chapter_sort) cs,chapter_book_id from chapter GROUP BY chapter.chapter_book_id) d
+    WHERE b.book_author_id = a.author_id AND b.book_type_id = bt.booktype_id and b.book_id = #{bookId,jdbcType=INTEGER} and b.book_id = c.chapter_book_id and c.chapter_sort = d.cs
+    and c.chapter_book_id=d.chapter_book_id
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from books
