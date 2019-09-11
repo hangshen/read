@@ -9,6 +9,8 @@ public class UserLogin {
 
     private Integer userLoginUserId;
 
+    private Users users;
+
     public Integer getUserLoginId() {
         return userLoginId;
     }
@@ -39,5 +41,13 @@ public class UserLogin {
 
     public void setUserLoginUserId(Integer userLoginUserId) {
         this.userLoginUserId = userLoginUserId;
+    }
+
+    public Users getUsers() {
+        return users;
+    }
+
+    public void setUsers(Users users) {
+        this.users = users;
     }
 }

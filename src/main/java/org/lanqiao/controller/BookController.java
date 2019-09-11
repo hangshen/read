@@ -25,8 +25,11 @@ public class BookController {
     }
     //solr模糊查询接口
     @RequestMapping("/solrSelect")
-    public List<SolrBooksVo> searchBooks(String keyword) {
-        return bookService.queryByKeyword(keyword);
+    public PageInfo<SolrBooksVo> searchBooks(String keyword,Integer pageNum) {
+        PageHelper.startPage(pageNum,5);
+        List<SolrBooksVo> list = bookService.queryByKeyword(keyword);;
+        PageInfo<SolrBooksVo> pageInfo = new PageInfo<SolrBooksVo>(list);
+        return pageInfo;
     }
     @RequestMapping("/getBooksByType")
     public PageInfo<Books> selectBooksByType(@RequestBody SelectTypeVo selectTypeVo){

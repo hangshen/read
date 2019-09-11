@@ -49,5 +49,9 @@ public class UserController {
 ////        }
         return userService.chenkPassword(login);
     }
+    @RequestMapping("/getUserInfo")
+    public UserLogin selectUserInfo(Integer userLoginId){
+        return userService.selectUserInfo(1);
+    }
 
 }

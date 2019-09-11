@@ -12,4 +12,6 @@ public interface UserService {
     public int insertUser(UserLogin login);
 
     public Users chenkPassword(UserLogin login);
+    public UserLogin selectUserInfo(Integer userLoginId);
+
 }
