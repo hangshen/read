@@ -12,7 +12,7 @@ public class EmailFindServiceImpl implements EmailFindService{
     UserLoginMapper userLoginMapper;
 
     @Override
-    public String sendEmail(String email) {
+    public boolean sendEmail(String email) {
 //        String emailtest="384342138@qq.com";
         //检查数据苦衷是否有此邮箱 有返回true  无返回false
         UserLogin userLogin = userLoginMapper.selectByAccount(email);
@@ -21,9 +21,9 @@ public class EmailFindServiceImpl implements EmailFindService{
         if(userLogin != null) {
             //设置收件人和消息内容
             mySendMail.sendMail(email, "活阅读系统提醒，您的密码为："+userLogin.getUserLoginPassword());
-            return "恭喜，密码找回成功！请登录邮箱查看";
+            return true;
         } else {
-            return "该邮箱尚未注册";
+            return false;
         }
     }
 }

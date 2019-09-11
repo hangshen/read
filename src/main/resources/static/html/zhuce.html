@@ -231,7 +231,7 @@
             },
             messages: {
                 bviewinputemail: {
-                    required: "请輸入姓名",
+                    required: "请输入邮箱账号",
                     email: "请输入正确的邮箱地址"
                 },
                 bviewinputpassword: {
@@ -277,8 +277,8 @@
                 },
                 datatype: "json",
                 success: function (data) {
-                    sessionStorage.setItem("useeid",data);
-                    sessionStorage.setItem("useraccount",$("#bviewinputemail").val());
+                    sessionStorage.setItem("useeId",data);
+                    sessionStorage.setItem("userAccount",$("#bviewinputemail").val());
                     window.location.href="http://localhost:8080/html/user_register_success.html";
                 }
             })

@@ -16,7 +16,7 @@ public class EmailFindPasswordController {
     EmailFindService emailFindService;
 
     @RequestMapping("/getpassword")
-    public String EmailSend(String email){
+    public boolean EmailSend(String email){
         return emailFindService.sendEmail(email);
     }
 }

@@ -141,7 +141,6 @@
     margin-left: -270px;
     border: 1px solid #ccc;
     background: #fff;
-    min-width: 540px;
     -moz-box-shadow: 0 0 18px #666;
     -webkit-box-shadow: 0 0 18px #666;
     z-index: 9999;
@@ -151,6 +150,8 @@
     width: 310px;
 }
 
+.m-login .row button, .m-loginswitch li, .m-loginswitch li span, .m-login-layer .lytt, .m-login-layer .lytt h4 {
+}
 
 .m-login-layer .lytt {
     position: relative;
@@ -183,7 +184,6 @@
     height: 24px;
     overflow: hidden;
     text-indent: -9999px;
-    background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAwCAMAAAA8VkqRAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAD9QTFRFtbW1srKys7Ozrq6u5ubm5eXlvLy8q6urp6enurq6o6Ojqqqqm5ubrKysvb29wMDAra2tpaWlnJycmZmZ////a4yk1wAAABV0Uk5T//////////////////////////8AK9l96gAAALdJREFUeNrkkkkWwyAMQ4Ekncco9z9rGwYjQ93XrMsK9IMlm7jFWO47GJU2CniCLwacMxgAIuF9OibgQGTVcculfCWhbNNRiOglbiZVlz4imclM0kRCIWrMa9SHfiQPAwSjVNQvvXnJ2caV/F43SH15HsmOTSO5J7BXY1+Jz6VO6qE8DmI+qaedfvgZ/heAJfANtLqUQqNXDzQfOF0Cn1JBWXFcYNkGrFKWuRXXatAaiT3Efr0EGABlBlUx1S3OwAAAAABJRU5ErkJggg==) 0 -26px;
 }
 
 .m-login-layer .lytt h4 {
@@ -215,13 +215,11 @@
     padding: 0 5px 20px;
     float: left;
     display: inline;
-    background: url(https://easyreadfs.nosdn.127.net/web/trunk/1472454756051/loading.png) center center no-repeat;
     background-position-y: 75px;
 }
 
 .m-login form {
     background-color: #fff;
-    margin: 50px auto 0;
     width: 220px;
 }
 
@@ -1782,6 +1780,8 @@
     height: 12px;
     overflow: hidden;
 }
+
+
 .m-packtable tr td.rt {
     width: 90px;
     color: #666;
