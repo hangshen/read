@@ -14,6 +14,7 @@
     <result column="book_click" property="bookClick" jdbcType="DOUBLE" />
     <result column="book_reward" property="bookReward" jdbcType="BIGINT" />
     <result column="book_type_id" property="bookTypeId" jdbcType="INTEGER" />
+    <result column="book_author_id" property="bookAuthorId" jdbcType="INTEGER"/>
     <association property="bookType" resultMap="BookTypeMap"></association>
     <association property="author" resultMap="AuthorMap"></association>
     <collection property="chapterSet" resultMap="ChapterMap"></collection>
