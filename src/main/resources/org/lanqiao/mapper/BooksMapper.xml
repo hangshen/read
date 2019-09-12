@@ -91,7 +91,8 @@
     GROUP BY book_id
   </select>
   <select id="selectAllChapters" resultMap="BooksMap" parameterType="java.lang.Integer">
-         SELECT id AS book_id,book_name,author_name,book_img,book_flag,book_score FROM solrquery WHERE solrquery.id IN(SELECT bookshelf.shelf_book_id FROM bookshelf WHERE bookshelf.shelf_book_flag=0 AND bookshelf.shelf_user_id=#{userId})
+         select * from books b,author a,chapter c,booktype bt WHERE b.book_author_id = a.author_id and b.book_id = c.chapter_book_id
+         and b.book_type_id = bt.booktype_id AND b.book_id = #{bookId,jdbcType=INTEGER}
   </select>
   <select id="selectAllBooks" resultMap="BooksMap" >
     SELECT * from books,author WHERE book_author_id=author_id
