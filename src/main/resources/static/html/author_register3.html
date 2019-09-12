@@ -3,23 +3,6 @@
 <head>
     <meta charset="UTF-8">
     <title>选择类型 - 注册 - 网易云阅读作者中心</title>
-    <link rel="shortcut icon" href="/favicon.ico?v=4.0">
-    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=1" name="viewport" />
-    <!-- @NOPARSE -->
-    <script src="../js/author_register_js/modernizr.js"></script>
-    <script type="text/javascript">var _gaq = _gaq || [];_gaq.push(['_setAccount', 'UA-37566636-1'],['_setLocalGifPath', 'https://yuedu.163.com/UA-37566636-1/__utm.gif'],['_setLocalServerMode']);_gaq.push(['_addOrganic','baidu','word']);_gaq.push(['_addOrganic','soso','w']);_gaq.push(['_addOrganic','youdao','q']);_gaq.push(['_addOrganic','sogou','query']);_gaq.push(['_addOrganic','so.360.cn','q']);_gaq.push(['_trackPageview']);_gaq.push(['trackPageLoadTime']);(function() {var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;ga.src = 'https://wr.da.netease.com/ga.js';var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);})();</script>
-
-    <script>
-        window.cfail = {};
-        window.cfail.config = {
-            id: "537aff29d05380020052a816",
-            onBeforeStore: function(failOccurrence) {
-                failOccurrence.User = "";
-            },
-            processInterval: 2
-        };
-        (function() {var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;ga.src = 'https://easyreadfs.nos.netease.com/cHfOZGsmnGq81HBssqZY8A==/7916572780429690507.js';var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);})();
-    </script>
 
     <!-- /@NOPARSE -->
 
@@ -91,7 +74,7 @@
                 <a class="entry-item last-child entry-original ah-fancy-radio" href="javascript:" data-type="/">
                     <span class="identify-provider-1"></span>
                     <div class="entry-item-header">
-                        <span class="phui-fancy-radio f-ib"></span>
+                        <span class="phui-fancy-radio f-ib" id="conmer"></span>
                         <span class="entry-item-heading">内容商</span>
                     </div>
                     <p class="muted">支持书籍整本上传，网站RSS<br>订阅，让优质内容提供商<br>轻松获利。</p>
@@ -135,33 +118,7 @@
         <script src="../js/author_register_js/bacon.js"></script>
 
         <!-- @NOPARSE -->
-        <script>
-            bacon.conf('isPersonal', 1);
-        </script>
-        <!-- /@NOPARSE -->
-        <!-- @DEFINE -->
-        <script src="../js/author_register_js/define.js?pro=/assets/js/provider/&jsroot=/assets/js/&static=/assets/"></script>
-        <script>
-            define(['{pro}components/phui/phui-radio/phui-radio.js'], function() {
-                var type;
-                var $submitButton = $('#ap-register-type-submit');
-                var isPersonal= bacon.getConf('isPersonal');
 
-                NEJ.P('phui').Radio._$allocate({
-                    clazz: 'ah-fancy-radio-selected',
-                    el: $('#ap-register-type-radios'),
-                    onchange: function(aType) {
-                        type = aType;
-
-                        $submitButton.prop('disabled', false);
-                    }
-                });
-
-                $submitButton.click(function() {
-                    location.href = type;
-                });
-            });
-        </script>
     </div>
 </div>
 
@@ -177,29 +134,37 @@
 
 
 <script>
+    var c = sessionStorage.getItem("c");
+    var p = sessionStorage.getItem("p");
+    var authid = sessionStorage.getItem("authid");
+    var authname = sessionStorage.getItem("authname");
+    var authpenname = sessionStorage.getItem("authpenname");
+    var authqq = sessionStorage.getItem("authqq");
+    var iden ="个人";
+    alert(c);
+    alert(authid)
     $(function () {
-        $(".submit_btn").click(function () {
 
+        $("#conmer").click(function () {
+            iden="内容商";
+        });
+
+        $(".ap-register-type-submit").click(function () {
             $.ajax({
-                type: "POST",
-                url: "http://localhost:8080/addUser",
-                dataType: "json",
+                url: "http://localhost:8080/author/register",
+                type: "post",
                 data: {
-                    userName: $("input[name='userName']").val(),
-                    sex: $("input[name='sex']").val(),
-                    password: $("input[name='password']").val(),
-                    birthday: $("input[name='birthday']").val(),
-                    userPid: $("input[name='ID']").val(),
-                    email: $("input[name='email']").val(),
-                    userType: $('input:radio[name="userType"]:checked').val(),
-                    account: $("input[name='phone']").val(),
-                    love: $("input[name='love']").val()
+                    'authorAccount': c,
+                    'authorPassword': p,
+                    'realID': authid,
+                    'authorQq': authqq,
+                    'authorName': authpenname,
+                    'realName': authname,
+                    'authorIdentity':iden,
                 },
-                success: function (data){
-                    window.location.href="login.html";
-                },
-                error: function () {
-                    alert("注册错误！");
+                dataType: "json",
+                success: function () {
+                    window.location.href = "authormsg.html";
                 }
             });
 

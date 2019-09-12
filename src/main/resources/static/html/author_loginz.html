@@ -70,11 +70,12 @@
                 success: function (result) {
                     if(result.author!=null){
                         alert("登录成功！");
+                        // window.location.href="/authormsg.html";
 
                     }else if(result.authorLogin==null){
                         // sessionStorage.setItem("authorId",result.userId);
-                        // window.location.href="/authormsg.html";
-                        alert("邮箱不存在！");
+
+                        alert("账号不存在！");
                     }else if(result.pword ==false){
                         alert("密码错误！");
                     }
