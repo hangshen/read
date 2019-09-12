@@ -105,14 +105,33 @@
   </select>
 
   <select id="leiSelectShelfBooksByUserId" resultMap="LeiBooksVoMap" parameterType="java.lang.Integer">
-     SELECT id AS book_id,book_name,author_name,book_img,book_flag,book_score FROM solrquery WHERE solrquery.id IN(SELECT bookshelf.shelf_book_id FROM bookshelf WHERE bookshelf.shelf_user_id=#{userId})
+     SELECT id AS book_id,book_name,author_name,book_img,book_flag,book_score FROM solrquery WHERE solrquery.id IN(SELECT bookshelf.shelf_book_id FROM bookshelf WHERE bookshelf.shelf_book_flag=#{bookState} AND bookshelf.shelf_user_id=#{userId})
   </select>
 
+  <select id="leiCheckBookShelfState" parameterType="java.lang.Integer" resultType="java.lang.Integer">
+    SELECT bookshelf.shelf_book_flag FROM bookshelf WHERE bookshelf.shelf_book_id=#{bookId} AND bookshelf.shelf_user_id=#{userId};
+  </select>
+
+  <select id="selectBooksByAuthorId" resultMap="BooksMap" parameterType="java.lang.Integer">
+    select * from books where book_author_id = #{authorId,jdbcType=INTEGER}
+  </select>
 
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from books
     where book_id = #{bookId,jdbcType=INTEGER}
   </delete>
+
+  <delete id="leiDelectBookShelf" parameterType="java.lang.Integer">
+    DELETE FROM bookshelf
+    WHERE bookshelf.shelf_book_id=#{bookId} AND bookshelf.shelf_user_id=#{userId};
+  </delete>
+
+  <update id="leiUpdateBookShelf" parameterType="java.lang.Integer">
+    UPDATE bookshelf SET bookshelf.shelf_book_flag=1 WHERE bookshelf.shelf_book_id=#{bookId} AND bookshelf.shelf_user_id=#{userId};
+  </update>
+
+
+
   <insert id="insert" parameterType="org.lanqiao.entity.Books" >
     insert into books (book_id, book_name, book_img, 
       book_introduce, book_up_date, book_finish_date, 

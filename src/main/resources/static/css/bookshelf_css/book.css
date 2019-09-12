@@ -1751,6 +1751,7 @@
     float: right;
     color: #666;
     text-align: center;
+    background-color:#d5dde8;
 }
 
 .m-ctbar a.btn-small {
@@ -1798,7 +1799,6 @@
 
 .m-ctbar .link {
     margin: 8px 76px 0 0;
-    color: #666;
     float: left;
     line-height: 16px;
     height: 16px;
@@ -7334,4 +7334,32 @@ button.u-btn {
 .m-ip-tip p {
     margin-top: 5px;
     color: #555;
+}
+.btn-img btn-middle{
+    width: 82px;
+    height: 24px;
+    background-position: 0 -88px;
+    background-position-x: 0px;
+    background-position-y: -88px;
+}
+
+. btn-del{
+    width: 62px;
+    height: 24px;
+    background-position: 0 -306px;
+    text-indent: -9999px;
+}
+
+.control .tick {
+    background: url("../../images/bookshelfimgs/bookwdg.png?0c618e46") no-repeat 9999px 9999px;
+    /*background: url(/images/bookwdg.png?0c618e46) no-repeat 9999px 9999px;*/
+}
+
+
+.linkcolordef{
+    color: #666;
+}
+
+.linkcolorclic{
+    color: #E1251B;
 }

@@ -79,7 +79,7 @@ public class AuthorController {
      */
     @RequestMapping("/getAllBooksByAuthorId")
     public List<Books> getAllBooksByAuthorId(Integer authorId) {
-        return bookService.selectBooksByAuthorId(authorId);
+        return bookService.selectBooksByAuthorId(8);
     }
 
     /**
