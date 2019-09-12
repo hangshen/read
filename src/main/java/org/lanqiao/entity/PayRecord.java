@@ -1,6 +1,7 @@
 package org.lanqiao.entity;
 
 import java.util.Date;
+import java.util.List;
 
 public class PayRecord {
     private Integer payrecordId;
@@ -9,13 +10,16 @@ public class PayRecord {
 
     private Integer payrecordMoney;
 
-    private String payrecordIntroduce;
+    private Integer payrecordBookId;
 
     private Date payrecordDate;
 
     private Integer payrecordUserId;
 
     private UserLogin userLogin;
+
+    private Books books;
+    private List<Vip> vipList;
 
     public Integer getPayrecordId() {
         return payrecordId;
@@ -41,12 +45,12 @@ public class PayRecord {
         this.payrecordMoney = payrecordMoney;
     }
 
-    public String getPayrecordIntroduce() {
-        return payrecordIntroduce;
+    public Integer getPayrecordBookId() {
+        return payrecordBookId;
     }
 
-    public void setPayrecordIntroduce(String payrecordIntroduce) {
-        this.payrecordIntroduce = payrecordIntroduce == null ? null : payrecordIntroduce.trim();
+    public void setPayrecordBookId(Integer payrecordBookId) {
+        this.payrecordBookId = payrecordBookId;
     }
 
     public Date getPayrecordDate() {
@@ -71,5 +75,21 @@ public class PayRecord {
 
     public void setUserLogin(UserLogin userLogin) {
         this.userLogin = userLogin;
+    }
+
+    public Books getBooks() {
+        return books;
+    }
+
+    public void setBooks(Books books) {
+        this.books = books;
+    }
+
+    public List<Vip> getVips() {
+        return vipList;
+    }
+
+    public void setVips(List<Vip> vips) {
+        this.vipList = vips;
     }
 }

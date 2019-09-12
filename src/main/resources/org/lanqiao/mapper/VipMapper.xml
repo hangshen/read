@@ -1,16 +1,24 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="org.lanqiao.mapper.VipMapper" >
-  <resultMap id="BaseResultMap" type="org.lanqiao.entity.Vip" >
+  <resultMap id="VipMap" type="org.lanqiao.entity.Vip" >
     <id column="vip_id" property="vipId" jdbcType="INTEGER" />
-    <result column="vip_user_id" property="vipUserId" jdbcType="INTEGER" />
-    <result column="vip_book_id" property="vipBookId" jdbcType="INTEGER" />
     <result column="vip_chapter_id" property="vipChapterId" jdbcType="INTEGER" />
+    <association property="chapter" resultMap="ChapterMap"></association>
+  </resultMap>
+  <resultMap id="ChapterMap" type="org.lanqiao.entity.Chapter" >
+    <id column="chapter_id" property="chapterId" jdbcType="INTEGER" />
+    <result column="chapter_sort" property="chapterSort" jdbcType="INTEGER" />
+    <result column="chapter_name" property="chapterName" jdbcType="VARCHAR" />
+    <result column="chapter_date" property="chapterDate" jdbcType="TIMESTAMP" />
+    <result column="chapter_fee" property="chapterFee" jdbcType="INTEGER" />
+    <result column="chapter_content_id" property="chapterContentId" jdbcType="INTEGER" />
+    <result column="chapter_book_id" property="chapterBookId" jdbcType="INTEGER" />
   </resultMap>
   <sql id="Base_Column_List" >
     vip_id, vip_user_id, vip_book_id, vip_chapter_id
   </sql>
-  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+  <select id="selectByPrimaryKey" resultMap="VipMap" parameterType="java.lang.Integer" >
     select 
     <include refid="Base_Column_List" />
     from vip
