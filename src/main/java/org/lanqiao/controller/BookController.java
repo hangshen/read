@@ -25,11 +25,9 @@ public class BookController {
     }
     //solr模糊查询接口
     @RequestMapping("/solrSelect")
-    public PageInfo<SolrBooksVo> searchBooks(String keyword,Integer pageNum) {
-        PageHelper.startPage(pageNum,5);
+    public List<SolrBooksVo> searchBooks(String keyword) {
         List<SolrBooksVo> list = bookService.queryByKeyword(keyword);;
-        PageInfo<SolrBooksVo> pageInfo = new PageInfo<SolrBooksVo>(list);
-        return pageInfo;
+        return list;
     }
     @RequestMapping("/getBooksByType")
     public PageInfo<Books> selectBooksByType(@RequestBody SelectTypeVo selectTypeVo){
@@ -48,7 +46,16 @@ public class BookController {
     }
 
     @RequestMapping("/getshelfbooks")
-    public List<LeiBooksVo> searchShelfBooks(Integer userId){
-        return bookService.selectShelfBooks(userId);
+    public List<LeiBooksVo> searchShelfBooks(Integer bookState,Integer userId){
+        return bookService.selectShelfBooks(bookState,userId);
+    }
+
+    @RequestMapping("/delectshelfbooks")
+    public Integer delectShelfBooks(Integer bookId,Integer userId){
+        if(bookService.selectCheckBookState(bookId,userId) == 0){
+            return bookService.updateShelfBook(bookId,userId);
+        } else {
+            return bookService.delectShelfBook(bookId,userId);
+        }
     }
 }

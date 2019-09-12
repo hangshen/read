@@ -108,9 +108,9 @@
             <div class="g-bdc m-toolbar g-bdc-2">
                 <div id="J_PlacerHolder"></div>
                 <div id="J_ControlBar" class="m-ctbar m-ctbar-1" style="left: auto;">
-                    <p id="J_CBinner-1">
-                        <a class="link first crt" href="">我的书架(1)</a>
-                        <a class="link" href="">已删书籍(1)</a>
+                    <p id="J_CBinner-1" style="display:block;">
+                        <a class="link first crt" href="">我的书架</a>
+                        <a id="delectBookOne" class="link">已删书籍</a>
                         <a class="btn btn-2 png last" href=""
                            title="列表">列表</a>
                         <a class="btn btn-1-crt png" href=""
@@ -118,11 +118,11 @@
                         <span class="fr">|</span>
                         <a id="J_Settings" class="btn btn-4 png">书籍管理</a>
                     </p>
-                    <p id="J_CBinner-2" style="display:none;">
-                        <a href="" class="link first crt">我的书架(3)</a>
-                        <a href="" class="link">已删书籍(0)</a>
-                        <a id="J_Done" href="#" class="btn-img btn-finish last"><b></b>完成</a>
-                        <a id="J_DelSelect" href="#" class="btn-img btn-del">删除</a>
+                    <p id="J_CBinner-2" style="display: none;">
+                        <a href="/shelf.do?operation=query_current" class="link first crt">我的书架</a>
+                        <a href="/shelf.do?operation=query_history" class="link">已删书籍</a>
+                        <a id="J_Done" href="#" class="btn last btn-img"><b></b>完成</a>
+                        <a id="J_DelSelect" href="#" class="btn btn-img">删除</a>
                         <a id="J_SelectAll" href="#" class="btn-img btn-middle" data-all="false">全选/全不选</a>
                     </p>
                 </div>
@@ -131,13 +131,14 @@
             <div class="g-bdc">
                 <div class="g-mn g-mn-4">
                     <div class="g-mnc">
-                        <div class="m-blist m-blist-1">
+                        <div id="shelfbooks" class="m-blist m-blist-1">
                             <ul>
-                                <li class="nb">
-                                    <div class="m-bookshow" prog="0">
+                                <li class="nb" v-for="(book,index) in books">
+                                    <div class="m-bookshow" prog="0" @mouseenter="enter(index)" @mouseleave="leave(index)">
                                         <div class="m-infos png" style="display:none;">
-                                            <h4>山月不知心底事</h4>
-                                            <p>辛夷坞/百花洲文艺出版社</p>
+                                            <h4>{{book.bookName}}</h4>
+                                            <p>{{book.authorName}}</p>
+                                            <p class="bookId" style="display: none">{{book.bookId}}</p>
                                             <div class="w-star w-star1">
                                                 <span>&nbsp;</span>
                                                 <span>&nbsp;</span>
@@ -151,8 +152,8 @@
                                             <a href=""
                                                onclick="_gaq.push(['_trackEvent', 'yuedu', 'book', 'read']);"
                                                target="_blank"><img
-                                                    src="https://easyreadfs.nosdn.127.net/zII2XlH2UopMqFg1otH5XQ==/8796093024737077255"
-                                                    alt="山月不知心底事"></a>
+                                                    v-bind:src="book.bookImg"
+                                                    v-bind:alt="book.Name"></a>
                                             <span class="free png"></span>
                                             <span class="lian png"></span>
                                             <span class="xuan png"></span>
@@ -181,7 +182,7 @@
                                                data-contentinfo="{&quot;shareType&quot;:2,&quot;textType&quot;:2,&quot;custom&quot;:0,&quot;sourceUuid&quot;:&quot;2856f7e7beff4c8f9ec2181ba2ea004e_4&quot;,&quot;articleUuid&quot;:&quot;&quot;,&quot;url&quot;:&quot;http://yuedu.163.com/source/2856f7e7beff4c8f9ec2181ba2ea004e_4&quot;,&quot;imageUrl&quot;:&quot;https://easyreadfs.nosdn.127.net/zII2XlH2UopMqFg1otH5XQ==/8796093024737077255&quot;,&quot;imageDescription&quot;:&quot;每个人心中都有一条塞纳河，它把我们的一颗心分作两边，左岸柔软，右岸冷硬；左岸感性，右岸理性。\n\n向远的一颗心，绝大多数属于右岸的领地。\n\n曾经，她也拥有过左岸。那年，山月清辉下，叶骞泽对她说：“我们永远不会分开。”\n\n她闯进浮华城市，凭借一腔孤勇追逐梦想，如愿以偿地嫁给了心爱的人。\n\n然而，她以为的人间长情，不过是浮光掠影。\n\n山月里的前尘旧梦早已被残踏得面目全非，让她不禁问自己：“我不知道我爱的究竟是回忆里一起看月亮的男孩，还是你。”\n\n山月掠影，照心，却从不渡人。&quot;,&quot;origin&quot;:[&quot;bookshelf&quot;,0],&quot;posttime&quot;:&quot;&quot;,&quot;articleTitle&quot;:&quot;&quot;,&quot;sourceTitle&quot;:&quot;山月不知心底事&quot;}">分享</a>
                                         </div>
                                         <div class="control" style="display:none;">
-                                            <a class="tick tick-x j-mask"></a>
+                                            <a name="target" class="tick tick-x j-mask" @click="target(index)"></a>
                                             <input type="hidden" value="2856f7e7beff4c8f9ec2181ba2ea004e_4"
                                                    data-local="false">
                                             <a class="mask j-mask"></a>
@@ -230,7 +231,7 @@
             <div class="down">
                 <p>购买书籍后无法阅读等问题<br /></p>
                 <p>可拨打：0571-89853801</p>
-            </div>
+            </div>nb
         </div>
     </div>
     <script type="text/javascript">
@@ -264,21 +265,89 @@
 <script src="../js/topjs/jquery-3.4.1.js"></script>
 <script src="../js/topjs/vue.min.js"></script>
 <script type="text/javascript">
-    <!--鼠标on 显示信息-->
-    $(".m-bookshow .cover").mouseenter(function () {
-        var that = this;
-        $(that).parent().css({'z-index': 1000});
-        hoverTime = setTimeout(function () {
-            $(that).prev().show();
-        }, 500);
-    });
-    <!--鼠标leave 显示信息-->
-    $(".m-bookshow .cover").mouseleave(function () {
-        var that = this;
-        $(that).parent().css({'z-index': 0});
-        clearTimeout(hoverTime);
-        $(that).prev().hide();
-    });
+    var vu = new Vue({
+        el:"#shelfbooks",
+        data:{
+            books:{},
+        },
+        methods:{
+            enter:function (i) {
+                var that = $(".m-bookshow").eq(i).find("div[class='cover cover-w f-db2']");
+                $(".m-bookshow").eq(i).css({'z-index': 1000});
+                hoverTime = setTimeout(function () {
+                    $(that).prev().show();
+                }, 500);
+            },
+            leave:function (i) {
+                var that = $(".m-bookshow").eq(i).find("div[class='cover cover-w f-db2']");
+                $(".m-bookshow").eq(i).css({'z-index': 0});
+                clearTimeout(hoverTime);
+                $(that).prev().hide();
+            },
+            target:function (i) {
+                var ta= $("a[name='target']").eq(i);
+                if(ta.is(".tick-x")){
+                    ta.removeClass("tick-x").addClass("tick-o");
+                } else{
+                    ta.removeClass("tick-o").addClass("tick-x");
+                }
+            }
+        }
+    })
+    $(function () {
+        $.ajax({
+            url: "http://localhost:8080/getshelfbooks",
+            type: "post",
+            data: {
+                "bookState": 0,
+                "userId": 1,
+            },
+            datatype: "json",
+            success:function (data) {
+                vu.books=data;
+            }
+        })
+    })
+    //删除书籍页面查看
+    $("#delectBookOne").click(function () {
+        $.ajax({
+            url: "http://localhost:8080/getshelfbooks",
+            type: "post",
+            data: {
+                "bookState": 1,
+                "userId": 1,
+            },
+            datatype: "json",
+            success:function (data) {
+                vu.books=data;
+            }
+        })
+    })
+
+    $("#J_Settings").click(function () {
+        $("#J_CBinner-1").css("display","none");
+        $("#J_CBinner-2").css("display","block");
+        $(".control").css("display","block");
+    })
+
+    $("#J_DelSelect").click(function () {
+        for(var i = 0;i < $(".tick-o").length;i++){
+            $.ajax({
+                url: "http://localhost:8080/delectshelfbooks",
+                type: "post",
+                data: {
+                    "bookId":$(".tick-o").eq(i).parent().parent().find("p[class='bookId']").html(),
+                    "userId": 1,
+                },
+                datatype: "json",
+                success:function (data) {
+                    alert(data);
+                }
+            })
+        }
+
+    })
+
     $("input[name='find']").click(function () {
         $.ajax({
             url: "http://localhost:8080/solrSelect",

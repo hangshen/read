@@ -20,5 +20,11 @@ public interface BookService {
     //作者发表作品
     int insertBooks(Books books);
 
-    List<LeiBooksVo> selectShelfBooks(Integer userId);
+    List<LeiBooksVo> selectShelfBooks(Integer bookState,Integer userId);
+
+    int selectCheckBookState(Integer bookId,Integer userId);
+
+    int updateShelfBook(Integer bookId,Integer userId);
+
+    int delectShelfBook(Integer bookId,Integer userId);
 }
