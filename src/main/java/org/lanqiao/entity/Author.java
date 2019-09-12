@@ -17,6 +17,17 @@ public class Author {
 
     private String realName;
 
+    @Override
+    public String toString() {
+        return "Author{" +
+                "authorName='" + authorName + '\'' +
+                ", authorIdentity='" + authorIdentity + '\'' +
+                ", authorQq='" + authorQq + '\'' +
+                ", realName='" + realName + '\'' +
+                ", realID='" + realID + '\'' +
+                '}';
+    }
+
     private String realID;
 
     public String getRealName() {

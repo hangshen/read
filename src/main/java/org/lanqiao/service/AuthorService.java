@@ -10,6 +10,7 @@ import java.io.IOException;
 @Repository
 public interface AuthorService {
     Author selectByAuthorLoginAuthorId(Integer authorLoginAuthorId);
-    Author selectByAuthorAccount(String authorAccount);
-    boolean register(Author author, String authorAccount, String authorPassword, MultipartFile file,HttpServletRequest request) throws IOException;
+    Author selectByAuthorRealID(String realID);
+    boolean register(Author author, String authorAccount, String authorPassword,String realID);
+    Author selectByAuthorId(Integer authorId);
 }

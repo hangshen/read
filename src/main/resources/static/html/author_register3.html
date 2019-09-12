@@ -93,7 +93,7 @@
             <hr class="phui-hr">
 
             <div class="ah-buttons-center">
-                <button type="button" class="btn btn-primary btn-large" id="ap-register-type-submit" disabled>下一步</button>
+                <button type="button" class="btn btn-primary btn-large" id="ap-register-type-submit">下一步</button>
             </div>
         </div>
 
@@ -142,14 +142,15 @@
     var authqq = sessionStorage.getItem("authqq");
     var iden ="个人";
     alert(c);
-    alert(authid)
+    alert(authid);
+    alert(authqq);
     $(function () {
 
         $("#conmer").click(function () {
             iden="内容商";
         });
 
-        $(".ap-register-type-submit").click(function () {
+        $("#ap-register-type-submit").click(function () {
             $.ajax({
                 url: "http://localhost:8080/author/register",
                 type: "post",
@@ -163,8 +164,16 @@
                     'authorIdentity':iden,
                 },
                 dataType: "json",
-                success: function () {
-                    window.location.href = "authormsg.html";
+                success: function (data) {
+                    if(data == true){
+                        window.location.href = "authormsg.html";
+                    }
+                    else {
+                        alert("注册失败");
+                    }
+                },
+                error : function () {
+                    alert("Error!!!");
                 }
             });
 
