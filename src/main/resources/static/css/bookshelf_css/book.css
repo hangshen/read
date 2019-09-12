@@ -1799,7 +1799,6 @@
 
 .m-ctbar .link {
     margin: 8px 76px 0 0;
-    color: #666;
     float: left;
     line-height: 16px;
     height: 16px;
@@ -7354,4 +7353,13 @@ button.u-btn {
 .control .tick {
     background: url("../../images/bookshelfimgs/bookwdg.png?0c618e46") no-repeat 9999px 9999px;
     /*background: url(/images/bookwdg.png?0c618e46) no-repeat 9999px 9999px;*/
+}
+
+
+.linkcolordef{
+    color: #666;
+}
+
+.linkcolorclic{
+    color: #E1251B;
 }

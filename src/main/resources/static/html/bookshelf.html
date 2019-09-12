@@ -109,8 +109,8 @@
                 <div id="J_PlacerHolder"></div>
                 <div id="J_ControlBar" class="m-ctbar m-ctbar-1" style="left: auto;">
                     <p id="J_CBinner-1" style="display:block;">
-                        <a class="link first crt" href="">我的书架</a>
-                        <a id="delectBookOne" class="link">已删书籍</a>
+                        <a id="mybookshelf" class="link first linkcolorclic">我的书架</a>
+                        <a id="delectBookOne" class="link linkcolordef">已删书籍</a>
                         <a class="btn btn-2 png last" href=""
                            title="列表">列表</a>
                         <a class="btn btn-1-crt png" href=""
@@ -121,9 +121,9 @@
                     <p id="J_CBinner-2" style="display: none;">
                         <a href="/shelf.do?operation=query_current" class="link first crt">我的书架</a>
                         <a href="/shelf.do?operation=query_history" class="link">已删书籍</a>
-                        <a id="J_Done" href="#" class="btn last btn-img"><b></b>完成</a>
-                        <a id="J_DelSelect" href="#" class="btn btn-img">删除</a>
-                        <a id="J_SelectAll" href="#" class="btn-img btn-middle" data-all="false">全选/全不选</a>
+                        <a id="J_Done" class="btn last btn-img"><b></b>完成</a>
+                        <a id="J_DelSelect"  class="btn btn-img">删除</a>
+                        <a id="J_SelectAll" class="btn-img btn-middle state" data-all="false" name="all">全选/全不选</a>
                     </p>
                 </div>
             </div>
@@ -285,11 +285,22 @@
                 $(that).prev().hide();
             },
             target:function (i) {
+                var j = 0;
                 var ta= $("a[name='target']").eq(i);
                 if(ta.is(".tick-x")){
                     ta.removeClass("tick-x").addClass("tick-o");
                 } else{
                     ta.removeClass("tick-o").addClass("tick-x");
+                }
+
+                for(j;j<$("a[name='target']").length;j++){
+                    if($("a[name='target']").eq(j).is(".tick-x")){
+                        $("#J_SelectAll").attr("name","all");
+                        break;
+                    }
+                }
+;                if(j == $("a[name='target']").length ){
+                    $("#J_SelectAll").attr("name","notall");
                 }
             }
         }
@@ -310,6 +321,8 @@
     })
     //删除书籍页面查看
     $("#delectBookOne").click(function () {
+        $("#mybookshelf").removeClass("linkcolorclic").addClass("linkcolordef");
+        $("#delectBookOne").removeClass("linkcolordef").addClass("linkcolorclic");
         $.ajax({
             url: "http://localhost:8080/getshelfbooks",
             type: "post",
@@ -323,13 +336,30 @@
             }
         })
     })
-
+    //查看我的书籍
+    $("#mybookshelf").click(function () {
+        $("#delectBookOne").removeClass("linkcolorclic").addClass("linkcolordef");
+        $("#mybookshelf").removeClass("linkcolordef").addClass("linkcolorclic");
+        $.ajax({
+            url: "http://localhost:8080/getshelfbooks",
+            type: "post",
+            data: {
+                "bookState": 0,
+                "userId": 1,
+            },
+            datatype: "json",
+            success:function (data) {
+                vu.books=data;
+            }
+        })
+    })
     $("#J_Settings").click(function () {
         $("#J_CBinner-1").css("display","none");
         $("#J_CBinner-2").css("display","block");
         $(".control").css("display","block");
     })
 
+    //删除书籍
     $("#J_DelSelect").click(function () {
         for(var i = 0;i < $(".tick-o").length;i++){
             $.ajax({
@@ -341,13 +371,29 @@
                 },
                 datatype: "json",
                 success:function (data) {
-                    alert(data);
                 }
             })
         }
 
     })
 
+    $("#J_SelectAll").click(function () {
+        if($(this).attr("name") == "all"){
+            $("a[name='target']").removeClass("tick-x").addClass("tick-o");
+            $("#J_SelectAll").attr("name","notall");
+        } else {
+            $("a[name='target']").removeClass("tick-o").addClass("tick-x");
+            $("#J_SelectAll").attr("name","all");
+        }
+    })
+
+    //操作完成
+    $("#J_Done").click(function () {
+        $("#J_CBinner-1").css("display","block");
+        $("#J_CBinner-2").css("display","none");
+        $(".control").css("display","none");
+        getshelf();
+    })
     $("input[name='find']").click(function () {
         $.ajax({
             url: "http://localhost:8080/solrSelect",
@@ -358,6 +404,23 @@
             }
         })
     })
+
+    function getshelf(){
+        $("#delectBookOne").removeClass("linkcolorclic").addClass("linkcolordef");
+        $("#mybookshelf").removeClass("linkcolordef").addClass("linkcolorclic");
+        $.ajax({
+            url: "http://localhost:8080/getshelfbooks",
+            type: "post",
+            data: {
+                "bookState": 0,
+                "userId": 1,
+            },
+            datatype: "json",
+            success:function (data) {
+                vu.books=data;
+            }
+        })
+    }
 </script>
 </body>
 </html>
