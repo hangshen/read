@@ -3,17 +3,14 @@ package org.lanqiao.controller;
 
 import org.lanqiao.entity.Author;
 
+import org.lanqiao.entity.BookType;
 import org.lanqiao.entity.Books;
-import org.lanqiao.entity.Users;
-import org.lanqiao.service.AuthorLoginService;
-import org.lanqiao.service.AuthorService;
-import org.lanqiao.service.BookService;
+import org.lanqiao.entity.Comment;
+import org.lanqiao.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.multipart.MultipartFile;
 
-import javax.servlet.http.HttpServletRequest;
 
 import java.io.IOException;
 
@@ -31,7 +28,10 @@ public class AuthorController {
     AuthorService authorService;
     @Autowired
     BookService bookService;
-
+    @Autowired
+    BookTypeService bookTypeService;
+    @Autowired
+    CommentService commentService;
 
     /**
      * 登录
@@ -75,7 +75,7 @@ public class AuthorController {
      * by lhw
      *
      * @param authorId
-     * @return
+     * @return ListBooks
      */
     @RequestMapping("/getAllBooksByAuthorId")
     public List<Books> getAllBooksByAuthorId(Integer authorId) {
@@ -100,11 +100,32 @@ public class AuthorController {
      * by lhw
      *
      * @param authorId
-     * @return
+     * @return author_money
      */
     @RequestMapping("/myIncome")
     public int myIncome(Integer authorId) {
         return authorService.selectByAuthorId(authorId).getAuthorMoney();
     }
 
+
+    /**
+     * 作者基本资料
+     * by lhw
+     * @param authorId
+     * @return Author
+     */
+    @RequestMapping("/authorBasicData")
+    public Author authorBasicData(Integer authorId){
+        return authorService.selectByAuthorId(authorId);
+    }
+
+    @RequestMapping("/getAllBookType")
+    public List<BookType> getAllBookType(){
+        return bookTypeService.getAllBookType();
+    }
+
+    @RequestMapping("/readerComment")
+    public List<Comment> readerComment(Integer authorId){
+        return commentService.selectAllByAuthorId(4);
+    }
 }
