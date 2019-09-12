@@ -1,0 +1,82 @@
+#massg_box{
+    width: 1000px;
+    height: 696px;
+    background-color: #f8f9fb;
+    color: #505156;
+    padding: 17px 26px;
+    float: left;
+    margin-left: 16%;
+    margin-top: 40px;
+}
+#massg_top{
+    width: 946px;
+    height: 36px;
+    float: left;
+    border-bottom: 2px solid #d0d5d8;
+    position: relative;
+    overflow: hidden;
+    line-height: 36px;
+}
+
+
+#massg_left{
+
+}
+#massg_right{
+width: 40px;
+    height: 36px;
+    float: right;
+}
+#massg_top a{
+    color: #16a4fa;
+    text-decoration: none;
+    line-height: 36px;
+}
+
+
+#massg_null{
+    width: 946px;
+    height: 24px;
+    float: left;
+    margin: 14px 0px 24px ;
+}
+
+
+
+#massg_out{
+    width: 946px;
+    height: 200px;
+    float: left;
+    margin: 14px 0px 24px ;
+    padding: 0 0 11px;
+}
+
+.massg{
+    width: 824px;
+height: 36px;
+    margin: 0 0 10px 120px ;
+}
+.massg dt{
+    float: left;
+    width: 100px;
+    clear: left;
+    text-align: right;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    line-height: 36px
+}
+.massg dd{
+    display: block;
+    margin-inline-start: 40px;
+    margin-bottom: 10px;
+    margin-left: 120px;
+    line-height: 36px;
+}
+
+
+
+
+
+
+
