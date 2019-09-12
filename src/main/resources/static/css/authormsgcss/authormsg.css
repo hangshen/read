@@ -1,11 +1,11 @@
-#msg_box{
+.msg_box{
     width: 100%;
     height: 1140px;
     margin: 0;
     background-color: #FFFFFF;
 }
 /*顶部*/
-#msg_top{
+.msg_top{
     width: 100%;
     height: 72px;
     margin: 0;
@@ -13,14 +13,17 @@
     background-color: #354052;
 }
 
-#msg_top1{
+.msg_top1{
     width: 1000px;
     height: 72px;
     margin-left: 16%;
     margin-right: auto;
     float: left;
 }
-#msg_top2{
+/*
+logo图
+ */
+.msg_top2{
     width: 195px;
     height: 72px;
     float: left;
@@ -30,14 +33,19 @@
     text-shadow: none;
     border: 0;
 }
-#msg_top3{
+/*
+作者中心字
+ */
+.msg_top3{
     width: 122px;
     height: 72px;
     float: left;
 }
 
-
-#msg_top4{
+/*
+分类
+ */
+.msg_top4{
     width: 400px;
     height: 72px;
     left: 0;
@@ -46,7 +54,7 @@
     float: left;
     margin: 0 10px 0 0;
 }
-#msg_top4 ul{
+.msg_top4 ul{
     margin-block-start: 1em;
     margin-block-end: 1em;
     margin-inline-start: 0px;
@@ -65,19 +73,69 @@
     border-top-right-radius: 5px;
     border-top-left-radius: 5px;
 }
-#noselect a:hover{
+.noselect a:hover{
     color: #f1f4f7;
     outline: medium none;
 }
-#select a:hover{
+.select a:hover{
     color: #000000;
 }
+.penname{
+    text-align: center;
+    width: 200px;
+    height: 25px;
+    float: right;
+    margin-top: 25px;
+    margin-right: 50px;
+
+}
+
+.penname a{
+
+    vertical-align: middle;
+    height: 25px;
+    max-width: 260px;
+    overflow: hidden;
+    word-break: break-all;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-size: 16px;
+    color: #6c7a90;
+}
+.penname a:hover{
+    color: #d3d5de;
+}
+/*
+退出
+ */
+.phui-power {
+    background-image: url('../../images/authorregisterimages/phui.png');
+    background-repeat: no-repeat;
+}
+.phui-power {
+    background-position: -120px -63px;
+    width: 15px;
+    height: 15px;
+}
+.sprites-app-1 {
+    margin-top: 3px;
+    margin-right: 5px;
+}
+
+.w-icon {
+    display: inline-block;
+    vertical-align: text-top;
+}
+
+
+
+
 
 
 
 
 /*内容*/
-#msg_middle{
+.msg_middle{
     width: 68%;
     height: 750px;
     margin-left: 17%;
@@ -85,13 +143,13 @@
     margin-top: 30px;
 }
 
-#msg_table{
+.msg_table{
     width: 198px;
     height: 360px;
     float: left;
     background-color: #f8f9fb;
 }
-#msg_content{
+.msg_content{
     width: 689px;
     height: 750px;
     float: left;
@@ -109,7 +167,7 @@ background-color: #f8f9fb;
 
 
 /*底部*/
-#msg_bottom{
+.msg_bottom{
     width: 1000px;
     height: 136px;
     float: left;
