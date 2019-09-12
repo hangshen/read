@@ -43,4 +43,9 @@ public class BookTypeServiceImpl implements BookTypeService{
         }
         return  bookTypeVoList;
     }
+
+    @Override
+    public List<BookType> getAllBookType() {
+        return bookTypeMapper.selectAll();
+    }
 }
