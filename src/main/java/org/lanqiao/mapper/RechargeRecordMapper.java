@@ -3,6 +3,8 @@ package org.lanqiao.mapper;
 import org.lanqiao.entity.RechargeRecord;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 @Repository
 public interface RechargeRecordMapper {
     int deleteByPrimaryKey(Integer rechargerecordId);
@@ -11,7 +13,7 @@ public interface RechargeRecordMapper {
 
     int insertSelective(RechargeRecord record);
 
-    RechargeRecord selectByPrimaryKey(Integer rechargerecordId);
+    List<RechargeRecord> selectUserRechargeRecord(Integer userLoginId);
 
     int updateByPrimaryKeySelective(RechargeRecord record);
 

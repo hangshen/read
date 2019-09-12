@@ -11,6 +11,8 @@ public class RechargeRecord {
 
     private Integer rechargerecordUserId;
 
+    private UserLogin userLogin;
+
     public Integer getRechargerecordId() {
         return rechargerecordId;
     }
@@ -41,5 +43,13 @@ public class RechargeRecord {
 
     public void setRechargerecordUserId(Integer rechargerecordUserId) {
         this.rechargerecordUserId = rechargerecordUserId;
+    }
+
+    public UserLogin getUserLogin() {
+        return userLogin;
+    }
+
+    public void setUserLogin(UserLogin userLogin) {
+        this.userLogin = userLogin;
     }
 }

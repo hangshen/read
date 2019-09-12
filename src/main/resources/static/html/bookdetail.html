@@ -526,7 +526,7 @@
             $.ajax({
                 url: "http://localhost:8080/getBooksInfoById",
                 type: "post",
-                data: {bookId:7},
+                data: {bookId:5},
                 datatype: "json",
                 success: function (data) {
                     data.chapterSet[0].chapterDate = data.chapterSet[0].chapterDate.substring(0, 10) + " " + data.chapterSet[0].chapterDate.substring(11, 19);

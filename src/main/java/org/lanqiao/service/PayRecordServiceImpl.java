@@ -6,11 +6,13 @@ import org.lanqiao.vo.PayRecordVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class PayRecordServiceImpl implements PayRecordService{
     @Autowired
     PayRecordMapper payRecordMapper;
-    public PayRecord selectPayRecord(PayRecordVo payRecordVo){
+    public List<PayRecord> selectPayRecord(PayRecordVo payRecordVo){
         return  payRecordMapper.selectPayRecord(payRecordVo);
     }
 }
