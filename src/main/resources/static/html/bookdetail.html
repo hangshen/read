@@ -11,6 +11,7 @@
           content="修仙狂少，双亲被杀，新娘被抢，平凡少年在逃亡路上偶遇绝世高人，一枚神奇的玉佩，带着不死神兽，看他如何在凡间、修真界、仙界、魔界，神界掀起腥风血雨。创造出一个又一个的奇迹，最后成走向那通向天尊的道路......."/>
     <meta property="wb:webmaster" content="0e2d310a7690a84c"/>
     <link type="text/css" rel="stylesheet" href="../css/topcss/top1.css"/>
+    <link href="../css/bookdetail/bootstrap.css" rel="stylesheet">
     <script src="../js/topjs/html5shiv.js"></script>
     <script type="text/javascript" src="../js/topjs/libs.js"></script>
     <script src="../js/topjs/ursLogin.js"></script>
@@ -304,19 +305,20 @@
                              width="172" height="237" alt="修仙狂少"/>
                     </a>
                     <div class="f-fl" style="width:506px;">
-                        <h3 title="修仙狂少"><em>{{book.bookName}}</em><span><a
-                                href="/search.do?operation=exact&kind=author&type=4&word=%E8%90%BD%E6%83%85%E6%B3%AA">{{book.author.authorName}}</a>&nbsp;&nbsp;著</span>
+                        <h3 title="修仙狂少">
+                            <em>{{book.bookName}}</em>
+                            <span><a href="">{{book.author.authorName}}</a>&nbsp;&nbsp;著</span>
                         </h3>
                         <div class="description j-desc">
                             {{book.bookIntroduce}}
                         </div>
                         <div class="ops" id="J_ops">
-                            <a href="/book_reader/bd_4b05f5dda48643c998f1dc6bb7a5faa1_4" class="btn btn-main-fill"
+                            <a href="" class="btn btn-main-fill"
                                id="J_readNow" target="_blank"
                                onclick="_gaq.push(['_trackEvent', 'booksource', 'read']);">立即阅读</a>
                             <a href="javascript:;" class="btn btn-main-stroke j-addSub" id="J_addSub"
                                data-id="bd_4b05f5dda48643c998f1dc6bb7a5faa1_4"
-                               data-imgsrc="https://easyreadfs.nosdn.127.net/BbrqsjF52WoURjeprURk8Q==/8796093022275395823"
+                               data-imgsrc=""
                                onclick="_gaq.push(['_trackEvent', 'booksource', 'add2bookrack']);">加入书架</a>
 
 
@@ -336,18 +338,18 @@
                     <ul class="tabs">
                         <li class="crt" style="display:block;">最近更新</li>
                         <li style="display:block;"><a
-                                href="/newBookReader.do?operation=catalog&sourceUuid=bd_4b05f5dda48643c998f1dc6bb7a5faa1_4"
+                                href=""
                                 target="_blank">全部目录<span>({{book.chapterSet[0].chapterSort}}章)</span></a></li>
                     </ul>
                     <div class="contents">
                         <div class="tab-item crt">
-                            <a href="/book_reader/bd_4b05f5dda48643c998f1dc6bb7a5faa1_4/kanshu_32097_1527_4"
+                            <a href=""
                                onclick="_gaq.push(['_trackEvent', 'booksource', 'latest']);" target="_blank"
                                class="m-newupdate">
                                 <h4>第{{book.chapterSet[0].chapterSort}}章：{{book.chapterSet[0].chapterName}}</h4>
                             </a>
                             <span class="updatetime">更新时间：{{book.chapterSet[0].chapterDate}}</span>
-                            <a href="/book_reader/bd_4b05f5dda48643c998f1dc6bb7a5faa1_4/kanshu_32097_1527_4"
+                            <a href=""
                                onclick="_gaq.push(['_trackEvent', 'booksource', 'latest']);" target="_blank"
                                class="m-newupdate">
                                 <p id='J_latestUpdate'></p>
@@ -358,7 +360,7 @@
                         </div>
                     </div>
                 </div>
-                <!-- <input type="hidden" name="articleId" value="kanshu_32097_1527_4"/> -->
+
                 <script type="text/javascript"
                         src="//yuedust.yuedu.126.net/js/reader/sea-modules/seajs/seajs/2.0.0/sea.js?69ba3a26"></script>
                 <script type="text/javascript"
@@ -393,8 +395,7 @@
                             </div>
                             <div class="ops">
                                 <a href="javascript:;" class="btn" onclick="showGiveDialog()">我要赠送&gt;</a>
-                                <a href="/articlePresentDetailList.do?currentPage=1&format=list&orderBy=0&sourceUuid=bd_4b05f5dda48643c998f1dc6bb7a5faa1_4"
-                                   target="_blank" class="more">全部赠送记录&gt;</a>
+                                <a href="" target="_blank" class="more">全部赠送记录&gt;</a>
                             </div>
                         </li>
                     </ul>
@@ -403,10 +404,26 @@
                 <!--图书的作者简介-->
                 <!--评论-->
                 <div id="J_CommentSection" class="m-detail-comments">
-                    <h3>评论<span>0</span></h3>
-                    <div class='comment_none'></div>
-                    <p class='comment_text_none'>扫码下载网易云阅读</p>
+                    <h3>评论<span>x</span></h3>
+                    <div class="col-md-9 rightBox" id="comment">
+                        <commemt-content v-bind:comment="comment"></commemt-content>
+
+                        <div class="m-page m-page-b">
+                            <a class="go go-n" v-if="current != 1" @click="change(1)">首页</a>
+                            <a class="go go-n" v-if="current != 1" @click="change(current - 1)">上一页</a>
+                            <span class="nums">
+                                    <a v-for="index in page" :class="{'j-crt':current==index}" @click="change(index)">{{index}}</a>
+                                </span>
+                            <a class="go go-n" v-if="current !=  page" @click="change(current + 1)">下一页</a>
+                            <a class="go go-n" v-if="current !=  page" @click="change(page)">尾页</a>
+                            <input name="pages" type="number" v-model="input" style="width: 40px">
+                            <a class="go go-n" @click="change(input)">跳转</a>
+                        </div>
+
+                        <comment-textarea v-on:submit="addComment"></comment-textarea>
+                    </div>
                 </div>
+
             </div>
         </div>
     </div>
@@ -518,25 +535,125 @@
 <div class="m-mask f-dn"></div>
 <script src="../js/topjs/jquery-3.4.1.js"></script>
 <script src="../js/topjs/vue.min.js"></script>
+<script src="../js/topjs/vue.min.js"></script>
 <script type="text/javascript">
+
+    var temp = new Object();
+    temp.commentBookId = 5;
+    temp.pageNum = 1;
+    Vue.component('commemt-content', {
+        template: '\
+	<div class="commentBox">\
+		<p v-if="comment.length==0">暂无评论，我来发表第一篇评论！</p>\
+		<div v-else>\
+			<div class="comment" v-for="(item,index) in comment" v-bind:index="index" >\
+				<b><img style="width: 30px; height: 30px; line-height: 20px"> {{item.users.userName}}<span>{{item.commentDate}}</span></b>\
+				<p>{{item.commentMassage}}</p>\
+			</div>\
+		</div>\
+	</div>',
+        props: ['comment']
+    });
+
+    Vue.component('commentTextarea', {
+        template: '\
+	<div class="commentBox">\
+		<h3>发表评论</h3>\
+		<textarea name="" value="请填写评论内容" v-model="commentText"></textarea>\
+		<button class="btn" @click="addComment">发表</button>\
+		<button class="btn" @click="canelComment">取消</button>\
+	</div>',
+        props: ['type', 'name'],
+        data: function () {
+            return {commentText: ""}
+        },
+        methods: {
+            addComment: function () {
+                this.$emit("submit", this.commentText);
+                this.commentText = "";
+            },
+            canelComment: function () {
+                this.$emit("canel");
+                this.commentText = "";
+            }
+        }
+    });
+
     var mv1 = new Vue({
         el: '.g-bdw',
-        data: {book: {}},
+        data: {
+            book: {},
+            commenter: "session",   //评论人
+            comment: {},
+            page: 0,
+            current: 1,
+            input: 1
+        },
         created: function () {
             $.ajax({
                 url: "http://localhost:8080/getBooksInfoById",
                 type: "post",
-                data: {bookId:5},
+                data: {bookId: 5},
                 datatype: "json",
                 success: function (data) {
                     data.chapterSet[0].chapterDate = data.chapterSet[0].chapterDate.substring(0, 10) + " " + data.chapterSet[0].chapterDate.substring(11, 19);
                     mv1.book = data;
                 }
             })
+            $.ajax({
+                url: "http://localhost:8080/getCommentForBooks",
+                type: "post",
+                data: JSON.stringify(temp),
+                datatype: "json",
+                contentType: 'application/json;charset=UTF-8',
+                success: function (data) {
+                    for (var i = 0; i < data.list.length; i++) {
+                        data.list[i].commentDate = data.list[i].commentDate.substring(0, 10) + " " + data.list[i].commentDate.substring(11, 19);
+                    }
+                    mv1.comment = data.list;
+                    mv1.page = data.pages;
+                }
+            })
         },
         methods: {
+            addComment: function (data) {
+                this.comment.push({
+                    name: 'session',
+                    // time: ,
+                    content: data,
+                });
+            }, change: function (i) {
+                if (i <= this.page && i >= 1) {
+                    this.current = i;
+                } else if (i < 1) {
+                    this.current = 1;
+                } else {
+                    this.current = this.page;
+                }
+                if (this.input < 1) {
+                    this.input = 1;
+                } else if (this.input > this.page) {
+                    this.input = this.page;
+                }
+                temp.pageNum = this.current;
+                $.ajax({
+                    url: "http://localhost:8080/getCommentForBooks",
+                    type: "post",
+                    data: JSON.stringify(temp),
+                    datatype: "json",
+                    contentType: 'application/json;charset=UTF-8',
+                    success: function (data) {
+                        for (var i = 0; i < data.list.length; i++) {
+                            data.list[i].commentDate = data.list[i].commentDate.substring(0, 10) + " " + data.list[i].commentDate.substring(11, 19);
+                        }
+                        mv1.comment = data.list;
+                        mv1.page = data.pages;
+                    }
+                })
+            }
         }
     })
+
 </script>
 </body>
 </html>
