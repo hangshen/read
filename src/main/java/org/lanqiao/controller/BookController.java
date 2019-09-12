@@ -61,11 +61,20 @@ public class BookController {
     }
     @RequestMapping("/getBooksInfoById")
     public Books selectByPrimaryKey(Integer bookId){
-        return bookService.selectByPrimaryKey(bookId);
+        return bookService.selectByPrimaryKey(5);
     }
 
     @RequestMapping("/getshelfbooks")
-    public List<LeiBooksVo> searchShelfBooks(Integer userId){
-        return bookService.selectShelfBooks(userId);
+    public List<LeiBooksVo> searchShelfBooks(Integer bookState,Integer userId){
+        return bookService.selectShelfBooks(bookState,userId);
+    }
+
+    @RequestMapping("/delectshelfbooks")
+    public Integer delectShelfBooks(Integer bookId,Integer userId){
+        if(bookService.selectCheckBookState(bookId,userId) == 0){
+            return bookService.updateShelfBook(bookId,userId);
+        } else {
+            return bookService.delectShelfBook(bookId,userId);
+        }
     }
 }

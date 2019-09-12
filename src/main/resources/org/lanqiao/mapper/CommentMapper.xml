@@ -38,7 +38,7 @@
   </sql>
   <select id="selectAllComment" resultMap="CommentMap" parameterType="org.lanqiao.vo.CommentPageVo" >
     SELECT * from books b,comment c,users u WHERE c.comment_user_id = u.user_id and
-b.book_id = c.comment_book_id and c.comment_book_id = #{commentBookId,jdbcType=INTEGER}
+b.book_id = c.comment_book_id and c.comment_book_id = #{commentBookId,jdbcType=INTEGER} ORDER BY c.comment_id DESC
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from comment

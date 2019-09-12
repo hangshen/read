@@ -15,6 +15,7 @@ public interface AuthorMapper {
 //
 //    int updateByPrimaryKey(Author record);
     Author selectByAuthorLoginAuthorId(Integer authorLoginAuthorId);
-    Author selectByAuthorAccount(String authorAccount);
+    Author selectByAuthorRealID(String realID);
     int insert(Author author);
+    Author selectByAuthorId(Integer authorId);
 }

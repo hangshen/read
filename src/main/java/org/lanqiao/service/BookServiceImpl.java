@@ -119,7 +119,22 @@ public class BookServiceImpl implements BookService{
     }
 
     @Override
-    public List<LeiBooksVo> selectShelfBooks(Integer userId) {
-        return booksMapper.leiSelectShelfBooksByUserId(userId);
+    public List<LeiBooksVo> selectShelfBooks(Integer bookState,Integer userId) {
+        return booksMapper.leiSelectShelfBooksByUserId(bookState,userId);
+    }
+
+    @Override
+    public int selectCheckBookState(Integer bookId, Integer userId) {
+        return booksMapper.leiCheckBookShelfState(bookId,userId);
+    }
+
+    @Override
+    public int updateShelfBook(Integer bookId, Integer userId) {
+        return booksMapper.leiUpdateBookShelf(bookId,userId);
+    }
+
+    @Override
+    public int delectShelfBook(Integer bookId, Integer userId) {
+        return booksMapper.leiDelectBookShelf(bookId,userId);
     }
 }

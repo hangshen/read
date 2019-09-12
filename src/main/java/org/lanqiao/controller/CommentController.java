@@ -25,4 +25,8 @@ public class CommentController {
         PageInfo<Comment> pageInfo = new PageInfo<Comment>(list);
         return pageInfo;
     }
+    @RequestMapping("/insertComment")
+    public int insertSelective(@RequestBody Comment record){
+        return commentService.insertSelective(record);
+    }
 }
