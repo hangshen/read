@@ -110,21 +110,21 @@
                 <ul id="J_Container" class="m-resultlist">
                     <li class="searchItem" v-for="(book,index) in books">
                         <div class="book"><a class="cover" href="" target="_blank"> <img width="114" height="160"
-                                                                                         v-bind:src="book.bookImg">
-                            <span class="png wan"></span> </a> <h5><a href="" target="_blank">{{book.bookName}}</a></h5>
-                            <p class="author">作者：{{book.authorName}}</p>
+                                                                                         v-bind:src="book.solrBooksVo.bookImg">
+                            <span class="png wan"></span> </a> <h5><a href="" target="_blank">{{book.solrBooksVo.bookName}}</a></h5>
+                            <p class="author">作者：{{book.solrBooksVo.authorName}}</p>
                             <div class="w-star w-star1">
                                 <div v-for="i in 5">
-                                    <span class="yes" v-if="i * 2 < book.bookScore">&nbsp;</span>
+                                    <span class="yes" v-if="i * 2 < book.solrBooksVo.bookScore">&nbsp;</span>
                                     <span class="no" v-else>&nbsp;</span>
                                 </div>
                             </div>
-                            <p class="price"><em> {{book.bookWord}}字 </em></p>
-                            <p class="disc"><span class="j-cutted" words="72">{{book.bookIntroduce}}</span>
+                            <p class="price"><em> {{book.solrBooksVo.bookWord}}字 </em></p>
+                            <p class="disc"><span class="j-cutted" words="72">{{book.solrBooksVo.bookIntroduce}}</span>
                             </p></div>
                     </li>
                 </ul>
-                <div class="no-reault" style="display:none;">
+                <div class="no-reault" v-if="books.length == 0">
                     <p>很抱歉没有找到相关的内容，请换个关键词试试！</p>
                 </div>
             </div>
@@ -253,8 +253,8 @@
                     data: {keyword: $("input[id='i1']").val(), pageNum: tempPageNum},
                     datatype: "json",
                     success: function (data) {
-                        mv1.books = data.list;
-                        mv2.page = data.pages;
+                        mv1.books = data;
+                        mv2.page = data[0].totalPage;
                     }
                 })
             }
@@ -268,8 +268,8 @@
             data: {keyword: $("input[id='i1']").val(), pageNum: tempPageNum},
             datatype: "json",
             success: function (data) {
-                mv1.books = data.list;
-                mv2.page = data.pages;
+                mv1.books = data;
+                mv2.page = data[0].totalPage;
             }
         })
     })

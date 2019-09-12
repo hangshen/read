@@ -4,6 +4,8 @@ import org.lanqiao.entity.PayRecord;
 import org.lanqiao.vo.PayRecordVo;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 @Repository
 public interface PayRecordMapper {
     int deleteByPrimaryKey(Integer payrecordId);
@@ -13,7 +15,7 @@ public interface PayRecordMapper {
     int insertSelective(PayRecord record);
 
     PayRecord selectByPrimaryKey(Integer payrecordId);
-    PayRecord selectPayRecord(PayRecordVo payRecordVo);
+    List<PayRecord> selectPayRecord(PayRecordVo payRecordVo);
     int updateByPrimaryKeySelective(PayRecord record);
 
     int updateByPrimaryKey(PayRecord record);

@@ -4,7 +4,9 @@ import org.lanqiao.entity.PayRecord;
 import org.lanqiao.vo.PayRecordVo;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 @Repository
 public interface PayRecordService {
-    PayRecord selectPayRecord(PayRecordVo payRecordVo);
+    List<PayRecord> selectPayRecord(PayRecordVo payRecordVo);
 }
