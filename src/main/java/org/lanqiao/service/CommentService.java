@@ -7,4 +7,5 @@ import java.util.List;
 
 public interface CommentService {
     List<Comment> selectAllComment(CommentPageVo commentPageVo);
+    int insertSelective(Comment record);
 }

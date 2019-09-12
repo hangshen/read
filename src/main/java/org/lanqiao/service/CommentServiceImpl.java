@@ -15,4 +15,7 @@ public class CommentServiceImpl implements CommentService{
     public List<Comment> selectAllComment(CommentPageVo commentPageVo){
         return commentMapper.selectAllComment(commentPageVo);
     }
+    public int insertSelective(Comment record){
+        return commentMapper.insertSelective(record);
+    }
 }
