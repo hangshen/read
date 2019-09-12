@@ -39,10 +39,12 @@ public class BookController {
         }else {
             totalPage = (list.size() / pageSize)+1;
         }
-        for (int i = (pageNum - 1) * pageSize; i < pageNum * pageSize; i++) {
-            solrBooksPageVo.setSolrBooksVo(list.get(i));
-            solrBooksPageVo.setTotalPage(totalPage);
-            solrBooksVoList.add(solrBooksPageVo);
+        if(totalPage!=0){
+            for (int i = (pageNum - 1) * pageSize; i < pageNum * pageSize; i++) {
+                solrBooksPageVo.setSolrBooksVo(list.get(i));
+                solrBooksPageVo.setTotalPage(totalPage);
+                solrBooksVoList.add(solrBooksPageVo);
+            }
         }
         return solrBooksVoList;
     }
@@ -59,7 +61,7 @@ public class BookController {
     }
     @RequestMapping("/getBooksInfoById")
     public Books selectByPrimaryKey(Integer bookId){
-        return bookService.selectByPrimaryKey(5);
+        return bookService.selectByPrimaryKey(bookId);
     }
 
     @RequestMapping("/getshelfbooks")
