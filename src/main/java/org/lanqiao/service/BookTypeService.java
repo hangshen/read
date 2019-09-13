@@ -9,4 +9,5 @@ import java.util.List;
 @Repository
 public interface BookTypeService {
     List<BookTypeVo> selectAll();
+    List<BookType> getAllBookType();
 }
