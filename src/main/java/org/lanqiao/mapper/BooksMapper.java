@@ -18,8 +18,13 @@ public interface BooksMapper {
 
     Books selectByPrimaryKey(Integer bookId);
     List<Books> selectAllBooks();
+    List<Books> selectByClick();
+    List<Books> selectByReward();
+    List<Books> selectByDingYue();
+    List<Books> selectByXiaoLiang();
     List<Books> selectBooksByType(SelectTypeVo selectTypeVo);
     Books selectAllChapters(Integer bookId);
+    Books selectBooksPayRecord(Integer bookId);
     int updateByPrimaryKeySelective(Books record);
 
     int updateByPrimaryKey(Books record);

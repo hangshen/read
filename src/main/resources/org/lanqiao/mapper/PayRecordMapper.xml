@@ -10,7 +10,7 @@
     <result column="payrecord_user_id" property="payrecordUserId" jdbcType="INTEGER" />
     <association property="userLogin" resultMap="UserLoginResultMap"></association>
     <association property="books" resultMap="BooksMap"></association>
-    <collection property="vipList" resultMap="VipMap"></collection>
+    <association property="vip" resultMap="VipMap"></association>
   </resultMap>
   <resultMap id="UserLoginResultMap" type="org.lanqiao.entity.UserLogin" >
     <id column="user_login_id" property="userLoginId" jdbcType="INTEGER" />

@@ -43,30 +43,26 @@ public class BookServiceImpl implements BookService{
     @Override
     public List<Books> selectBooksByType(SelectTypeVo selectTypeVo){
         List<Books> list = booksMapper.selectBooksByType(selectTypeVo);
-        for(Books b : list){
-            long te1 = b.getBookUpDate().getTime();
-            te1 = te1 + 8 * 3600 * 1000;
-            b.setBookUpDate(new Timestamp(te1));
-        }
+        changeBookTime(list);
         for(int i = 0;i<list.size();i++){
-            changeTime(list.get(i));
+            changeChapterTime(list.get(i));
         }
         return list;
     }
     @Override
     public Books selectAllChapters(Integer bookId){
         Books books = booksMapper.selectAllChapters(bookId);
-        changeTime(books);
+        changeChapterTime(books);
         return  books;
     }
     @Override
     public Books selectByPrimaryKey(Integer bookId){
         Books books = booksMapper.selectByPrimaryKey(bookId);
-        changeTime(books);
+        changeChapterTime(books);
         return  books;
     }
 //改变更新时间
-    private Books changeTime(Books books)
+    private Books changeChapterTime(Books books)
     {
         List<Chapter> c = books.getChapterSet();
         for (Chapter chapter : c){
@@ -75,6 +71,15 @@ public class BookServiceImpl implements BookService{
             chapter.setChapterDate(new Timestamp(te2));
         }
         return  books;
+    }
+    private List<Books> changeBookTime(List<Books>  booksList)
+    {
+        for(Books b : booksList){
+            long te1 = b.getBookUpDate().getTime();
+            te1 = te1 + 8 * 3600 * 1000;
+            b.setBookUpDate(new Timestamp(te1));
+        }
+        return booksList;
     }
     @Override
     public List<SolrBooksVo> queryByKeyword(String keyword) {
@@ -101,6 +106,34 @@ public class BookServiceImpl implements BookService{
             }
             return content2;
         }
+    }
+    @Override
+    public Books selectBooksPayRecord(Integer bookId){
+        return booksMapper.selectBooksPayRecord(bookId);
+    }
+    @Override
+    public List<Books> selectByClick(){
+        List<Books> list= booksMapper.selectByClick();
+        changeBookTime(list);
+        return list;
+    }
+    @Override
+    public List<Books> selectByReward(){
+        List<Books> list= booksMapper.selectByReward();
+        changeBookTime(list);
+        return list;
+    }
+    @Override
+    public List<Books> selectByDingYue(){
+        List<Books> list= booksMapper.selectByDingYue();
+        changeBookTime(list);
+        return list;
+    }
+    @Override
+    public List<Books> selectByXiaoLiang(){
+        List<Books> list= booksMapper.selectByXiaoLiang();
+        changeBookTime(list);
+        return list;
     }
 
     /**

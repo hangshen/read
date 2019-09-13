@@ -14,9 +14,12 @@
     <result column="book_click" property="bookClick" jdbcType="DOUBLE" />
     <result column="book_reward" property="bookReward" jdbcType="BIGINT" />
     <result column="book_type_id" property="bookTypeId" jdbcType="INTEGER" />
+    <result column="book_author_id" property="bookAuthorId" jdbcType="INTEGER"/>
     <association property="bookType" resultMap="BookTypeMap"></association>
     <association property="author" resultMap="AuthorMap"></association>
     <collection property="chapterSet" resultMap="ChapterMap"></collection>
+    <collection property="payRecordList" resultMap="PayRecordMap"></collection>
+    <collection property="bookShelfList" resultMap="BookShelfMap"></collection>
   </resultMap>
   <resultMap id="AuthorMap" type="org.lanqiao.entity.Author" >
     <id column="author_id" property="authorId" jdbcType="INTEGER" />
@@ -51,11 +54,38 @@
     <result column="book_flag" property="bookFlag" jdbcType="VARCHAR" />
   </resultMap>
 
-
+  <resultMap id="PayRecordMap" type="org.lanqiao.entity.PayRecord" >
+    <id column="payrecord_id" property="payrecordId" jdbcType="INTEGER" />
+    <result column="payrecord_flag" property="payrecordFlag" jdbcType="VARCHAR" />
+    <result column="payrecord_money" property="payrecordMoney" jdbcType="INTEGER" />
+    <result column="payrecord_book_id" property="payrecordBookId" jdbcType="VARCHAR" />
+    <result column="payrecord_date" property="payrecordDate" jdbcType="TIMESTAMP" />
+    <result column="payrecord_user_id" property="payrecordUserId" jdbcType="INTEGER" />
+    <result column="payrecord_book_id" property="payrecordBookId" jdbcType="INTEGER" />
+    <association property="users" resultMap="UserResultMap"></association>
+  </resultMap>
+  <resultMap id="UserResultMap" type="org.lanqiao.entity.Users" >
+    <id column="user_id" property="userId" jdbcType="INTEGER" />
+    <result column="user_name" property="userName" jdbcType="VARCHAR" />
+    <result column="user_sex" property="userSex" jdbcType="VARCHAR" />
+    <result column="user_money" property="userMoney" jdbcType="INTEGER" />
+    <result column="user_img" property="userImg" jdbcType="VARCHAR" />
+    <result column="user_introduce" property="userIntroduce" jdbcType="VARCHAR" />
+  </resultMap>
+  <resultMap id="BookShelfMap" type="org.lanqiao.entity.BookShelf" >
+    <id column="shelf_id" property="shelfId" jdbcType="INTEGER" />
+    <result column="shelf_book_flag" property="shelfBookFlag" jdbcType="INTEGER" />
+    <result column="shelf_user_id" property="shelfUserId" jdbcType="INTEGER" />
+    <result column="shelf_book_id" property="shelfBookId" jdbcType="INTEGER" />
+  </resultMap>
   <sql id="Base_Column_List" >
     book_id, book_name, book_img, book_introduce, book_up_date, book_finish_date, book_score, 
     book_flag, book_word, book_click, book_reward, book_type_id, book_author_id
   </sql>
+  <select id="selectBooksPayRecord" resultMap="BooksMap" parameterType="java.lang.Integer" >
+    select * from books b,payrecord pr,users u WHERE b.book_id = pr.payrecord_book_id AND
+pr.payrecord_user_id = u.user_id and b.book_id = #{bookId,jdbcType=INTEGER} and pr.payrecord_flag = '打赏'
+  </select>
   <select id="selectBooksByType" resultMap="BooksMap" parameterType="org.lanqiao.vo.SelectTypeVo">
     SELECT * from books b,chapter c,author a,(SELECT MAX(chapter_sort) cs,chapter_book_id cbi from chapter ct GROUP BY ct.chapter_book_id) d
     <where>
@@ -102,7 +132,23 @@
     WHERE b.book_author_id = a.author_id AND b.book_type_id = bt.booktype_id and b.book_id = #{bookId,jdbcType=INTEGER} and b.book_id = c.chapter_book_id and c.chapter_sort = d.cs
     and c.chapter_book_id=d.chapter_book_id
   </select>
-
+  <select id="selectByClick" resultMap="BooksMap" >
+     select * from books b,author a,booktype bt where b.book_author_id=a.author_id AND
+b.book_type_id = bt.booktype_id order by b.book_click desc
+  </select>
+  <select id="selectByReward" resultMap="BooksMap" >
+     select * from books b,author a,booktype bt where b.book_author_id=a.author_id AND
+b.book_type_id = bt.booktype_id order by b.book_reward desc
+  </select>
+  <select id="selectByDingYue" resultMap="BooksMap" >
+     select * from books b,author a,booktype bt,(SELECT COUNT(*) ct,b.book_id from books b,bookshelf bs WHERE b.book_id = bs.shelf_book_id GROUP BY b.book_id) co
+     where b.book_author_id=a.author_id AND b.book_id = co.book_id and b.book_type_id = bt.booktype_id order by co.ct desc
+  </select>
+  <select id="selectByXiaoLiang" resultMap="BooksMap" >
+     select * from books b,author a,booktype bt,(SELECT COUNT(*) ct,b.book_id from books b,payrecord pr WHERE pr.payrecord_book_id = b.book_id
+     and pr.payrecord_flag='购买'GROUP BY b.book_id) co where b.book_author_id=a.author_id AND b.book_id = co.book_id and
+     b.book_type_id = bt.booktype_id order by co.ct desc
+  </select>
   <select id="leiSelectShelfBooksByUserId" resultMap="LeiBooksVoMap" parameterType="java.lang.Integer">
      SELECT id AS book_id,book_name,author_name,book_img,book_flag,book_score FROM solrquery WHERE solrquery.id IN(SELECT bookshelf.shelf_book_id FROM bookshelf WHERE bookshelf.shelf_book_flag=#{bookState} AND bookshelf.shelf_user_id=#{userId})
   </select>
@@ -112,7 +158,7 @@
   </select>
 
   <select id="selectBooksByAuthorId" resultMap="BooksMap" parameterType="java.lang.Integer">
-    select * from books where book_author_id = #{authorId,jdbcType=INTEGER}
+    select * from books b,author a where b.book_author_id=a.author_id and book_author_id = #{authorId,jdbcType=INTEGER}
   </select>
 
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >

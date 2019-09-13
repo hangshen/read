@@ -763,7 +763,7 @@
             })
         }, closest: function (e, t) {
             var n, r = 0, i = this.length, o = [], a = "string" != typeof e && k(e);
-            if (!N.test(e)) for (; r < i; r++) for (n = this[r]; n && n !== t; n = n.parentNode) if (n.nodeType < 11 && (a ? -1 < a.index(n) : 1 === n.nodeType && k.find.matchesSelector(n, e))) {
+            if (!N.test(e)) for (; r < i; r++) for (n = this[r]; n && n !== t; n = n.parentNode) if (n.nodeType < 11 && (a ? -1 < a.read(n) : 1 === n.nodeType && k.find.matchesSelector(n, e))) {
                 o.push(n);
                 break
             }
@@ -1282,7 +1282,7 @@
         }, handlers: function (e, t) {
             var n, r, i, o, a, s = [], u = t.delegateCount, l = e.target;
             if (u && l.nodeType && !("click" === e.type && 1 <= e.button)) for (; l !== this; l = l.parentNode || this) if (1 === l.nodeType && ("click" !== e.type || !0 !== l.disabled)) {
-                for (o = [], a = {}, n = 0; n < u; n++) void 0 === a[i = (r = t[n]).selector + " "] && (a[i] = r.needsContext ? -1 < k(i, this).index(l) : k.find(i, this, null, [l]).length), a[i] && o.push(r);
+                for (o = [], a = {}, n = 0; n < u; n++) void 0 === a[i = (r = t[n]).selector + " "] && (a[i] = r.needsContext ? -1 < k(i, this).read(l) : k.find(i, this, null, [l]).length), a[i] && o.push(r);
                 o.length && s.push({elem: l, handlers: o})
             }
             return l = this, u < t.length && s.push({elem: l, handlers: t.slice(u)}), s
