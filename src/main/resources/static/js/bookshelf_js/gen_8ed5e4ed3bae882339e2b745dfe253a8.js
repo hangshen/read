@@ -1163,7 +1163,7 @@
             if (s.preDispatch && s.preDispatch.call(this, c) === !1) return;
             if (o && (!c.button || c.type !== "click")) for (f = c.target; f != this; f = f.parentNode || this) if (f.disabled !== !0 || c.type !== "click") {
                 h = {}, j = [];
-                for (d = 0; d < o; d++) k = n[d], l = k.selector, h[l] === b && (h[l] = p(l, this).index(f) >= 0), h[l] && j.push(k);
+                for (d = 0; d < o; d++) k = n[d], l = k.selector, h[l] === b && (h[l] = p(l, this).read(f) >= 0), h[l] && j.push(k);
                 j.length && t.push({elem: f, matches: j})
             }
             n.length > o && t.push({elem: this, matches: n.slice(o)});
@@ -1943,7 +1943,7 @@
         }, filter: function (a) {
             return this.pushStack(bj(this, a, !0), "filter", a)
         }, is: function (a) {
-            return !!a && (typeof a == "string" ? bf.test(a) ? p(a, this.context).index(this[0]) >= 0 : p.filter(a, this).length > 0 : this.filter(a).length > 0)
+            return !!a && (typeof a == "string" ? bf.test(a) ? p(a, this.context).read(this[0]) >= 0 : p.filter(a, this).length > 0 : this.filter(a).length > 0)
         }, closest: function (a, b) {
             var c, d = 0, e = this.length, f = [], g = bf.test(a) || typeof a != "string" ? p(a, b || this.context) : 0;
             for (; d < e; d++) {

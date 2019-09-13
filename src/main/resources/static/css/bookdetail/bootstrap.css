@@ -822,7 +822,7 @@ h3.title {
     float: right;
     margin-left: 20px;
     padding: 5px 30px;
-    background: #01553D;
+    background: #E1251B;
     border-radius: 5px;
     color: #fff;
     font-size: 16px;
@@ -830,7 +830,7 @@ h3.title {
 
 .commentBox button:hover {
     color: #fff;
-    background: #047857
+    background: #990000;
 }
 
 .reply {

@@ -258,7 +258,7 @@
                 if ("register" == e.page) i = "index_reg2.html"
             }
         } else {
-            i = "index.html";
+            i = "read.html.html";
             if (e.single) {
                 i = "index_dl.html";
                 if ("register" == e.page) i = "index_reg.html"

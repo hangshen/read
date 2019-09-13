@@ -1,9 +1,7 @@
 package org.lanqiao.mapper;
 
 import org.lanqiao.entity.Read;
-import org.springframework.stereotype.Repository;
 
-@Repository
 public interface ReadMapper {
     int deleteByPrimaryKey(Integer readId);
 
