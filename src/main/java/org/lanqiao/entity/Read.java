@@ -3,11 +3,13 @@ package org.lanqiao.entity;
 public class Read {
     private Integer readId;
 
-    private String readFlag;
-
     private Integer readUserId;
 
     private Integer readBookId;
+
+    private Integer readChapterId;
+
+    private Integer readPageNum;
 
     public Integer getReadId() {
         return readId;
@@ -15,14 +17,6 @@ public class Read {
 
     public void setReadId(Integer readId) {
         this.readId = readId;
-    }
-
-    public String getReadFlag() {
-        return readFlag;
-    }
-
-    public void setReadFlag(String readFlag) {
-        this.readFlag = readFlag == null ? null : readFlag.trim();
     }
 
     public Integer getReadUserId() {
@@ -39,5 +33,21 @@ public class Read {
 
     public void setReadBookId(Integer readBookId) {
         this.readBookId = readBookId;
+    }
+
+    public Integer getReadChapterId() {
+        return readChapterId;
+    }
+
+    public void setReadChapterId(Integer readChapterId) {
+        this.readChapterId = readChapterId;
+    }
+
+    public Integer getReadPageNum() {
+        return readPageNum;
+    }
+
+    public void setReadPageNum(Integer readPageNum) {
+        this.readPageNum = readPageNum;
     }
 }

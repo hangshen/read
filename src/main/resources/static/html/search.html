@@ -123,10 +123,10 @@
                             <p class="disc"><span class="j-cutted" words="72">{{book.solrBooksVo.bookIntroduce}}</span>
                             </p></div>
                     </li>
+                    <div class="no-reault" style="margin-left: 200px" v-if="books.length == 0">
+                        <p>很抱歉没有找到相关的内容，请换个关键词试试！</p>
+                    </div>
                 </ul>
-                <div class="no-reault" v-if="books.length == 0">
-                    <p>很抱歉没有找到相关的内容，请换个关键词试试！</p>
-                </div>
             </div>
         </div>
     </div>
