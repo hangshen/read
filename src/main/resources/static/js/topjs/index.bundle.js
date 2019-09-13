@@ -611,7 +611,7 @@
             key: "hoverEvent", value: function () {
                 var g = this;
                 this.foldList.on("mouseenter", function (j) {
-                    var h = g.foldList.index(j.currentTarget);
+                    var h = g.foldList.read(j.currentTarget);
                     g.hoverTimer = setTimeout(function () {
                         g.switchHover(h)
                     }, g.settings.hoverDuring)

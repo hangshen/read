@@ -18,4 +18,9 @@ public class CommentServiceImpl implements CommentService{
     public int insertSelective(Comment record){
         return commentMapper.insertSelective(record);
     }
+
+    @Override
+    public List<Comment> selectAllByAuthorId(Integer authorId) {
+        return commentMapper.selectAllByAuthorId(authorId);
+    }
 }

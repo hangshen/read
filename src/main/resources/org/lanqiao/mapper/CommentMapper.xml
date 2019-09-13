@@ -1,111 +1,128 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="org.lanqiao.mapper.CommentMapper" >
-  <resultMap id="CommentMap" type="org.lanqiao.entity.Comment" >
-    <id column="comment_id" property="commentId" jdbcType="INTEGER" />
-    <result column="comment_massage" property="commentMassage" jdbcType="VARCHAR" />
-    <result column="comment_date" property="commentDate" jdbcType="TIMESTAMP" />
-    <result column="comment_book_id" property="commentBookId" jdbcType="INTEGER" />
-    <result column="comment_user_id" property="commentUserId" jdbcType="INTEGER" />
-    <association property="books" resultMap="BooksMap"></association>
-    <association property="users" resultMap="UserResultMap"></association>
-  </resultMap>
-  <resultMap id="BooksMap" type="org.lanqiao.entity.Books" >
-    <id column="book_id" property="bookId" jdbcType="INTEGER" />
-    <result column="book_name" property="bookName" jdbcType="VARCHAR" />
-    <result column="book_img" property="bookImg" jdbcType="VARCHAR" />
-    <result column="book_introduce" property="bookIntroduce" jdbcType="VARCHAR" />
-    <result column="book_up_date" property="bookUpDate" jdbcType="TIMESTAMP" />
-    <result column="book_finish_date" property="bookFinishDate" jdbcType="DATE" />
-    <result column="book_score" property="bookScore" jdbcType="DOUBLE" />
-    <result column="book_flag" property="bookFlag" jdbcType="VARCHAR" />
-    <result column="book_word" property="bookWord" jdbcType="DOUBLE" />
-    <result column="book_click" property="bookClick" jdbcType="DOUBLE" />
-    <result column="book_reward" property="bookReward" jdbcType="BIGINT" />
-    <result column="book_type_id" property="bookTypeId" jdbcType="INTEGER" />
-    <result column="book_author_id" property="bookAuthorId" jdbcType="INTEGER" />
-  </resultMap>
-  <resultMap id="UserResultMap" type="org.lanqiao.entity.Users" >
-    <id column="user_id" property="userId" jdbcType="INTEGER" />
-    <result column="user_name" property="userName" jdbcType="VARCHAR" />
-    <result column="user_sex" property="userSex" jdbcType="VARCHAR" />
-    <result column="user_money" property="userMoney" jdbcType="INTEGER" />
-    <result column="user_img" property="userImg" jdbcType="VARCHAR" />
-    <result column="user_introduce" property="userIntroduce" jdbcType="VARCHAR" />
-  </resultMap>
-  <sql id="Base_Column_List" >
+<mapper namespace="org.lanqiao.mapper.CommentMapper">
+    <resultMap id="CommentMap" type="org.lanqiao.entity.Comment">
+        <id column="comment_id" property="commentId" jdbcType="INTEGER"/>
+        <result column="comment_massage" property="commentMassage" jdbcType="VARCHAR"/>
+        <result column="comment_date" property="commentDate" jdbcType="TIMESTAMP"/>
+        <result column="comment_book_id" property="commentBookId" jdbcType="INTEGER"/>
+        <result column="comment_user_id" property="commentUserId" jdbcType="INTEGER"/>
+        <association property="books" resultMap="BooksMap"></association>
+        <association property="users" resultMap="UserResultMap"></association>
+    </resultMap>
+    <resultMap id="BooksMap" type="org.lanqiao.entity.Books">
+        <id column="book_id" property="bookId" jdbcType="INTEGER"/>
+        <result column="book_name" property="bookName" jdbcType="VARCHAR"/>
+        <result column="book_img" property="bookImg" jdbcType="VARCHAR"/>
+        <result column="book_introduce" property="bookIntroduce" jdbcType="VARCHAR"/>
+        <result column="book_up_date" property="bookUpDate" jdbcType="TIMESTAMP"/>
+        <result column="book_finish_date" property="bookFinishDate" jdbcType="DATE"/>
+        <result column="book_score" property="bookScore" jdbcType="DOUBLE"/>
+        <result column="book_flag" property="bookFlag" jdbcType="VARCHAR"/>
+        <result column="book_word" property="bookWord" jdbcType="DOUBLE"/>
+        <result column="book_click" property="bookClick" jdbcType="DOUBLE"/>
+        <result column="book_reward" property="bookReward" jdbcType="BIGINT"/>
+        <result column="book_type_id" property="bookTypeId" jdbcType="INTEGER"/>
+        <result column="book_author_id" property="bookAuthorId" jdbcType="INTEGER"/>
+    </resultMap>
+    <resultMap id="UserResultMap" type="org.lanqiao.entity.Users">
+        <id column="user_id" property="userId" jdbcType="INTEGER"/>
+        <result column="user_name" property="userName" jdbcType="VARCHAR"/>
+        <result column="user_sex" property="userSex" jdbcType="VARCHAR"/>
+        <result column="user_money" property="userMoney" jdbcType="INTEGER"/>
+        <result column="user_img" property="userImg" jdbcType="VARCHAR"/>
+        <result column="user_introduce" property="userIntroduce" jdbcType="VARCHAR"/>
+    </resultMap>
+    <sql id="Base_Column_List">
     comment_id, comment_massage, comment_date, comment_book_id, comment_user_id
   </sql>
-  <select id="selectAllComment" resultMap="CommentMap" parameterType="org.lanqiao.vo.CommentPageVo" >
+    <select id="selectAllComment" resultMap="CommentMap" parameterType="org.lanqiao.vo.CommentPageVo">
     SELECT * from books b,comment c,users u WHERE c.comment_user_id = u.user_id and
 b.book_id = c.comment_book_id and c.comment_book_id = #{commentBookId,jdbcType=INTEGER} ORDER BY c.comment_id DESC
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+
+    <select id="selectAllByAuthorId" resultMap="CommentMap" parameterType="java.lang.Integer">
+    SELECT
+author.author_id,
+books.book_id,
+`comment`.comment_id,
+`comment`.comment_massage,
+`comment`.comment_date,
+`comment`.comment_book_id,
+`comment`.comment_user_id,
+books.book_name
+FROM
+author
+INNER JOIN books ON books.book_author_id = author.author_id
+INNER JOIN `comment` ON `comment`.comment_book_id = books.book_id AND author.author_id = #{authorId,jdbcType=INTEGER}
+  </select>
+
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     delete from comment
     where comment_id = #{commentId,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="org.lanqiao.entity.Comment" >
+    <insert id="insert" parameterType="org.lanqiao.entity.Comment">
     insert into comment (comment_id, comment_massage, comment_date, 
       comment_book_id, comment_user_id)
     values (#{commentId,jdbcType=INTEGER}, #{commentMassage,jdbcType=VARCHAR}, #{commentDate,jdbcType=TIMESTAMP}, 
       #{commentBookId,jdbcType=INTEGER}, #{commentUserId,jdbcType=INTEGER})
   </insert>
-  <insert id="insertSelective" parameterType="org.lanqiao.entity.Comment" >
-    insert into comment
-    <trim prefix="(" suffix=")" suffixOverrides="," >
-      <if test="commentId != null" >
-        comment_id,
-      </if>
-      <if test="commentMassage != null" >
-        comment_massage,
-      </if>
-      <if test="commentDate != null" >
-        comment_date,
-      </if>
-      <if test="commentBookId != null" >
-        comment_book_id,
-      </if>
-      <if test="commentUserId != null" >
-        comment_user_id,
-      </if>
-    </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides="," >
-      <if test="commentId != null" >
-        #{commentId,jdbcType=INTEGER},
-      </if>
-      <if test="commentMassage != null" >
-        #{commentMassage,jdbcType=VARCHAR},
-      </if>
-      <if test="commentDate != null" >
-        #{commentDate,jdbcType=TIMESTAMP},
-      </if>
-      <if test="commentBookId != null" >
-        #{commentBookId,jdbcType=INTEGER},
-      </if>
-      <if test="commentUserId != null" >
-        #{commentUserId,jdbcType=INTEGER},
-      </if>
-    </trim>
-  </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="org.lanqiao.entity.Comment" >
-    update comment
-    <set >
-      <if test="commentMassage != null" >
-        comment_massage = #{commentMassage,jdbcType=VARCHAR},
-      </if>
-      <if test="commentDate != null" >
-        comment_date = #{commentDate,jdbcType=TIMESTAMP},
-      </if>
-      <if test="commentBookId != null" >
-        comment_book_id = #{commentBookId,jdbcType=INTEGER},
-      </if>
-      <if test="commentUserId != null" >
-        comment_user_id = #{commentUserId,jdbcType=INTEGER},
-      </if>
-    </set>
-    where comment_id = #{commentId,jdbcType=INTEGER}
-  </update>
-  <update id="updateByPrimaryKey" parameterType="org.lanqiao.entity.Comment" >
+    <insert id="insertSelective" parameterType="org.lanqiao.entity.Comment">
+        insert into comment
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="commentId != null">
+                comment_id,
+            </if>
+            <if test="commentMassage != null">
+                comment_massage,
+            </if>
+            <if test="commentDate != null">
+                comment_date,
+            </if>
+            <if test="commentBookId != null">
+                comment_book_id,
+            </if>
+            <if test="commentUserId != null">
+                comment_user_id,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="commentId != null">
+                #{commentId,jdbcType=INTEGER},
+            </if>
+            <if test="commentMassage != null">
+                #{commentMassage,jdbcType=VARCHAR},
+            </if>
+            <if test="commentDate != null">
+                #{commentDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="commentBookId != null">
+                #{commentBookId,jdbcType=INTEGER},
+            </if>
+            <if test="commentUserId != null">
+                #{commentUserId,jdbcType=INTEGER},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="org.lanqiao.entity.Comment">
+        update comment
+        <set>
+            <if test="commentMassage != null">
+                comment_massage = #{commentMassage,jdbcType=VARCHAR},
+            </if>
+            <if test="commentDate != null">
+                comment_date = #{commentDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="commentBookId != null">
+                comment_book_id = #{commentBookId,jdbcType=INTEGER},
+            </if>
+            <if test="commentUserId != null">
+                comment_user_id = #{commentUserId,jdbcType=INTEGER},
+            </if>
+        </set>
+        where comment_id = #{commentId,jdbcType=INTEGER}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="org.lanqiao.entity.Comment">
     update comment
     set comment_massage = #{commentMassage,jdbcType=VARCHAR},
       comment_date = #{commentDate,jdbcType=TIMESTAMP},

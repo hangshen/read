@@ -3,12 +3,13 @@
 <mapper namespace="org.lanqiao.mapper.ReadMapper" >
   <resultMap id="BaseResultMap" type="org.lanqiao.entity.Read" >
     <id column="read_id" property="readId" jdbcType="INTEGER" />
-    <result column="read_flag" property="readFlag" jdbcType="VARCHAR" />
     <result column="read_user_id" property="readUserId" jdbcType="INTEGER" />
     <result column="read_book_id" property="readBookId" jdbcType="INTEGER" />
+    <result column="read_chapter_id" property="readChapterId" jdbcType="INTEGER" />
+    <result column="read_page_num" property="readPageNum" jdbcType="INTEGER" />
   </resultMap>
   <sql id="Base_Column_List" >
-    read_id, read_flag, read_user_id, read_book_id
+    read_id, read_user_id, read_book_id, read_chapter_id, read_page_num
   </sql>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
@@ -21,10 +22,10 @@
     where read_id = #{readId,jdbcType=INTEGER}
   </delete>
   <insert id="insert" parameterType="org.lanqiao.entity.Read" >
-    insert into read (read_id, read_flag, read_user_id, 
-      read_book_id)
-    values (#{readId,jdbcType=INTEGER}, #{readFlag,jdbcType=VARCHAR}, #{readUserId,jdbcType=INTEGER}, 
-      #{readBookId,jdbcType=INTEGER})
+    insert into read (read_id, read_user_id, read_book_id, 
+      read_chapter_id, read_page_num)
+    values (#{readId,jdbcType=INTEGER}, #{readUserId,jdbcType=INTEGER}, #{readBookId,jdbcType=INTEGER}, 
+      #{readChapterId,jdbcType=INTEGER}, #{readPageNum,jdbcType=INTEGER})
   </insert>
   <insert id="insertSelective" parameterType="org.lanqiao.entity.Read" >
     insert into read
@@ -32,22 +33,22 @@
       <if test="readId != null" >
         read_id,
       </if>
-      <if test="readFlag != null" >
-        read_flag,
-      </if>
       <if test="readUserId != null" >
         read_user_id,
       </if>
       <if test="readBookId != null" >
         read_book_id,
       </if>
+      <if test="readChapterId != null" >
+        read_chapter_id,
+      </if>
+      <if test="readPageNum != null" >
+        read_page_num,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="readId != null" >
         #{readId,jdbcType=INTEGER},
-      </if>
-      <if test="readFlag != null" >
-        #{readFlag,jdbcType=VARCHAR},
       </if>
       <if test="readUserId != null" >
         #{readUserId,jdbcType=INTEGER},
@@ -55,28 +56,38 @@
       <if test="readBookId != null" >
         #{readBookId,jdbcType=INTEGER},
       </if>
+      <if test="readChapterId != null" >
+        #{readChapterId,jdbcType=INTEGER},
+      </if>
+      <if test="readPageNum != null" >
+        #{readPageNum,jdbcType=INTEGER},
+      </if>
     </trim>
   </insert>
   <update id="updateByPrimaryKeySelective" parameterType="org.lanqiao.entity.Read" >
     update read
     <set >
-      <if test="readFlag != null" >
-        read_flag = #{readFlag,jdbcType=VARCHAR},
-      </if>
       <if test="readUserId != null" >
         read_user_id = #{readUserId,jdbcType=INTEGER},
       </if>
       <if test="readBookId != null" >
         read_book_id = #{readBookId,jdbcType=INTEGER},
       </if>
+      <if test="readChapterId != null" >
+        read_chapter_id = #{readChapterId,jdbcType=INTEGER},
+      </if>
+      <if test="readPageNum != null" >
+        read_page_num = #{readPageNum,jdbcType=INTEGER},
+      </if>
     </set>
     where read_id = #{readId,jdbcType=INTEGER}
   </update>
   <update id="updateByPrimaryKey" parameterType="org.lanqiao.entity.Read" >
     update read
-    set read_flag = #{readFlag,jdbcType=VARCHAR},
-      read_user_id = #{readUserId,jdbcType=INTEGER},
-      read_book_id = #{readBookId,jdbcType=INTEGER}
+    set read_user_id = #{readUserId,jdbcType=INTEGER},
+      read_book_id = #{readBookId,jdbcType=INTEGER},
+      read_chapter_id = #{readChapterId,jdbcType=INTEGER},
+      read_page_num = #{readPageNum,jdbcType=INTEGER}
     where read_id = #{readId,jdbcType=INTEGER}
   </update>
 </mapper>

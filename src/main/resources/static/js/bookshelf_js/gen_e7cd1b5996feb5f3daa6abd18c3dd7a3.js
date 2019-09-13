@@ -2077,7 +2077,7 @@ stringUtils.isVisible = function (b) {
         o && o.stopPropagation();
         var n = f(o.target).parents("li");
         if (n.find("a").attr("href") == "javascript:void(0)") {
-            var m = n.data("index");
+            var m = n.data("read.html");
             this.plugins[m].toggle();
             this.unRender()
         }
