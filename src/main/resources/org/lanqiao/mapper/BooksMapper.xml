@@ -135,7 +135,7 @@ pr.payrecord_user_id = u.user_id and b.book_id = #{bookId,jdbcType=INTEGER} and 
   </select>
 
   <select id="selectBooksByAuthorId" resultMap="BooksMap" parameterType="java.lang.Integer">
-    select * from books b where book_author_id = #{authorId,jdbcType=INTEGER}
+    select * from books b,author a where b.book_author_id=a.author_id and book_author_id = #{authorId,jdbcType=INTEGER}
   </select>
 
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
