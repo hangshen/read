@@ -65,7 +65,7 @@ public class BookController {
     }
     @RequestMapping("/getBooksPayRecord")
     public Books selectBooksPayRecord(Integer bookId){
-        return bookService.selectBooksPayRecord(5);
+        return bookService.selectBooksPayRecord(bookId);
     }
     @RequestMapping("/getshelfbooks")
     public List<LeiBooksVo> searchShelfBooks(Integer bookState,Integer userId){

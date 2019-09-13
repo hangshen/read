@@ -1132,13 +1132,8 @@
                             <div class="list m-tableinfo">
                                 <div class="tabs">
                                     <ul id="J_TAB">
-                                        <li class="crt ll" tab="gsjl"><a href="#">购书</a></li>
-                                        <li class="ll" tab="dsjl"><a href="/presentList.do?operation=list">打赏</a></li>
-                                        <li class="ll" tab="ypjl"><a href="/monthlyTicketList.do">月票</a></li>
-                                        <li class="ll"><a href="/weMediaPresentList.do?operation=profile">捧场</a></li>
-                                        <li class="ll"><a href="/articleReceiveList.do">领取</a></li>
-                                        <li class="ll"><a href="/articlePresentList.do">赠送</a></li>
-                                        <li class="ll"><a href="/baoyueList.do">包月</a></li>
+                                        <li class="crt ll" tab="gsjl" id="goumai"><a href="">购书</a></li>
+                                        <li class="ll" tab="dsjl" id="dashang"><a href="">打赏</a></li>
                                     </ul>
                                 </div>
                                 <div class="contents">
@@ -1155,7 +1150,11 @@
                                     </div>
                                     <div id="iiiq">
                                         <div  class="hint hint-4"  v-for="(record1,index) in costrecord">
-                                            <p>{{record1.payrecordFlag}}&nbsp;&nbsp;打赏时间： {{record1.payrecordDate}}&nbsp;&nbsp;打赏金额：{{record1.payrecordMoney}}￥<a href="/book">图书</a>、<a href="/yc">国风中文网</a>、<a href="/ycmm">采薇书院</a>看看</p>
+                                            <p v-if="record1.payrecordFlag == '购买'">时间:{{record1.payrecordDate}}&nbsp;&nbsp;金额:{{record1.payrecordMoney}}阅点&nbsp&nbsp购买书籍:{{record1.books.bookName}}&nbsp&nbsp购买章节:{{record1.vip.chapter.chapterName}}</p>
+                                            <p v-else>时间:{{record1.payrecordDate}}&nbsp;&nbsp;金额:{{record1.payrecordMoney}}阅点&nbsp&nbsp打赏书籍:{{record1.books.bookName}}</p>
+                                        </div>
+                                        <div  class="hint hint-4"  v-if="costrecord == ''">
+                                            <p>您此段时间内尚无消费记录<a href="/book">图书</a>、<a href="/yc">国风中文网</a>、<a href="/ycmm">采薇书院</a>看看</p>
                                         </div>
                                     </div>
 
@@ -1562,38 +1561,36 @@
 
 <ul class="sns-droplist" style="display: none;"></ul><script src="https://urswebzj.nosdn.127.net/webzj_cdn101/message.js?random=1568335847102" id="ursScript"></script>
 
-<script>
-    window.onload=function () {
-
+<script type="text/javascript">
+        var payRecordVo = {
+            "userLoginId":1,
+            "flag":1
+        }
         var msg = new Vue({
             el: "#iiiq",
             data: {costrecord:{}},
         })
-        $.ajax({
-            url: "http://localhost:8080/getPayRecord",
-            type: "post",
-            data: {
-                "userLoginId":1,
-                ""
-            },
-            datatype: "json",
-            success: function (data) {
-                alert("1");
-                alert(data);
-                alert(data[0].payrecordFlag);
-                alert(data[0].payrecordMoney);
-                var data2;
-                for(var i = 0;i <data.length;i++){
-                    if(data[i].payrecordFlag == "打赏"){
-                        msg.costrecord.push(data[i]);}}
-                var str1;
-                msg.costrecord=data2;
-            }
+        function change(){
+            $.ajax({
+                url: "http://localhost:8080/getPayRecord",
+                type: "post",
+                data: JSON.stringify(payRecordVo),
+                datatype: "json",
+                contentType: 'application/json;charset=UTF-8',
+                success: function (data) {
+                    msg.costrecord=data;
+                }
+            })
+        }
+        change();
+        $("#dashang").click(function () {
+            payRecordVo.flag = 0;
+            change();
         })
-
-
-
-    }
+        $("#goumai").click(function () {
+            payRecordVo.flag = 1;
+            change();
+        })
 </script>
 
 </body>
