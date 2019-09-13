@@ -38,6 +38,7 @@ public class Books {
     private Author author;
     private List<Chapter> chapterSet;
     private List<PayRecord> payRecordList;
+    private List<BookShelf> bookShelfList;
 
     public Integer getBookId() {
         return bookId;
@@ -175,4 +176,11 @@ public class Books {
         this.payRecordList = payRecordList;
     }
 
+    public List<BookShelf> getBookShelfList() {
+        return bookShelfList;
+    }
+
+    public void setBookShelfList(List<BookShelf> bookShelfList) {
+        this.bookShelfList = bookShelfList;
+    }
 }
