@@ -61,24 +61,26 @@
 
         <div class="ap-register-type">
             <div class="ap-entry-2 ah-fancy-radios" id="ap-register-type-radios" style="margin-left: 70px;">
-
+<div id="author">
                 <a class="entry-item entry-original ah-fancy-radio" href="javascript:" data-type="https://zz.yuedu.163.com">
                     <span class="identify-original-1"></span>
                     <div class="entry-item-header">
-                        <span class="phui-fancy-radio f-ib"></span>
+                        <span class="phui-fancy-radio f-ib" id="author2"></span>
                         <span class="entry-item-heading">小说作者</span>
                     </div>
                     <p class="muted">优厚作者福利，业内最高全渠道<br>分成。面向4000万读者推广，<br>成就你的写作梦想。</p>
                 </a>
-
+            </div>
+                <div id="content1">
                 <a class="entry-item last-child entry-original ah-fancy-radio" href="javascript:" data-type="/">
                     <span class="identify-provider-1"></span>
                     <div class="entry-item-header">
-                        <span class="phui-fancy-radio f-ib" id="conmer"></span>
+                        <span class="phui-fancy-radio f-ib " id="conmer"></span>
                         <span class="entry-item-heading">内容商</span>
                     </div>
                     <p class="muted">支持书籍整本上传，网站RSS<br>订阅，让优质内容提供商<br>轻松获利。</p>
                 </a>
+                </div>
             </div>
 
             <div id="manhua-alert" class="alert manhua-alert alert-warning fade in" role="alert" style="display:none">
@@ -164,6 +166,16 @@
             });
 
         })
+    })
+
+
+    $("#conmer").click(function(){
+        $("#author a").removeClass("ah-fancy-radio-selected");
+        $("#content1 a").addClass("ah-fancy-radio-selected");
+    })
+    $("#author2").click(function(){
+        $("#content1 a").removeClass("ah-fancy-radio-selected");
+        $("#author a").addClass("ah-fancy-radio-selected");
     })
 </script>
 </html>

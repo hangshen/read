@@ -68,21 +68,23 @@
                 <label class="control-label">运营主体</label>
                 <div class="controls">
                     <div class="ah-fancy-radios" id="ap-register-info-type">
+                        <div id="oneman">
                         <a class="ah-fancy-radio ah-fancy-radio-1 ah-fancy-radio-selected" href="javascript:"
                            data-type="personal">
-                            <div class="phui-fancy-radio"></div>
+                            <div class="phui-fancy-radio" id="one"></div>
                             <div class="ah-fancy-radio-body">
                                 <div class="ah-fancy-radio-heading">个人</div>
                                 <div class="muted">个人作者请选此身份</div>
                             </div>
-                        </a>
+                        </a></div>
+                        <div id="many">
                         <a class="ah-fancy-radio ah-fancy-radio-1" href="javascript:" data-type="organization">
-                            <div class="phui-fancy-radio"></div>
+                            <div class="phui-fancy-radio" id="more"></div>
                             <div class="ah-fancy-radio-body">
                                 <div class="ah-fancy-radio-heading">组织</div>
                                 <div class="muted">出版社、媒体机构等请选此身份</div>
                             </div>
-                        </a>
+                        </a></div>
                         <input type="hidden" name="isPersonal" value="1">
                     </div>
                 </div>
@@ -361,5 +363,14 @@
         })
     })
 
+
+    $("#more").click(function(){
+        $("#oneman a").removeClass("ah-fancy-radio-selected");
+        $("#many a").addClass("ah-fancy-radio-selected");
+    });
+    $("#one").click(function(){
+        $("#many a").removeClass("ah-fancy-radio-selected");
+        $("#oneman a").addClass("ah-fancy-radio-selected");
+    });
 </script>
 </html>

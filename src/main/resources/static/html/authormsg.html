@@ -31,7 +31,7 @@
                 </ul>
             </div>
             <div class="penname">
-                <a href="author_massg.html">笔名（账号）</a>
+                <a href="author_massg.html" id="penname1" v-for="(pname,index2) in author">{{pname.authorName}}</a>
                 <a href="" class="w-link"><span class="w-icon phui-power sprites-app-1"></span>退出</a>
             </div>
 
@@ -111,7 +111,7 @@
             <div class="content-play">
                 <div class="content-name">
                     <h2>作品列表<span>共 1 部作品</span></h2>
-                    <p class="side-tag"><a href="/bookCreateModifyForm.do?operation=0" class="btn">发表作品</a></p>
+                    <p class="side-tag"><a href="author_publish.html" class="btn">发表作品</a></p>
                 </div>
 
                 <table class="grade-table-list" cellpadding="0" cellspacing="0" id="J_Table">
@@ -203,4 +203,37 @@
     </div>
 </div>
 </body>
+<script>
+    $(function () {
+        $.ajax({
+            url: "http://localhost:8080/author/getAuthorName",
+            type: "post",
+            dataType: "json",
+            success: function (data) {
+                mv2 =new Vue({
+                    e1:"#penname1" ,
+                    data:{author:authorName},
+                })
+            }
+        })
+    });
+
+
+    $(function () {
+        $("#penname1").click(function () {
+            $.ajax({
+                url: "http://localhost:8080/author/authorBasicData",
+                type: "post",
+                dataType: "json",
+                data: {
+
+                }
+
+                    })
+                })
+            });
+
+
+
+</script>
 </html>
