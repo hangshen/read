@@ -102,6 +102,10 @@ public class BookServiceImpl implements BookService{
             return content2;
         }
     }
+    @Override
+    public Books selectBooksPayRecord(Integer bookId){
+        return booksMapper.selectBooksPayRecord(bookId);
+    }
 
     /**
      * by lhw

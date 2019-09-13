@@ -61,9 +61,12 @@ public class BookController {
     }
     @RequestMapping("/getBooksInfoById")
     public Books selectByPrimaryKey(Integer bookId){
-        return bookService.selectByPrimaryKey(5);
+        return bookService.selectByPrimaryKey(bookId);
     }
-
+    @RequestMapping("/getBooksPayRecord")
+    public Books selectBooksPayRecord(Integer bookId){
+        return bookService.selectBooksPayRecord(5);
+    }
     @RequestMapping("/getshelfbooks")
     public List<LeiBooksVo> searchShelfBooks(Integer bookState,Integer userId){
         return bookService.selectShelfBooks(bookState,userId);

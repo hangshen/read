@@ -17,9 +17,9 @@ public class PayRecord {
     private Integer payrecordUserId;
 
     private UserLogin userLogin;
-
     private Books books;
     private List<Vip> vipList;
+    private Users users;
 
     public Integer getPayrecordId() {
         return payrecordId;
@@ -92,4 +92,13 @@ public class PayRecord {
     public void setVips(List<Vip> vips) {
         this.vipList = vips;
     }
+
+    public Users getUsers() {
+        return users;
+    }
+
+    public void setUsers(Users users) {
+        this.users = users;
+    }
+
 }
