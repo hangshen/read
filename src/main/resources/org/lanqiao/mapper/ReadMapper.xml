@@ -8,6 +8,15 @@
     <result column="read_chapter_id" property="readChapterId" jdbcType="INTEGER" />
     <result column="read_page_num" property="readPageNum" jdbcType="INTEGER" />
   </resultMap>
+
+  <resultMap id="LeiReadChapterVoResultMap" type="org.lanqiao.vo.LeiReadChapterVo" >
+    <id column="chapter_id" property="chapterId" jdbcType="INTEGER" />
+    <result column="chapter_sort" property="chapterSort" jdbcType="INTEGER" />
+    <result column="chapter_name" property="chapterName" jdbcType="VARCHAR" />
+    <result column="content_text" property="contentText" jdbcType="VARCHAR" />
+  </resultMap>
+
+
   <sql id="Base_Column_List" >
     read_id, read_user_id, read_book_id, read_chapter_id, read_page_num
   </sql>
@@ -17,6 +26,50 @@
     from read
     where read_id = #{readId,jdbcType=INTEGER}
   </select>
+
+  <select id="checkRecord" parameterType="java.lang.Integer" resultType="java.lang.Integer">
+   SELECT COUNT(*) FROM `read` WHERE `read`.read_book_id=#{bookId} AND `read`.read_user_id=#{userId};
+  </select>
+
+  <select id="selectChapterUserId" parameterType="java.lang.Integer" resultMap="LeiReadChapterVoResultMap">
+   SELECT ch.chapter_sort,ch.chapter_name,c.content_text
+   FROM content c,chapter ch
+   WHERE c.content_id=ch.chapter_content_id AND ch.chapter_id=
+   (SELECT `read`.read_chapter_id FROM `read` WHERE `read`.read_book_id=#{bookId} AND `read`.read_user_id=#{userId});
+  </select>
+
+
+  <select id="selectChapterNoUserId" parameterType="java.lang.Integer" resultMap="LeiReadChapterVoResultMap">
+    SELECT ch.chapter_id,ch.chapter_sort,ch.chapter_name,c.content_text
+    FROM content c,chapter ch
+    WHERE c.content_id=ch.chapter_content_id AND ch.chapter_sort=#{chapterId} AND ch.chapter_book_id=#{bookId};
+
+  </select>
+
+  <select id="selectReadPageNum" parameterType="java.lang.Integer" resultType="java.lang.Integer">
+SELECT `read`.read_page_num FROM `read` WHERE `read`.read_book_id=#{bookId} AND `read`.read_user_id=#{userId};
+  </select>
+
+  <insert id="insertRecorder" parameterType="java.lang.Integer">
+    INSERT `read`
+    SET `read`.read_user_id=#{userId},`read`.read_book_id=#{bookId},`read`.read_chapter_id=
+    (SELECT chapter_id FROM chapter WHERE chapter.chapter_book_id=#{bookId} AND chapter.chapter_sort=#{chapterId});
+  </insert>
+
+  <update id="updateRecorder" parameterType="java.lang.Integer">
+    UPDATE `read`
+    SET `read`.read_chapter_id=
+    (SELECT chapter_id FROM chapter WHERE chapter.chapter_book_id=#{bookId} AND chapter.chapter_sort=#{chapterId})
+    ,`read`.read_page_num=1
+    WHERE `read`.read_user_id=#{userId} AND `read`.read_book_id=#{bookId};
+  </update>
+
+  <update id="updateReadPageNum" parameterType="java.lang.Integer">
+    UPDATE `read`
+    SET `read`.read_page_num=#{pageNum}
+    WHERE `read`.read_user_id=#{userId} AND `read`.read_book_id=#{bookId};
+  </update>
+
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from read
     where read_id = #{readId,jdbcType=INTEGER}

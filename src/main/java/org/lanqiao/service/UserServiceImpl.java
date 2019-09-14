@@ -2,8 +2,10 @@ package org.lanqiao.service;
 
 import org.lanqiao.entity.UserLogin;
 import org.lanqiao.entity.Users;
+import org.lanqiao.mapper.ReadMapper;
 import org.lanqiao.mapper.UserLoginMapper;
 import org.lanqiao.mapper.UsersMapper;
+import org.lanqiao.vo.LeiReadChapterVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
@@ -15,6 +17,8 @@ public class UserServiceImpl implements UserService{
     UserLoginMapper userLoginMapper;
     @Autowired
     UsersMapper usersMapper;
+    @Autowired
+    ReadMapper readMapper;
 
     /*
      *检测注册账号是否已被注册
@@ -50,4 +54,5 @@ public class UserServiceImpl implements UserService{
     public UserLogin selectUserInfo(Integer userLoginId){
         return userLoginMapper.selectUserInfo(userLoginId);
     }
+
 }
