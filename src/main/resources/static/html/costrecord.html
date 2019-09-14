@@ -1132,8 +1132,8 @@
                             <div class="list m-tableinfo">
                                 <div class="tabs">
                                     <ul id="J_TAB">
-                                        <li class="crt ll" tab="gsjl" id="goumai"><a href="">购书</a></li>
-                                        <li class="ll" tab="dsjl" id="dashang"><a href="">打赏</a></li>
+                                        <li class="ll" :class="{'crt':flag2 == 1}" tab="gsjl" id="goumai" @click="changes(1)">购书</li>
+                                        <li class="ll" :class="{'crt':flag2 != 1}" tab="dsjl" id="dashang" @click="changes(0)">打赏</li>
                                     </ul>
                                 </div>
                                 <div class="contents">
@@ -1567,30 +1567,57 @@
             "flag":1
         }
         var msg = new Vue({
-            el: "#iiiq",
-            data: {costrecord:{}},
-        })
-        function change(){
-            $.ajax({
-                url: "http://localhost:8080/getPayRecord",
-                type: "post",
-                data: JSON.stringify(payRecordVo),
-                datatype: "json",
-                contentType: 'application/json;charset=UTF-8',
-                success: function (data) {
-                    msg.costrecord=data;
+            el: ".m-tableinfo",
+            data: {
+                costrecord:{},
+                flag2:1
+            },
+            // created : function(){
+            //     msg.changes(1);
+            // },
+            methods:{
+                changes:function (i) {
+                    payRecordVo.flag = i;
+                    msg.flag2 = i;
+                    $.ajax({
+                        url: "http://localhost:8080/getPayRecord",
+                        type: "post",
+                        data: JSON.stringify(payRecordVo),
+                        datatype: "json",
+                        contentType: 'application/json;charset=UTF-8',
+                        success: function (data) {
+                            msg.costrecord=data;
+                            // alert(msg.costrecord[0].payrecordFlag)
+                        }
+                    })
+                    alert(msg.flag2)
                 }
-            })
-        }
-        change();
-        $("#dashang").click(function () {
-            payRecordVo.flag = 0;
-            change();
+            }
         })
-        $("#goumai").click(function () {
-            payRecordVo.flag = 1;
-            change();
-        })
+        msg.changes(1);
+        // function change(){
+        //     $.ajax({
+        //         url: "http://localhost:8080/getPayRecord",
+        //         type: "post",
+        //         data: JSON.stringify(payRecordVo),
+        //         datatype: "json",
+        //         contentType: 'application/json;charset=UTF-8',
+        //         success: function (data) {
+        //             msg.costrecord=data;
+        //             // alert(msg.costrecord[0].payrecordFlag)
+        //         }
+        //     })
+        // }
+        // change();
+        // $("#dashang").click(function () {
+        //     payRecordVo.flag = 0;
+        //     // alert(payRecordVo.flag);
+        //     change();
+        // })
+        // $("#goumai").click(function () {
+        //     payRecordVo.flag = 1;
+        //     change();
+        // })
 </script>
 
 </body>
