@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>发表作品</title>
+    <script src="../js/author_login_js/jquery.js"></script>
+    <script src="../js/author_login_js/vue.min.js"></script>
+    <link href="../css/authorlogincss/base.css" rel="stylesheet">
+    <link href="../css/authormsgcss/authormsg.css" rel="stylesheet">
+    <link href="../css/authormsgcss/useradmin.css" rel="stylesheet">
+    <link href="../css/authormsgcss/publish.css" rel="stylesheet">
+</head>
+<body>
+<div class="msg_box bigger">
+    <div class="msg_top">
+        <div class="msg_top1">
+            <div class="msg_top2">
+                <a title="网易云阅读">网易云阅读</a>
+            </div>
+            <div class="msg_top3">
+                <h2 class="top_word login_w white">作者中心</h2>
+            </div>
+            <div class="msg_top4">
+                <ul>
+                    <li class="bgwrite select">
+                        <a class="top_word login_w  black wordsize">原创小说</a>
+                    </li>
+                    <li class="noselect">
+                        <a class="top_word login_w  black2 wordsize">自媒体/合作伙伴</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="penname">
+                <a href="author_massg.html" id="penname1" v-for="(pname,index2) in author">{{pname.authorName}}</a>
+                <a href="" class="w-link"><span class="w-icon phui-power sprites-app-1"></span>退出</a>
+            </div>
+
+
+        </div>
+    </div>
+    <div class="msg_middle biger">
+        <div class="msg_table">
+            <div class="col-sub ap-side-menu">
+                <ul class="side-nav author-nav" id="J_SideNav">
+                    <li class="all-works">
+                        <h4>
+                            <em></em>
+                            <a href="authormsg.html">全部作品</a>
+                            <a class="op" href="author_publish.html">发表</a>
+                        </h4>
+                    </li>
+                    <li class="incomes ">
+                        <h4>
+                            <em></em>
+                            <a href="author_money.html">我的收入</a>
+                        </h4>
+                    </li>
+                    <li class="reward ">
+                        <h4>
+                            <em></em>
+                            <a href="">福利奖励查询</a>
+                        </h4>
+                    </li>
+                    <li class="comment ">
+                        <h4>
+                            <em></em>
+                            <a href="author_reader.html">
+                                读者评论<span></span>
+                            </a>
+                        </h4>
+                    </li>
+                    <li class="message ">
+                        <h4>
+                            <em></em>
+                            <a href="">
+                                消息中心<span></span>
+                            </a>
+                        </h4>
+                    </li>
+                    <li class="welfare ">
+                        <h4>
+                            <em></em>
+                            <a href="#">作者福利</a>
+                        </h4>
+                    </li>
+                    <li class="welfare-male ">
+                        <h4>
+                            <em></em>
+                            <a href="" target="_blank">男频作者福利</a>
+                        </h4>
+                    </li>
+                    <li class="welfare-female ">
+                        <h4>
+                            <em></em>
+                            <a href="" target="_blank">女频作者福利</a>
+                        </h4>
+                    </li>
+
+                    <li class="welfare-female ">
+                        <h4>
+                            <em></em>
+                            <a href="">新手帮助</a>
+                        </h4>
+                    </li>
+
+
+                </ul>
+
+            </div>
+        </div>
+        <div class="msg_content big">
+            <div class="content-name">
+                <h3>创建新作品</h3>
+            </div>
+            <div class="message-pop ">
+                发表作品中不得含有违法违规信息，包括但不限于淫秽色情、反动、违背主流道德观等有害信息。
+                如发现作品中含有违法违规内容，网易云阅读将对违法违规作品进行删除处理，
+                冻结作者账号并保留追究作者法律责任的权利。请各位作者自觉自律，
+                切勿以身试法，共建和谐文明的网络环境。
+            </div>
+            <div class="content-from">
+                <ul>
+                    <li class="content-item">
+                        <div class=" item-top"><em></em>作品名称：</div>
+                        <div class="item-content">
+                            <p><input type="text" value="" name="title"
+                                      class="input-txt :required :only_on_blur :max_length;18 :ajax;/checkParam.do?operation=6  vanadium">
+                            </p>
+                            <p class="content-init">18字以内，作品创建后不能更改</p>
+                        </div>
+                    </li>
+                    <li class="content-item">
+                        <div class="item-name">作品封面：</div>
+                        <div class="clearfix">
+                            <div class="bookimg-up">
+                                <div class="pic-player">
+                                    <div class="u-tip">
+                                        <div class="mask"></div>
+                                        <p>点击上传</p>
+                                    </div>
+
+                                </div>
+                                <input id="btnD" name="file" class="file" type="file">
+                                <div class="pic-button">
+                                    <div style="visibility: visible;"></div>
+                                    <div id="J_PicFile_1Queue" class="uploadifyQueue"></div>
+                                    <input type="file" name="" class="J_BookCover hide vanadium" value=""
+                                           style="display: none;">
+                                </div>
+                                <p class="box-130-tip ">支持jpg，bmp，png</p>
+                            </div>
+
+                        </div>
+
+                    </li>
+
+                    <li class="content-item">
+                        <div class="item-name"><em></em>作品类型：</div>
+                        <div class="item-content">
+                            <select name="categoryId" id="J_Cate" class="vanadium selectBox" style="display: none;">
+                                <option value="7">都市</option>
+                                <option value="1">玄幻</option>
+                                <option value="5">悬疑</option>
+                                <option value="11">历史</option>
+                                <option value="3">军事</option>
+                                <option value="2">科幻</option>
+                                <option value="10">同人</option>
+                                <option value="12">短篇</option>
+                            </select><a class="selectBox vanadium selectBox-dropdown" title="" tabindex="0"
+                                        style="width: 136px; display: inline-block;"><span class="selectBox-label"
+                                                                                           style="width: 138px;">都市</span><span
+                                class="selectBox-arrow"></span></a>
+                        </div>
+                    </li>
+                    <li class="content-item">
+                        <div class="item-name"><em></em>作品标签：</div>
+                        <div class="tag-select clearfix">
+                            <div class="tag-con" style="height: auto;">
+                                <!--value是初始化值，用英文逗号分隔-->
+                                <input name="tag" id="tags_init" type="text"
+                                       class="hide :required;;J_TagRequiredTip :only_on_blur vanadium" value=""
+                                       style="display: none;">
+                                <div id="tags_init_tagsinput" class="tagsinput clearfix">
+                                    <div id="tags_init_addTag"><input id="tags_init_tag" value="" data-default="" class="input-txt"
+                                                                      style="color: rgb(102, 102, 102); ">
+                                    </div>
+                                </div>
+                            </div>
+                            <p class="vanadium-init kong">1-20个字，多个标签请用空格隔开</p>
+                            <!--<span class="select"></span>-->
+                            <div class="tags" id="J_AdviceTags" style="display:none;">
+                                <h3>输入或选择标签：</h3>
+                                <ul class="tag-list clearfix" id="J_TagList">
+                                    <li><a href="javascript:void(0)">都市生活</a></li>
+                                    <li><a href="javascript:void(0)">娱乐明星</a></li>
+                                    <li><a href="javascript:void(0)">社会百态</a></li>
+                                    <li><a href="javascript:void(0)">乡村纪实</a></li>
+                                    <li><a href="javascript:void(0)">职场白领</a></li>
+                                    <li><a href="javascript:void(0)">家庭生活</a></li>
+                                    <li><a href="javascript:void(0)">亲情</a></li>
+                                    <li><a href="javascript:void(0)">成长</a></li>
+                                    <li><a href="javascript:void(0)">伦理</a></li>
+                                    <li><a href="javascript:void(0)">打工</a></li>
+                                    <li><a href="javascript:void(0)">求职</a></li>
+                                    <li><a href="javascript:void(0)">蜗居</a></li>
+                                    <li><a href="javascript:void(0)">房奴</a></li>
+                                    <li><a href="javascript:void(0)">黑帮</a></li>
+                                    <li><a href="javascript:void(0)">老千</a></li>
+                                    <li><a href="javascript:void(0)">校园</a></li>
+                                    <li><a href="javascript:void(0)">自传</a></li>
+                                </ul>
+                                <div class="hide"><input type="button" value="确定"></div>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="content-item">
+                        <div class="item-name"><em></em>写作状态：</div>
+                        <div class="item-content">
+                            <div><input type="radio" name="bookStatus" class="input-middle" value="0" disabled=""
+                                        checked="checked" id="J_WorkStatus_1"><label for="J_WorkStatus_1">连载中</label>&nbsp;
+                                &nbsp;&nbsp;&nbsp;<input type="radio" name="bookStatus" value="1" disabled=""
+                                                         class="input-middle" id="J_WorkStatus_2"><label
+                                        for="J_WorkStatus_2">已完结</label></div>
+                        </div>
+                    </li>
+                    <li class="content-item">
+                        <div class="item-name"><em></em>首发状态：</div>
+                        <div class="item-content">
+                            <div><input type="radio" name="issueStatus" class="input-middle" value="0" checked="checked"
+                                        id="J_IsFirst_1"><label
+                                    for="J_IsFirst_1">网易首发</label>&nbsp;&nbsp;&nbsp;&nbsp;<input type="radio"
+                                                                                                 name="issueStatus"
+                                                                                                 value="1"
+                                                                                                 class="input-middle"
+                                                                                                 id="J_IsFirst_2"><label
+                                    for="J_IsFirst_2">非网易首发</label></div>
+                            <p class="vanadium-init">作品审核通过后，不得更改</p>
+                        </div>
+                    </li>
+                    <li class="content-item">
+                        <div class="item-power"><em></em>授权级别：</div>
+                        <div class="item-content">
+                            <p><input type="radio" name="authorization" class="input-middle" value="0" checked="checked"
+                                      id="J_AuthGrade_1"><label for="J_AuthGrade_1">普通授权</label>&nbsp;&nbsp;&nbsp;&nbsp;<input
+                                    type="radio" name="authorization" value="1" class="input-middle" id="J_AuthGrade_2"><label
+                                    for="J_AuthGrade_2">独家授权</label></p>
+                            <p id="J_AuthGradeTip" class="attention-tip auth-status-tip">
+                                我保证我是此作品的著作权人，并将此作品非独家发表于网易云阅读，并保证不会在作品内任何位置宣传或提及其它网站网址。任何组织与个人如欲转载，须征得我同意。</p>
+                            <p class="vanadium-init">作品审核通过后，如需修改请邮件至<a href="mailto:wangyiyuanchuang@163.com">wangyiyuanchuang@163.com</a>
+                            </p>
+                        </div>
+                    </li>
+                    <li class="content-item">
+                        <div class="item-name"><em></em>作品简介：</div>
+                        <div class="item-content article-editor" id="J_ContentEditer">
+                            <div class="editor J_Editor">
+                                <textarea name="introduction"
+                                          class="vanadium"></textarea>
+                            </div>
+                            <div class="notice"><span class="tip">字数需控制在20至300字之间</span></div>
+
+                            <div class="vanadium-advice vanadium-invalid clear J_ContentTip" style="display:none">
+                                <em></em></div>
+
+                        </div>
+                    </li>
+
+
+                </ul>
+            </div>
+
+            <div class="form-submit">
+                <a href="#" class="form-btn " id="J_Submit">发布</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="msg_bottom">
+        <div class="footer">
+            <a href="http://gb.corp.163.com/gb/about/overview.html" target="_blank">公司简介</a>
+            - <a target="_blank" href="http://gb.corp.163.com/gb/contactus.html">联系我们</a>
+            - <a href="http://corp.163.com/gb/job/job.html" target="_blank">招聘信息</a>
+            - <a href="http://gb.corp.163.com/gb/legal.html" target="_blank">相关法律</a>
+            - <a href="http://sitemap.163.com/" target="_blank">网站地图</a>
+            - <a href="http://post.news.163.com/msg/jubao.jsp" target="_blank">不良信息举报</a>
+            - <a href="https://yuedu.163.com/" target="_blank">网易云阅读官网</a>
+            - <a href="/originalUserGuide.do">帮助中心</a><br>
+            网易公司版权所有<br>
+            <span class="cDRed">©1997-2019</span>
+        </div>
+    </div>
+</div>
+</body>
+
+<script>
+
+
+
+</script>
+</html>

@@ -1,0 +1,17 @@
+.unsigned{
+    padding: 200px 0 0 200px;
+    font-size: 14px;
+    line-height: 40px;
+    color: #000000
+}
+.unsigned em{
+    background: url(../../images/authormsgimages/icon-sprites.png) no-repeat 0 -32px;
+    height: 35px;
+    width: 35px;
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: 10px;
+}
+.unsigned a{
+    color: #1b78bb;
+}

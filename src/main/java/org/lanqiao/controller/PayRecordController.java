@@ -15,7 +15,7 @@ public class PayRecordController {
     @Autowired
     PayRecordService payRecordService;
     @RequestMapping("/getPayRecord")
-    List<PayRecord> selectPayRecord(PayRecordVo payRecordVo){
+    List<PayRecord> selectPayRecord(@RequestBody PayRecordVo payRecordVo){
         return  payRecordService.selectPayRecord(payRecordVo);
     }
 }

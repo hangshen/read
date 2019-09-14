@@ -9,12 +9,9 @@ import org.lanqiao.vo.SelectTypeVo;
 import org.lanqiao.vo.SolrBooksPageVo;
 import org.lanqiao.vo.SolrBooksVo;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Repository;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -61,9 +58,28 @@ public class BookController {
     }
     @RequestMapping("/getBooksInfoById")
     public Books selectByPrimaryKey(Integer bookId){
-        return bookService.selectByPrimaryKey(5);
+        return bookService.selectByPrimaryKey(bookId);
     }
-
+    @RequestMapping("/getBooksPayRecord")
+    public Books selectBooksPayRecord(Integer bookId){
+        return bookService.selectBooksPayRecord(bookId);
+    }
+    @RequestMapping("/getClickOrder")
+    public List<Books> selectByClick(){
+       return bookService.selectByClick();
+    }
+    @RequestMapping("/getRewardOrder")
+    public List<Books> selectByReward(){
+        return bookService.selectByReward();
+    }
+    @RequestMapping("/getDingYueOrder")
+    public List<Books> selectByDingYue(){
+        return bookService.selectByDingYue();
+    }
+    @RequestMapping("/getXiaoLiangOrder")
+    public List<Books> selectByXiaoLiang(){
+        return bookService.selectByXiaoLiang();
+    }
     @RequestMapping("/getshelfbooks")
     public List<LeiBooksVo> searchShelfBooks(Integer bookState,Integer userId){
         return bookService.selectShelfBooks(bookState,userId);
@@ -77,4 +93,5 @@ public class BookController {
             return bookService.delectShelfBook(bookId,userId);
         }
     }
+
 }
