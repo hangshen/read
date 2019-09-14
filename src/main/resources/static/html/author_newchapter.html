@@ -31,7 +31,7 @@
                 </ul>
             </div>
             <div class="penname">
-                <a href="author_massg.html">笔名（账号）</a>
+                <a href="author_massg.html" id="penname1" v-for="(pname,index2) in author">{{pname.authorName}}</a>
                 <a href="" class="w-link"><span class="w-icon phui-power sprites-app-1"></span>退出</a>
             </div>
 
@@ -133,7 +133,7 @@
             <div class="cconcent">
             <div class="item-title"><em></em>章节内容：</div>
             <div class="editor ">
-                <textarea name="content"></textarea>
+                <textarea name="content" id="texts"></textarea>
                 <div class="bottom-bar"><i></i></div>
             </div>
 
@@ -163,4 +163,100 @@
     </div>
 </div>
 </body>
+<script>
+    // 显示作者名
+    var aid = sessionStorage.getItem("aid");
+    alert(aid);
+    $(function () {
+        $.ajax({
+            url: "http://localhost:8080/author/getAuthorName",
+            type: "post",
+            dataType: "json",
+            success: function (data) {
+                mv2 =new Vue({
+                    e1:"#penname1" ,
+                    data:{author:authorName},
+                })
+            }
+        })
+    });
+  //增加章节
+    var bookid= sessionStorage.getItem("bookid");
+    var bookTxet = $("#texts").val();
+    var chapterNames = $("#J_ArticleTitle").val();
+
+    $("#J_Submit").click(function () {
+        $.ajax({
+            url: "http://localhost:8080/author/newChapter",
+            type: "post",
+            data: {
+                'authorId': aid,
+                'bookId':bookid,
+                'chapterName':chapterNames,
+                'contentText': bookTxet,
+
+            },
+            dataType: "json",
+            success: function (data) {
+                if(data == true){
+
+                    sessionStorage.setItem("aid",result.author.authorId);
+                    window.location.href = "author_newchapter.html";
+
+                }
+                else {
+                    alert("发布失败");
+                }
+            },
+            error : function () {
+                alert("Error!!!");
+            }
+        });
+
+    });
+
+//书本名
+
+
+
+
+
+
+
+
+
+
+    // 传id
+    $(function () {
+        $("#penname1").click(function () {
+            var aid=sessionStorage.setItem("aid");
+        })
+    });
+
+    $(function () {
+        $(".all-works").click(function () {
+            var aid=sessionStorage.setItem("aid");
+        })
+    });
+    $(function () {
+        $(".incomes").click(function () {
+            var aid=sessionStorage.setItem("aid");
+        })
+    });
+    $(function () {
+        $(".comment").click(function () {
+            var aid=sessionStorage.setItem("aid");
+        })
+    });
+    $(function () {
+        $(".op").click(function () {
+            var aid=sessionStorage.setItem("aid");
+        })
+    });
+    $(function () {
+        $(".newc").click(function () {
+            var aid=sessionStorage.setItem("aid");
+        })
+    });
+</script>
 </html>

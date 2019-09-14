@@ -129,6 +129,7 @@
     var authpenname = sessionStorage.getItem("authpenname");
     var authqq = sessionStorage.getItem("authqq");
     var iden ="个人";
+    var aid;
     alert(c);
     alert(authid);
     alert(authqq);
@@ -136,6 +137,9 @@
 
         $("#conmer").click(function () {
             iden="内容商";
+        });
+        $("#author2").click(function () {
+            iden="个人";
         });
 
         $("#ap-register-type-submit").click(function () {
@@ -154,7 +158,9 @@
                 dataType: "json",
                 success: function (data) {
                     if(data == true){
+                        sessionStorage.setItem("aid",result.author.authorId);
                         window.location.href = "authormsg.html";
+
                     }
                     else {
                         alert("注册失败");

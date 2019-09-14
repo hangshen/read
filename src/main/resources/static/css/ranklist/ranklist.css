@@ -1,0 +1,171 @@
+
+*{
+    margin: 0;
+    padding: 0;
+}
+.g-sd {
+    width: 150px;
+    float: left;
+    overflow: hidden;
+    padding: 0;
+    border: 2px solid #e0dcd7;
+}
+
+
+/*畅销榜*/
+ .g-bdw .g-bdw-1 dl {
+     display: block;
+     margin-block-start: 1em;
+     margin-block-end: 1em;
+     margin-inline-start: 0px;
+     margin-inline-end: 0px;
+ }
+ .g-sd .multi dt {
+    position: relative;
+    height: 38px;
+    line-height: 38px;
+    cursor: pointer;
+    background-color: #fff;
+    font-size: 16px;
+    color: #655;
+    padding-left: 18px;
+    border-bottom: 1px solid #f5f0eb;
+}
+
+ .g-sd .multi dt a {
+    display: block;
+    height: 38px;
+    color: #655;
+}
+.m-bang-list-wrap {
+    position: relative;
+    height: 618px;
+}
+
+.m-bang-list {
+    position: absolute;
+    top: 0;
+}
+
+
+.m-bang-list-l {
+    right: 536px;
+}
+.m-bang-list .wrap {
+    width: 269px;
+    float: left;
+}
+
+.m-bang-list .tabs {
+    height: 38px;
+    border-top: #ebe6e1 solid 1px;
+    border-left: #ebe6e1 solid 1px;
+    border-right: #ebe6e1 solid 1px;
+}
+
+.m-bang-list .tabs h3 {
+    float: left;
+    margin: 8px 0 0 20px;
+    font-size: 16px;
+    color: #665656;
+    font-weight: normal;
+}
+.m-bang-list .tabs ul {
+    float: right;
+    margin: 12px 14px 0 0;
+
+}
+ul {
+    display: block;
+    list-style-type: disc;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    padding-inline-start: 40px;
+}
+
+.m-foldlist {
+    border: #ebe6e1 solid 1px;
+}
+li{
+    text-align: -webkit-match-parent;
+    list-style: none outside none;
+
+}
+.m-bang-list .tabs ul li {
+    display: inline;
+}
+.m-foldlist li {
+    border-bottom: #f5f2f0 solid 1px;
+
+}
+
+.m-foldlist .fold {
+    padding: 0 14px 0 20px;
+    height: 43px;
+    line-height: 43px;
+    overflow: hidden;
+}
+.m-foldlist .fold i {
+    color: #aaa;
+    margin-right: 18px;
+    font-weight: normal;
+    font-family: arial;
+}
+.m-foldlist .unfold {
+    padding: 14px 14px 14px 20px;
+    position: relative;
+    height: 104px;
+}
+.m-foldlist .unfold i {
+    position: absolute;
+    top: 14px;
+    left: 20px;
+    color: #c9483c;
+    font-weight: bold;
+    font-size: 18px;
+    font-weight: normal;
+    font-family: arial;
+}
+.m-foldlist .unfold .img {
+    float: left;
+    margin-left: 34px;
+    margin-right: 14px;
+}
+.m-foldlist .unfold img {
+    width: 74px;
+    height: 104px;
+}
+.m-foldlist .unfold h3 {
+    font-size: 16px;
+    line-height: 22px;
+    max-height: 44px;
+    overflow: hidden;
+}
+.m-foldlist .unfold p {
+    color: #888;
+    margin-top: 5px;
+    max-height: 70px;
+    overflow: hidden;
+}
+
+
+
+/*订阅榜*/
+.m-bang-list-m {
+    right: 268px;
+}
+
+/*点击榜*/
+.m-bang-list {
+    position: absolute;
+    top: 0;
+}
+.m-bang-list-r {
+    right: 0;
+}
+.red{
+    color: #c81623;
+}
+

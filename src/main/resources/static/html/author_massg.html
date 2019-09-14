@@ -31,38 +31,38 @@
                 </ul>
             </div>
             <div class="penname">
-                <a>笔名（账号）</a>
-                <a href="" class="w-link"><span class="w-icon phui-power sprites-app-1"></span>退出</a>
+                <a href="author_massg.html" id="penname1" v-for="(pname,index2) in authornames">{{pname.authorName}}</a>
+                <a href="author_login.html" class="w-link"><span class="w-icon phui-power sprites-app-1"></span>退出</a>
             </div>
 
 
         </div>
     </div>
-<div id="massg_box">
+<div id="massg_box" >
+
     <div id="massg_top">
         <a id="massg_right">编辑</a>
         <h2>基本资料：</h2>
     </div>
     <div id="massg_null"></div>
     <div id="massg_out">
-        <div class="massg">
+        <div class="massg" v-for="(author, index1) in author">
             <dt>账号：</dt>
-            <dd>123456</dd>
+            <dd>{{author.authorLoginAccount}}</dd>
         </div>
         <div class="massg">
             <dt>运营身份：</dt>
-            <dd>个人</dd>
+            <dd>{{author.authorauthorIdentity}}</dd>
         </div>
         <div class="massg">
             <dt>笔名：</dt>
-            <dd>hh</dd>
+            <dd>{{author.authorName}}</dd>
         </div>
         <div class="massg">
             <dt>QQ：</dt>
-            <dd>123456</dd>
+            <dd>{{author.authorQq}}</dd>
         </div>
     </div>
-
 </div>
     <div class="msg_bottom">
         <div class="footer">
@@ -80,4 +80,63 @@
     </div>
 </div>
 </body>
+<script>
+    // 显示作者名
+    var aid = sessionStorage.getItem("aid");
+    alert(aid);
+    $(function () {
+        $.ajax({
+            url: "http://localhost:8080/author/getAuthorName",
+            data: {authorId:aid},
+            type: "post",
+            dataType: "json",
+            success: function (data) {
+                mv2 =new Vue({
+                    e1:".penname" ,
+                    data:{authornames:data},
+                })
+            }
+        })
+    });
+
+//显示信息
+
+
+        $.ajax({
+            url: "http://localhost:8080/author/authorBasicData",
+            type: "post",
+            data: {authorId: aid},
+            dataType: "json",
+            success: function (data) {
+                mv1 = new Vue({
+                    el: '#massg_box',
+                    data: {author: data},
+
+
+                    error: function () {
+
+                        alert("error");
+
+                    }
+                });
+            }
+        });
+
+
+
+
+
+
+
+
+
+
+
+    // 传id
+    $(function () {
+        $(".newc").click(function () {
+            var aid=sessionStorage.setItem("aid");
+        })
+    });
+</script>
 </html>

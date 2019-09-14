@@ -1,0 +1,71 @@
+.rightBox {
+    background: #fff;
+    padding-bottom: 2em;
+    padding-top: 5px;
+}
+.m-detail-comments {
+    margin-top: 36px;
+    margin-bottom: 60px;
+}
+.m-detail-comments h3 {
+    font-size: 16px;
+    font-weight: 700;
+    color: #06080a;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #cdcdcd;
+}
+.commentBox {
+    margin: 20px;
+}
+
+.comment b {
+    font-size: 16px;
+    display: block;
+    margin: 5px 0;
+}
+.comment {
+    margin-bottom: 15px;
+}
+fieldset, img {
+    border: medium none;
+}
+.comment p {
+    font-size: 16px;
+    color: #333;
+}
+
+.m-page {
+    height: 32px;
+    margin: 25px 0;
+    text-align: center;}
+.m-page .nums, .m-page a {
+    display: inline-block;
+    *display: inline;
+    *zoom: 1;
+}
+
+.m-page-b .nums .j-crt {
+    background-position: -32px -64px;
+}
+.m-page .go {
+    width: 62px;
+    height: 32px;
+    line-height: 32px;
+    margin: 0 5px;
+    border: #e0dcd7 solid 1px;
+    border-radius: 3px;
+    background-color: #fff;
+}
+
+.m-page a {
+    color: #666;
+    display: inline-block;
+}
+body, button, input, select, textarea {
+    font: 12px/1.5 Helvetica Neue, Helvetica, tahoma, Arial, \5FAE\8F6F\96C5\9ED1;
+}
+
+
+
+
+
