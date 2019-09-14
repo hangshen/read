@@ -1,7 +1,7 @@
 package org.lanqiao.service;
 
 import org.lanqiao.entity.Read;
-import org.lanqiao.util.RedisUtil;
+//import org.lanqiao.util.RedisUtil;
 import org.lanqiao.mapper.ReadMapper;
 import org.lanqiao.vo.LeiReadChapterVo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,8 +12,8 @@ public class ReadServiceImpl implements ReadService {
 
     @Autowired
     ReadMapper readMapper;
-    @Autowired
-    RedisUtil redisUtil;
+//    @Autowired
+//    RedisUtil redisUtil;
 
     //        Users user=(Users)redisUtil.get(login.getUserLoginAccount());
 ////        if(user == null){

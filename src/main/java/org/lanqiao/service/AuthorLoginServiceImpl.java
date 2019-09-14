@@ -38,8 +38,8 @@ public class AuthorLoginServiceImpl implements AuthorLoginService {
 
         AuthorLogin authorLogin = authorLoginMapper.login(authorAccount);
 
-//        System.out.println(authorLogin);
-        if (authorLogin != null) {
+        System.out.println(authorLogin);
+        if (authorLogin == null) {
             map.put("authorLogin", null);
         } else {
 //            System.out.println(authorPassword.equals(authorLogin.getAuthorLoginPassword()));
