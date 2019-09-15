@@ -2,13 +2,13 @@
 <html xmlns:v-bind="http://www.w3.org/1999/xhtml">
 <head>
     <meta http-equiv="content-type" content="text/html;charset=UTF-8"/>
-    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge"/>
     <meta name="applicable-device" content="pc">
     <title>总榜单-网易云阅读</title>
     <meta name="keywords" content="图书排行榜，图书畅销榜,免费图书，新书，好书排行榜top100"/>
-    <meta property="qc:admins" content="13454603154561636375" />
+    <meta property="qc:admins" content="13454603154561636375"/>
     <meta name="description" content="网易云阅读好书推荐排行榜，推荐当前热门的女性、言情、玄幻、励志、儿童、小说。"/>
-    <meta property="wb:webmaster" content="0e2d310a7690a84c" />
+    <meta property="wb:webmaster" content="0e2d310a7690a84c"/>
     <!--    <link rel="shortcut icon" href="//yuedust.yuedu.126.net/favicon.ico?20190908094745" />-->
     <link type="text/css" rel="stylesheet" href="../css/topcss/top1.css"/>
     <link href="../css/ranklist/ranklist.css" rel="stylesheet">
@@ -117,62 +117,36 @@
                                         <li class="ll "><a href="javascript:;" class="red">总榜</a></li>
                                     </ul>
                                 </div>
-                                <div class="contents">
-                                    <div class="tab-item m-foldlist">
-                                        <ul class="">
+                                <div id="bestseller">
+                                <div class="contents" >
+                                    <div class="tab-item m-foldlist" v-for="(rankList,index5) in rankList">
+                                        <ul class="" >
                                             <li>
                                                 <p class="fold" style="display:none;">
-                                                    <a href="/source/0ac72666c99d4b56855a1b0466ff68a6_4"
+                                                    <a href=""
                                                        target="_blank">
                                                         <i>
-                                                            01
-                                                        </i>苗疆蛊事1
+                                                            {{index5+1}}
+                                                        </i>{{rankList.bookName}}
                                                     </a>
                                                 </p>
-                                                <div class="unfold">
-                                                    <i>01</i>
+                                                <div class="unfold" >
+                                                    <i>{{index5+1}}</i>
                                                     <a class="img"
-                                                       href="/source/0ac72666c99d4b56855a1b0466ff68a6_4"><img
+                                                       href=""><img
                                                             src="https://easyreadfs.nosdn.127.net/W8G7eyJidq7QrCnL6Cdk6g==/8796093024742103509"
                                                             target="_blank"></a>
-                                                    <h3><a href="/source/0ac72666c99d4b56855a1b0466ff68a6_4"
-                                                           target="_blank">苗疆蛊事1</a></h3>
+                                                    <h3><a href=""
+                                                           target="_blank">{{rankList.bookName}}</a></h3>
                                                     <p>
-                                                        <a href="/search.do?operation=exact&kind=author&type=4&word=%E5%8D%97%E6%97%A0%E8%A2%88%E8%A3%9F%E7%90%86%E7%A7%91%E4%BD%9B"
-                                                           target="_blank">南无袈裟理科佛</a></p>
+                                                        <a href=""
+                                                           target="_blank">{{rankList.author.authorName}}</a></p>
                                                 </div>
                                             </li>
                                         </ul>
                                     </div>
                                 </div>
-                                <div class="contents">
-                                    <div class="tab-item m-foldlist">
-                                        <ul class="">
-                                            <li>
-                                                <p class="fold" style="display:none;">
-                                                    <a href="/source/0ac72666c99d4b56855a1b0466ff68a6_4"
-                                                       target="_blank">
-                                                        <i>
-                                                            01
-                                                        </i>苗疆蛊事1
-                                                    </a>
-                                                </p>
-                                                <div class="unfold">
-                                                    <i>01</i>
-                                                    <a class="img"
-                                                       href="/source/0ac72666c99d4b56855a1b0466ff68a6_4"><img
-                                                            src="https://easyreadfs.nosdn.127.net/W8G7eyJidq7QrCnL6Cdk6g==/8796093024742103509"
-                                                            target="_blank"></a>
-                                                    <h3><a href="/source/0ac72666c99d4b56855a1b0466ff68a6_4"
-                                                           target="_blank">苗疆蛊事1</a></h3>
-                                                    <p>
-                                                        <a href="/search.do?operation=exact&kind=author&type=4&word=%E5%8D%97%E6%97%A0%E8%A2%88%E8%A3%9F%E7%90%86%E7%A7%91%E4%BD%9B"
-                                                           target="_blank">南无袈裟理科佛</a></p>
-                                                </div>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
+                            </div>
                             </div>
                         </div>
                     </div>
@@ -187,39 +161,40 @@
                                     <li class="ll"><a href="javascript:;" class="red">总榜</a></li>
                                 </ul>
                             </div>
+                            <div id="rankRead">
                             <div class="contents">
-                                <div class="tab-item m-foldlist">
+                                <div class="tab-item m-foldlist" v-for="(rankRead,index6) in rankRead">
                                     <ul class="">
                                         <li>
                                             <p class="fold" style="display:none;">
-                                                <a href="/source/93255605ed8d4744bc989eacb5f943bd_4" target="_blank">
+                                                <a href="" target="_blank">
                                                     <i>
-                                                        01
-                                                    </i>请至少爱一个像男人的男人
+                                                        {{index6+1}}
+                                                    </i>{{rankRead.bookName}}
                                                 </a>
                                             </p>
                                             <div class="unfold">
-                                                <i>01</i>
-                                                <a class="img" href="/source/93255605ed8d4744bc989eacb5f943bd_4"><img
+                                                <i>{{index6+1}}</i>
+                                                <a class="img" href=""><img
                                                         src="https://easyreadfs.nosdn.127.net/oGIUJSIydhwStPdIAsRy-g==/8796093023791663472"
                                                         target="_blank"></a>
-                                                <h3><a href="/source/93255605ed8d4744bc989eacb5f943bd_4"
-                                                       target="_blank">请至少爱一个像男人的男人</a></h3>
+                                                <h3><a href=""
+                                                       target="_blank">{{rankRead.bookName}}</a></h3>
                                                 <p>
-                                                    <a href="/search.do?operation=exact&kind=author&type=4&word=%E5%BC%A0%E5%B0%8F%E5%A8%B4"
-                                                       target="_blank">张小娴</a></p>
+                                                    <a href=""
+                                                       target="_blank">{{rankRead.author.authorName}}</a></p>
                                             </div>
                                         </li>
                                     </ul>
                                 </div>
                             </div>
-
+                        </div>
                         </div>
                     </div>
                     <div class="m-bang-list m-bang-list-r">
                         <div class="wrap">
                             <div class="tabs">
-                                <h3>订阅榜</h3>
+                                <h3>打赏榜</h3>
                                 <ul>
                                     <li class=""><a href="javascript:;">日榜</a></li>
                                     <li class=""><a href="javascript:;">周榜</a></li>
@@ -227,33 +202,34 @@
                                     <li class="ll"><a href="javascript:;" class="red">总榜</a></li>
                                 </ul>
                             </div>
+                            <div id="rankMoney">
                             <div class="contents">
-                                <div class="tab-item m-foldlist">
+                                <div class="tab-item m-foldlist" v-for="(rankMoney,index1) in rankMoney">
                                     <ul class="">
                                         <li>
                                             <p class="fold" style="display:none;">
-                                                <a href="/source/93255605ed8d4744bc989eacb5f943bd_4" target="_blank">
+                                                <a href="" target="_blank">
                                                     <i>
-                                                        01
-                                                    </i>请至少爱一个像男人的男人
+                                                        {{index1+1}}
+                                                    </i>{{rankMoney.bookName}}
                                                 </a>
                                             </p>
                                             <div class="unfold">
-                                                <i>01</i>
-                                                <a class="img" href="/source/93255605ed8d4744bc989eacb5f943bd_4"><img
+                                                <i>{{index1+1}}</i>
+                                                <a class="img" href=""><img
                                                         src="https://easyreadfs.nosdn.127.net/oGIUJSIydhwStPdIAsRy-g==/8796093023791663472"
                                                         target="_blank"></a>
-                                                <h3><a href="/source/93255605ed8d4744bc989eacb5f943bd_4"
-                                                       target="_blank">请至少爱一个像男人的男人</a></h3>
+                                                <h3><a href=""
+                                                       target="_blank">{{rankMoney.bookName}}</a></h3>
                                                 <p>
-                                                    <a href="/search.do?operation=exact&kind=author&type=4&word=%E5%BC%A0%E5%B0%8F%E5%A8%B4"
-                                                       target="_blank">张小娴</a></p>
+                                                    <a href=""
+                                                       target="_blank">{{rankMoney.author.authorName}}</a></p>
                                             </div>
                                         </li>
                                     </ul>
                                 </div>
                             </div>
-
+                        </div>
                         </div>
                     </div>
                 </div>
@@ -264,9 +240,62 @@
 
 </div>
 
+</body>
+<script src="../js/author_login_js/vue.min.js"></script>
 <script>
 
-</script>
-</body>
+    // 畅销榜
+    $(function () {
+        $.ajax({
+            url: "http://localhost:8080/getXiaoLiangOrder",
+            type: "post",
+            dataType: "json",
+            success: function (data) {
+                mv9 = new Vue({
+                    el: "#bestseller",
+                    data: {
+                        rankList: data,
+                    },
+                });
+              alert(mv.rankList.authorName)
+            }
+        })
+    });
+// 订阅榜
+    $(function () {
+        $.ajax({
+            url: "http://localhost:8080//getDingYueOrder",
+            type: "post",
+            dataType: "json",
+            success: function (data) {
+                mv8 = new Vue({
+                    el: "#rankRead",
+                    data: {
+                        rankRead: data,
+                    },
+                });
+                alert(mv8.rankRead)
+            }
+        })
+    });
+// 打赏榜
+    $(function () {
+        $.ajax({
+            url: "http://localhost:8080//getRewardOrder",
+            type: "post",
+            dataType: "json",
+            success: function (data) {
+                mv7 = new Vue({
+                    el: "#rankMoney",
+                    data: {
+                        rankMoney: data,
+                    },
+                });
+                alert(mv7.rankMoney)
+            }
+        })
+    });
 
+
+</script>
 </html>
