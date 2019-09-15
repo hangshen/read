@@ -72,7 +72,7 @@
                 success: function (result) {
                     if(result.author!=null){
                         sessionStorage.setItem("aid",result.author.authorId);
-                        alert("登录成功！");
+                        alert("登录成功！用户名为"+result.author.authorName);
                         top.location.href="authormsg.html";
 
                     }else if(result.authorLogin==null){
