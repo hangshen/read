@@ -7,24 +7,25 @@ import java.util.List;
 
 public class SelectPageNumUtil {
     private int resultRow=0;
-    private int txtRow=4;
+    private int txtRow=3;
     private List<String> result=new ArrayList<>();
+    private int hang = 11;
     public List<String> selectPage(List<ParagraphDetail> paragraphDetails,int pageNum){
         if(pageNum == 1){
-            resultRow +=4;
+            resultRow +=3;
             result.add("");
         }
         //遍历所有段落进行选择
         for (ParagraphDetail p:paragraphDetails) {
             //页满了停止选择
-            if(resultRow == 15){
+            if(resultRow == hang){
                 break;
             }
             //页未满  选择达到条件的段落
-            if(resultRow < 15 && ((txtRow+ p.getTotalRow()) >= ((pageNum-1)*15))){
+            if(resultRow < hang && ((txtRow+ p.getTotalRow()) >= ((pageNum-1)*hang))){
                 //第一次选择判断是否需要截取此段落
                 if(resultRow == 0){
-                   int f= (txtRow+p.getTotalRow()) - (pageNum-1)*15;
+                   int f= (txtRow+p.getTotalRow()) - (pageNum-1)*hang;
                    if( f == 0){
                        result.add(p.getText());
                        resultRow += p.getTotalRow();
@@ -40,15 +41,15 @@ public class SelectPageNumUtil {
                    }
                 }
                 //中间段落的插入
-                else if(resultRow <15 && (txtRow + p.getTotalRow()) < (pageNum *15)){
+                else if(resultRow <hang && (txtRow + p.getTotalRow()) < (pageNum *hang)){
                     result.add(p.getText());
                     resultRow += p.getTotalRow();
                     txtRow += p.getTotalRow();
                 }
 
                 //最后一段的选择 判断是否需要截取
-                else { ;
-                    int ft=15-resultRow;
+                else {
+                    int ft=hang-resultRow;
                     String bridge = new String();
                     resultRow+=ft;
                     txtRow +=ft;

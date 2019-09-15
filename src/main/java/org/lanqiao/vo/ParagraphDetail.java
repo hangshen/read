@@ -12,14 +12,14 @@ public class ParagraphDetail {
 
     public ParagraphDetail(String text) {
         this.text = text;
-        if(text.length()%29 == 0){
-            this.totalRow=text.length()/29;
+        if(text.length()%30 == 0){
+            this.totalRow=text.length()/30;
         } else {
-            this.totalRow=text.length()/29+1;
+            this.totalRow=text.length()/30+1;
         }
         for (int i = 1;i<this.totalRow;i++){
-            rowTxt.add(text.substring(0,29));
-            text=text.substring(29);
+            rowTxt.add(text.substring(0,30));
+            text=text.substring(30);
         }
         rowTxt.add(text);
 
