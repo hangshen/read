@@ -45,10 +45,10 @@
                                 src="../images/topimages/weixin.png" data-reactid=".3.0.1.0"></div>
                     </div>
                     <div data-reactid=".3.1">
-                        <div class="ulink j-ulink" data-reactid=".3.1.0"><a target="_blank" title="登录"
-                                                                            data-reactid=".3.1.0.0" href="login.html">登录</a><span
-                                class="sep" data-reactid=".3.1.0.1">|</span><a target="_blank" title="注册"
-                                                                               data-reactid=".3.1.0.2" href="zhuce.html">注册</a>
+                        <div class="ulink j-ulink" data-reactid=".3.1.0">
+                            <a class="userself" target="_blank" title="登录" data-reactid=".3.1.0.0" href="login.html">登录</a>
+                            <span class="sep" data-reactid=".3.1.0.1">|</span>
+                            <a target="_blank" title="注册" data-reactid=".3.1.0.2" href="zhuce.html">注册</a>
                         </div>
                         <noscript data-reactid=".3.1.1"></noscript>
                     </div>
@@ -106,18 +106,18 @@
                                 <p>
                                     <a target="_blank" data-model="index"
                                        data-opration="man" v-for="(type1, index1) in fathertype.secondSelect"
-                                       v-if="index1 < 2" @click="settype(type1.booktypeId)">{{type1.booktypeName}}</a>
+                                       v-if="index1 < 2" @click="settype(type1.booktypeId, type1.booktypeName)">{{type1.booktypeName}}</a>
                                     <a class="ll" target="_blank" data-model="index"
                                        data-opration="man" v-for="(type2, index2) in fathertype.secondSelect"
-                                       v-if="index2 == 2" @click="settype(type2.booktypeId)">{{type2.booktypeName}}</a>
+                                       v-if="index2 == 2" @click="settype(type2.booktypeId, type2.booktypeName)">{{type2.booktypeName}}</a>
                                 </p>
                                 <p>
                                     <a target="_blank" data-model="index"
                                        data-opration="man" v-for="(type3, index3) in fathertype.secondSelect"
-                                       v-if="index3 > 2 && index3 < 5" @click="settype(type3.booktypeId)">{{type3.booktypeName}}</a>
+                                       v-if="index3 > 2 && index3 < 5" @click="settype(type3.booktypeId, type3.booktypeName)">{{type3.booktypeName}}</a>
                                     <a class="ll" target="_blank" data-model="index"
                                        data-opration="man" v-for="(type4, index4) in fathertype.secondSelect"
-                                       v-if="index4 == 5" @click="settype(type4.booktypeId)">{{type4.booktypeName}}</a>
+                                       v-if="index4 == 5" @click="settype(type4.booktypeId, type4.booktypeName)">{{type4.booktypeName}}</a>
                                 </p>
                             </div>
                         </div>
@@ -225,7 +225,7 @@
                         <h3>{{fathertype.firstSelect.booktypeName}}</h3>
                         <p>
                             <a target="_blank" data-model="more_link" data-opration="ts"
-                               v-for="(type, index) in fathertype.secondSelect" v-if="index < 7" @click="settype(type.booktypeId)">
+                               v-for="(type, index) in fathertype.secondSelect" v-if="index < 7" @click="settype(type.booktypeId, type.booktypeName)">
                                 {{type.booktypeName}}</a>
                             <a href="allbooks.html" target="_blank">更多<i></i></a>
                         </p>
@@ -296,6 +296,15 @@
 <script type="text/javascript">
     var userId;
     var authorId;
+    var userName;
+    $(function () {
+        userName = sessionStorage.getItem("userName");
+        if(userName != undefined){
+            $(".userself").text(userName)
+            $(".userself").siblings().remove()
+            $(".userself").attr("href","")
+        }
+    })
     var mv1 = new Vue({
         el: '#J_MM',
         data: {fathertypes:{} },
@@ -310,8 +319,9 @@
                 }
             })
         },methods:{
-            settype:function (i) {
+            settype:function (i, name) {
                 sessionStorage.setItem("booktypeId",i);
+                sessionStorage.setItem("booktypeName",name);
                 window.location.href="allbooks.html";
             }
         }
@@ -331,8 +341,9 @@
                 }
             })
         },methods:{
-            settype:function (i) {
+            settype:function (i, name) {
                 sessionStorage.setItem("booktypeId",i);
+                sessionStorage.setItem("booktypeName",name);
                 window.location.href="allbooks.html";
             }
         }

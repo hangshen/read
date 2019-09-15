@@ -115,7 +115,7 @@ body {
     visibility: hidden;
 }
 
-.bg-header, .g-hd  .m-clouds a, .m-headerfix .m-logo-mini a, .m-mianlist li a .icon-download {
+.bg-header,  .m-clouds a, .m-headerfix .m-logo-mini a, .m-mianlist li a .icon-download {
     background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMIAAAGuCAYAAADCoNmkAAAAGXRFW…AAgBD+IMISk/CkwMkTwqnY4MLqJ1Pz+x/GkwInlP8XYADpxXeSQITX1gAAAABJRU5ErkJggg==) -9999px -9999px no-repeat;
 }
 
