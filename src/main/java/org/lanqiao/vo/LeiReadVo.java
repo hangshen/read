@@ -1,28 +1,29 @@
 package org.lanqiao.vo;
 
+import java.util.ArrayList;
 import java.util.List;
 
-public class LeiReadChapterVo {
-    private int chapterId;
-
+public class LeiReadVo {
     private int chapterSort;
 
     private String chapterName;
 
-    private String contentText;
-
-    private List<ParagraphDetail> paragraphList;
+    private List<String> paragraphList=new ArrayList<>();
 
     private int totalPageNum;
 
-    public int getChapterId() {
-        return chapterId;
-    }
+    public LeiReadVo(int chapterSort, String chapterName, List<String> paragraphList, int totalPageNum) {
+        this.chapterSort = chapterSort;
+        this.chapterName = chapterName;
+        this.paragraphList=paragraphList;
 
-    public void setChapterId(int chapterId) {
-        this.chapterId = chapterId;
-    }
+        if((totalPageNum+4)%15 == 0){
+            this.totalPageNum = (totalPageNum+4)/15;
+        } else {
+            this.totalPageNum = (totalPageNum+4)/15 + 1;
+        }
 
+    }
     public int getChapterSort() {
         return chapterSort;
     }
@@ -39,19 +40,11 @@ public class LeiReadChapterVo {
         this.chapterName = chapterName;
     }
 
-    public String getContentText() {
-        return contentText;
-    }
-
-    public void setContentText(String contentText) {
-        this.contentText = contentText;
-    }
-
-    public List<ParagraphDetail> getParagraphList() {
+    public List<String> getParagraphList() {
         return paragraphList;
     }
 
-    public void setParagraphList(List<ParagraphDetail> paragraphList) {
+    public void setParagraphList(List<String> paragraphList) {
         this.paragraphList = paragraphList;
     }
 
