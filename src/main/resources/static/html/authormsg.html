@@ -1,4 +1,6 @@
 <!DOCTYPE html>
+<html xmlns:v-bind="http://www.w3.org/1999/xhtml">
+<html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -107,79 +109,80 @@
             </div>
         </div>
         <div class="msg_content">
-            <div class="content-play" id="book">
+            <div class="content-play">
                 <div class="content-name">
-                    <h2>作品列表<span>共 1 部作品</span></h2>
+                    <h2>作品列表<span>共 {{index3+1}} 部作品</span></h2>
                     <p class="side-tag"><a href="author_publish.html" class="btn">发表作品</a></p>
                 </div>
+                <div id="book">
+                    <table class="grade-table-list" cellpadding="0" cellspacing="0" id="J_Table"
+                           v-for="(book,index3)in book">
+                        <colgroup>
+                            <col width="20%">
+                            <col width="5%">
+                            <col width="20%">
+                            <col width="15%">
+                            <col width="20%">
+                            <col width="20%">
+                        </colgroup>
+                        <thead>
+                        <tr>
+                            <th>作品名称</th>
+                            <th>最新发布章节</th>
+                            <th nowrap="">审核详情</th>
+                            <th nowrap="">作品状态</th>
+                            <th nowrap="">作品定价</th>
+                            <th nowrap="">操作</th>
+                        </tr>
+                        </thead>
+                        <tbody v-for="(production,index2) in production">
+                        <tr>
+                            <td>
+                                <div class="work-title">
+                                    <div class="pic" style="position: relative;">
+                                        <img v-bind:src="book.bookImg">
+                                    </div>
+                                    <p>
+                                        {{production.bookName}}
+                                    </p>
+                                    <p class="word">总字数：{{production.bookWord}}</p>
+                                    <p class="word">点击数：{{production.bookClick}}</p>
+                                    <p class="word">收藏数：0</p>
 
-                <table class="grade-table-list" cellpadding="0" cellspacing="0" id="J_Table" v-for="(book,index3)in book">
-                    <colgroup>
-                        <col width="20%">
-                        <col width="5%">
-                        <col width="20%">
-                        <col width="15%">
-                        <col width="20%">
-                        <col width="20%">
-                    </colgroup>
-                    <thead>
-                    <tr>
-                        <th>作品名称</th>
-                        <th>最新发布章节</th>
-                        <th nowrap="">审核详情</th>
-                        <th nowrap="">作品状态</th>
-                        <th nowrap="">作品定价</th>
-                        <th nowrap="">操作</th>
-                    </tr>
-                    </thead>
-                    <tbody v-for="(book,index2) in book">
-                    <tr>
-                        <td>
-                            <div class="work-title">
-                                <div class="pic" style="position: relative;">
-                                    <img src="../images/authormsgimages/fengmian.png">
+                                    <p class="ops">
+                                        <a href="author_publish.html">修改作品</a>
+                                    </p>
                                 </div>
+                            </td>
+                            <td>
+                                <p class="intro">{{production.chapterName}}</p>
+                                <p class="time"></p>
+                            </td>
+                            <td class="status">
+                                待审核
+                            </td>
+                            <td>
+                                待审核
+                            </td>
+                            <td class="price">
+                                -
+                            </td>
+                            <td class="noborder op">
                                 <p>
-                                    {{book.bookName}}
+                                    <a href="author_newchapter.html" class="newc">新增章节</a>
                                 </p>
-                                <p class="word">总字数：{{book.bookWord}}</p>
-                                <p class="word">点击数：{{book.bookClick}}</p>
-                                <p class="word">收藏数：0</p>
 
-                                <p class="ops">
-                                    <a href="author_publish.html">修改作品</a>
-                                </p>
-                            </div>
-                        </td>
-                        <td>
-                            <p class="intro">{{book.chapterName}}</p>
-                            <p class="time"></p>
-                        </td>
-                        <td class="status">
-                            待审核
-                        </td>
-                        <td>
-                            待审核
-                        </td>
-                        <td class="price">
-                            -
-                        </td>
-                        <td class="noborder op">
-                            <p>
-                                <a href="author_newchapter.html" class="newc">新增章节</a>
-                            </p>
-
-                            <p><a href="">管理章节</a></p>
-                            <!-- 电子签约的状态 -->
-                            <!-- 没有开始电子签约之前，看下是否有符合审核签约的条件-->
+                                <p><a href="">管理章节</a></p>
+                                <!-- 电子签约的状态 -->
+                                <!-- 没有开始电子签约之前，看下是否有符合审核签约的条件-->
 
 
-                        </td>
-                    </tr>
-                    </tbody>
-                </table>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
 
-
+                </div>
                 <div class="pagination">
                 </div>
             </div>
@@ -211,7 +214,7 @@
     $(function () {
         $.ajax({
             url: "http://localhost:8080/author/getAuthorName",
-            data: {authorId:aid},
+            data: {authorId: aid},
             type: "post",
             dataType: "json",
             success: function (data) {
@@ -224,55 +227,56 @@
         })
     });
 
-//显示作品
+    //显示作品
     $(function () {
         $.ajax({
-            url: "http://localhost:8080/author/authorAllBook",
-            data: {authorId:aid},
+            url: "http://localhost:8080/author/getAllBooksByAuthorId",
+            data: {authorId: aid},
             type: "post",
             dataType: "json",
             success: function (data) {
-              mv3 =new Vue({
-                    el:"#book" ,
-                    data:{
-                        book:data,
+                mv3 = new Vue({
+                    el: "#book",
+                    data: {
+                        production: data,
                     },
                 })
+                alert(mv3.production.bookName)
             }
         })
     });
 
 
-// 传id
+    // 传id
     $(function () {
         $("#penname1").click(function () {
-            var aid=sessionStorage.setItem("aid");
-                })
-            });
+            var aid = sessionStorage.setItem("aid");
+        })
+    });
 
     $(function () {
         $(".all-works").click(function () {
-            var aid=sessionStorage.setItem("aid");
+            var aid = sessionStorage.setItem("aid");
         })
     });
     $(function () {
         $(".incomes").click(function () {
-            var aid=sessionStorage.setItem("aid");
+            var aid = sessionStorage.setItem("aid");
         })
     });
     $(function () {
         $(".comment").click(function () {
-            var aid=sessionStorage.setItem("aid");
+            var aid = sessionStorage.setItem("aid");
         })
     });
     $(function () {
         $(".op").click(function () {
-            var aid=sessionStorage.setItem("aid");
+            var aid = sessionStorage.setItem("aid");
         })
     });
     $(function () {
         $(".newc").click(function () {
-            var aid=sessionStorage.setItem("aid");
+            var aid = sessionStorage.setItem("aid");
         })
     });
 </script>
