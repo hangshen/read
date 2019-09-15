@@ -217,8 +217,9 @@
             success: function (data) {
                 mv2 =new Vue({
                     e1:".penname" ,
-                    data:{authornames:data},
+                    data:{authornames:data.authorName},
                 })
+                alert(data.authorName);
             }
         })
     });
@@ -226,7 +227,7 @@
 //显示作品
     $(function () {
         $.ajax({
-            url: "http://localhost:8080//author/authorAllBook",
+            url: "http://localhost:8080/author/authorAllBook",
             data: {authorId:aid},
             type: "post",
             dataType: "json",

@@ -39,6 +39,12 @@
     where real_ID = #{realID,jdbcType=VARCHAR}
   </select>
 
+  <select id="getAuthorName" resultMap="AuthorMap" parameterType="java.lang.Integer" >
+    select
+    <include refid="Base_Column_List" />
+    from author
+    where author_id = #{authorId,jdbcType=INTEGER}
+  </select>
   <!--==================================================删除操作====================================================-->
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from author

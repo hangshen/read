@@ -18,4 +18,5 @@ public interface AuthorMapper {
     Author selectByAuthorRealID(String realID);
     int insert(Author author);
     Author selectByAuthorId(Integer authorId);
+    Author getAuthorName(Integer authorId);
 }

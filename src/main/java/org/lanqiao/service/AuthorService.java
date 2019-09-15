@@ -13,4 +13,5 @@ public interface AuthorService {
     Author selectByAuthorRealID(String realID);
     boolean register(Author author, String authorAccount, String authorPassword,String realID);
     Author selectByAuthorId(Integer authorId);
+    Author getAuthorName(Integer authorId);
 }

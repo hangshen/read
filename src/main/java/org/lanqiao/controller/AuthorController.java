@@ -128,4 +128,9 @@ public class AuthorController {
     public List<Comment> readerComment(Integer authorId){
         return commentService.selectAllByAuthorId(4);
     }
+
+    @RequestMapping("/getAuthorName")
+    public Author getAuthorName(Integer authorId){
+        return authorService.getAuthorName(authorId);
+    }
 }

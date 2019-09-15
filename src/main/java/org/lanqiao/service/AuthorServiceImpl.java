@@ -67,6 +67,11 @@ public class AuthorServiceImpl implements AuthorService {
     }
 
     @Override
+    public Author getAuthorName(Integer authorId) {
+        return authorMapper.getAuthorName(authorId);
+    }
+
+    @Override
     public Author selectByAuthorRealID(String realID) {
         return authorMapper.selectByAuthorRealID(realID);
     }
