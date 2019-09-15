@@ -30,7 +30,7 @@
                 </ul>
             </div>
             <div class="penname">
-                <a href="author_massg.html" id="penname1" v-for="(pname,index1) in authornames">{{pname.authorName}}</a>
+                <a href="author_massg.html" id="authorName">{{authorName}}</a>
                 <a href="" class="w-link"><span class="w-icon phui-power sprites-app-1"></span>退出</a>
             </div>
 
@@ -133,7 +133,7 @@
                     </tr>
                     </thead>
                     <tbody v-for="(book,index2) in book">
-                    <tr >
+                    <tr>
                         <td>
                             <div class="work-title">
                                 <div class="pic" style="position: relative;">
@@ -211,91 +211,66 @@
     $(function () {
         $.ajax({
             url: "http://localhost:8080/author/getAuthorName",
-            data: {authorId:aid},
+            data: {authorId: aid},
             type: "post",
             dataType: "json",
             success: function (data) {
-                mv2 =new Vue({
-                    e1:".penname" ,
-                    data:{authornames:data.authorName},
-                })
-                alert(data.authorName);
+                var mv2 = new Vue({
+                    el: '#authorName',
+                    data: {authorName: data.authorName},
+                });
+                alert(mv2.authorName);
             }
         })
     });
 
-//显示作品
+    //显示作品
     $(function () {
         $.ajax({
             url: "http://localhost:8080/author/authorAllBook",
-            data: {authorId:aid},
+            data: {authorId: aid},
             type: "post",
             dataType: "json",
             success: function (data) {
-              mv3 =new Vue({
-                    e1:".grade-table-list" ,
-                    data:{book:data},
+                mv3 = new Vue({
+                    e1: ".grade-table-list",
+                    data: {book: data},
                 })
             }
         })
     });
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// 传id
+    // 传id
     $(function () {
         $("#penname1").click(function () {
-            var aid=sessionStorage.setItem("aid");
-                })
-            });
+            var aid = sessionStorage.setItem("aid");
+        })
+    });
 
     $(function () {
         $(".all-works").click(function () {
-            var aid=sessionStorage.setItem("aid");
+            var aid = sessionStorage.setItem("aid");
         })
     });
     $(function () {
         $(".incomes").click(function () {
-            var aid=sessionStorage.setItem("aid");
+            var aid = sessionStorage.setItem("aid");
         })
     });
     $(function () {
         $(".comment").click(function () {
-            var aid=sessionStorage.setItem("aid");
+            var aid = sessionStorage.setItem("aid");
         })
     });
     $(function () {
         $(".op").click(function () {
-            var aid=sessionStorage.setItem("aid");
+            var aid = sessionStorage.setItem("aid");
         })
     });
     $(function () {
         $(".newc").click(function () {
-            var aid=sessionStorage.setItem("aid");
+            var aid = sessionStorage.setItem("aid");
         })
     });
 </script>
