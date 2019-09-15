@@ -31,6 +31,10 @@ public class AuthorLoginServiceImpl implements AuthorLoginService {
     }
 
 
+    @Override
+    public AuthorLogin selectByAuthorId(Integer authorId) {
+        return authorLoginMapper.selectByAuthorId(authorId);
+    }
 
     @Override
     public Map loginCheck(String authorAccount, String authorPassword) {

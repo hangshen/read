@@ -1,18 +1,17 @@
 package org.lanqiao.controller;
 
 
-import org.lanqiao.entity.Author;
+import org.lanqiao.entity.*;
 
-import org.lanqiao.entity.BookType;
-import org.lanqiao.entity.Books;
-import org.lanqiao.entity.Comment;
 import org.lanqiao.service.*;
+import org.lanqiao.vo.AuthorBasicDataVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 
 import java.io.IOException;
+
 
 import java.util.List;
 import java.util.Map;
@@ -21,6 +20,7 @@ import java.util.Map;
 @RestController
 @RequestMapping("/author")
 public class AuthorController {
+
 
     @Autowired
     AuthorLoginService authorLoginService;
@@ -67,7 +67,7 @@ public class AuthorController {
         author.setRealName(realName);
         author.setRealID(realID);
         System.out.println(author.toString());
-        return authorService.register(author, authorAccount, authorPassword,realID);
+        return authorService.register(author, authorAccount, authorPassword, realID);
     }
 
     /**
@@ -111,26 +111,33 @@ public class AuthorController {
     /**
      * 作者基本资料
      * by lhw
+     *
      * @param authorId
      * @return Author
      */
     @RequestMapping("/authorBasicData")
-    public Author authorBasicData(Integer authorId){
-        return authorService.selectByAuthorId(authorId);
+    public AuthorBasicDataVo authorBasicData(Integer authorId) {
+        Author author = authorService.selectByAuthorId(authorId);
+        AuthorLogin authorLogin=authorLoginService.selectByAuthorId(authorId);
+        AuthorBasicDataVo authorBasicDataVo = new AuthorBasicDataVo();
+        authorBasicDataVo.setAuthor(author);
+        authorBasicDataVo.setAuthorLogin(authorLogin);
+        System.out.println(authorBasicDataVo.toString());
+        return authorBasicDataVo;
     }
 
     @RequestMapping("/getAllBookType")
-    public List<BookType> getAllBookType(){
+    public List<BookType> getAllBookType() {
         return bookTypeService.getAllBookType();
     }
 
     @RequestMapping("/readerComment")
-    public List<Comment> readerComment(Integer authorId){
+    public List<Comment> readerComment(Integer authorId) {
         return commentService.selectAllByAuthorId(4);
     }
 
     @RequestMapping("/getAuthorName")
-    public Author getAuthorName(Integer authorId){
+    public Author getAuthorName(Integer authorId) {
         return authorService.getAuthorName(authorId);
     }
 }

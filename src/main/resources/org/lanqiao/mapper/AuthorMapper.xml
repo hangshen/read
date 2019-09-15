@@ -18,7 +18,7 @@
 
 <!--==================================================查询操作===================================================-->
   <select id="selectByAuthorId" resultMap="AuthorMap" parameterType="java.lang.Integer" >
-   SELECT
+SELECT
 author.author_id,
 author.author_name,
 author.author_identity,
@@ -28,7 +28,10 @@ author.author_money,
 author.author_introduce,
 author.real_name,
 author.real_ID,
-authorlogin.author_login_account
+authorlogin.author_login_id,
+authorlogin.author_login_account,
+authorlogin.author_login_password,
+authorlogin.author_login_author_id
 FROM
 author
 INNER JOIN authorlogin ON authorlogin.author_login_author_id = author.author_id and author.author_id = #{authorId,jdbcType=INTEGER}

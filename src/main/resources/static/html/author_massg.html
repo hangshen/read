@@ -31,47 +31,47 @@
                 </ul>
             </div>
             <div class="penname">
-                <a href="author_massg.html" id="authorName" >{{authorName}}</a>
+                <a href="author_massg.html" id="authorName">{{authorName}}</a>
                 <a href="author_login.html" class="w-link"><span class="w-icon phui-power sprites-app-1"></span>退出</a>
             </div>
 
 
         </div>
     </div>
-<div id="massg_box" id="author" >
+    <div id="massg_box" id="author">
 
-    <div id="massg_top">
-        <a id="massg_right">编辑</a>
-        <h2>基本资料：</h2>
+        <div id="massg_top">
+            <a id="massg_right">编辑</a>
+            <h2>基本资料：</h2>
+        </div>
+        <div id="massg_null"></div>
+        <div id="massg_out">
+            <div class="massg">
+                <dt>账号：</dt>
+                <dd>{{authorLoginAccount}}</dd>
+            </div>
+            <div class="massg">
+                <dt>运营身份：</dt>
+                <dd>{{authorIdentity}}</dd>
+            </div>
+            <div class="massg">
+                <dt>笔名：</dt>
+                <dd>{{authorName}}</dd>
+            </div>
+            <div class="massg">
+                <dt>QQ：</dt>
+                <dd>{{authorQq}}</dd>
+            </div>
+            <div class="massg">
+                <dt>真实姓名：</dt>
+                <dd>{{realName}}</dd>
+            </div>
+            <div class="massg">
+                <dt>身份证：</dt>
+                <dd>{{realID}}</dd>
+            </div>
+        </div>
     </div>
-    <div id="massg_null"></div>
-    <div id="massg_out">
-        <div class="massg" >
-            <dt>账号：</dt>
-            <dd>{{authorLoginAccount}}</dd>
-        </div>
-        <div class="massg">
-            <dt>运营身份：</dt>
-            <dd>{{authorIdentity}}</dd>
-        </div>
-        <div class="massg">
-            <dt>笔名：</dt>
-            <dd>{{authorName}}</dd>
-        </div>
-        <div class="massg">
-            <dt>QQ：</dt>
-            <dd>{{authorQq}}</dd>
-        </div>
-        <div class="massg">
-            <dt>真实姓名：</dt>
-            <dd>{{realName}}</dd>
-        </div>
-        <div class="massg">
-            <dt>身份证：</dt>
-            <dd>{{realID}}</dd>
-        </div>
-    </div>
-</div>
     <div class="msg_bottom">
         <div class="footer">
             <a href="http://gb.corp.163.com/gb/about/overview.html" target="_blank">公司简介</a>
@@ -95,57 +95,57 @@
     $(function () {
         $.ajax({
             url: "http://localhost:8080/author/getAuthorName",
-            data: {authorId:aid},
+            data: {authorId: aid},
             type: "post",
             dataType: "json",
             success: function (data) {
-                mv2 =new Vue({
-                    el:"#authorName" ,
-                    data:{authorName:data.authorName},
+                mv2 = new Vue({
+                    el: "#authorName",
+                    data: {authorName: data.authorName},
                 });
                 alert(mv2.authorName);
             }
         })
     });
 
-//显示信息
+    //显示信息
 
 
-        $.ajax({
-            url: "http://localhost:8080/author/authorBasicData",
-            type: "post",
-            data: {authorId: aid},
-            dataType: "json",
-            success: function (data) {
-                mv1 = new Vue({
-                    el: '#massg_out',
-                    data: {
-                    authorName: data.authorName,
-                        authorLoginAccount:data.authorLoginAccount,
-                        authorQq: data.authorQq,
-                        authorIdentity: data.authorIdentity,
-                        realName: data.realName,
-                        realID: data.realID,
-                    },
+    $.ajax({
+        url: "http://localhost:8080/author/authorBasicData",
+        type: "post",
+        data: {authorId: aid},
+        dataType: "json",
+        success: function (data) {
+            mv1 = new Vue({
+                el: '#massg_out',
+                data: {
+                    authorName: data.author.authorName,
+                    authorLoginAccount: data.authorLogin.authorLoginAccount,
+                    authorQq: data.author.authorQq,
+                    authorIdentity: data.author.authorIdentity,
+                    realName: data.author.realName,
+                    realID: data.author.realID,
+                },
 
 
-                    error: function () {
+                error: function () {
 
-                        alert("error");
+                    alert("error");
 
-                    }
-                });
-                alert(mv1.authorName);
-                alert(mv1.authorLoginAccount);
+                }
+            });
+            alert(mv1.authorName);
+            alert(mv1.authorLoginAccount);
 
-            }
-        });
+        }
+    });
 
 
     // 传id
     $(function () {
         $(".newc").click(function () {
-            var aid=sessionStorage.setItem("aid");
+            var aid = sessionStorage.setItem("aid");
         })
     });
 </script>
