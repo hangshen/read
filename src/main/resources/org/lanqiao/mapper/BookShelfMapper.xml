@@ -10,6 +10,11 @@
   <sql id="Base_Column_List" >
     shelf_id, shelf_book_flag, shelf_user_id, shelf_book_id
   </sql>
+  <select id="selectAllBookSelf" resultMap="BookShelfMap" >
+    select
+    *
+    from bookshelf
+  </select>
   <select id="selectByPrimaryKey" resultMap="BookShelfMap" parameterType="java.lang.Integer" >
     select 
     <include refid="Base_Column_List" />

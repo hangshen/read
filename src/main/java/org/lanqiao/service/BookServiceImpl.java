@@ -176,6 +176,13 @@ public class BookServiceImpl implements BookService{
     }
     @Override
     public int insertSelective(BookShelf record){
+        List<BookShelf> list = bookShelfMapper.selectAllBookSelf();
+        for(BookShelf b:list)
+        {
+            if(b.getShelfUserId() == record.getShelfUserId() && b.getShelfBookId() == record.getShelfBookId()){
+                return 0;
+            }
+        }
         return bookShelfMapper.insertSelective(record);
     }
 }
