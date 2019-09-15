@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>爱阅读后台管理系统</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="../../css/background/bootstrap.css" type="text/css" rel="stylesheet">
+    <link href="../../css/background/background.css" rel="stylesheet">
+    <link href="../../css/background/addressadd.css" rel="stylesheet">
+</head>
+<body>
+<div id="header">
+    <img src="../../images/settlementimages/ddd.jpg">
+    <span>爱阅读后台管理系统</span>
+</div>
+
+<div id="daohang">
+    <ul class="nav nav-pills nav-stacked">
+        <li class="active"><a href="bookType.html">书籍种类管理</a></li>
+        <li><a href="addBookType.html">添加书籍种类</a></li>
+        <li><a href="changeBookType.html">管理书籍种类</a></li>
+        <li class="active"><a href="book.html">书籍管理</a></li>
+        <li><a href="addBook.html">添加书籍</a></li>
+        <li><a href="changeBook.html">管理书籍</a></li>
+        <li class="active"><a href="author.html">作者管理</a></li>
+        <li><a href="changeAuthor.html">管理作者</a></li>
+        <li class="active"><a href="user.html">用户管理</a></li>
+        <li><a href="changeUser.html">管理用户信息</a></li>
+    </ul>
+</div>
+
+
+<div id="daohang2">
+    <ul class="breadcrumb">
+        <li><a href="background.html">首页</a></li>
+        <li><a href="book.html">商品管理</a></li>
+        <li><a href="changeBook.html">查询商品</a></li>
+        <li id="chaxun">
+            <input type="text" id="shuru">
+            <a href="#" id="sou">搜索</a>
+        </li>
+    </ul>
+</div>
+
+<div id="biaoge">
+    <table class="table table-striped table-bordered table-hover">
+        <thead>
+        <tr class="tableHead">
+            <th>商品编号</th>
+            <th>商品名称</th>
+            <th>种类编号</th>
+            <th>品牌编号</th>
+            <th>下架时间</th>
+            <th>状态</th>
+            <th>操作</th>
+            <th>操作</th>
+        </tr>
+        </thead>
+        <tr v-for="(pro,index) in pros" style="display: none" id="selPro">
+            <td class="id">{{pro.proId}}</td>
+            <td>{{pro.proName}}</td>
+            <td>{{pro.proTypeId}}</td>
+            <td>{{pro.proBrandId}}</td>
+            <td>{{pro.downTime}}</td>
+            <td>{{pro.proState}}</td>
+            <td><a href="#" id="update" @click="updatePro(index)">修改</a></td>
+            <td ><a href="#" id="del" @click="dele(index)">删除</a></td>
+        </tr>
+    </table>
+    <div id="add">
+        <div class="row1">
+            新增商品<a href="javascript:void(0)" title="关闭窗口" class="close_btn" id="closeBtn">×</a>
+        </div>
+        <form id="bigbox">
+            <div id="one">
+                <span>商品名称</span>
+                <input name="proName" type="text">
+            </div>
+            <div class="twe">
+                <span>下架时间</span>
+                <input name="downTime" type="date">
+            </div>
+            <div class="twe">
+                <span>状态</span>
+                <input name="statu" type="text">
+            </div>
+            <div class="twe">
+                <input name="insert" id="infor" type="submit" value="修改">
+            </div>
+        </form>
+    </div>
+</div>
+<script src="../../js/jquery-3.4.1.js"></script>
+<script src="../../js/bootstrap.js"></script>
+<script src="../../js/vue.min.js"></script>
+<script src="../../js/jquery.validate.js" type="application/javascript"></script>
+<script src="../../js/jquery.validate.regex.js" type="application/javascript"></script>
+<script src="../../js/bootstrap.js"></script>
+<script>
+    $(function () {
+        var vm;
+        var selName="";
+        var updateInfo;
+        $.ajax({
+            url:"http://localhost:8080/selByName",
+            type: "post",
+            dataType: "json",
+            data:JSON.stringify(selName),
+            contentType: "application/json;charset-UTF-8",
+            success:function (data) {
+                if(data.length>0)
+                {
+                    $("#selPro").css("display","table-row");
+                }
+                vm = new Vue({
+                    el:"#biaoge",
+                    data:{pros:data},
+                    methods:{
+                        //删除商品
+                        dele:function (index) {
+                            var proId = this.pros[index].proId;
+                            $.ajax({
+                                url:"http://localhost:8080/delPro",
+                                type: "post",
+                                dataType: "json",
+                                data:JSON.stringify(proId),
+                                contentType: "application/json;charset-UTF-8",
+                                success:function (data) {
+                                    location.reload();
+                                }
+                            })
+                        },
+                        //修改商品
+                        updatePro:function (index) {
+                            $("body").append("<div id='mask'></div>");
+                            $("#mask").addClass("mask").fadeIn("slow");
+                            $("#add").fadeIn("slow");
+                            var proId = this.pros[index].proId;
+                            $("#infor").click(function () {
+                                updateInfo = {
+                                    "proName":$("input[name = 'proName']").val(),
+                                    "downTime":$("input[name = 'downTime']").val(),
+                                    "proState":$("input[name = 'statu']").val(),
+                                    "proId":proId
+                                }
+                                $.ajax({
+                                    url:"http://localhost:8080/updatePro",
+                                    type: "post",
+                                    data: JSON.stringify(updateInfo),
+                                    dataType: "json",
+                                    contentType: 'application/json;charset=UTF-8',
+                                    success:function (data) {
+                                        alert("修改成功！");
+                                        location.reload();
+                                    }
+                                })
+                            })
+                        }
+                    }
+                })
+            }
+        })
+        //查询商品
+        $("#sou").click(function () {
+            selName = $("#shuru").val();
+            $.ajax({
+                url:"http://localhost:8080/selByName",
+                type: "post",
+                dataType: "json",
+                data:JSON.stringify(selName),
+                contentType: "application/json;charset-UTF-8",
+                success:function (data) {
+                    if(data.length>0)
+                    {
+                        $("#selPro").css("display","table-row");
+                    }
+                    vm.pros = data;
+                }
+            })
+        })
+    })
+</script>
+</body>
+</html>

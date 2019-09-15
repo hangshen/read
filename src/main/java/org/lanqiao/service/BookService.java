@@ -1,5 +1,6 @@
 package org.lanqiao.service;
 
+import org.lanqiao.entity.BookShelf;
 import org.lanqiao.entity.Books;
 import org.lanqiao.vo.LeiBooksVo;
 import org.lanqiao.vo.SelectTypeVo;
@@ -32,4 +33,8 @@ public interface BookService {
     int updateShelfBook(Integer bookId,Integer userId);
 
     int delectShelfBook(Integer bookId,Integer userId);
+
+    int insertSelective(BookShelf record);
+
+
 }

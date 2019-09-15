@@ -2,6 +2,7 @@ package org.lanqiao.controller;
 
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
+import org.lanqiao.entity.BookShelf;
 import org.lanqiao.entity.Books;
 import org.lanqiao.service.BookService;
 import org.lanqiao.vo.LeiBooksVo;
@@ -92,6 +93,13 @@ public class BookController {
         } else {
             return bookService.delectShelfBook(bookId,userId);
         }
+    }
+    @RequestMapping("/insertToBookSelf")
+    public int insertSelective(Integer userId,Integer bookId){
+        BookShelf bookShelf = new BookShelf();
+        bookShelf.setShelfUserId(userId);
+        bookShelf.setShelfBookId(bookId);
+        return bookService.insertSelective(bookShelf);
     }
 
 }
