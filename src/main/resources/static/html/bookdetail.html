@@ -37,341 +37,340 @@
         }
     </style>
     <style type="text/css">
-    /*
-    * @Author: hzwushuoshuo
-    * @Date:   2016-11-22 17:31:31
-    * @Last Modified by:   hzwushuoshuo
-    * @Last Modified time: 2017-07-28 17:23:55
-    */
-    /* ui-button */
-    .clear-float, .tipLayer-inner .tipsec ul {
-        zoom: 1;
-    }
-
-    .clear-float:after, .tipLayer-inner .tipsec ul:after {
-        clear: both;
-        content: '.';
-        display: block;
-        height: 0;
-        visibility: hidden;
-    }
-
-    .btn-base, .btn-red-fill, .btn-red-stroke, .btn-gray-fill {
-        display: block;
-        border-radius: 4px;
-        font-size: 14px;
-        text-align: center;
-        width: 96px;
-        height: 30px;
-        line-height: 30px;
-    }
-
-    .btn-red-fill {
-        color: #fff;
-        background-color: #c9483c;
-    }
-
-    .btn-red-fill:hover {
-        background-color: #B35D46;
-    }
-
-    .btn-red-fill.disabled {
-        opacity: .5;
-        filter: alpha(opacity=50);
-    }
-
-    .btn-red-stroke {
-        width: 94px;
-        height: 28px;
-        line-height: 28px;
-        border: 1px solid #c9483c;
-        color: #c9483c;
-        background: transparent;
-    }
-
-    .btn-red-stroke:hover {
-        background-color: #f7f7f7;
-    }
-
-    .btn-gray-fill {
-        color: #fff;
-        background-color: #ccc;
-    }
-
-    /* 打赏浮层 */
-    .tip-layer {
-        position: absolute;
-        width: 385px;
-        padding: 30px;
-        border-radius: 10px;
-        background: #fff;
-        box-shadow: 0px 10px 20px 0px rgba(0, 0, 0, 0.08), 0px 4px 4px 0px rgba(0, 0, 0, 0.08);
-        font-size: 12px;
-        line-height: 1.5;
-        color: #6c6358;
-    }
-
-    .tipLayer-inner h2 {
-        font-size: 20px;
-        font-weight: normal;
-        line-height: 1;
-        color: #736e67;
-        margin: 0 0 22px;
-    }
-
-    .tipLayer-inner h2 a {
-        position: absolute;
-        display: block;
-        width: 16px;
-        height: 16px;
-        top: 28px;
-        right: 17px;
-        -webkit-transition: -webkit-transform .5s;
-        transition: transform .5s;
-    }
-
-    .tipLayer-inner h2 a:hover {
-        -webkit-transform: rotate(180deg);
-        transform: rotate(180deg);
-    }
-
-    .tipLayer-inner .part {
-        position: relative;
-    }
-
-    .tipLayer-inner .label {
-        position: absolute;
-        top: 0;
-        left: 0;
-    }
-
-    .tipLayer-inner .tipsec {
-        padding-left: 36px;
-        text-align: left;
-    }
-
-    .tipLayer-inner .tipsec.tipsec-h1 {
-        height: 105px;
-    }
-
-    .tipLayer-inner .tipsec.tipsec-h3 {
-        color: #545c66;
-        margin-bottom: 8px;
-    }
-
-    .tipLayer-inner .m-tipSelect ul {
-        margin: 0;
-    }
-
-    .tipLayer-inner .m-tipSelect li {
-        display: block;
-        float: left;
-        width: 102px;
-        height: 27px;
-        line-height: 27px;
-        border: 1px solid #cdcdcd;
-        margin: 0 15px 11px 0;
-        color: #06080a;
-        background-color: #fff;
-        text-align: center;
-        cursor: pointer;
-        position: relative;
-    }
-
-    .tipLayer-inner .m-tipSelect li.last {
-        margin-right: 0;
-    }
-
-    .tipLayer-inner .m-tipSelect li.selected {
-        border: 1px solid #c9483c;
-        color: #c9483c;
-    }
-
-    .tipLayer-inner .m-tipSelect li.selected em {
-        position: absolute;
-        top: -10px;
-        right: -10px;
-        display: inline-block;
-        width: 19px;
-        height: 18px;
-    }
-
-    .tipLayer-inner .m-tipSelect li .optional {
-        width: 96%;
-        text-align: center;
-        border: none;
-    }
-
-    .tipLayer-inner .m-tipSelect li .optional:-ms-input-placeholder {
-        color: #c3c3c3;
-    }
-
-    .tipLayer-inner .m-tipSelect li .optional::-webkit-input-placeholder {
-        color: #c3c3c3;
-    }
-
-    .tipLayer-inner .m-tipSelect li .optional::-moz-placeholder {
-        color: #c3c3c3;
-    }
-
-    .tipLayer-inner .m-tipSelect li .optional::placeholder {
-        color: #c3c3c3;
-    }
-
-    .tipLayer-inner textarea {
-        display: block;
-        border: 1px solid #cdcdcd;
-        width: 365px;
-        height: 112px;
-        line-height: 28px;
-        resize: none;
-        margin-bottom: 5px;
-        padding: 2px 10px;
-        font-size: 14px;
-        color: #aba59a;
-        background-color: transparent;
-    }
-
-    .tipLayer-inner .warning {
-        font-size: 12px;
-        color: #c9483c;
-    }
-
-    .tipLayer-inner .warning.show {
-        display: block;
-    }
-
-    .tipLayer-inner .warning a {
-        color: #6395c7;
-        margin-left: 14px;
-    }
-
-    .tipLayer-inner .warning em {
-        display: block;
-        float: left;
-        width: 15px;
-        height: 15px;
-        margin: 1px 4px 0 0;
-    }
-
-    .tipLayer-inner .button {
-        text-align: center;
-    }
-
-    .tipLayer-inner .button a {
-        display: inline-block;
-    }
-
-    .tipLayer-inner .button a.btn-cc {
-        margin-left: 80px;
-    }
-
-    .tipLayer-inner .m-comment {
-        height: 144px;
-    }
-
-    /* 夜间模式 */
-    .dark-skin .tip-layer {
-        background-color: #595550;
-        color: #8b847a;
-    }
-
-    .dark-skin .tip-layer h2 {
-        color: #8b847a;
-    }
-
-    .dark-skin .tipLayer-inner li, .dark-skin .tipLayer-inner textarea {
-        border: 1px solid #6d6861;
-    }
-
-    .dark-skin .tipLayer-inner li.selected {
-        color: #b35d46;
-        border: 1px solid #b35d46;
-    }
-
-
-
-    .dark-skin .tipLayer-inner .warning {
-        color: #b35d46;
-    }
-
-    .dark-skin .btn-red-stroke {
-        color: #b35d46;
-        border: 1px solid #b35d46;
-    }
-
-    .dark-skin .btn-red-stroke:hover {
-        background-color: #504d4b;
-    }
-
-    .dark-skin .btn-red-fill {
-        color: #363434;
-        background-color: #b35d46;
-    }
-
-    .dark-skin .btn-red-fill:hover {
-        background-color: #da694a;
-    }
-
-    /* 动画 */
-    .animated {
-        -webkit-animation-duration: 1s;
-        animation-duration: 1s;
-        -webkit-animation-fill-mode: both;
-        animation-fill-mode: both;
-    }
-
-    @-webkit-keyframes shake {
-        0%, 100% {
-            -webkit-transform: translate3d(0, 0, 0);
-            transform: translate3d(0, 0, 0);
+        /*
+        * @Author: hzwushuoshuo
+        * @Date:   2016-11-22 17:31:31
+        * @Last Modified by:   hzwushuoshuo
+        * @Last Modified time: 2017-07-28 17:23:55
+        */
+        /* ui-button */
+        .clear-float, .tipLayer-inner .tipsec ul {
+            zoom: 1;
         }
-        10%, 30%, 50%, 70%, 90% {
-            -webkit-transform: translate3d(-10px, 0, 0);
-            transform: translate3d(-10px, 0, 0);
-        }
-        20%, 40%, 60%, 80% {
-            -webkit-transform: translate3d(10px, 0, 0);
-            transform: translate3d(10px, 0, 0);
-        }
-    }
 
-    @keyframes shake {
-        0%, 100% {
-            -webkit-transform: translate3d(0, 0, 0);
-            -ms-transform: translate3d(0, 0, 0);
-            transform: translate3d(0, 0, 0);
+        .clear-float:after, .tipLayer-inner .tipsec ul:after {
+            clear: both;
+            content: '.';
+            display: block;
+            height: 0;
+            visibility: hidden;
         }
-        10%, 30%, 50%, 70%, 90% {
-            -webkit-transform: translate3d(-10px, 0, 0);
-            -ms-transform: translate3d(-10px, 0, 0);
-            transform: translate3d(-10px, 0, 0);
-        }
-        20%, 40%, 60%, 80% {
-            -webkit-transform: translate3d(10px, 0, 0);
-            -ms-transform: translate3d(10px, 0, 0);
-            transform: translate3d(10px, 0, 0);
-        }
-    }
 
-    .shake {
-        -webkit-animation-name: shake;
-        animation-name: shake;
-    }
+        .btn-base, .btn-red-fill, .btn-red-stroke, .btn-gray-fill {
+            display: block;
+            border-radius: 4px;
+            font-size: 14px;
+            text-align: center;
+            width: 96px;
+            height: 30px;
+            line-height: 30px;
+        }
 
-    .m-mask {
-        display: none;
-        position: absolute;
-        position: fixed;
-        top: 0;
-        right: 0;
-        bottom: 0;
-        left: 0;
-        background-color: #000;
-        filter: Alpha(opacity=20);
-        opacity: .6;
-        z-index: 1020;
-    }
+        .btn-red-fill {
+            color: #fff;
+            background-color: #c9483c;
+        }
+
+        .btn-red-fill:hover {
+            background-color: #B35D46;
+        }
+
+        .btn-red-fill.disabled {
+            opacity: .5;
+            filter: alpha(opacity=50);
+        }
+
+        .btn-red-stroke {
+            width: 94px;
+            height: 28px;
+            line-height: 28px;
+            border: 1px solid #c9483c;
+            color: #c9483c;
+            background: transparent;
+        }
+
+        .btn-red-stroke:hover {
+            background-color: #f7f7f7;
+        }
+
+        .btn-gray-fill {
+            color: #fff;
+            background-color: #ccc;
+        }
+
+        /* 打赏浮层 */
+        .tip-layer {
+            position: absolute;
+            width: 385px;
+            padding: 30px;
+            border-radius: 10px;
+            background: #fff;
+            box-shadow: 0px 10px 20px 0px rgba(0, 0, 0, 0.08), 0px 4px 4px 0px rgba(0, 0, 0, 0.08);
+            font-size: 12px;
+            line-height: 1.5;
+            color: #6c6358;
+        }
+
+        .tipLayer-inner h2 {
+            font-size: 20px;
+            font-weight: normal;
+            line-height: 1;
+            color: #736e67;
+            margin: 0 0 22px;
+        }
+
+        .tipLayer-inner h2 a {
+            position: absolute;
+            display: block;
+            width: 16px;
+            height: 16px;
+            top: 28px;
+            right: 17px;
+            -webkit-transition: -webkit-transform .5s;
+            transition: transform .5s;
+        }
+
+        .tipLayer-inner h2 a:hover {
+            -webkit-transform: rotate(180deg);
+            transform: rotate(180deg);
+        }
+
+        .tipLayer-inner .part {
+            position: relative;
+        }
+
+        .tipLayer-inner .label {
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+
+        .tipLayer-inner .tipsec {
+            padding-left: 36px;
+            text-align: left;
+        }
+
+        .tipLayer-inner .tipsec.tipsec-h1 {
+            height: 105px;
+        }
+
+        .tipLayer-inner .tipsec.tipsec-h3 {
+            color: #545c66;
+            margin-bottom: 8px;
+        }
+
+        .tipLayer-inner .m-tipSelect ul {
+            margin: 0;
+        }
+
+        .tipLayer-inner .m-tipSelect li {
+            display: block;
+            float: left;
+            width: 102px;
+            height: 27px;
+            line-height: 27px;
+            border: 1px solid #cdcdcd;
+            margin: 0 15px 11px 0;
+            color: #06080a;
+            background-color: #fff;
+            text-align: center;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .tipLayer-inner .m-tipSelect li.last {
+            margin-right: 0;
+        }
+
+        .tipLayer-inner .m-tipSelect li.selected {
+            border: 1px solid #c9483c;
+            color: #c9483c;
+        }
+
+        .tipLayer-inner .m-tipSelect li.selected em {
+            position: absolute;
+            top: -10px;
+            right: -10px;
+            display: inline-block;
+            width: 19px;
+            height: 18px;
+        }
+
+        .tipLayer-inner .m-tipSelect li .optional {
+            width: 96%;
+            text-align: center;
+            border: none;
+        }
+
+        .tipLayer-inner .m-tipSelect li .optional:-ms-input-placeholder {
+            color: #c3c3c3;
+        }
+
+        .tipLayer-inner .m-tipSelect li .optional::-webkit-input-placeholder {
+            color: #c3c3c3;
+        }
+
+        .tipLayer-inner .m-tipSelect li .optional::-moz-placeholder {
+            color: #c3c3c3;
+        }
+
+        .tipLayer-inner .m-tipSelect li .optional::placeholder {
+            color: #c3c3c3;
+        }
+
+        .tipLayer-inner textarea {
+            display: block;
+            border: 1px solid #cdcdcd;
+            width: 365px;
+            height: 112px;
+            line-height: 28px;
+            resize: none;
+            margin-bottom: 5px;
+            padding: 2px 10px;
+            font-size: 14px;
+            color: #aba59a;
+            background-color: transparent;
+        }
+
+        .tipLayer-inner .warning {
+            font-size: 12px;
+            color: #c9483c;
+        }
+
+        .tipLayer-inner .warning.show {
+            display: block;
+        }
+
+        .tipLayer-inner .warning a {
+            color: #6395c7;
+            margin-left: 14px;
+        }
+
+        .tipLayer-inner .warning em {
+            display: block;
+            float: left;
+            width: 15px;
+            height: 15px;
+            margin: 1px 4px 0 0;
+        }
+
+        .tipLayer-inner .button {
+            text-align: center;
+        }
+
+        .tipLayer-inner .button a {
+            display: inline-block;
+        }
+
+        .tipLayer-inner .button a.btn-cc {
+            margin-left: 80px;
+        }
+
+        .tipLayer-inner .m-comment {
+            height: 144px;
+        }
+
+        /* 夜间模式 */
+        .dark-skin .tip-layer {
+            background-color: #595550;
+            color: #8b847a;
+        }
+
+        .dark-skin .tip-layer h2 {
+            color: #8b847a;
+        }
+
+        .dark-skin .tipLayer-inner li, .dark-skin .tipLayer-inner textarea {
+            border: 1px solid #6d6861;
+        }
+
+        .dark-skin .tipLayer-inner li.selected {
+            color: #b35d46;
+            border: 1px solid #b35d46;
+        }
+
+
+        .dark-skin .tipLayer-inner .warning {
+            color: #b35d46;
+        }
+
+        .dark-skin .btn-red-stroke {
+            color: #b35d46;
+            border: 1px solid #b35d46;
+        }
+
+        .dark-skin .btn-red-stroke:hover {
+            background-color: #504d4b;
+        }
+
+        .dark-skin .btn-red-fill {
+            color: #363434;
+            background-color: #b35d46;
+        }
+
+        .dark-skin .btn-red-fill:hover {
+            background-color: #da694a;
+        }
+
+        /* 动画 */
+        .animated {
+            -webkit-animation-duration: 1s;
+            animation-duration: 1s;
+            -webkit-animation-fill-mode: both;
+            animation-fill-mode: both;
+        }
+
+        @-webkit-keyframes shake {
+            0%, 100% {
+                -webkit-transform: translate3d(0, 0, 0);
+                transform: translate3d(0, 0, 0);
+            }
+            10%, 30%, 50%, 70%, 90% {
+                -webkit-transform: translate3d(-10px, 0, 0);
+                transform: translate3d(-10px, 0, 0);
+            }
+            20%, 40%, 60%, 80% {
+                -webkit-transform: translate3d(10px, 0, 0);
+                transform: translate3d(10px, 0, 0);
+            }
+        }
+
+        @keyframes shake {
+            0%, 100% {
+                -webkit-transform: translate3d(0, 0, 0);
+                -ms-transform: translate3d(0, 0, 0);
+                transform: translate3d(0, 0, 0);
+            }
+            10%, 30%, 50%, 70%, 90% {
+                -webkit-transform: translate3d(-10px, 0, 0);
+                -ms-transform: translate3d(-10px, 0, 0);
+                transform: translate3d(-10px, 0, 0);
+            }
+            20%, 40%, 60%, 80% {
+                -webkit-transform: translate3d(10px, 0, 0);
+                -ms-transform: translate3d(10px, 0, 0);
+                transform: translate3d(10px, 0, 0);
+            }
+        }
+
+        .shake {
+            -webkit-animation-name: shake;
+            animation-name: shake;
+        }
+
+        .m-mask {
+            display: none;
+            position: absolute;
+            position: fixed;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            background-color: #000;
+            filter: Alpha(opacity=20);
+            opacity: .6;
+            z-index: 1020;
+        }
     </style>
 </head>
 
@@ -1055,6 +1054,15 @@
                 success: function (data) {
                     data.chapterSet[0].chapterDate = data.chapterSet[0].chapterDate.substring(0, 10) + " " + data.chapterSet[0].chapterDate.substring(11, 19);
                     mv1.book = data;
+                    $.ajax({
+                        url: "http://localhost:8080/author/getAllBooksByAuthorId",
+                        type: "post",
+                        data: {authorId: mv1.book.author.authorId},
+                        datatype: "json",
+                        success: function (data) {
+                            mv1.otherbooks = data;
+                        }
+                    })
                 }
             }),
                 $.ajax({
@@ -1070,15 +1078,6 @@
                         mv1.comment = data.list;
                         mv1.page = data.pages;
 
-                    }
-                }),
-                $.ajax({
-                    url: "http://localhost:8080/",
-                    type: "post",
-                    data: {authorId: book.author.authorId},
-                    datatype: "json",
-                    success: function (data) {
-                        mv1.otherbooks = data;
                     }
                 })
         },
