@@ -11,6 +11,15 @@ public class Read {
 
     private Integer readPageNum;
 
+    public Read(){}
+
+    public Read(Integer readUserId, Integer readBookId, Integer readChapterId, Integer readPageNum) {
+        this.readUserId = readUserId;
+        this.readBookId = readBookId;
+        this.readChapterId = readChapterId;
+        this.readPageNum = readPageNum;
+    }
+
     public Integer getReadId() {
         return readId;
     }

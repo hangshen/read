@@ -15,6 +15,24 @@ spring:
 #    prefix: classpath:/templates/
 #    suffix: .html
 
+#redis配置
+  redis:
+    host: 127.0.0.1
+    port: 6379
+    database: 0
+    timeout: 300ms
+    pool:
+    jedis:
+      pool:
+        max-active: 8
+        max-wait: -1ms
+        max-idle: 8
+        min-idle: 0
+    password:
+#redis配置完成
+
+
+
 mybatis:
   mapper-locations: classpath:org.lanqiao.mapper/*Mapper.xml
   type-aliases-package: org.lanqiao.entity

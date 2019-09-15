@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="org.lanqiao.mapper.ReadMapper" >
-  <resultMap id="BaseResultMap" type="org.lanqiao.entity.Read" >
+  <resultMap id="ReadResultMap" type="org.lanqiao.entity.Read" >
     <id column="read_id" property="readId" jdbcType="INTEGER" />
     <result column="read_user_id" property="readUserId" jdbcType="INTEGER" />
     <result column="read_book_id" property="readBookId" jdbcType="INTEGER" />
@@ -20,11 +20,10 @@
   <sql id="Base_Column_List" >
     read_id, read_user_id, read_book_id, read_chapter_id, read_page_num
   </sql>
-  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
-    select 
-    <include refid="Base_Column_List" />
-    from read
-    where read_id = #{readId,jdbcType=INTEGER}
+  <select id="selectByPrimaryKey" resultMap="ReadResultMap" parameterType="java.lang.Integer" >
+    select `read`.read_id,`read`.read_user_id,`read`.read_book_id,chapter.chapter_sort AS read_chapter_id,`read`.read_page_num
+    from `read`,chapter
+    where `read`.read_user_id=#{userId} AND `read`.read_book_id=#{bookId} AND chapter.chapter_id=`read`.read_chapter_id
   </select>
 
   <select id="checkRecord" parameterType="java.lang.Integer" resultType="java.lang.Integer">

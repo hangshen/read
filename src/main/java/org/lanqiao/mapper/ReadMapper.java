@@ -13,7 +13,7 @@ public interface ReadMapper {
 
     int insertSelective(Read record);
 
-    Read selectByPrimaryKey(Integer readId);
+    Read selectByPrimaryKey(@Param("userId")Integer userId,@Param("bookId")Integer bookId);
 
     int updateByPrimaryKeySelective(Read record);
 
