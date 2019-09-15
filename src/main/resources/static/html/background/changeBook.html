@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="../../css/background/bootstrap.css" type="text/css" rel="stylesheet">
     <link href="../../css/background/background.css" rel="stylesheet">
-    <link href="../../css/background/probrand.css" rel="stylesheet">
+    <link href="../../css/background/protype.css" rel="stylesheet">
     <link rel="Stylesheet" type="text/css" href="../../css/background/addressadd.css"/>
 </head>
 <body>
@@ -71,7 +71,8 @@
         </tr>
         </tbody>
     </table>
-    <div id="add">
+</div>
+<div id="add">
         <div class="row1">
             修改书籍<a href="javascript:void(0)" title="关闭窗口" class="close_btn" id="closeBtn">×</a>
         </div>
@@ -100,7 +101,6 @@
                 <input name="insert" id="infor" type="submit" value="修改">
             </div>
         </form>
-    </div>
 </div>
 <script src="../../js/jquery-3.4.1.js"></script>
 <script src="../../js/bootstrap.js"></script>
@@ -184,11 +184,14 @@
                 dataType: "json",
                 contentType: 'application/json;charset=UTF-8',
                 success:function (data) {
-                    mv1.books[i].bookName = $("input[name = 'bookName']").val();
-                    mv1.books[i].bookIntroduce = $("input[name = 'introduce']").val();
-                    mv1.books[i].bookFinishDate = $("input[name = 'finishTime']").val();
-                    mv1.books[i].bookFlag = $("input[name = 'statu']").val();
-                    mv1.books[i].bookTypeId = $("input[name = 'type']").val();
+                    if(data==1){
+                        mv1.books[i].bookName = $("input[name = 'bookName']").val();
+                        mv1.books[i].bookIntroduce = $("input[name = 'introduce']").val();
+                        mv1.books[i].bookFinishDate = $("input[name = 'finishTime']").val();
+                        mv1.books[i].bookFlag = $("input[name = 'statu']").val();
+                        mv1.books[i].bookTypeId = $("input[name = 'type']").val();
+                        location.reload();
+                    }
                 }
             })
         })

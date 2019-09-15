@@ -30,7 +30,7 @@ public class BookTypeController {
         booktypeName = "%"+booktypeName+"%";
         return bookTypeService.selectByTypeName(booktypeName);
     }
-    @RequestMapping("/deleteByTypeName")
+    @RequestMapping("/deleteByType")
     public int deleteByPrimaryKey(Integer booktypeId){
         return bookTypeService.deleteByPrimaryKey(booktypeId);
     }

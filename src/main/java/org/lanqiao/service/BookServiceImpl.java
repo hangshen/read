@@ -199,6 +199,13 @@ public class BookServiceImpl implements BookService{
     }
     @Override
     public int updateByPrimaryKeySelective(Books record){
+        List<Books> list = booksMapper.selectAll();
+        for(Books b:list)
+        {
+            if(b.getBookName().equals(record.getBookName())){
+                return 0;
+            }
+        }
         return booksMapper.updateByPrimaryKeySelective(record);
     }
     @Override

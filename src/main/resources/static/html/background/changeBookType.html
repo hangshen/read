@@ -137,9 +137,9 @@
                         },
                         dlt:function (i) {
                             $.ajax({
-                                url: "http://localhost:8080/deleteByTypeName",
+                                url: "http://localhost:8080/deleteByType",
                                 type: "post",
-                                data: {typeId: mv1.types[i].typeId},
+                                data: {booktypeId: mv1.types[i].booktypeId},
                                 dataType: "json",
                                 success:function (data) {
                                     mv1.types.splice(i, 1);
@@ -164,8 +164,10 @@
                 data: {typeId:$(".id").eq(temp_data).html(), typeName: $("input[name = 'rename']").val(), fatherId:$("input[name = 'reid']").val()},
                 dataType: "json",
                 success:function (data) {
-                    mv1.types[i].typeName = $("input[name = 'rename']").val();
-                    mv1.types[i].fatherId = $("input[name = 'reid']").val();
+                    if(data==1){
+                        mv1.types[i].typeName = $("input[name = 'rename']").val();
+                        mv1.types[i].fatherId = $("input[name = 'reid']").val();
+                    }
                 }
             })
         })

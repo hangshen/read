@@ -70,6 +70,13 @@ public class BookTypeServiceImpl implements BookTypeService{
     }
     @Override
     public int updateByPrimaryKeySelective(BookType record){
+        List<BookType> list = bookTypeMapper.selectAll();
+        for(BookType b:list)
+        {
+            if(record.getBooktypeName().equals(b.getBooktypeName())){
+                return 0;
+            }
+        }
         return bookTypeMapper.updateByPrimaryKeySelective(record);
     }
     @Override
