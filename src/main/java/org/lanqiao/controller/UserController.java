@@ -1,5 +1,6 @@
 package org.lanqiao.controller;
 
+import org.lanqiao.entity.Author;
 import org.lanqiao.entity.UserLogin;
 import org.lanqiao.entity.Users;
 import org.lanqiao.service.UserService;
@@ -7,6 +8,8 @@ import org.lanqiao.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.List;
 
 @RestController
 public class UserController {
@@ -52,6 +55,19 @@ public class UserController {
     @RequestMapping("/getUserInfo")
     public UserLogin selectUserInfo(Integer userLoginId){
         return userService.selectUserInfo(1);
+    }
+    @RequestMapping("/selectUserByName")
+    public List<Users> selectUserByName(String userName){
+        userName = "%"+userName+"%";
+        return userService.selectUserByName(userName);
+    }
+    @RequestMapping("/deleteUser")
+    public int deleteByPrimaryKey(Integer userId){
+        return userService.deleteByPrimaryKey(userId);
+    }
+    @RequestMapping("/selectAllUser")
+    public List<Users> selectAllUser(){
+        return userService.selectAllUser();
     }
 
 }

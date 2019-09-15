@@ -185,4 +185,31 @@ public class BookServiceImpl implements BookService{
         }
         return bookShelfMapper.insertSelective(record);
     }
+    @Override
+    public List<Books> selectAll(){
+        return booksMapper.selectAll();
+    }
+    @Override
+    public List<Books> selectByBookName(String bookName){
+        return booksMapper.selectByBookName(bookName);
+    }
+    @Override
+    public int deleteByPrimaryKey(Integer bookId){
+        return booksMapper.deleteByPrimaryKey(bookId);
+    }
+    @Override
+    public int updateByPrimaryKeySelective(Books record){
+        return booksMapper.updateByPrimaryKeySelective(record);
+    }
+    @Override
+    public int insertSelective(Books record){
+        List<Books> list = booksMapper.selectAll();
+        for(Books b:list)
+        {
+            if(b.getBookName().equals(record.getBookName())){
+                return 0;
+            }
+        }
+        return booksMapper.insertSelective(record);
+    }
 }

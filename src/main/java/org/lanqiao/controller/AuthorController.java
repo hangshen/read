@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.io.IOException;
 
-
 import java.util.List;
 import java.util.Map;
 
@@ -20,7 +19,6 @@ import java.util.Map;
 @RestController
 @RequestMapping("/author")
 public class AuthorController {
-
 
     @Autowired
     AuthorLoginService authorLoginService;
@@ -111,7 +109,6 @@ public class AuthorController {
     /**
      * 作者基本资料
      * by lhw
-     *
      * @param authorId
      * @return Author
      */
@@ -134,6 +131,19 @@ public class AuthorController {
     @RequestMapping("/readerComment")
     public List<Comment> readerComment(Integer authorId) {
         return commentService.selectAllByAuthorId(4);
+    }
+    @RequestMapping("/selectAuthorByName")
+    public List<Author> selectAuthorByName(String authorName){
+        authorName = "%"+authorName+"%";
+        return authorService.selectAuthorByName(authorName);
+    }
+    @RequestMapping("/deleteAuthor")
+    public int deleteByPrimaryKey(Integer authorId){
+        return authorService.deleteByPrimaryKey(authorId);
+    }
+    @RequestMapping("/selectAllAuthor")
+    public List<Author> selectAllAuthor(){
+        return authorService.selectAllAuthor();
     }
 
     @RequestMapping("/getAuthorName")

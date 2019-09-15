@@ -8,6 +8,7 @@ import org.lanqiao.mapper.AuthorMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 
 
 @Service
@@ -74,5 +75,18 @@ public class AuthorServiceImpl implements AuthorService {
     @Override
     public Author selectByAuthorRealID(String realID) {
         return authorMapper.selectByAuthorRealID(realID);
+    }
+
+    @Override
+    public List<Author> selectAuthorByName(String authorName){
+        return authorMapper.selectAuthorByName(authorName);
+    }
+    @Override
+    public int deleteByPrimaryKey(Integer authorId){
+        return authorMapper.deleteByPrimaryKey(authorId);
+    }
+    @Override
+    public List<Author> selectAllAuthor(){
+        return authorMapper.selectAllAuthor();
     }
 }

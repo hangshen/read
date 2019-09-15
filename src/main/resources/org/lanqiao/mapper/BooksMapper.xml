@@ -124,6 +124,12 @@ pr.payrecord_user_id = u.user_id and b.book_id = #{bookId,jdbcType=INTEGER} and 
          select * from books b,author a,chapter c,booktype bt WHERE b.book_author_id = a.author_id and b.book_id = c.chapter_book_id
          and b.book_type_id = bt.booktype_id AND b.book_id = #{bookId,jdbcType=INTEGER}
   </select>
+  <select id="selectAll" resultMap="BooksMap" >
+    SELECT * from books
+  </select>
+  <select id="selectByBookName" resultMap="BooksMap" parameterType="java.lang.String" >
+    select * from books WHERE book_name like #{bookName}
+  </select>
   <select id="selectAllBooks" resultMap="BooksMap" >
     SELECT * from books,author WHERE book_author_id=author_id
   </select>

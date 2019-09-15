@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="../../css/background/bootstrap.css" type="text/css" rel="stylesheet">
     <link href="../../css/background/background.css" rel="stylesheet">
+    <link href="../../css/background/protype.css" rel="stylesheet">
+    <link rel="Stylesheet" type="text/css" href="../../css/background/addressadd.css"/>
 </head>
 <body>
 <div id="header">
@@ -31,38 +33,94 @@
 <div id="daohang2">
     <ul class="breadcrumb">
         <li><a href="background.html">首页</a></li>
-        <li><a href="author.html">用户管理</a></li>
+        <li><a href="author.html">作者管理</a></li>
         <li><a href="changeAuthor.html">管理作者信息</a></li>
     </ul>
 </div>
 
 <div id="biaoge">
 
+    <div id="check">
+        请输入要查找的作者名称：
+        <input name="find" type="text">
+        <input name="sousuo" type="button" value="查找" @click="find()">
+    </div>
+
     <table class="table table-striped table-bordered table-hover">
         <thead>
         <tr class="tableHead">
-            <th>商品种类编号</th>
-            <th>商品种类名称</th>
-            <th>商品种类描述</th>
-            <th>操作</th>
-            <th>操作</th>
+            <th>作者编号</th>
+            <th>作者名称</th>
+            <th>作者余额</th>
+            <th>作者简介</th>
+            <th>作者真实姓名</th>
+            <th>作者身份证</th>
         </tr>
         </thead>
 
-        <tbody>
+        <tbody v-for="(author, index) in authors">
         <tr>
-            <td>994</td>
-            <td>图书录像</td>
-            <td>333</td>
-            <td><a href="#">修改</a></td>
-            <td><a href="#">删除</a></td>
+            <td class="id">{{author.authorId}}</td>
+            <td>{{author.authorName}}</td>
+            <td>{{author.authorMoney}}</td>
+            <td>{{author.authorIntroduce}}</td>
+            <td>{{author.realName}}</td>
+            <td>{{author.realID}}</td>
+            <td><a href="#" @click="dlt(index)">删除</a></td>
         </tr>
         </tbody>
 
     </table>
 </div>
 
+
 <script src="../../js/jquery-3.4.1.js"></script>
 <script src="../../js/bootstrap.js"></script>
+<script src="../../js/vue.min.js"></script>
+<script src="../../js/jquery.validate.js" type="application/javascript"></script>
+<script src="../../js/jquery.validate.regex.js" type="application/javascript"></script>
+
+<script>
+    $(function () {
+        $.ajax({
+            url: "http://localhost:8080/author/selectAllAuthor",
+            type: "post",
+            dataType: "json",
+            success:function (data) {
+                var mv1 = new Vue({
+                    el: '#biaoge',
+                    data: {authors:{}},
+                    created: function() {
+                        this.authors = data;
+                    },
+                    methods:{
+                        find:function () {
+                            $.ajax({
+                                url: "http://localhost:8080/author/selectAuthorByName",
+                                type: "post",
+                                data: {authorName: $("input[name = 'find']").val()},
+                                dataType: "json",
+                                success:function (data) {
+                                    mv1.authors = data;
+                                }
+                            })
+                        },
+                        dlt:function (i) {
+                            $.ajax({
+                                url: "http://localhost:8080/author/deleteAuthor",
+                                type: "post",
+                                data: {authorId: mv1.authors[i].authorId},
+                                dataType: "json",
+                                success:function (data) {
+                                    mv1.authors.splice(i, 1);
+                                }
+                            })
+                        }
+                    }
+                });
+            }
+        })
+    })
+</script>
 </body>
 </html>

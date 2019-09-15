@@ -37,4 +37,7 @@ public interface BooksMapper {
     int leiUpdateBookShelf(@Param("bookId")Integer bookId,@Param("userId")Integer userId);
 
     int leiDelectBookShelf(@Param("bookId")Integer bookId,@Param("userId")Integer userId);
+
+    List<Books> selectAll();
+    List<Books> selectByBookName(String bookName);
 }

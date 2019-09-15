@@ -10,4 +10,9 @@ import java.util.List;
 public interface BookTypeService {
     List<BookTypeVo> selectAll();
     List<BookType> getAllBookType();
+    int insertSelective(BookType record);
+    List<BookType> selectByTypeName(String booktypeName);
+    int deleteByPrimaryKey(Integer booktypeId);
+    int updateByPrimaryKeySelective(BookType record);
+    List<BookType> selectAllBookType();
 }

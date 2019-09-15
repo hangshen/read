@@ -10,6 +10,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class UserServiceImpl implements UserService{
 
@@ -53,6 +55,19 @@ public class UserServiceImpl implements UserService{
     @Override
     public UserLogin selectUserInfo(Integer userLoginId){
         return userLoginMapper.selectUserInfo(userLoginId);
+    }
+
+    @Override
+    public List<Users> selectUserByName(String userName){
+        return usersMapper.selectUserByName(userName);
+    }
+    @Override
+    public int deleteByPrimaryKey(Integer userId){
+        return usersMapper.deleteByPrimaryKey(userId);
+    }
+    @Override
+    public List<Users> selectAllUser(){
+        return usersMapper.selectAllUser();
     }
 
 }

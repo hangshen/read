@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="../../css/background/bootstrap.css" type="text/css" rel="stylesheet">
     <link href="../../css/background/background.css" rel="stylesheet">
+    <link href="../../css/background/protype.css" rel="stylesheet">
+    <link rel="Stylesheet" type="text/css" href="../../css/background/addressadd.css"/>
 </head>
 <body>
 <div id="header">
@@ -57,9 +59,9 @@
         
         <tbody v-for="(type, index) in types">
         <tr>
-            <td class="id">{{type.typeId}}</td>
-            <td>{{type.typeName}}</td>
-            <td>{{type.fatherId}}</td>
+            <td class="id">{{type.booktypeId}}</td>
+            <td>{{type.booktypeName}}</td>
+            <td>{{type.booktypeFatherId}}</td>
             <td><a href="#" @click="tanchu(index)">修改</a></td>
             <td><a href="#" @click="dlt(index)">删除</a></td>
         </tr>
@@ -70,11 +72,11 @@
 
 <div id="add">
     <div class="row1">
-        修改品牌名称<a href="javascript:void(0)" title="关闭窗口" class="close_btn" id="closeBtn">×</a>
+        修改类型名称<a href="javascript:void(0)" title="关闭窗口" class="close_btn" id="closeBtn">×</a>
     </div>
     <form id="bigbox">
         <div id="one">
-            <span>品牌名称</span>
+            <span>类型名称</span>
             <input name="rename" type="text">
         </div>
         <div class="twe">
@@ -82,7 +84,7 @@
             <input name="reid" type="number">
         </div>
         <div class="twe">
-            <input name="insert" id="infor" type="submit" value="保存品牌名称">
+            <input name="insert" id="infor" type="submit" value="保存类型名称">
         </div>
     </form>
 </div>
@@ -111,7 +113,7 @@
     $(function () {
         var temp_data;
         $.ajax({
-            url: "http://localhost:8080/Type/GetAllType",
+            url: "http://localhost:8080/getAllBookType",
             type: "post",
             dataType: "json",
             success:function (data) {
@@ -124,9 +126,9 @@
                     methods:{
                         find:function () {
                             $.ajax({
-                                url: "http://localhost:8080/Type/FindType",
+                                url: "http://localhost:8080/selectByTypeName",
                                 type: "post",
-                                data: {typeName: $("input[name = 'find']").val()},
+                                data: {booktypeName: $("input[name = 'find']").val()},
                                 dataType: "json",
                                 success:function (data) {
                                     mv1.types = data;
@@ -135,7 +137,7 @@
                         },
                         dlt:function (i) {
                             $.ajax({
-                                url: "http://localhost:8080/Type/DeleteType",
+                                url: "http://localhost:8080/deleteByTypeName",
                                 type: "post",
                                 data: {typeId: mv1.types[i].typeId},
                                 dataType: "json",
@@ -157,13 +159,13 @@
 
         $("input[name = 'insert']").click(function () {
             $.ajax({
-                url: "http://localhost:8080/Type/UpdateType",
+                url: "http://localhost:8080/updateBookType",
                 type: "post",
                 data: {typeId:$(".id").eq(temp_data).html(), typeName: $("input[name = 'rename']").val(), fatherId:$("input[name = 'reid']").val()},
                 dataType: "json",
                 success:function (data) {
                     mv1.types[i].typeName = $("input[name = 'rename']").val();
-                    mv1.types[i].typeId = $("input[name = 'reid']").val();
+                    mv1.types[i].fatherId = $("input[name = 'reid']").val();
                 }
             })
         })
