@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html xmlns:v-bind="http://www.w3.org/1999/xhtml">
+<html>
 <head>
     <meta http-equiv="content-type" content="text/html;charset=UTF-8"/>
     <meta http-equiv="X-UA-Compatible" content="IE=Edge"/>
@@ -134,7 +135,7 @@
                                                     <i>{{index5+1}}</i>
                                                     <a class="img"
                                                        href=""><img
-                                                            src="https://easyreadfs.nosdn.127.net/W8G7eyJidq7QrCnL6Cdk6g==/8796093024742103509"
+                                                            v-bind:src="rankList.bookImg"
                                                             target="_blank"></a>
                                                     <h3><a href=""
                                                            target="_blank">{{rankList.bookName}}</a></h3>
@@ -176,7 +177,7 @@
                                             <div class="unfold">
                                                 <i>{{index6+1}}</i>
                                                 <a class="img" href=""><img
-                                                        src="https://easyreadfs.nosdn.127.net/oGIUJSIydhwStPdIAsRy-g==/8796093023791663472"
+                                                        v-bind:src="rankRead.bookImg"
                                                         target="_blank"></a>
                                                 <h3><a href=""
                                                        target="_blank">{{rankRead.bookName}}</a></h3>
@@ -217,7 +218,7 @@
                                             <div class="unfold">
                                                 <i>{{index1+1}}</i>
                                                 <a class="img" href=""><img
-                                                        src="https://easyreadfs.nosdn.127.net/oGIUJSIydhwStPdIAsRy-g==/8796093023791663472"
+                                                        v-bind:src="rankMoney.bookImg"
                                                         target="_blank"></a>
                                                 <h3><a href=""
                                                        target="_blank">{{rankMoney.bookName}}</a></h3>
