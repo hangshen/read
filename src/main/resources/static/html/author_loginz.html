@@ -56,6 +56,8 @@
     })
 </script>
 <script>
+    var aid;
+    var authorIds;
     $(function () {
         $("#loginz_go6").click(function () {
             var account = $("input[name='loginname']").val();
@@ -69,8 +71,9 @@
                 dataType: "json",
                 success: function (result) {
                     if(result.author!=null){
-                        alert("登录成功！");
-                        // window.location.href="/authormsg.html";
+                        sessionStorage.setItem("aid",result.author.authorId);
+                        alert("登录成功！用户名为"+result.author.authorName);
+                        top.location.href="authormsg.html";
 
                     }else if(result.authorLogin==null){
                         // sessionStorage.setItem("authorId",result.userId);

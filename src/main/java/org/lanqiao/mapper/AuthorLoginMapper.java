@@ -25,4 +25,5 @@ public interface AuthorLoginMapper {
 
     int insert(AuthorLogin authorLogin);
 
+    AuthorLogin selectByAuthorId(Integer authorId);
 }

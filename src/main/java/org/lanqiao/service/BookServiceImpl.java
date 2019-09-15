@@ -1,6 +1,8 @@
 package org.lanqiao.service;
+import org.lanqiao.entity.BookShelf;
 import org.lanqiao.entity.Books;
 import org.lanqiao.entity.Chapter;
+import org.lanqiao.mapper.BookShelfMapper;
 import org.lanqiao.mapper.BooksMapper;
 import org.lanqiao.util.SolrUtil;
 import org.lanqiao.vo.LeiBooksVo;
@@ -20,6 +22,8 @@ public class BookServiceImpl implements BookService{
     BooksMapper booksMapper;
     @Autowired
     SolrTemplate solrTemplate;
+    @Autowired
+    BookShelfMapper bookShelfMapper;
     @Override
     public List<Books> selectAllBooks(){
         List<Books> list= booksMapper.selectAllBooks();
@@ -169,5 +173,16 @@ public class BookServiceImpl implements BookService{
     @Override
     public int delectShelfBook(Integer bookId, Integer userId) {
         return booksMapper.leiDelectBookShelf(bookId,userId);
+    }
+    @Override
+    public int insertSelective(BookShelf record){
+        List<BookShelf> list = bookShelfMapper.selectAllBookSelf();
+        for(BookShelf b:list)
+        {
+            if(b.getShelfUserId() == record.getShelfUserId() && b.getShelfBookId() == record.getShelfBookId()){
+                return 0;
+            }
+        }
+        return bookShelfMapper.insertSelective(record);
     }
 }

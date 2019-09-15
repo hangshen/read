@@ -9,6 +9,16 @@ public class AuthorLogin {
 
     private Integer authorLoginAuthorId;
 
+    @Override
+    public String toString() {
+        return "AuthorLogin{" +
+                "authorLoginId=" + authorLoginId +
+                ", authorLoginAccount='" + authorLoginAccount + '\'' +
+                ", authorLoginPassword='" + authorLoginPassword + '\'' +
+                ", authorLoginAuthorId=" + authorLoginAuthorId +
+                '}';
+    }
+
     public Integer getAuthorLoginId() {
         return authorLoginId;
     }

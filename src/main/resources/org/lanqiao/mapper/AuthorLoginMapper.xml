@@ -27,7 +27,12 @@
         where author_login_account = #{authorLoginAccount,jdbcType=VARCHAR}
     </select>
 
-
+    <select id="selectByAuthorId" resultMap="BaseResultMap" parameterType="java.lang.Integer">
+        select
+        <include refid="Base_Column_List"/>
+        from authorlogin
+        where author_login_author_id = #{authorLoginAuthorId,jdbcType=INTEGER}
+    </select>
 
     <!--===========================================================删除操作=========================================================-->
 

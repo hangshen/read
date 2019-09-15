@@ -1,0 +1,104 @@
+#header{
+    width: 100%;
+    height: 100px;
+    margin: 0;
+}
+
+#header img{
+    margin-top: -70px;
+    margin-left: -50px;
+    transform: scale(0.3);
+}
+
+#header span{
+    font-size: 40px;
+    color: #005EA7;
+    margin-left: -94px;
+    float: top;
+}
+
+#daohang{
+    width: 200px;
+    height: 620px;
+    margin-left: 170px;
+    float: left;
+}
+
+#daohang li{
+    border: #E3E4E5 1px solid;
+}
+
+#daohang2{
+    float: top;
+    width: 800px;
+    margin-left: 370px;
+}
+
+#daohang2 ul{
+    width: 800px;
+}
+
+#biaoge{
+    width: 800px;
+    height: 580px;
+    float: left;
+    background-color: #f8f8ff;
+    margin-top: -20px;
+}
+
+#biaoge table{
+}
+
+.tableHead{
+    background-color: #005EA7;
+    color: #ffffff;
+}
+
+#shouye{
+    width: 800px;
+    height: 580px;
+    float: left;
+    background-color: #f8f8ff;
+    margin-top: -20px;
+}
+
+#shouye span{
+    font-size: 40px;
+    text-align: center;
+    display: block;
+    margin-top: 250px;
+    color: #E1251B;
+    font-weight: bolder;
+}
+
+.suoyin{
+    width: 300px;
+    margin: auto;
+    font-size: 30px;
+}
+
+.suoyin ul{
+    margin-top: 200px;
+}
+
+.suoyin li{
+    margin-top: 20px;
+}
+
+.suoyin a{
+    text-decoration: none;
+}
+
+.addproinfor{
+    margin-top: 200px;
+    margin-left: 150px;
+}
+
+.addproinfor div{
+    margin-bottom: 20px;
+}
+
+#submit{
+    margin-top: 20px;
+    margin-left: 50px;
+}

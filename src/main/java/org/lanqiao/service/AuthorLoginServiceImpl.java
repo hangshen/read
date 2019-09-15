@@ -31,6 +31,10 @@ public class AuthorLoginServiceImpl implements AuthorLoginService {
     }
 
 
+    @Override
+    public AuthorLogin selectByAuthorId(Integer authorId) {
+        return authorLoginMapper.selectByAuthorId(authorId);
+    }
 
     @Override
     public Map loginCheck(String authorAccount, String authorPassword) {
@@ -38,14 +42,15 @@ public class AuthorLoginServiceImpl implements AuthorLoginService {
 
         AuthorLogin authorLogin = authorLoginMapper.login(authorAccount);
 
-//        System.out.println(authorLogin);
-        if (authorLogin != null) {
+        System.out.println(authorLogin);
+        if (authorLogin == null) {
             map.put("authorLogin", null);
         } else {
 //            System.out.println(authorPassword.equals(authorLogin.getAuthorLoginPassword()));
             if (authorPassword.equals(authorLogin.getAuthorLoginPassword())) {
 
                 map.put("author", authorMapper.selectByAuthorLoginAuthorId(authorLogin.getAuthorLoginAuthorId()));
+                System.out.println(map.get("author"));
             }else
                 map.put("pword", false);
         }
