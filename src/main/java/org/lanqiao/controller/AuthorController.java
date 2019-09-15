@@ -77,7 +77,8 @@ public class AuthorController {
      */
     @RequestMapping("/getAllBooksByAuthorId")
     public List<Books> getAllBooksByAuthorId(Integer authorId) {
-        return bookService.selectBooksByAuthorId(8);
+        System.out.println(bookService.selectBooksByAuthorId(authorId).size());
+        return bookService.selectBooksByAuthorId(authorId);
     }
 
     /**
@@ -101,8 +102,9 @@ public class AuthorController {
      * @return author_money
      */
     @RequestMapping("/myIncome")
-    public int myIncome(Integer authorId) {
-        return authorService.selectByAuthorId(authorId).getAuthorMoney();
+    public Author myIncome(Integer authorId) {
+        System.out.println(authorService.selectByAuthorId(authorId).getAuthorMoney());
+        return authorService.selectByAuthorId(authorId);
     }
 
 
@@ -149,5 +151,11 @@ public class AuthorController {
     @RequestMapping("/getAuthorName")
     public Author getAuthorName(Integer authorId) {
         return authorService.getAuthorName(authorId);
+    }
+
+
+    @RequestMapping("/bookSize")
+    public Integer getBookSize(Integer authorId){
+        return bookService.selectBooksByAuthorId(authorId).size();
     }
 }

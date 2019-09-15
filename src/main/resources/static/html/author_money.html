@@ -31,7 +31,7 @@
                 </ul>
             </div>
             <div class="penname">
-                <a href="author_massg.html" id="authorName" >{{authorName}}</a>
+                <a href="author_massg.html" id="authorName">{{authorName}}</a>
                 <a href="" class="w-link"><span class="w-icon phui-power sprites-app-1"></span>退出</a>
             </div>
 
@@ -109,9 +109,9 @@
             </div>
         </div>
         <div class="msg_content">
-            <div class="hint" id="money">
+            <div class="hint">
                 <h4>收入金额：
-                    <em>{{authorMoney}}</em>阅点
+                    <em id="money">{{authorMoney}}</em>阅点
                 </h4>
             </div>
 
@@ -143,91 +143,79 @@
 
     // 显示作者名
     var aid = sessionStorage.getItem("aid");
-    alert(aid);
+    // alert(aid);
     $(function () {
         $.ajax({
             url: "http://localhost:8080/author/getAuthorName",
-            data: {authorId:aid},
+            data: {authorId: aid},
             type: "post",
             dataType: "json",
             success: function (data) {
-                mv2 =new Vue({
-                    el:"#authorName" ,
-                    data:{authorName:data.authorName},
+                mv2 = new Vue({
+                    el: "#authorName",
+                    data: {authorName: data.authorName},
                 })
-                alert(mv2.authorName);
+                // alert(mv2.authorName);
             }
         })
     });
-//显示金额
+    //显示金额
 
-    $(document).ready(function(){
+    $(document).ready(function () {
         $('.unsigned').hide();
     })
     $(function () {
         $.ajax({
-            url: "http://localhost:8080/author/authorIncome",
-            data: {authorId:aid},
+            url: "http://localhost:8080/author/myIncome",
+            data: {authorId: aid},
             type: "post",
             dataType: "json",
             success: function (data) {
-                if(data==null){
+                if (data == null) {
                     $('.unsigned').show();
+                } else {
+                    mv2 = new Vue({
+                        el: '#money',
+                        data: {authorMoney: data.authorMoney},
+                    })
                 }
-                else{
-                mv2 =new Vue({
-                    e1:"#money" ,
-                    data:{authorMoney:data.authorMoney},
-                })}
             }
         })
     });
-
-
-
-
-
-
-
-
 
 
     // 传id
     $(function () {
         $("#penname1").click(function () {
-            var aid=sessionStorage.setItem("aid");
+            var aid = sessionStorage.setItem("aid");
         })
     });
 
     $(function () {
         $(".all-works").click(function () {
-            var aid=sessionStorage.setItem("aid");
+            var aid = sessionStorage.setItem("aid");
         })
     });
     $(function () {
         $(".incomes").click(function () {
-            var aid=sessionStorage.setItem("aid");
+            var aid = sessionStorage.setItem("aid");
         })
     });
     $(function () {
         $(".comment").click(function () {
-            var aid=sessionStorage.setItem("aid");
+            var aid = sessionStorage.setItem("aid");
         })
     });
     $(function () {
         $(".op").click(function () {
-            var aid=sessionStorage.setItem("aid");
+            var aid = sessionStorage.setItem("aid");
         })
     });
     $(function () {
         $(".newc").click(function () {
-            var aid=sessionStorage.setItem("aid");
+            var aid = sessionStorage.setItem("aid");
         })
     });
-
-
-
-
 
 
 </script>

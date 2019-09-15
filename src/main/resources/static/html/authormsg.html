@@ -111,7 +111,11 @@
         <div class="msg_content">
             <div class="content-play">
                 <div class="content-name">
+<<<<<<< Updated upstream
                     <h2>作品列表<span>共 {{index3+1}} 部作品</span></h2>
+=======
+                    <h2>作品列表<span id="bookSize">共 {{bookSize}} 部作品</span></h2>
+>>>>>>> Stashed changes
                     <p class="side-tag"><a href="author_publish.html" class="btn">发表作品</a></p>
                 </div>
                 <div id="book">
@@ -149,9 +153,38 @@
                                     <p class="word">点击数：{{production.bookClick}}</p>
                                     <p class="word">收藏数：0</p>
 
+<<<<<<< Updated upstream
                                     <p class="ops">
                                         <a href="author_publish.html">修改作品</a>
                                     </p>
+=======
+                <table class="grade-table-list" cellpadding="0" cellspacing="0" id="J_Table"
+                       v-for="(book,index)in books">
+                    <colgroup>
+                        <col width="20%">
+                        <col width="5%">
+                        <col width="20%">
+                        <col width="15%">
+                        <col width="20%">
+                        <col width="20%">
+                    </colgroup>
+                    <thead>
+                    <tr>
+                        <th>作品名称</th>
+                        <th>最新发布章节</th>
+                        <th nowrap="">审核详情</th>
+                        <th nowrap="">作品状态</th>
+                        <th nowrap="">作品定价</th>
+                        <th nowrap="">操作</th>
+                    </tr>
+                    </thead>
+                    <tbody v-for="(book,index) in books">
+                    <tr>
+                        <td>
+                            <div class="work-title">
+                                <div class="pic" style="position: relative;">
+                                    <img src="../images/authormsgimages/fengmian.png">
+>>>>>>> Stashed changes
                                 </div>
                             </td>
                             <td>
@@ -210,7 +243,7 @@
 
     // 显示作者名
     var aid = sessionStorage.getItem("aid");
-    alert(aid);
+    // alert(aid);
     $(function () {
         $.ajax({
             url: "http://localhost:8080/author/getAuthorName",
@@ -222,13 +255,36 @@
                     el: '#authorName',
                     data: {authorName: data.authorName},
                 });
-                alert(mv2.authorName);
+                // alert(mv2.authorName);
             }
         })
     });
 
     //显示作品
     $(function () {
+        $.ajax({
+<<<<<<< Updated upstream
+            url: "http://localhost:8080/author/getAllBooksByAuthorId",
+=======
+            url: "http://localhost:8080/author/bookSize",
+>>>>>>> Stashed changes
+            data: {authorId: aid},
+            type: "post",
+            dataType: "json",
+            success: function (data) {
+                mv3 = new Vue({
+<<<<<<< Updated upstream
+                    el: "#book",
+                    data: {
+                        production: data,
+=======
+                    el: "#bookSize",
+                    data: {
+                        bookSize: data,
+                    },
+                })
+            }
+        });
         $.ajax({
             url: "http://localhost:8080/author/getAllBooksByAuthorId",
             data: {authorId: aid},
@@ -238,7 +294,8 @@
                 mv3 = new Vue({
                     el: "#book",
                     data: {
-                        production: data,
+                        books: data,
+>>>>>>> Stashed changes
                     },
                 })
                 alert(mv3.production.bookName)
