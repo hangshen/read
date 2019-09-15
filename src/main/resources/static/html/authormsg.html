@@ -107,7 +107,7 @@
             </div>
         </div>
         <div class="msg_content">
-            <div class="content-play">
+            <div class="content-play" id="book">
                 <div class="content-name">
                     <h2>作品列表<span>共 1 部作品</span></h2>
                     <p class="side-tag"><a href="author_publish.html" class="btn">发表作品</a></p>
@@ -211,7 +211,7 @@
     $(function () {
         $.ajax({
             url: "http://localhost:8080/author/getAuthorName",
-            data: {authorId: aid},
+            data: {authorId:aid},
             type: "post",
             dataType: "json",
             success: function (data) {
@@ -224,53 +224,55 @@
         })
     });
 
-    //显示作品
+//显示作品
     $(function () {
         $.ajax({
             url: "http://localhost:8080/author/authorAllBook",
-            data: {authorId: aid},
+            data: {authorId:aid},
             type: "post",
             dataType: "json",
             success: function (data) {
-                mv3 = new Vue({
-                    e1: ".grade-table-list",
-                    data: {book: data},
+              mv3 =new Vue({
+                    el:"#book" ,
+                    data:{
+                        book:data,
+                    },
                 })
             }
         })
     });
 
 
-    // 传id
+// 传id
     $(function () {
         $("#penname1").click(function () {
-            var aid = sessionStorage.setItem("aid");
-        })
-    });
+            var aid=sessionStorage.setItem("aid");
+                })
+            });
 
     $(function () {
         $(".all-works").click(function () {
-            var aid = sessionStorage.setItem("aid");
+            var aid=sessionStorage.setItem("aid");
         })
     });
     $(function () {
         $(".incomes").click(function () {
-            var aid = sessionStorage.setItem("aid");
+            var aid=sessionStorage.setItem("aid");
         })
     });
     $(function () {
         $(".comment").click(function () {
-            var aid = sessionStorage.setItem("aid");
+            var aid=sessionStorage.setItem("aid");
         })
     });
     $(function () {
         $(".op").click(function () {
-            var aid = sessionStorage.setItem("aid");
+            var aid=sessionStorage.setItem("aid");
         })
     });
     $(function () {
         $(".newc").click(function () {
-            var aid = sessionStorage.setItem("aid");
+            var aid=sessionStorage.setItem("aid");
         })
     });
 </script>

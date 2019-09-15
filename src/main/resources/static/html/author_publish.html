@@ -31,7 +31,7 @@
                 </ul>
             </div>
             <div class="penname">
-                <a href="author_massg.html" id="penname1" v-for="(pname,index2) in authornames">{{pname.authorName}}</a>
+                <a href="author_massg.html" id="authorName" >{{authorName}}</a>
                 <a href="" class="w-link"><span class="w-icon phui-power sprites-app-1"></span>退出</a>
             </div>
 
@@ -300,14 +300,15 @@
     $(function () {
         $.ajax({
             url: "http://localhost:8080/author/getAuthorName",
-
+            data: {authorId:aid},
             type: "post",
             dataType: "json",
             success: function (data) {
-                mv2 = new Vue({
-                    e1: ".penname",
-                    data: {authornames: data},
+                mv2 =new Vue({
+                    el:"#authorName" ,
+                    data:{authorName:data.authorName},
                 })
+                alert(mv2.authorName);
             }
         })
     });

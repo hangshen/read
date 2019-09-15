@@ -31,14 +31,14 @@
                 </ul>
             </div>
             <div class="penname">
-                <a href="author_massg.html" id="penname1" v-for="(pname,index2) in authornames">{{pname.authorName}}</a>
+                <a href="author_massg.html" id="authorName" >{{authorName}}</a>
                 <a href="author_login.html" class="w-link"><span class="w-icon phui-power sprites-app-1"></span>退出</a>
             </div>
 
 
         </div>
     </div>
-<div id="massg_box" >
+<div id="massg_box" id="author" >
 
     <div id="massg_top">
         <a id="massg_right">编辑</a>
@@ -46,21 +46,29 @@
     </div>
     <div id="massg_null"></div>
     <div id="massg_out">
-        <div class="massg" v-for="(author, index1) in author">
+        <div class="massg" >
             <dt>账号：</dt>
-            <dd>{{author.authorLoginAccount}}</dd>
+            <dd>{{authorLoginAccount}}</dd>
         </div>
         <div class="massg">
             <dt>运营身份：</dt>
-            <dd>{{author.authorauthorIdentity}}</dd>
+            <dd>{{authorIdentity}}</dd>
         </div>
         <div class="massg">
             <dt>笔名：</dt>
-            <dd>{{author.authorName}}</dd>
+            <dd>{{authorName}}</dd>
         </div>
         <div class="massg">
             <dt>QQ：</dt>
-            <dd>{{author.authorQq}}</dd>
+            <dd>{{authorQq}}</dd>
+        </div>
+        <div class="massg">
+            <dt>真实姓名：</dt>
+            <dd>{{realName}}</dd>
+        </div>
+        <div class="massg">
+            <dt>身份证：</dt>
+            <dd>{{realID}}</dd>
         </div>
     </div>
 </div>
@@ -92,9 +100,10 @@
             dataType: "json",
             success: function (data) {
                 mv2 =new Vue({
-                    e1:".penname" ,
-                    data:{authornames:data},
-                })
+                    el:"#authorName" ,
+                    data:{authorName:data.authorName},
+                });
+                alert(mv2.authorName);
             }
         })
     });
@@ -109,8 +118,15 @@
             dataType: "json",
             success: function (data) {
                 mv1 = new Vue({
-                    el: '#massg_box',
-                    data: {author: data},
+                    el: '#massg_out',
+                    data: {
+                    authorName: data.authorName,
+                        authorLoginAccount:data.authorLoginAccount,
+                        authorQq: data.authorQq,
+                        authorIdentity: data.authorIdentity,
+                        realName: data.realName,
+                        realID: data.realID,
+                    },
 
 
                     error: function () {
@@ -119,17 +135,11 @@
 
                     }
                 });
+                alert(mv1.authorName);
+                alert(mv1.authorLoginAccount);
+
             }
         });
-
-
-
-
-
-
-
-
-
 
 
     // 传id
