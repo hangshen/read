@@ -41,15 +41,15 @@
         }
 
         .s-header .m-logo {
-            width: 185px;
-            height: 42px;
+            width: 195px;
+            height: 50px;
             margin: 0
         }
 
         .s-header .m-logo a {
-            width: 185px;
-            height: 42px;
-            background: url(../images/registerimages/header.png) 0 -80px no-repeat;
+            height: 50px;
+            background-image: url("../images/topimages/i阅读.png");
+            background-repeat: no-repeat;
         }
 
         .s-header .link {
@@ -76,8 +76,8 @@
         <div class="s-header">
             <div class="inner">
                 <h1 class="m-logo"><a href="http://localhost:8080/html/top.html">网易阅读</a></h1>
-                <a class="link link1" href="/">首页</a>
-                <a class="link link2" href="/client">客户端下载</a>
+                <a class="link link1">首页</a>
+                <a class="link link2" href="">客户端下载</a>
             </div>
         </div>
     </div>
@@ -88,7 +88,7 @@
                     <div id="login-layer" class="m-login-layer m-login-layer-wy"
                          style="left:420px;top:30px;position:absolute;margin-left:0;">
                         <div class="lytt yy">
-                            <h4>网易邮箱登录</h4></div>
+                            <h4>登录</h4></div>
                         <div class="content">
                             <div class="m-loginwrap">
                                 <div class="m-loginwrap__main">
@@ -109,7 +109,7 @@
                                                                 </div>
                                                                 <div class="u-input box auto-1568166855745-parent" id="auto-id-1568166855821"><label
                                                                         class="u-label f-dn" id="auto-id-1568166855773"
-                                                                        style="display: none;">邮箱帐号(含手机邮箱)</label><input data-placeholder="邮箱帐号(含手机邮箱)"
+                                                                        style="display: none;">邮箱(含手机邮箱)或手机号</label><input data-placeholder="邮箱(含手机邮箱)或手机号"
                                                                                                                          name="email" data-type="email"
                                                                                                                          data-loginname="loginEmail"
                                                                                                                          data-required="true"
@@ -117,7 +117,7 @@
                                                                                                                          type="text" autocomplete="off"
                                                                                                                          tabindex="1" spellcheck="false"
                                                                                                                          id="auto-id-1568166855759"
-                                                                                                                         placeholder="邮箱帐号(含手机邮箱)">
+                                                                                                                         placeholder="邮箱(含手机邮箱)或手机号">
                                                                     <div class="auto-1568166855745 m-sug" id="auto-id-1568166855789"
                                                                          style="visibility: hidden;"></div>
                                                                     <span class="pr-domain j-prdomain f-dn"></span></div>
@@ -195,11 +195,6 @@
                                                                                              class="u-loginbtn btncolor tabfocus btndisabled" tabindex="8">登&nbsp;&nbsp;录</span>
                                                             </div>
                                                             <div class="m-unlogin" id="auto-id-1568166855817">
-                                                                <div class="b-unlogn j-unlogn"><span class="u-checkbox tabfocus"><input id="un-login"
-                                                                                                                                        type="checkbox"
-                                                                                                                                        name="un-login"
-                                                                                                                                        class="un-login"></span><label
-                                                                        for="un-login">十天内免登录</label></div>
                                                                 <a id="forgetpassword" class="forgetpwd j-redirect" data-outlink="1" target="_blank">忘记密码？</a>
                                                                 <a id="changepage" data-action="none" class="u-regbtn bgcolor tabfocus j-redirect"
                                                                    href="http://localhost:8080/html/zhuce.html"
@@ -228,11 +223,12 @@
             </div>
         </div>
     </div>
+    <!-- 尾部导航 -->
     <div class="g-ftw">
-        <div class="g-ft">
+        <div class="g-ft" class="f-cb">
             <div class="m-foot">
                 <p class="link">
-                    <a href="http://www.163.com" target="_blank">网易首页</a><span class="sep">|</span>
+                    <a href="http://www.163.com" target="_blank">i首页</a><span class="sep">|</span>
                     <a href="http://gb.corp.163.com/gb/about/overview.html" target="_blank">公司简介</a><span
                         class="sep">|</span>
                     <a href="http://help.163.com/" target="_blank">客户服务</a><span class="sep">|</span>
@@ -243,37 +239,22 @@
                     <a href="http://open.yuedu.163.com/" target="_blank">作者中心</a>
                 </p>
             </div>
-            <div class="m-right"><p>网易公司版权所有©1997-<span id="j-year">2019</span> &nbsp;&nbsp;网络出版服务许可证（总）网出证（粤）字第030号
+            <div class="m-right"><p>网易公司版权所有&#169;1997-<span id="j-year">2017</span> &nbsp;&nbsp;网络出版服务许可证（总）网出证（粤）字第030号
                 &nbsp;&nbsp;信息网络传播视听节目许可证号1908260 &nbsp;&nbsp;增值电信业务经营许可证 粤B2-20090191</p></div>
             <div class="m-share f-cb">
                 <label>分享到：</label>
                 <div class="share"><a href="javascript:;" class="s2 j-wxwx" data-type="xo">微信</a></div>
                 <div class="share"><a href="javascript:;" class="s4 j-yxyx" data-type="xo">易信</a></div>
                 <div class="share"><a id="_share_b_tsina"
-                                      href="javascript:(function(){window.open('http://v.t.sina.com.cn/share/share.php?appkey=1560988037&amp;url='+encodeURIComponent('https://yuedu.163.com/')+'&amp;title='+encodeURIComponent('网易云阅读内容丰富、操作便捷，适合作为平时阅读、充电的软件工具，推荐大家都来下载！')+'&amp;pic='+encodeURIComponent('https://yuedust.yuedu.126.net/images/weibo_v3.jpg?2_20120731162723'),'_blank');})()"
+                                      href="javascript:(function(){window.open('http://v.t.sina.com.cn/share/share.php?appkey=1560988037&url='+encodeURIComponent('https://yuedu.163.com/')+'&title='+encodeURIComponent('网易云阅读内容丰富、操作便捷，适合作为平时阅读、充电的软件工具，推荐大家都来下载！')+'&pic='+encodeURIComponent('https://yuedust.yuedu.126.net/images/weibo_v3.jpg?2_20120731162723'),'_blank');})()"
                                       class="s1">微博</a></div>
                 <div class="share"><a
-                        href="javascript:(function(){window.open('http://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?site='+encodeURIComponent('网易云阅读官方网站')+'&amp;url='+encodeURIComponent('https://yuedu.163.com/')+'&amp;title='+encodeURIComponent('网易云阅读--随时随地，品质阅读')+'&amp;pics='+encodeURIComponent('https://yuedust.yuedu.126.net/images/weibo_v3.jpg?3_20131202100833')+'&amp;summary='+encodeURIComponent('网易云阅读内容丰富、操作便捷，适合作为平时阅读、充电的软件工具，推荐大家都来下载！'),'_blank');})()"
+                        href="javascript:(function(){window.open('http://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?site='+encodeURIComponent('网易云阅读官方网站')+'&url='+encodeURIComponent('https://yuedu.163.com/')+'&title='+encodeURIComponent('网易云阅读--随时随地，品质阅读')+'&pics='+encodeURIComponent('https://yuedust.yuedu.126.net/images/weibo_v3.jpg?3_20131202100833')+'&summary='+encodeURIComponent('网易云阅读内容丰富、操作便捷，适合作为平时阅读、充电的软件工具，推荐大家都来下载！'),'_blank');})()"
                         class="s3">QQ空间</a></div>
             </div>
 
         </div>
     </div>
-    <div class="m-pop-qr ma" id="J_WXM" style="display:none;"><a class="close" href="javascript:;"></a></div>
-    <div class="m-pop-qr ma2" id="J_YXM" style="display:none;"><a class="close" href="javascript:;"></a></div>
-    <div class="m-pop-qr ma3" id="J_WBM" style="display:none;"><a class="close" href="javascript:;"></a></div>
-    <div id="J_ServiceNum" class="m-layer m-layer-5" style="display:none;">
-        <div class="inner">
-            <div class="up"><a href="javascript:void(0);"></a></div>
-            <div class="down">
-                <p>购买书籍后无法阅读等问题<br></p>
-                <p>可拨打：0571-89853801</p>
-            </div>
-        </div>
-    </div>
-    <script type="text/javascript">
-        document.getElementById('j-year').innerText = new Date().getFullYear();
-    </script>
     <div class="m-layer m-layer-mb" id="J_MobileReg" style="width:530px;display:none;">
         <div class="lytt yy">
             <a class="lyclose j-close">关闭</a>
@@ -366,6 +347,10 @@
             }
         })
 
+    })
+
+    $(".link1").click(function () {
+        window.location.href = "top.html";
     })
 </script>
 </html>
