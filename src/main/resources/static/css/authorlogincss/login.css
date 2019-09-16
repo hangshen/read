@@ -26,11 +26,12 @@
     width: 195px;
     height: 64px;
     float: left;
-    background: url("../../images/authorloginimages/logo.png") 20px 19.5px no-repeat;
+    background: url("../../images/topimages/i阅读.png") no-repeat;
     font: 0/0 a;
     color: transparent;
     text-shadow: none;
     border: 0;
+    margin-top: 7px;
 }
 #login_top3{
     width: 122px;

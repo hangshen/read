@@ -100,7 +100,7 @@
                         <li><a class="crt" href="">全部作品</a></li>
                         <li><a class="" href="">排行榜</a></li>
                         <li class="fr"><a href=""><b class="icon-recharge"></b>充值</a></li>
-                        <li class="fr"><a href=""><b class="icon-open"></b>作者中心</a></li>
+                        <li class="fr"><a class="authorcontainer"><b class="icon-open"></b>作者中心</a></li>
                     </ul>
                 </div>
             </div>
@@ -110,21 +110,21 @@
     <div class="g-bdw g-bdw-1">
         <div class="g-bd yd-grid2col-page">
             <div class="m-breadcrumbs">当前位置：
-                <a href="allbooks.html">全部作品</a> &gt; <span class="sep"></span>
+                <a href="">全部作品</a> &gt; <span class="sep"></span>
             </div>
             <div class="g-bdc yd-original-page">
                 <div class="g-sd" data-spy="affix" data-offset-top="187">
                     <div class="widget widget-theme-original ">
                         <div class="widget-header">
                             <div class="widget-title grad-1">
-                                <a class="inner" href="/yc/category">全部书库</a>
+                                <a class="inner" href="">全部书库</a>
                             </div>
                         </div>
                         <div class="widget-content ">
                             <ul>
                                 <div v-for="(types,index1) in fathertypes">
                                     <li class="" v-for="(type,index2) in types.secondSelect">
-                                        <a @click="select(index2)">{{type.booktypeName}}</a>
+                                        <a @click="select(type.booktypeId, type.booktypeName)">{{type.booktypeName}}</a>
                                     </li>
                                 </div>
                             </ul>
@@ -187,7 +187,7 @@
                                     <td style="text-align: center"><span class="serial-number">{{index + 1}}</span>
                                     </td>
                                     <td>
-                                        <div class="book-name"><a href="" target="_blank">{{book.bookName}}</a>
+                                        <div class="book-name"><a @click="bookdetail(book.bookId)" target="_blank">{{book.bookName}}</a>
                                         </div>
                                         <div class="book-newest-chapter">
                                             第{{book.chapterSet[0].chapterSort}}章　{{book.chapterSet[0].chapterName}}
@@ -195,7 +195,7 @@
                                     </td>
                                     <td style="text-align: center">{{book.author.authorName}}</td>
                                     <td style="text-align: center">{{book.bookWord}}万</td>
-                                    <td style="text-align: center">{{book.chapterSet[0].chapterDate | formatDate}}</td>
+                                    <td style="text-align: center">{{book.chapterSet[0].chapterDate}}</td>
                                 </tr>
                                 </tbody>
                             </table>
@@ -292,6 +292,7 @@
     factor.bookWord = null;
     factor.pageNum = 1;
 
+    var authorId;
     var userId;
     var userName;
     $(function () {
@@ -325,18 +326,9 @@
             })
         },
         methods: {
-            select: function (i) {
-                var temp2;
-                var sum = 0;
-                for (var j = 0; j < this.fathertypes.length; j++) {
-                    for (var k = 0; k < this.fathertypes[j].secondSelect.length; k++, sum++) {
-                        if (sum == i) {
-                            temp2 = this.fathertypes[j].secondSelect[k].booktypeName;
-                            factor.bookTypeId = this.fathertypes[j].secondSelect[k].booktypeId;
-                        }
-                    }
-                }
-                $(".m-breadcrumbs span").text(temp2);
+            select: function (i, name) {
+                factor.bookTypeId = i;
+                $(".m-breadcrumbs span").text(name);
                 $.ajax({
                     url: "http://localhost:8080/getBooksByType",
                     type: "post",
@@ -447,6 +439,10 @@
                         mv2.books = data;
                     }
                 })
+            },
+            bookdetail: function (i) {
+                sessionStorage.setItem("bookId", i);
+                window.location.href = "bookdetail.html";
             }
         }
     })
@@ -473,6 +469,15 @@
             window.location.href = "login.html";
         }else{
             window.location.href = "bookshelf.html";
+        }
+    })
+
+    $(".authorcontainer").click(function () {
+        sessionStorage.getItem("authorId",authorId);
+        if(authorId == undefined){
+            window.location.href = "author_login.html";
+        }else{
+            window.location.href = "";
         }
     })
 

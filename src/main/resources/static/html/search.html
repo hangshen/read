@@ -86,7 +86,7 @@
                         <li><a class="" href="allbooks.html">全部作品</a></li>
                         <li><a class="" href="">排行榜</a></li>
                         <li class="fr"><a href=""><b class="icon-recharge"></b>充值</a></li>
-                        <li class="fr"><a href=""><b class="icon-open"></b>作者中心</a></li>
+                        <li class="fr"><a class="authorcontainer"><b class="icon-open"></b>作者中心</a></li>
                     </ul>
                 </div>
             </div>
@@ -200,6 +200,7 @@
     var tempPageNum = 1;
     var key;
 
+    var authorId;
     var userId;
     var userName;
     $(function () {
@@ -305,6 +306,15 @@
             window.location.href = "login.html";
         } else {
             window.location.href = "bookshelf.html";
+        }
+    })
+
+    $(".authorcontainer").click(function () {
+        sessionStorage.getItem("authorId",authorId);
+        if(authorId == undefined){
+            window.location.href = "author_login.html";
+        }else{
+            window.location.href = "";
         }
     })
 </script>
