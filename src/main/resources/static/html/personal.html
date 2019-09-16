@@ -1106,7 +1106,7 @@
                             <span data-reactid=".1.1"></span></div>
                     </div>
                     <div class="m-clouds">
-                        <a class="m-cloudsj" href="/shelf.do?operation=query_current" target="_blank">我的书架</a>
+                        <a class="m-cloudsj" href="bookshelf.html" target="_blank">我的书架</a>
                     </div>
                 </div>
             </div>
@@ -1147,7 +1147,7 @@
                             <ul>
                                 <li class="title">
                                     <span class="icon userinfo"></span>
-                                    <a class="inner" href="javascript:;">个人信息</a>
+                                    <a class="inner" href="">个人信息</a>
                                 </li>
                                 <li class="crt">
                                     <a href="/myinfor">个人资料</a>
@@ -1164,10 +1164,10 @@
                                     <a class="inner" href="javascript:;">账户管理</a>
                                 </li>
                                 <li>
-                                    <a href="/recharge.do?operation=balance">余额查询</a>
+                                    <a href="recharge.html">余额查询</a>
                                 </li>
                                 <li>
-                                    <a href="/trade.do?operation=list">消费记录</a>
+                                    <a href="reward.html">消费记录</a>
                                 </li>
                                 <li>
                                     <a href="/userPoint.do?operation=list">积分详情</a>
@@ -1224,7 +1224,7 @@
                                         <span id="loginAccount" style="float:left;"></span>
                                     </p>
                                 </div>
-                                <a id="J_Edit" class="edit">编辑资料</a>
+                                <a id="J_Edit" class="edit" @click="editdata()">编辑资料</a>
                             </div>
 
                             <div class="m-subbox">
@@ -1295,8 +1295,11 @@
         </div>
     </div>
 
-    <div id="profile" class="m-layer m-layer-2 f-dn">
-        <div class="lytt yy"><h4>编辑资料</h4><a id="J_Popclose" href="#" class="lyclose j-close">关闭</a></div>
+    <div id="profile" class="m-layer m-layer-2 abc f-dn">
+        <div class="lytt yy">
+            <h4>编辑资料</h4>
+            <a id="J_Popclose" href="#" class="lyclose j-close">关闭</a>
+        </div>
         <div class="lyct">
             <div class="m-sec">
                 <div class="sub">头像:</div>
@@ -1392,8 +1395,8 @@
             </div>
             <div class="m-sec">
                 <div class="bt">
-                    <button type="button" class="userLayerClose">取消</button>
-                    <button type="button" onclick="updateUser();">保存</button>
+                    <button id="cancleedit" type="button" class="userLayerClose">取消</button>
+                    <button id="keepedit" type="button" onclick="updateUser();">保存</button>
                 </div>
             </div>
         </div>
@@ -1715,17 +1718,28 @@
 <!--<script src="../js/personaljs/message.js" id="ursScript"></script>-->
 <script>
 
+    var userLoginId;
+    var msg = new Vue({
+        el: "#ainfo",
+        data: {
+            user:"",
+        },
+        methods:{
+            //弹出编辑资料窗口
+            editdata:function () {
+                $("#profile").removeClass("f-dn");
+            }
+        }
+    })
     window.onload=function () {
-
-        var msg = new Vue({
-            el: '#ainfo',
-            data: {user:"username"},
-        })
+        userLoginId=sessionStorage.getItem("userLoginId")
 
         $.ajax({
             url: "http://localhost:8080/getUserInfo",
             type: "post",
-            data: {},
+            data: {
+                "userLoginId":userLoginId,
+            },
             datatype: "json",
             success: function (data) {
                 // alert("1");
@@ -1739,8 +1753,13 @@
         })
 
 
+
         // })
     }
+    //取消编辑
+    $("#cancleedit").click(function () {
+        $("#profile").addClass("f-dn");
+    })
 </script>
 </body>
 </html>
