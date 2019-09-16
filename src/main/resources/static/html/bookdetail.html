@@ -426,9 +426,9 @@
                     <ul class="m-mianlist">
                         <li><a class="" href="top.html">首页</a></li>
                         <li><a class="" href="allbooks.html">全部作品</a></li>
-                        <li><a class="" href="">排行榜</a></li>
+                        <li><a class="" href="ranklist.html">排行榜</a></li>
                         <li class="fr"><a href=""><b class="icon-recharge"></b>充值</a></li>
-                        <li class="fr"><a href=""><b class="icon-open"></b>作者中心</a></li>
+                        <li class="fr"><a class="authorcontainer"><b class="icon-open"></b>作者中心</a></li>
                     </ul>
                 </div>
             </div>
@@ -585,11 +585,11 @@
                             {{book.bookIntroduce}}
                         </div>
                         <div class="ops" id="J_ops">
-                            <a href="" class="btn btn-main-fill"
-                               id="J_readNow" target="_blank">立即阅读</a>
-                            <a href="javascript:;" class="btn btn-main-stroke j-addSub" id="J_addSub"
+                            <a class="btn btn-main-fill"
+                               id="J_readNow" target="_blank" @click="read()">立即阅读</a>
+                            <a class="btn btn-main-stroke j-addSub" id="J_addSub"
                                data-id="bd_4b05f5dda48643c998f1dc6bb7a5faa1_4"
-                               data-imgsrc="">加入书架</a>
+                               data-imgsrc="" @click="bookshelf()">加入书架</a>
 
 
                             <a href="javascript:;" class="op phone"
@@ -607,14 +607,12 @@
                 <div class="m-chapter" id="J_chapter">
                     <ul class="tabs">
                         <li class="crt" style="display:block;">最近更新</li>
-                        <li style="display:block;"><a
-                                href=""
+                        <li style="display:block;"><a href="allchapter.html"
                                 target="_blank">全部目录<span>({{book.chapterSet[0].chapterSort}}章)</span></a></li>
                     </ul>
                     <div class="contents">
                         <div class="tab-item crt">
-                            <a href=""
-                               class="m-newupdate">
+                            <a class="m-newupdate" @click="readchapter(book.chapterSet[0].chapterSort)">
                                 <h4>第{{book.chapterSet[0].chapterSort}}章：{{book.chapterSet[0].chapterName}}</h4>
                             </a>
                             <span class="updatetime">更新时间：{{book.chapterSet[0].chapterDate}}</span>
@@ -645,117 +643,15 @@
                         <li class="tip J_content crt">
                             <div class="detail">
                                 <div class="sum"><span>共208人打赏420300阅点</span><a
-                                        href="/presentRecord.do?sourceUuid=3e1dd85cdaae428c8e2e36ab5e288445_4"
+                                        href=""
                                         target="_blank">全部打赏记录&gt;</a></div>
                                 <div class="list" id="J_DSList">
-                                    <ul style="top: -150px;">
+                                    <ul style="top: 0px;">
                                         <li><span class="nickname">青山</span><span class="f-fr">打赏<em>100</em>阅点</span>
                                         </li>
                                         <li><span class="nickname">浮云</span><span class="f-fr">打赏<em>500</em>阅点</span>
                                         </li>
                                         <li><span class="nickname">曹操</span><span class="f-fr">打赏<em>1000</em>阅点</span>
-                                        </li>
-                                        <li><span class="nickname">沐爸爸</span><span class="f-fr">打赏<em>100</em>阅点</span>
-                                        </li>
-                                        <li><span class="nickname">沐爸爸</span><span class="f-fr">打赏<em>100</em>阅点</span>
-                                        </li>
-                                        <li><span class="nickname">83591***</span><span
-                                                class="f-fr">打赏<em>500</em>阅点</span></li>
-                                        <li><span class="nickname">麻花</span><span class="f-fr">打赏<em>1000</em>阅点</span>
-                                        </li>
-                                        <li><span class="nickname">麻花</span><span class="f-fr">打赏<em>500</em>阅点</span>
-                                        </li>
-                                        <li><span class="nickname">麻花</span><span class="f-fr">打赏<em>500</em>阅点</span>
-                                        </li>
-                                        <li><span class="nickname">南海特快</span><span class="f-fr">打赏<em>100</em>阅点</span>
-                                        </li>
-                                        <li><span class="nickname">don*</span><span class="f-fr">打赏<em>100</em>阅点</span>
-                                        </li>
-                                        <li><span class="nickname">don*</span><span class="f-fr">打赏<em>100</em>阅点</span>
-                                        </li>
-                                        <li><span class="nickname">別闹。</span><span class="f-fr">打赏<em>100</em>阅点</span>
-                                        </li>
-                                        <li><span class="nickname">风之诗</span><span class="f-fr">打赏<em>100</em>阅点</span>
-                                        </li>
-                                        <li><span class="nickname">专业忽悠</span><span class="f-fr">打赏<em>100</em>阅点</span>
-                                        </li>
-                                        <li><span class="nickname">日暮途远</span><span
-                                                class="f-fr">打赏<em>1000</em>阅点</span></li>
-                                        <li><span class="nickname">日暮途远</span><span
-                                                class="f-fr">打赏<em>1000</em>阅点</span></li>
-                                        <li><span class="nickname">日暮途远</span><span
-                                                class="f-fr">打赏<em>1000</em>阅点</span></li>
-                                        <li><span class="nickname">日暮途远</span><span
-                                                class="f-fr">打赏<em>1000</em>阅点</span></li>
-                                        <li><span class="nickname">5*</span><span class="f-fr">打赏<em>100</em>阅点</span>
-                                        </li>
-                                        <li><span class="nickname">曹操</span><span class="f-fr">打赏<em>1000</em>阅点</span>
-                                        </li>
-                                        <li><span class="nickname">zxg_1309***</span><span class="f-fr">打赏<em>100</em>阅点</span>
-                                        </li>
-                                        <li><span class="nickname">沐爸爸</span><span class="f-fr">打赏<em>100</em>阅点</span>
-                                        </li>
-                                        <li><span class="nickname">沐爸爸</span><span class="f-fr">打赏<em>100</em>阅点</span>
-                                        </li>
-                                        <li><span class="nickname">沐爸爸</span><span class="f-fr">打赏<em>500</em>阅点</span>
-                                        </li>
-                                        <li><span class="nickname">小博生</span><span class="f-fr">打赏<em>100</em>阅点</span>
-                                        </li>
-                                        <li><span class="nickname">小博生</span><span class="f-fr">打赏<em>100</em>阅点</span>
-                                        </li>
-                                        <li><span class="nickname">小博生</span><span class="f-fr">打赏<em>500</em>阅点</span>
-                                        </li>
-                                        <li><span class="nickname">小博生</span><span class="f-fr">打赏<em>500</em>阅点</span>
-                                        </li>
-                                        <li><span class="nickname">手机用户_4084</span><span
-                                                class="f-fr">打赏<em>500</em>阅点</span></li>
-                                        <li><span class="nickname">王者荣耀狄仁杰</span><span
-                                                class="f-fr">打赏<em>100</em>阅点</span></li>
-                                        <li><span class="nickname">5*</span><span class="f-fr">打赏<em>100</em>阅点</span>
-                                        </li>
-                                        <li><span class="nickname">w*</span><span class="f-fr">打赏<em>100</em>阅点</span>
-                                        </li>
-                                        <li><span class="nickname">昆仑</span><span class="f-fr">打赏<em>500</em>阅点</span>
-                                        </li>
-                                        <li><span class="nickname">刘汉东</span><span class="f-fr">打赏<em>500</em>阅点</span>
-                                        </li>
-                                        <li><span class="nickname">刘汉东</span><span class="f-fr">打赏<em>100</em>阅点</span>
-                                        </li>
-                                        <li><span class="nickname">当渡船解缆</span><span
-                                                class="f-fr">打赏<em>100</em>阅点</span></li>
-                                        <li><span class="nickname">曹宇飞</span><span class="f-fr">打赏<em>100</em>阅点</span>
-                                        </li>
-                                        <li><span class="nickname">风之诗</span><span class="f-fr">打赏<em>100</em>阅点</span>
-                                        </li>
-                                        <li><span class="nickname">紫氣東來</span><span class="f-fr">打赏<em>500</em>阅点</span>
-                                        </li>
-                                        <li><span class="nickname">胖红</span><span class="f-fr">打赏<em>100</em>阅点</span>
-                                        </li>
-                                        <li><span class="nickname">robin***</span><span
-                                                class="f-fr">打赏<em>100</em>阅点</span></li>
-                                        <li><span class="nickname">手机用户_5021</span><span
-                                                class="f-fr">打赏<em>100</em>阅点</span></li>
-                                        <li><span class="nickname">手机用户_5021</span><span
-                                                class="f-fr">打赏<em>500</em>阅点</span></li>
-                                        <li><span class="nickname">半山</span><span class="f-fr">打赏<em>500</em>阅点</span>
-                                        </li>
-                                        <li><span class="nickname">man7***</span><span
-                                                class="f-fr">打赏<em>100</em>阅点</span></li>
-                                        <li><span class="nickname">符捷俊</span><span class="f-fr">打赏<em>100</em>阅点</span>
-                                        </li>
-                                        <li><span class="nickname">姚喜鹏</span><span class="f-fr">打赏<em>100</em>阅点</span>
-                                        </li>
-                                        <li><span class="nickname">说书人</span><span class="f-fr">打赏<em>500</em>阅点</span>
-                                        </li>
-                                        <li><span class="nickname">ll*</span><span class="f-fr">打赏<em>500</em>阅点</span>
-                                        </li>
-                                        <li><span class="nickname">青山</span><span class="f-fr">打赏<em>100</em>阅点</span>
-                                        </li>
-                                        <li><span class="nickname">浮云</span><span class="f-fr">打赏<em>500</em>阅点</span>
-                                        </li>
-                                        <li><span class="nickname">曹操</span><span class="f-fr">打赏<em>1000</em>阅点</span>
-                                        </li>
-                                        <li><span class="nickname">沐爸爸</span><span class="f-fr">打赏<em>100</em>阅点</span>
                                         </li>
                                         <li><span class="nickname">沐爸爸</span><span class="f-fr">打赏<em>100</em>阅点</span>
                                         </li>
@@ -807,7 +703,7 @@
                                                         data-reactid=".2.1.0.1.1.1"></span></div>
                                             </div>
                                         </div>
-                                        <div class="part" style="visibility:hidden;" data-reactid=".2.1.1"><span
+                                        <div class="part" style="visibility:visible;" data-reactid=".2.1.1"><span
                                                 class="label" data-reactid=".2.1.1.0">余额</span>
                                             <div class="tipsec tipsec-h3" data-reactid=".2.1.1.1"><span class="j-rddbDS"
                                                                                                         data-reactid=".2.1.1.1.0"></span><span
@@ -906,51 +802,7 @@
 
         </div>
     </div>
-    <div class="m-pop-qr ma" id="J_WXM" style="display:none;"><a class="close" href="javascript:;"></a></div>
-    <div class="m-pop-qr ma2" id="J_YXM" style="display:none;"><a class="close" href="javascript:;"></a></div>
-    <div class="m-pop-qr ma3" id="J_WBM" style="display:none;"><a class="close" href="javascript:;"></a></div>
-    <div id="J_ServiceNum" class="m-layer m-layer-5" style="display:none;">
-        <div class="inner">
-            <div class="up"><a href="javascript:void(0);"></a></div>
-            <div class="down">
-                <p>购买书籍后无法阅读等问题<br/></p>
-                <p>可拨打：0571-89853801</p>
-            </div>
-        </div>
-    </div>
-    <script type="text/javascript">
-        document.getElementById('j-year').innerText = new Date().getFullYear();
-    </script>
 
-
-</div>
-
-<div id="J_Success" class="m-newlayer m-booklayer-2 m-newlayer-s3" style="display:none;">
-    <h2><span>放入书架</span><a class="lyclose j-close" href="javascript:void(0)"></a></h2>
-    <div class="inner">
-        <div class="m-addyuan">
-            <div class="m-bookele m-bookele-1" style="float:left;">
-                <div class="w-bimg w-bimg-m f-db2">
-                    <a href="#"><img src="https://yuedust.yuedu.126.net/images/bookDefaultIcon.png?$IMG_V" alt=""></a>
-                    <span class="tick"></span>
-                </div>
-                <div class="t-info">
-                    <h3></h3>
-                    <div class="w-star w-star1"></div>
-                    <p></p>
-                </div>
-            </div>
-
-            <div class="fromto"></div>
-            <div class="pmsg">
-                <p class="acn"></p>
-            </div>
-            <p class="tip">在客户端“书籍”首页刷新后，即可阅读此书籍。</p>
-            <div class="button">
-                <a class="ok lyclose" href="javascript:;">我知道了</a>
-            </div>
-        </div>
-    </div>
 </div>
 
 <!-- 共用结构 -->
@@ -984,6 +836,7 @@
     var temp = new Object();
     var commentupdate = new Object();
 
+    var authorId;
     var userId;
     var userName;
     $(function () {
@@ -1146,7 +999,32 @@
             bookdetail: function (i) {
                 sessionStorage.setItem("bookId", i);
                 window.location.href = "bookdetail.html";
-            }
+            },
+            read: function () {
+                sessionStorage.setItem("bookId", this.book.bookId);
+                window.location.href = "read.html";
+            },
+            bookshelf: function () {
+                if(userId == undefined){
+                    window.location.href = "login.html";
+                }else{
+                    $.ajax({
+                        url: "http://localhost:8080/insertToBookSelf",
+                        type: "post",
+                        data: {userId: userId, bookId: mv1.book.bookId},
+                        datatype: "json",
+                        success: function (data) {
+                        },
+                        error: function () {
+                        }
+                    })
+                }
+            },
+            readchapter: function (i) {
+                sessionStorage.setItem("bookId", this.book.bookId);
+                sessionStorage.setItem("chapterId", i);
+                window.location.href = "read.html";
+            },
         }
     })
 
@@ -1172,6 +1050,15 @@
             window.location.href="search.html";
         }else{
             $("input[name='key']").val("输入不能为空！");
+        }
+    })
+
+    $(".authorcontainer").click(function () {
+        sessionStorage.getItem("authorId",authorId);
+        if(authorId == undefined){
+            window.location.href = "author_login.html";
+        }else{
+            window.location.href = "";
         }
     })
 
