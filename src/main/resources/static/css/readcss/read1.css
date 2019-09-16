@@ -744,8 +744,6 @@ a:hover {
 }
 
 .article .ne-content p, .article .ne-content div {
-    text-indent: 2em;
-    margin-bottom: 16px;
     text-align: justify
 }
 

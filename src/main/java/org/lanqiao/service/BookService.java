@@ -35,6 +35,10 @@ public interface BookService {
     int delectShelfBook(Integer bookId,Integer userId);
 
     int insertSelective(BookShelf record);
-
+    List<Books> selectAll();
+    List<Books> selectByBookName(String bookName);
+    int deleteByPrimaryKey(Integer bookId);
+    int updateByPrimaryKeySelective(Books record);
+    int insertSelective(Books record);
 
 }

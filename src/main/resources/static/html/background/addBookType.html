@@ -51,42 +51,16 @@
         $("input[id = 'submit']").click(function () {
             if($("input[name = 'num']").val() > 0) {
                 $.ajax({
-                    url: "http://localhost:8080/Type/CheckTypeName",
+                    url: "http://localhost:8080/insertBookType",
                     type: "post",
-                    data: {typeName: $("input[name = 'name']").val(), fatherId:$("input[name = 'num']").val()},
+                    data: {bookTypeName: $("input[name = 'name']").val(), fatherTypeId:$("input[name = 'num']").val()},
                     dataType: "json",
                     success: function (data) {
-                        alert("此种类已存在!")
-                    }, error: function (data) {
-                        $.ajax({
-                            url: "http://localhost:8080/Type/InsertType",
-                            type: "post",
-                            data: {typeName: $("input[name = 'name']").val(), fatherId:$("input[name = 'num']").val()},
-                            dataType: "json",
-                            success: function (data) {
-                                alert("书籍种类插入成功");
-                            }
-                        })
-                    }
-                })
-            }else {
-                $.ajax({
-                    url: "http://localhost:8080/Type/CheckTypeName",
-                    type: "post",
-                    data: {typeName: $("input[name = 'name']").val(), fatherId:0},
-                    dataType: "json",
-                    success: function (data) {
-                        alert("此种类已存在!")
-                    }, error: function (data) {
-                        $.ajax({
-                            url: "http://localhost:8080/Type/InsertType",
-                            type: "post",
-                            data: {typeName: $("input[name = 'name']").val(), fatherId:0},
-                            dataType: "json",
-                            success: function (data) {
-                                alert("书籍种类插入成功");
-                            }
-                        })
+                        if(data == 0){
+                            alert("此种类已存在!")
+                        }else{
+                            alert("插入种类成功!")
+                        }
                     }
                 })
             }

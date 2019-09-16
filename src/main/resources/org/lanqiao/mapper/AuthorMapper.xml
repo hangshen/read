@@ -58,6 +58,17 @@ INNER JOIN authorlogin ON authorlogin.author_login_author_id = author.author_id 
     from author
     where author_id = #{authorId,jdbcType=INTEGER}
   </select>
+  <select id="selectAuthorByName" resultMap="AuthorMap" parameterType="java.lang.String" >
+    select
+    *
+    from author
+    where author_name like #{authorName}
+  </select>
+  <select id="selectAllAuthor" resultMap="AuthorMap">
+    select
+    *
+    from author
+  </select>
   <!--==================================================删除操作====================================================-->
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from author

@@ -10,17 +10,20 @@ public class LeiReadVo {
 
     private List<String> paragraphList=new ArrayList<>();
 
+    private int pageNum;
+
     private int totalPageNum;
 
-    public LeiReadVo(int chapterSort, String chapterName, List<String> paragraphList, int totalPageNum) {
+    public LeiReadVo(int chapterSort, String chapterName, List<String> paragraphList, int pageNum, int totalPageNum) {
         this.chapterSort = chapterSort;
         this.chapterName = chapterName;
+        this.pageNum = pageNum;
         this.paragraphList=paragraphList;
 
-        if((totalPageNum+4)%15 == 0){
-            this.totalPageNum = (totalPageNum+4)/15;
+        if((totalPageNum+3)%11 == 0){
+            this.totalPageNum = (totalPageNum+3)/11;
         } else {
-            this.totalPageNum = (totalPageNum+4)/15 + 1;
+            this.totalPageNum = (totalPageNum+3)/11 + 1;
         }
 
     }
@@ -54,5 +57,13 @@ public class LeiReadVo {
 
     public void setTotalPageNum(int totalPageNum) {
         this.totalPageNum = totalPageNum;
+    }
+
+    public int getPageNum() {
+        return pageNum;
+    }
+
+    public void setPageNum(int pageNum) {
+        this.pageNum = pageNum;
     }
 }

@@ -48,4 +48,39 @@ public class BookTypeServiceImpl implements BookTypeService{
     public List<BookType> getAllBookType() {
         return bookTypeMapper.selectAll();
     }
+    @Override
+    public int insertSelective(BookType record){
+        List<BookType> list = bookTypeMapper.selectAll();
+        for(BookType b:list)
+        {
+            if(record.getBooktypeName().equals(b.getBooktypeName())){
+                return 0;
+            }
+        }
+        return bookTypeMapper.insertSelective(record);
+    }
+    @Override
+    public List<BookType> selectByTypeName(String booktypeName){
+        booktypeName = "%"+booktypeName+"%";
+        return bookTypeMapper.selectByTypeName(booktypeName);
+    }
+    @Override
+    public int deleteByPrimaryKey(Integer booktypeId){
+        return bookTypeMapper.deleteByPrimaryKey(booktypeId);
+    }
+    @Override
+    public int updateByPrimaryKeySelective(BookType record){
+        List<BookType> list = bookTypeMapper.selectAll();
+        for(BookType b:list)
+        {
+            if(record.getBooktypeName().equals(b.getBooktypeName())){
+                return 0;
+            }
+        }
+        return bookTypeMapper.updateByPrimaryKeySelective(record);
+    }
+    @Override
+    public List<BookType> selectAllBookType(){
+        return  bookTypeMapper.selectAllBookType();
+    }
 }

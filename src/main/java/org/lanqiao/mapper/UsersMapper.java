@@ -1,7 +1,10 @@
 package org.lanqiao.mapper;
 
+import org.lanqiao.entity.Author;
 import org.lanqiao.entity.Users;
 import org.springframework.stereotype.Repository;
+
+import java.util.List;
 
 @Repository
 public interface UsersMapper {
@@ -16,4 +19,6 @@ public interface UsersMapper {
     int updateByPrimaryKeySelective(Users record);
 
     int updateByPrimaryKey(Users record);
+    List<Users> selectUserByName(String UserName);
+    List<Users> selectAllUser();
 }

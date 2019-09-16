@@ -1,20 +1,25 @@
 package org.lanqiao.controller;
 
 
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import org.lanqiao.entity.*;
 
 import org.lanqiao.service.*;
 import org.lanqiao.vo.AuthorBasicDataVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
 
 
+import java.io.File;
 import java.io.IOException;
-
 
 import java.util.List;
 import java.util.Map;
+import java.util.UUID;
 
 
 @RestController
@@ -32,6 +37,11 @@ public class AuthorController {
     BookTypeService bookTypeService;
     @Autowired
     CommentService commentService;
+    @Autowired
+    ContentService contentService;
+    @Autowired
+    ChapterService chapterService;
+
 
     /**
      * 登录
@@ -79,7 +89,8 @@ public class AuthorController {
      */
     @RequestMapping("/getAllBooksByAuthorId")
     public List<Books> getAllBooksByAuthorId(Integer authorId) {
-        return bookService.selectBooksByAuthorId(8);
+//        System.out.println(bookService.selectBooksByAuthorId(authorId).size());
+        return bookService.selectBooksByAuthorId(authorId);
     }
 
     /**
@@ -89,8 +100,18 @@ public class AuthorController {
      * @param books
      * @return
      */
-    @RequestMapping("/addBook")
-    public int insertBook(Books books) {
+    @RequestMapping("/publishBook")
+    public int insertBook(Books books, MultipartFile file) throws IOException {
+        String filePath = "E:\\java\\project\\IDEAProject\\read\\src\\main\\resources\\static\\images\\upload";//保存图片的路径
+        //获取原始图片的拓展名
+        String originalFilename = file.getOriginalFilename();
+        //新的文件名字
+        String newFileName = UUID.randomUUID() + originalFilename;
+        //封装上传文件位置的全路径
+        File targetFile = new File(filePath, newFileName);
+        //把本地文件上传到封装上传文件位置的全路径
+        file.transferTo(targetFile);
+        books.setBookImg(newFileName);
         return bookService.insertBooks(books);
     }
 
@@ -103,8 +124,9 @@ public class AuthorController {
      * @return author_money
      */
     @RequestMapping("/myIncome")
-    public int myIncome(Integer authorId) {
-        return authorService.selectByAuthorId(authorId).getAuthorMoney();
+    public Author myIncome(Integer authorId) {
+        System.out.println(authorService.selectByAuthorId(authorId).getAuthorMoney());
+        return authorService.selectByAuthorId(authorId);
     }
 
 
@@ -118,7 +140,7 @@ public class AuthorController {
     @RequestMapping("/authorBasicData")
     public AuthorBasicDataVo authorBasicData(Integer authorId) {
         Author author = authorService.selectByAuthorId(authorId);
-        AuthorLogin authorLogin=authorLoginService.selectByAuthorId(authorId);
+        AuthorLogin authorLogin = authorLoginService.selectByAuthorId(authorId);
         AuthorBasicDataVo authorBasicDataVo = new AuthorBasicDataVo();
         authorBasicDataVo.setAuthor(author);
         authorBasicDataVo.setAuthorLogin(authorLogin);
@@ -128,18 +150,66 @@ public class AuthorController {
 
     @RequestMapping("/getAllBookType")
     public List<BookType> getAllBookType() {
-        return bookTypeService.getAllBookType();
+        System.out.println(bookTypeService.selectAllBookType().size());
+        return bookTypeService.selectAllBookType();
     }
 
     @RequestMapping("/readerComment")
-    public List<Comment> readerComment(Integer authorId) {
-        return commentService.selectAllByAuthorId(4);
+    public PageInfo<Comment> readerComment(Integer authorId, @RequestParam(value = "pageNo", defaultValue = "1") Integer pageNum) {
+
+        PageHelper.startPage(pageNum, 5);
+        List<Comment> list = commentService.selectAllByAuthorId(4);
+        PageInfo<Comment> pageInfo = new PageInfo<>(list);
+
+        return pageInfo;
+    }
+
+    @RequestMapping("/selectAuthorByName")
+    public List<Author> selectAuthorByName(String authorName) {
+        authorName = "%" + authorName + "%";
+        return authorService.selectAuthorByName(authorName);
+    }
+
+    @RequestMapping("/deleteAuthor")
+    public int deleteByPrimaryKey(Integer authorId) {
+        return authorService.deleteByPrimaryKey(authorId);
+    }
+
+    @RequestMapping("/selectAllAuthor")
+    public List<Author> selectAllAuthor() {
+        return authorService.selectAllAuthor();
     }
 
     @RequestMapping("/getAuthorName")
     public Author getAuthorName(Integer authorId) {
         return authorService.getAuthorName(authorId);
     }
+
+
+    @RequestMapping("/bookSize")
+    public Integer getBookSize(Integer authorId) {
+        return bookService.selectBooksByAuthorId(authorId).size();
+    }
+
+    @RequestMapping("/newChapter")
+    public boolean newChapter(Integer chapterSort, Integer bookId, String chapterName, String contentText) {
+        Content content = new Content();
+        Chapter chapter = new Chapter();
+        content.setContentText(contentText);
+        int contentId = contentService.insert(content);
+
+        chapter.setChapterBookId(bookId);
+        chapter.setChapterContentId(contentId);
+        chapter.setChapterName(chapterName);
+        chapter.setChapterSort(chapterSort);
+        int characterFlag = chapterService.insert(chapter);
+        if (characterFlag == 1) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
 
     /*
     *作者注册账号检测（是否可以注册）

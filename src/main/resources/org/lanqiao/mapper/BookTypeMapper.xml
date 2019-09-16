@@ -14,6 +14,12 @@
 (select bt.booktype_father_id from booktype bt
 WHERE bt.booktype_father_id = bt.booktype_id)
   </select>
+  <select id="selectAllBookType" resultMap="BookTypeMap">
+    select * from booktype
+  </select>
+  <select id="selectByTypeName" resultMap="BookTypeMap" parameterType="java.lang.String" >
+    select * from booktype WHERE booktype_name like  #{booktypeName}
+  </select>
   <select id="selectByPrimaryKey" resultMap="BookTypeMap" parameterType="java.lang.Integer" >
     select 
     <include refid="Base_Column_List" />

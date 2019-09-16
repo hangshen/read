@@ -39,7 +39,7 @@ public class ReadServiceImpl implements ReadService {
             leiRead.setTotalPageNum(paragraphUtil.getTotalNum());
 
             //整理包装数据 返回目标数据结构
-            return new LeiReadVo(leiRead.getChapterSort(),leiRead.getChapterName(),selectPageNumUtil.selectPage(leiRead.getParagraphList(),pageNum),leiRead.getTotalPageNum());
+            return new LeiReadVo(leiRead.getChapterSort(),leiRead.getChapterName(),selectPageNumUtil.selectPage(leiRead.getParagraphList(),pageNum), pageNum, leiRead.getTotalPageNum());
 
         } else {//读者登录状态阅读
             String key=userId.toString()+bookId.toString();
@@ -71,7 +71,7 @@ public class ReadServiceImpl implements ReadService {
                 pageNum=((Read) redisUtil.get(key)).getReadPageNum();
                 leiRead.setParagraphList(paragraphUtil.Paragraph(leiRead.getContentText()));
                 leiRead.setTotalPageNum(paragraphUtil.getTotalNum());
-                return new LeiReadVo(leiRead.getChapterSort(),leiRead.getChapterName(),selectPageNumUtil.selectPage(leiRead.getParagraphList(),pageNum),leiRead.getTotalPageNum());
+                return new LeiReadVo(leiRead.getChapterSort(),leiRead.getChapterName(),selectPageNumUtil.selectPage(leiRead.getParagraphList(),pageNum), pageNum, leiRead.getTotalPageNum());
             }else {
                 if(chapterId == null){//读者正常翻页阅读,未换章节
                     //更新redis库中的页数
@@ -94,7 +94,7 @@ public class ReadServiceImpl implements ReadService {
                 leiRead=readMapper.selectChapterUserId(userId,bookId);
                 leiRead.setParagraphList(paragraphUtil.Paragraph(leiRead.getContentText()));
                 leiRead.setTotalPageNum(paragraphUtil.getTotalNum());
-                return new LeiReadVo(leiRead.getChapterSort(),leiRead.getChapterName(),selectPageNumUtil.selectPage(leiRead.getParagraphList(),pageNum),leiRead.getTotalPageNum());
+                return new LeiReadVo(leiRead.getChapterSort(),leiRead.getChapterName(),selectPageNumUtil.selectPage(leiRead.getParagraphList(),pageNum), pageNum, leiRead.getTotalPageNum());
             }
 
         }

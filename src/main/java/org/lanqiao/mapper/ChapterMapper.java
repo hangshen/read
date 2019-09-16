@@ -7,7 +7,7 @@ import org.springframework.stereotype.Repository;
 public interface ChapterMapper {
     int deleteByPrimaryKey(Integer chapterId);
 
-    int insert(Chapter record);
+    int insert(Chapter chapter);
 
     int insertSelective(Chapter record);
 

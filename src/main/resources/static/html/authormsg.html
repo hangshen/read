@@ -109,11 +109,12 @@
         <div class="msg_content">
             <div class="content-play" id="book">
                 <div class="content-name">
-                    <h2>作品列表<span>共 1 部作品</span></h2>
+                    <h2>作品列表<span id="bookSize">共 {{bookSize}} 部作品</span></h2>
                     <p class="side-tag"><a href="author_publish.html" class="btn">发表作品</a></p>
                 </div>
 
-                <table class="grade-table-list" cellpadding="0" cellspacing="0" id="J_Table" v-for="(book,index3)in book">
+                <table class="grade-table-list" cellpadding="0" cellspacing="0" id="J_Table"
+                       v-for="(book,index) in books">
                     <colgroup>
                         <col width="20%">
                         <col width="5%">
@@ -132,12 +133,12 @@
                         <th nowrap="">操作</th>
                     </tr>
                     </thead>
-                    <tbody v-for="(book,index2) in book">
+                    <tbody v-for="(book,index) in books">
                     <tr>
                         <td>
                             <div class="work-title">
-                                <div class="pic" style="position: relative;">
-                                    <img src="../images/authormsgimages/fengmian.png">
+                                <div class="pic" style="position: relative;" id="bookImg">
+                                    <img src="../images/authormsgimages/fengmian.png" >
                                 </div>
                                 <p>
                                     {{book.bookName}}
@@ -147,7 +148,7 @@
                                 <p class="word">收藏数：0</p>
 
                                 <p class="ops">
-                                    <a href="author_publish.html">修改作品</a>
+                                    <a href="author_publish.html" @click="">修改作品</a>
                                 </p>
                             </div>
                         </td>
@@ -205,13 +206,17 @@
 <script src="../js/author_login_js/vue.min.js"></script>
 <script>
 
+
+
+
+
     // 显示作者名
     var aid = sessionStorage.getItem("aid");
-    alert(aid);
+    // alert(aid);
     $(function () {
         $.ajax({
             url: "http://localhost:8080/author/getAuthorName",
-            data: {authorId:aid},
+            data: {authorId: aid},
             type: "post",
             dataType: "json",
             success: function (data) {
@@ -219,23 +224,40 @@
                     el: '#authorName',
                     data: {authorName: data.authorName},
                 });
-                alert(mv2.authorName);
+                // alert(mv2.authorName);
             }
         })
     });
 
-//显示作品
     $(function () {
         $.ajax({
-            url: "http://localhost:8080/author/authorAllBook",
-            data: {authorId:aid},
+            url: "http://localhost:8080/author/bookSize",
+            data: {authorId: aid},
             type: "post",
             dataType: "json",
             success: function (data) {
-              mv3 =new Vue({
-                    el:"#book" ,
-                    data:{
-                        book:data,
+                mv3 = new Vue({
+                    el: "#bookSize",
+                    data: {
+                        bookSize: data,
+                    },
+                })
+            }
+        })
+    });
+
+    //显示作品
+    $(function () {
+        $.ajax({
+            url: "http://localhost:8080/author/getAllBooksByAuthorId",
+            data: {authorId: aid},
+            type: "post",
+            dataType: "json",
+            success: function (data) {
+                mv3 = new Vue({
+                    el: "#book",
+                    data: {
+                        books: data,
                     },
                 })
             }
@@ -243,36 +265,36 @@
     });
 
 
-// 传id
+    // 传id
     $(function () {
         $("#penname1").click(function () {
-            var aid=sessionStorage.setItem("aid");
-                })
-            });
+            var aid = sessionStorage.setItem("aid");
+        })
+    });
 
     $(function () {
         $(".all-works").click(function () {
-            var aid=sessionStorage.setItem("aid");
+            var aid = sessionStorage.setItem("aid");
         })
     });
     $(function () {
         $(".incomes").click(function () {
-            var aid=sessionStorage.setItem("aid");
+            var aid = sessionStorage.setItem("aid");
         })
     });
     $(function () {
         $(".comment").click(function () {
-            var aid=sessionStorage.setItem("aid");
+            var aid = sessionStorage.setItem("aid");
         })
     });
     $(function () {
         $(".op").click(function () {
-            var aid=sessionStorage.setItem("aid");
+            var aid = sessionStorage.setItem("aid");
         })
     });
     $(function () {
         $(".newc").click(function () {
-            var aid=sessionStorage.setItem("aid");
+            var aid = sessionStorage.setItem("aid");
         })
     });
 </script>

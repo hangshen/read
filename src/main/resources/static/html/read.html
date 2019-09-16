@@ -91,10 +91,6 @@
         <div id="adTopBanner"></div>
         <div class="chapter-title" id="J_ChapterTitle">第三章真龙铠</div>
         <ul class="panel-list" id="J_BookPanel">
-            <li class="word-trigger">
-                <a href="javascript:;" id="J_WordTrigger" title="word模式">word模式</a>
-                <div class="J_GuideDemo_1 J_GuideDemo_2"><em></em>切换Word模式与经典模式</div>
-            </li>
             <li class="cata-trigger"><a id="J_CatalogueTrigger" title="目录">目录</a>
                 <div class="J_GuideDemo_1 J_GuideDemo_2"><em></em>目录</div>
             </li>
@@ -174,38 +170,17 @@
         <div class="prev-turn J_PrevTurn"><a href="javascript:void(0)" hidefocus="true"></a></div>
         <div class="article-wrap">
             <div class="article J_Article">
-                <div class="article-content" style="height: 500px;">
+                <div class="article-content" style="height: 530px;">
                     <div class="horizontal-page-box J_HorizontalMoveBox"
                          style="width: 1380px; font-size: 22px; left: 0px;">
-                        <div class="page-item J_PageItem" style="height: 500px;">
-                            <div class="ne-content J_NEContent" style=""><h1
-                                    class="section j-chapter yd-paragraph-c yd-marbom-20 yd-lineheight-3 "
-                                    data-paragraphid="1e13f5383c7d47778815952cf30d444c_5" data-titlelevel="1">
-                                第三章真龙铠</h1>
+                        <div class="page-item J_PageItem" style="height: 530px;">
+                            <div class="ne-content J_NEContent" style="">
+                                <h1 class="section j-chapter yd-paragraph-c yd-marbom-20 yd-lineheight-3 "
+                                    data-paragraphid="1e13f5383c7d47778815952cf30d444c_5" data-titlelevel="1" v-if="booktext.pageNum == 1">
+                                第{{booktext.chapterSort}}章 {{booktext.chapterName}}</h1>
                                 <p class="section yd-marbom-20 yd-lineheight-3 "
-                                   data-paragraphid="e9aac89ebcc54128ad8b474380ba4ed7_p">
-                                    段龙被平放在地面上，拳头大的金色光团在上空飘动，隐隐有一条模糊的龙形在里面闪动。</p>
-                                <p class="section yd-marbom-20 yd-lineheight-3 "
-                                   data-paragraphid="1b7a8b0ff8184fffa543fc9a6d74ab05_p">
-                                    “可惜了，灵魂感知力这么强，要是还活着……”看到段龙手指动了动，光团顿时上下起伏着兴奋乱叫。</p>
-                                <p class="section yd-marbom-20 yd-lineheight-3 "
-                                   data-paragraphid="5f3e32464cb24bfda25b5a123d53444a_p" style="margin-bottom: 51px;">
-                                    “让我想想，让我好好想想……”</p>
-                                <p class="section yd-marbom-20 yd-lineheight-3 "
-                                   data-paragraphid="70cfab1aa0e3405880dd969031771dcc_p">
-                                    我被困在这里几千年了，本打算吸收足够的气血让真龙铠出现铠甲之魂带我出去，如今来了一个灵魂感知力这么强的人，勉强可以修炼御龙诀。</p>
-                                <p class="section yd-marbom-20 yd-lineheight-3 "
-                                   data-paragraphid="fbba0a6080e24643972e885e6cd81e38_p">
-                                    若是放过他，指不定还要等多少个一千年。但若是他不能修炼，岂不是……</p>
-                                <p class="section yd-marbom-20 yd-lineheight-3 "
-                                   data-paragraphid="3d61b0690ade407b81d96cb6eab896ce_p">
-                                    该死的，太纠结了，龙爷爷我什么时候这么犹豫过，拼了，不就是耗费几口真气吗！小子，龙爷爷来了，你可千万别死。</p>
-                                <p class="section yd-marbom-20 yd-lineheight-3 "
-                                   data-paragraphid="2a6026aece634a92a236239b6fea6c52_p">
-                                    等你将御龙诀修炼至大成，龙爷爷在对你夺舍，桀桀……想想就很爽。</p>
-                                <p class="section yd-marbom-20 yd-lineheight-3 "
-                                   data-paragraphid="a1336a3dfb9d417086b3adcb45d31a0f_p">
-                                    段龙身体猛地剧烈颤抖，四肢无规律的摆动，这一切全因为光团在他体内乱窜。</p>
+                                   data-paragraphid="e9aac89ebcc54128ad8b474380ba4ed7_p" v-for="(text,index) in booktext.paragraphList">
+                                    {{text}}</p>
                                 </div>
                         </div>
                     </div>
@@ -250,12 +225,19 @@
 <script src="../js/topjs/jquery-3.4.1.js"></script>
 <script src="../js/topjs/vue.min.js"></script>
 <script>
+
+    var userId = 1;
+    var bookId = 5;
+    var chapterId = null;
+    var pageNum = null;
+
     var mv2 = new Vue({
         el: '.editorrecommend',
         data: {
             otherbooks: {},
         }
     })
+
     var mv1 = new Vue({
         el: '.booktitle',
         data: {
@@ -282,6 +264,69 @@
             })
         }
     })
+
+    var mv3 = new Vue({
+        el: '.article-content',
+        data: {
+            booktext: {},
+        },
+        created: function () {
+            $.ajax({
+                url: "http://localhost:8080/getbooxtxt",
+                type: "post",
+                data: {userId: userId, bookId: bookId, chapterId: chapterId, pageNum: pageNum},
+                datatype: "json",
+                success: function (data) {
+                    mv3.booktext = data;
+                }
+            })
+        }
+    })
+
+    $(".prev-turn").click(function () {
+        chapterId = mv3.booktext.chapterSort;
+        pageNum = mv3.booktext.pageNum;
+        if(pageNum - 1 > 0){
+            chapterId = null;
+            pageNum = pageNum - 1;
+        }else{
+            if(chapterId - 1 > 0){
+                pageNum = null;
+                chapterId = chapterId - 1;
+            }
+        }
+        $.ajax({
+            url: "http://localhost:8080/getbooxtxt",
+            type: "post",
+            data: {userId: userId, bookId: bookId, chapterId: chapterId, pageNum: pageNum},
+            datatype: "json",
+            success: function (data) {
+                mv3.booktext = data;
+            }
+        })
+    })
+
+    $(".next-turn").click(function () {
+        chapterId = mv3.booktext.chapterSort;
+        pageNum = mv3.booktext.pageNum;
+        if(pageNum + 1 <= mv3.booktext.totalPageNum){
+            chapterId = null;
+            pageNum = pageNum + 1;
+        }else{
+            pageNum = null;
+            chapterId = chapterId + 1;
+        }
+        $.ajax({
+            url: "http://localhost:8080/getbooxtxt",
+            type: "post",
+            data: {userId: userId, bookId: bookId, chapterId: chapterId, pageNum: pageNum},
+            datatype: "json",
+            success: function (data) {
+                mv3.booktext = data;
+            }
+        })
+    })
+
     $("#J_AsideTrigger").click(function () {
         if($(this).attr("class") == "close"){
             $("#J_Aside").css("left","0");

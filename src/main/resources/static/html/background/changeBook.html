@@ -6,7 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="../../css/background/bootstrap.css" type="text/css" rel="stylesheet">
     <link href="../../css/background/background.css" rel="stylesheet">
-    <link href="../../css/background/addressadd.css" rel="stylesheet">
+    <link href="../../css/background/protype.css" rel="stylesheet">
+    <link rel="Stylesheet" type="text/css" href="../../css/background/addressadd.css"/>
 </head>
 <body>
 <div id="header">
@@ -33,148 +34,164 @@
 <div id="daohang2">
     <ul class="breadcrumb">
         <li><a href="background.html">首页</a></li>
-        <li><a href="book.html">商品管理</a></li>
-        <li><a href="changeBook.html">查询商品</a></li>
-        <li id="chaxun">
-            <input type="text" id="shuru">
-            <a href="#" id="sou">搜索</a>
-        </li>
+        <li><a href="book.html">书籍管理</a></li>
+        <li><a href="changeBook.html">查询书籍</a></li>
     </ul>
 </div>
 
 <div id="biaoge">
+    <div id="check">
+        请输入要查找的书籍名称：
+        <input name="find" type="text">
+        <input name="sousuo" type="button" value="查找" @click="find()">
+    </div>
     <table class="table table-striped table-bordered table-hover">
         <thead>
         <tr class="tableHead">
-            <th>商品编号</th>
-            <th>商品名称</th>
-            <th>种类编号</th>
-            <th>品牌编号</th>
-            <th>下架时间</th>
+            <th>书籍编号</th>
+            <th>书籍名称</th>
+            <th>书籍简介</th>
+            <th>完结时间</th>
             <th>状态</th>
+            <th>类别id</th>
             <th>操作</th>
             <th>操作</th>
         </tr>
         </thead>
-        <tr v-for="(pro,index) in pros" style="display: none" id="selPro">
-            <td class="id">{{pro.proId}}</td>
-            <td>{{pro.proName}}</td>
-            <td>{{pro.proTypeId}}</td>
-            <td>{{pro.proBrandId}}</td>
-            <td>{{pro.downTime}}</td>
-            <td>{{pro.proState}}</td>
-            <td><a href="#" id="update" @click="updatePro(index)">修改</a></td>
-            <td ><a href="#" id="del" @click="dele(index)">删除</a></td>
+        <tbody v-for="(book,index) in books">
+        <tr>
+            <td class="id">{{book.bookId}}</td>
+            <td>{{book.bookName}}</td>
+            <td>{{book.bookIntroduce}}</td>
+            <td>{{book.bookFinishDate}}</td>
+            <td>{{book.bookFlag}}</td>
+            <td>{{book.bookTypeId}}</td>
+            <td><a href="#" @click="tanchu(index)">修改</a></td>
+            <td><a href="#" @click="dlt(index)">删除</a></td>
         </tr>
+        </tbody>
     </table>
-    <div id="add">
+</div>
+<div id="add">
         <div class="row1">
-            新增商品<a href="javascript:void(0)" title="关闭窗口" class="close_btn" id="closeBtn">×</a>
+            修改书籍<a href="javascript:void(0)" title="关闭窗口" class="close_btn" id="closeBtn">×</a>
         </div>
         <form id="bigbox">
             <div id="one">
-                <span>商品名称</span>
-                <input name="proName" type="text">
+                <span>书籍名称</span>
+                <input name="bookName" type="text">
             </div>
             <div class="twe">
-                <span>下架时间</span>
-                <input name="downTime" type="date">
+                <span>书籍简介</span>
+                <input name="introduce" type="text">
+            </div>
+            <div class="twe">
+                <span>完结时间</span>
+                <input name="finishTime" type="date">
             </div>
             <div class="twe">
                 <span>状态</span>
                 <input name="statu" type="text">
             </div>
             <div class="twe">
+                <span>书籍类别id</span>
+                <input name="type" type="number">
+            </div>
+            <div class="twe">
                 <input name="insert" id="infor" type="submit" value="修改">
             </div>
         </form>
-    </div>
 </div>
 <script src="../../js/jquery-3.4.1.js"></script>
 <script src="../../js/bootstrap.js"></script>
 <script src="../../js/vue.min.js"></script>
 <script src="../../js/jquery.validate.js" type="application/javascript"></script>
 <script src="../../js/jquery.validate.regex.js" type="application/javascript"></script>
-<script src="../../js/bootstrap.js"></script>
+<script>
+    $(function ($) {
+        //关闭
+        $(".close_btn").hover(function () {
+            $(this).css({color: 'black'})
+        }, function () {
+            $(this).css({color: '#999'})
+        }).on('click', function () {
+            $("#add").fadeOut("fast");
+            $("#mask").css({display: 'none'});
+        });
+    });
+</script>
+
 <script>
     $(function () {
-        var vm;
-        var selName="";
-        var updateInfo;
+        var temp_data;
         $.ajax({
-            url:"http://localhost:8080/selByName",
+            url: "http://localhost:8080/selectAll",
             type: "post",
             dataType: "json",
-            data:JSON.stringify(selName),
-            contentType: "application/json;charset-UTF-8",
             success:function (data) {
-                if(data.length>0)
-                {
-                    $("#selPro").css("display","table-row");
-                }
-                vm = new Vue({
-                    el:"#biaoge",
-                    data:{pros:data},
+                var mv1 = new Vue({
+                    el: '#biaoge',
+                    data: {books:{}},
+                    created: function() {
+                        this.books = data;
+                    },
                     methods:{
-                        //删除商品
-                        dele:function (index) {
-                            var proId = this.pros[index].proId;
+                        find:function () {
                             $.ajax({
-                                url:"http://localhost:8080/delPro",
+                                url: "http://localhost:8080/selectByBooksName",
                                 type: "post",
+                                data: {bookName: $("input[name = 'find']").val()},
                                 dataType: "json",
-                                data:JSON.stringify(proId),
-                                contentType: "application/json;charset-UTF-8",
                                 success:function (data) {
-                                    location.reload();
+                                    mv1.books = data;
                                 }
                             })
                         },
-                        //修改商品
-                        updatePro:function (index) {
+                        dlt:function (i) {
+                            $.ajax({
+                                url: "http://localhost:8080/deleteBook",
+                                type: "post",
+                                data: {bookId: mv1.books[i].bookId},
+                                dataType: "json",
+                                success:function (data) {
+                                    mv1.books.splice(i, 1);
+                                }
+                            })
+                        },
+                        tanchu:function (i) {
                             $("body").append("<div id='mask'></div>");
                             $("#mask").addClass("mask").fadeIn("slow");
                             $("#add").fadeIn("slow");
-                            var proId = this.pros[index].proId;
-                            $("#infor").click(function () {
-                                updateInfo = {
-                                    "proName":$("input[name = 'proName']").val(),
-                                    "downTime":$("input[name = 'downTime']").val(),
-                                    "proState":$("input[name = 'statu']").val(),
-                                    "proId":proId
-                                }
-                                $.ajax({
-                                    url:"http://localhost:8080/updatePro",
-                                    type: "post",
-                                    data: JSON.stringify(updateInfo),
-                                    dataType: "json",
-                                    contentType: 'application/json;charset=UTF-8',
-                                    success:function (data) {
-                                        alert("修改成功！");
-                                        location.reload();
-                                    }
-                                })
-                            })
+                            temp_data = i;
                         }
                     }
-                })
+                });
             }
         })
-        //查询商品
-        $("#sou").click(function () {
-            selName = $("#shuru").val();
+        $("input[name = 'insert']").click(function () {
+            var record = {
+                "bookId":$(".id").eq(temp_data).html(),
+                "bookName":$("input[name = 'bookName']").val(),
+                "bookIntroduce":$("input[name = 'introduce']").val(),
+                "bookFinishDate":$("input[name = 'finishTime']").val(),
+                "bookFlag":$("input[name = 'statu']").val(),
+                "bookTypeId":$("input[name = 'type']").val(),
+            }
             $.ajax({
-                url:"http://localhost:8080/selByName",
+                url: "http://localhost:8080/updateBook",
                 type: "post",
+                data: JSON.stringify(record),
                 dataType: "json",
-                data:JSON.stringify(selName),
-                contentType: "application/json;charset-UTF-8",
+                contentType: 'application/json;charset=UTF-8',
                 success:function (data) {
-                    if(data.length>0)
-                    {
-                        $("#selPro").css("display","table-row");
+                    if(data==1){
+                        mv1.books[i].bookName = $("input[name = 'bookName']").val();
+                        mv1.books[i].bookIntroduce = $("input[name = 'introduce']").val();
+                        mv1.books[i].bookFinishDate = $("input[name = 'finishTime']").val();
+                        mv1.books[i].bookFlag = $("input[name = 'statu']").val();
+                        mv1.books[i].bookTypeId = $("input[name = 'type']").val();
+                        location.reload();
                     }
-                    vm.pros = data;
                 }
             })
         })

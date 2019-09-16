@@ -147,10 +147,9 @@
                         <div class="contents">
                             <div class="tab-item">
                                 <ul class="book f-cb">
-                                    <li v-for="(book, index) in books" class="bookface"><a href="" target="_blank" data-model="jptu"
-                                                                          data-opration="jpts_img"><img v-bind:src="book.bookImg"></a>
-                                        <h3><a href="" target="_blank" data-model="jptu" data-opration="jpts_txt">{{book.bookName}}</a>
-                                        </h3>
+                                    <li v-for="(book, index) in books" class="bookface" @click="bookdetail(index)">
+                                        <a href="" target="_blank" data-model="jptu" data-opration="jpts_img"><img v-bind:src="book.bookImg"></a>
+                                        <h3><a href="" target="_blank" data-model="jptu" data-opration="jpts_txt">{{book.bookName}}</a></h3>
                                         <p>作者：{{book.author.authorName}}</p>
                                     </li>
                                 </ul>
@@ -192,7 +191,7 @@
                             <h3>作者中心</h3>
                             <h6>原创、自媒体、内容商、漫画</h6>
                             <p>招募作者，福利优厚</p>
-                            <a class="btn" target="_blank" href="" data-model="gyyyd" data-opration="author">&nbsp;投稿 &gt;</a>
+                            <a id="author" class="btn" target="_blank" href="" data-model="gyyyd" data-opration="author">&nbsp;投稿 &gt;</a>
                         </li>
                         <li class="fk">
                             <span class="icon"></span>
@@ -305,6 +304,7 @@
             $(".userself").attr("href","")
         }
     })
+
     var mv1 = new Vue({
         el: '#J_MM',
         data: {fathertypes:{} },
@@ -362,6 +362,12 @@
                     mv2.books = data;
                 }
             })
+        },
+        methods: {
+            bookdetail: function (i) {
+                sessionStorage.setItem("bookId", this.books[i].bookId);
+                window.location.href = "bookdetail.html";
+            }
         }
     })
     $("#gongzhonghao").hover(function () {
@@ -412,6 +418,15 @@
         $(".j-slider img").attr("src", "../images/topimages/" + imgs[i]);
         setTimeout("changeImg()", 3000);
     };
+
+    $("#author").click(function () {
+        sessionStorage.getItem("authorId",authorId);
+        if(authorId == undefined){
+            window.location.href = "author_login.html";
+        }else{
+            window.location.href = "";
+        }
+    })
 </script>
 </body>
 </html>

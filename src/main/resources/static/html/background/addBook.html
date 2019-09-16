@@ -38,54 +38,13 @@
 </div>
 
 <div id="biaoge">
-
-    <table class="table table-striped table-bordered table-hover">
-        <thead>
-        <tr class="tableHead">
-            <th>操作</th>
-        </tr>
-        </thead>
-
-        <tbody>
-        <tr>
-            <td><a href="#" id="tanchuang">添加</a></td>
-        </tr>
-        </tbody>
-
-    </table>
-</div>
-<div id="add">
-    <div class="row1">
-        新增书籍<a href="javascript:void(0)" title="关闭窗口" class="close_btn" id="closeBtn">×</a>
-    </div>
-    <form id="bigbox">
-        <div id="one">
-            <span>书籍名称</span>
-            <input name="proName" type="text">
-        </div>
-        <div class="twe">
-            <span>种类编号</span>
-            <input name="proType" type="text">
-        </div>
-        <div class="twe">
-            <span>品牌编号</span>
-            <input name="proStr" type="text">
-        </div>
-        <div class="twe">
-            <span>下架时间</span>
-            <input name="downTime" type="date">
-        </div>
-        <div class="twe">
-            <span>状态</span>
-            <input name="statu" type="text">
-        </div>
-        <div class="twe">
-            <span>卖家编号</span>
-            <input name="userId" type="text">
-        </div>
-        <div class="twe">
-            <input name="insert" id="infor" type="submit" value="添加">
-        </div>
+    <form class="addbookinfor">
+        <div>请输入书籍名字：<input name="bookName" type="text"></div>
+        <div>请输入书籍简介：<input name="introduce" type="text"></div>
+        <div>请输入书籍状态：<input name="statu" type="text"></div>
+        <div>请输入类别id：<input name="typeId" type="number"></div>
+        <div>请输入作者id：<input name="authorId" type="number"></div>
+        <div><input id="submit" type="button" value="提交"></div>
     </form>
 </div>
 
@@ -96,117 +55,31 @@
 <script src="../../js/jquery.validate.regex.js" type="application/javascript"></script>
 <script src="../../js/bootstrap.js"></script>
 <script>
-    $(function ($) {
-        //弹出窗口
-        $("#tanchuang").hover(function () {
-            $(this).stop().animate({
-                opacity: '1'
-            }, 600);
-        }, function () {
-            $(this).stop().animate({
-                opacity: '0.6'
-            }, 1000);
-        }).on('click', function () {
-            $("body").append("<div id='mask'></div>");
-            $("#mask").addClass("mask").fadeIn("slow");
-            $("#add").fadeIn("slow");
-        });
-        //
-        //按钮的透明度
-        $("#insert").hover(function () {
-            $(this).stop().animate({
-                opacity: '1'
-            }, 600);
-        }, function () {
-            $(this).stop().animate({
-                opacity: '0.8'
-            }, 1000);
-        });
-        //关闭
-        $(".close_btn").hover(function () {
-            $(this).css({color: 'black'})
-        }, function () {
-            $(this).css({color: '#999'})
-        }).on('click', function () {
-            $("#add").fadeOut("fast");
-            $("#mask").css({display: 'none'});
-        });
-    });
-</script>
-<script>
-    $().ready(function() {
-        // 提交时验证表单
-        var validator = $("#bigbox").validate({
-            rules: {
-                proName: {
-                    required: true,
-                },
-                proType: {
-                    required: true,
-                },
-                proStr: {
-                    required: true,
-                },
-                downTime: {
-                    required: false,
-                },
-                statu: {
-                    required: true,
-                },
-                userId: {
-                    required: true,
-                }
-            },
-            messages: {
-                proName: {
-                    required: " (必需字段)",
-                },
-                proType: {
-                    required: " (必需字段)",
-                },
-                proStr: {
-                    required: " (必需字段)",
-                },
-                downTime: {
-                    required: " (非必需字段)",
-                },
-                statu: {
-                    required: " (必需字段)",
-                },
-                userId: {
-                    required: " (必需字段)",
-                }
+    $(function () {
+        $("input[id = 'submit']").click(function () {
+            var record = {
+                "bookName":$("input[name = 'bookName']").val(),
+                "bookIntroduce":$("input[name = 'introduce']").val(),
+                "bookFlag":$("input[name = 'statu']").val(),
+                "bookTypeId":$("input[name = 'typeId']").val(),
+                "bookAuthorId":$("input[name = 'authorId']").val(),
             }
-        });
-
-        $(".cancel").click(function() {
-            validator.resetForm();
-        });
-    });
-
-    $.validator.setDefaults({
-        submitHandler: function() {
-            var proInfo = {
-                "proName":$("input[name = 'proName']").val(),
-                "proTypeId":$("input[name = 'proType']").val(),
-                "proBrandId":$("input[name = 'proStr']").val(),
-                "downTime":$("input[name = 'downTime']").val(),
-                "proState":$("input[name = 'statu']").val(),
-                "proUserId":$("input[name = 'userId']").val(),
-            }
-            $.ajax({
-                url:"http://localhost:8080/insertPro",
-                type: "post",
-                data: JSON.stringify(proInfo),
-                dataType: "json",
-                contentType: 'application/json;charset=UTF-8',
-                success:function (data) {
-                    alert("添加成功！");
-                    location.reload();
-                }
-            })
-        }
-    });
+                $.ajax({
+                    url: "http://localhost:8080/insertBook",
+                    type: "post",
+                    data: JSON.stringify(record),
+                    dataType: "json",
+                    contentType: 'application/json;charset=UTF-8',
+                    success: function (data) {
+                        if(data == 0){
+                            alert("此书籍已存在!")
+                        }else{
+                            alert("插入书籍成功!")
+                        }
+                    }
+                })
+        })
+    })
 </script>
 </body>
 </html>

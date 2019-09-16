@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 @RestController
@@ -101,5 +102,32 @@ public class BookController {
         bookShelf.setShelfBookId(bookId);
         return bookService.insertSelective(bookShelf);
     }
-
+    @RequestMapping("/selectAll")
+    public List<Books> selectAll(){
+        return bookService.selectAll();
+    }
+    @RequestMapping("/selectByBooksName")
+    public List<Books> selectByBookName(String bookName){
+        bookName = "%"+bookName+"%";
+        return bookService.selectByBookName(bookName);
+    }
+    @RequestMapping("/deleteBook")
+    public int deleteByPrimaryKey(Integer bookId){
+        return bookService.deleteByPrimaryKey(bookId);
+    }
+    @RequestMapping("/updateBook")
+    public int updateByPrimaryKeySelective(@RequestBody Books record){
+//        Books record = new Books();
+//        record.setBookId(bookId);
+//        record.setBookName(bookName);
+//        record.setBookIntroduce(bookIntroduce);
+//        record.setBookFinishDate(bookFinishDate);
+//        record.setBookFlag(bookFlag);
+//        record.setBookTypeId(bookTypeId);
+        return bookService.updateByPrimaryKeySelective(record);
+    }
+    @RequestMapping("/insertBook")
+    public int insertSelective(@RequestBody Books record){
+        return bookService.insertSelective(record);
+    }
 }

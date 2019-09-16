@@ -31,7 +31,7 @@
                 </ul>
             </div>
             <div class="penname">
-                <a href="author_massg.html" id="authorName" >{{authorName}}</a>
+                <a href="author_massg.html" id="authorName">{{authorName}}</a>
                 <a href="" class="w-link"><span class="w-icon phui-power sprites-app-1"></span>退出</a>
             </div>
 
@@ -132,20 +132,18 @@
                     <li class="content-item">
                         <div class="item-name">作品封面：</div>
                         <div class="clearfix">
-                            <div class="bookimg-up">
+                            <div class="bookimg-up" onclick="openFile()">
                                 <div class="pic-player">
                                     <div class="u-tip">
                                         <div class="mask"></div>
                                         <p>点击上传</p>
                                     </div>
-
                                 </div>
-                                <input id="btnD" name="file" class="file" type="file">
+<!--                                <input id="btnD" name="file" class="file" type="file">-->
                                 <div class="pic-button">
                                     <div style="visibility: visible;"></div>
                                     <div id="J_PicFile_1Queue" class="uploadifyQueue"></div>
-                                    <input type="file" name="" class="J_BookCover hide vanadium" value=""
-                                           style="display: none;">
+                                    <input type="file" name="bookImg" class="J_BookCover hide vanadium" value="" id="open">
                                 </div>
                                 <p class="box-130-tip ">支持jpg，bmp，png</p>
                             </div>
@@ -156,20 +154,12 @@
 
                     <li class="content-item">
                         <div class="item-name"><em></em>作品类型：</div>
-                        <div class="item-content">
-                            <select name="categoryId" id="J_Cate" class="vanadium selectBox" style="display: none;">
-                                <option value="7">都市</option>
-                                <option value="1">玄幻</option>
-                                <option value="5">悬疑</option>
-                                <option value="11">历史</option>
-                                <option value="3">军事</option>
-                                <option value="2">科幻</option>
-                                <option value="10">同人</option>
-                                <option value="12">短篇</option>
-                            </select><a class="selectBox vanadium selectBox-dropdown" title="" tabindex="0"
-                                        style="width: 136px; display: inline-block;"><span class="selectBox-label"
-                                                                                           style="width: 138px;">都市</span><span
-                                class="selectBox-arrow"></span></a>
+                        <div class="item-content" id="bookType">
+                            <select name="bookTypeId" class="vanadium selectBox">
+                                <option v-for="(bookType,index) in bookTypes" value="{{bookType.booktypeId}}">
+                                    {{bookType.booktypeName}}
+                                </option>
+                            </select>
                         </div>
                     </li>
                     <li class="content-item">
@@ -296,23 +286,38 @@
 <script>
     // 显示作者名
     var aid = sessionStorage.getItem("aid");
-    alert(aid);
+    // alert(aid);
     $(function () {
         $.ajax({
             url: "http://localhost:8080/author/getAuthorName",
-            data: {authorId:aid},
+            data: {authorId: aid},
             type: "post",
             dataType: "json",
             success: function (data) {
-                mv2 =new Vue({
-                    el:"#authorName" ,
-                    data:{authorName:data.authorName},
+                mv2 = new Vue({
+                    el: "#authorName",
+                    data: {authorName: data.authorName},
                 })
-                alert(mv2.authorName);
+                // alert(mv2.authorName);
             }
         })
     });
+    $(function () {
 
+        $.ajax({
+            url: "http://localhost:8080/author/getAllBookType",
+            type: "post",
+            dataType: "json",
+            success: function (data) {
+                mv3 = new Vue({
+                    el: "#bookType",
+                    data: {bookTypes: data},
+                });
+                // alert(mv3.bookTypes.length());
+            }
+        });
+
+    });
 
     var bookTxet = $("#introduction").val();
     var bookNames = $("#booknames").val();
@@ -327,14 +332,14 @@
                 'authorId': aid,
                 'bookName': bookNames,
                 'bookImg': bookTu,
-                'book_introduce': bookTxet,
+                'bookIntroduce': bookTxet,
                 'bookFlag': bookFlags,
-                'booktypeName': booktype,
+                'bookTypeId': booktype,
 
             },
             dataType: "json",
             success: function (data) {
-                if (data == true) {
+                if (data == 1) {
 
                     sessionStorage.setItem("aid", result.author.authorId);
                     sessionStorage.setItem("bookid", result.author.bookId);
@@ -384,5 +389,12 @@
             var aid = sessionStorage.setItem("aid");
         })
     });
+
+</script>
+
+<script type="text/javascript">
+    function openFile() {
+        document.getElementById("open").click();
+    }
 </script>
 </html>

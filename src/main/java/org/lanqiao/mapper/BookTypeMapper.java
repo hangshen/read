@@ -15,6 +15,8 @@ public interface BookTypeMapper {
 
     BookType selectByPrimaryKey(Integer booktypeId);
     List<BookType> selectAll();
+    List<BookType> selectAllBookType();
+    List<BookType> selectByTypeName(String booktypeName);
 
     int updateByPrimaryKeySelective(BookType record);
 
