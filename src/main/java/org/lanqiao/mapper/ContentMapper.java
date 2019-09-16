@@ -7,7 +7,7 @@ import org.springframework.stereotype.Repository;
 public interface ContentMapper {
     int deleteByPrimaryKey(Integer contentId);
 
-    int insert(Content record);
+    int insert(Content content);
 
     int insertSelective(Content record);
 

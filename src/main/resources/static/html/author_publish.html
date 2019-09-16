@@ -332,14 +332,14 @@
                 'authorId': aid,
                 'bookName': bookNames,
                 'bookImg': bookTu,
-                'book_introduce': bookTxet,
+                'bookIntroduce': bookTxet,
                 'bookFlag': bookFlags,
-                'booktypeName': booktype,
+                'bookTypeId': booktype,
 
             },
             dataType: "json",
             success: function (data) {
-                if (data == true) {
+                if (data == 1) {
 
                     sessionStorage.setItem("aid", result.author.authorId);
                     sessionStorage.setItem("bookid", result.author.bookId);
