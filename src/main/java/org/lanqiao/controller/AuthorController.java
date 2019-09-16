@@ -140,4 +140,12 @@ public class AuthorController {
     public Author getAuthorName(Integer authorId) {
         return authorService.getAuthorName(authorId);
     }
+
+    /*
+    *作者注册账号检测（是否可以注册）
+     */
+    @RequestMapping("/checkAuthorAccount")
+    public boolean checkAuthorAccount(String authorAccount){
+        return authorLoginService.checkAccount(authorAccount);
+    }
 }

@@ -34,6 +34,10 @@
         where author_login_author_id = #{authorLoginAuthorId,jdbcType=INTEGER}
     </select>
 
+    <select id="selectByAccount" parameterType="java.lang.String" resultMap="BaseResultMap">
+       SELECT * FROM authorlogin WHERE author_login_account=#{authorAccount};
+    </select>
+
     <!--===========================================================删除操作=========================================================-->
 
     <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">

@@ -19,4 +19,9 @@ public class EmailFindPasswordController {
     public boolean EmailSend(String email){
         return emailFindService.sendEmail(email);
     }
+
+    @RequestMapping("/getauthorpassword")
+    public boolean EmailSendAuthor(String email){
+        return false;
+    }
 }

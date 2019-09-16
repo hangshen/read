@@ -6,4 +6,6 @@ import org.springframework.stereotype.Repository;
 public interface EmailFindService {
 
     public boolean sendEmail(String email);
+
+    public boolean sendEmailAuthor(String email);
 }

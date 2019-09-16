@@ -13,6 +13,8 @@ public class Users {
 
     private String userIntroduce;
 
+    private Integer userLoginId;
+
     public Integer getUserId() {
         return userId;
     }
@@ -59,5 +61,13 @@ public class Users {
 
     public void setUserIntroduce(String userIntroduce) {
         this.userIntroduce = userIntroduce == null ? null : userIntroduce.trim();
+    }
+
+    public Integer getUserLoginId() {
+        return userLoginId;
+    }
+
+    public void setUserLoginId(Integer userLoginId) {
+        this.userLoginId = userLoginId;
     }
 }

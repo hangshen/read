@@ -265,6 +265,7 @@
 <script src="../js/topjs/jquery-3.4.1.js"></script>
 <script src="../js/topjs/vue.min.js"></script>
 <script type="text/javascript">
+    var userId;
     var vu = new Vue({
         el:"#shelfbooks",
         data:{
@@ -306,12 +307,13 @@
         }
     })
     $(function () {
+        userId = sessionStorage.getItem("userId");
         $.ajax({
             url: "http://localhost:8080/getshelfbooks",
             type: "post",
             data: {
                 "bookState": 0,
-                "userId": 1,
+                "userId": userId,
             },
             datatype: "json",
             success:function (data) {
@@ -328,7 +330,7 @@
             type: "post",
             data: {
                 "bookState": 1,
-                "userId": 1,
+                "userId": userId,
             },
             datatype: "json",
             success:function (data) {
@@ -345,7 +347,7 @@
             type: "post",
             data: {
                 "bookState": 0,
-                "userId": 1,
+                "userId": userId,
             },
             datatype: "json",
             success:function (data) {
@@ -368,7 +370,7 @@
                 type: "post",
                 data: {
                     "bookId":$(".tick-o").eq(i).parent().parent().find("p[class='bookId']").html(),
-                    "userId": 1,
+                    "userId": userId,
                 },
                 datatype: "json",
                 success:function (data) {
@@ -413,7 +415,7 @@
             type: "post",
             data: {
                 "bookState": 0,
-                "userId": 1,
+                "userId": userId,
             },
             datatype: "json",
             success:function (data) {

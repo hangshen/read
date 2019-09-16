@@ -37,6 +37,11 @@ public class AuthorLoginServiceImpl implements AuthorLoginService {
     }
 
     @Override
+    public boolean checkAccount(String authorAccount) {
+        return authorLoginMapper.selectByAccount(authorAccount) == null ? true:false;
+    }
+
+    @Override
     public Map loginCheck(String authorAccount, String authorPassword) {
 //        System.out.println(authorAccount);
 

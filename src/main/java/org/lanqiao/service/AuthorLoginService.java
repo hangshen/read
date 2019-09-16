@@ -11,4 +11,6 @@ public interface AuthorLoginService {
     Map loginCheck(String authorAccount,String authorPassword);
     int insert(AuthorLogin authorLogin);
     AuthorLogin selectByAuthorId(Integer authorId);
+
+    boolean checkAccount(String authorAccount);
 }

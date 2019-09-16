@@ -54,7 +54,7 @@
     <div class="ap-register-body">
         <div class="clearfix ap-register-login">
             <div class="pull-left ap-register-login-col-form">
-                <form method="post" action="https://reg.163.com/logins.jsp" target="_self"
+                <form id="formlogin" method="post" action="https://reg.163.com/logins.jsp" target="_self"
                       class="unlogin-form login-form form-horizontal ap-login-form-1">
                     <input type="hidden" name="url"
                            value=""/>
@@ -70,6 +70,7 @@
                                 <input type="text" tabindex="1" autocomplete="off" name="username" class="input-text"
                                        id="username-input" placeholder="网易账号" required>
                             </div>
+                            <div id="errormsg" style="color:#E1251B ;display: none;width: 225px;height: 34px;margin-left: 70px"></div>
                         </div>
                         <div class="control-group" id="control-group-password" style="margin-bottom: 2px;">
                             <label class="control-label" for="password-input">密码</label>
@@ -80,7 +81,7 @@
                         </div>
                         <div class="control-group" id="control-group-forget" style="margin-bottom: 36px;">
                             <div class="controls controls-first-child">
-                                <a href="http://reg.163.com/RecoverPasswd1.shtml" target="_blank"
+                                <a id="forgetpassword" target="_blank"
                                    class="forget-link pull-right normal-link ah-link-muted">忘记密码</a>
                                 <div class="checkbox">
                                     <input class="input-checkbox ah-checkbox" tabindex="3" type="checkbox"
@@ -102,7 +103,7 @@
 
             </div>
             <div class="pull-left ap-register-login-col-login">
-                <p class="ap-login-shortcut"><span class="dot">•</span> 已有作者中心帐号？<a href="/">立即登录<span class="f-ff0">&gt;&gt;</span></a>
+                <p class="ap-login-shortcut"><span class="dot">•</span> 已有作者中心帐号？<a href="http://localhost:8080/html/author_login.html">立即登录<span class="f-ff0">&gt;&gt;</span></a>
                 </p>
             </div>
         </div>
@@ -147,16 +148,88 @@
     </div>
 </div>
 </body>
+<script src="../js/topjs/jquery-3.4.1.js"></script>
+<script src="../js/zhucejs/jquery.validate.js"></script>
 <script>
 
     $(function () {
-        $("#next").click(function () {
-            var c = $("#username-input").val();
-            var p = $("#password-input").val();
-            sessionStorage.setItem("c", c);
-            sessionStorage.setItem("p", p);
-                window.location.href = "/html/author_registerdetail.html";
+        //form表单vcalidate验证  账号必须为邮箱格式，密码为6-12位
+        $("#formlogin").validate({
+            rules: {
+                username: {
+                    required: true,
+                    email: true,
+                },
 
+                password: {
+                    required: true,
+                    rangelength: [6, 12],
+                }
+            },
+            messages: {
+                username: {
+                    required: "请输入邮箱账号",
+                    email: "请输入正确的邮箱地址"
+                },
+                password: {
+                    required: "请输入密码",
+                    rangelength: "密码格式不正确"
+                }
+            }
+        })
+
+        $("#next").click(function () {
+            alert($("#username-input").val());
+            $.ajax({
+                url: "http://localhost:8080/author/checkAuthorAccount",
+                type: "post",
+                data:{
+                    "authorAccount":$("#username-input").val(),
+                },
+                datatype: "json",
+                success:function (data) {
+                    if(data){
+                        var c = $("#username-input").val();
+                        var p = $("#password-input").val();
+                        sessionStorage.setItem("c", c);
+                        sessionStorage.setItem("p", p);
+                        window.location.href = "/html/author_registerdetail.html";
+                    }else {
+                        $("#errormsg").css("display","block").html("账号已注册！");
+                    }
+                },
+                error:function () {
+                  alert("error");
+                }
+            })
+        })
+
+        $("#username-input").click(function () {
+            $("#errormsg").css("display","none");
+        })
+
+        //邮箱找回密码
+        $("#forgetpassword").click(function () {
+            var emailFind = $("input[name='username']").val();
+            if( emailFind != ""){
+                $.ajax({
+                    url: "http://localhost:8080/getauthorpassword",
+                    type: "post",
+                    data : {
+                        "email":emailFind,
+                    },
+                    dataType: "json",
+                    success:function (data) {
+                        if(data){
+                            $("#errormsg").css("display","block").html("密码找回成功！请登录邮箱查看");
+                        }else {
+                            $("#errormsg").css("display","block").html("该账号未被注册");
+                        }
+                    }
+                })
+            }else{
+                $("#errormsg").css("display","block").html("请输入账号，直接找回");
+            }
         })
     })
 </script>

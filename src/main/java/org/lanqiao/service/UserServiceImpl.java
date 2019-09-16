@@ -47,8 +47,9 @@ public class UserServiceImpl implements UserService{
 
     @Override
     public Users chenkPassword(UserLogin login) {
-
-        return userLoginMapper.selectUser(login);
+        Users user=userLoginMapper.selectUser(login);
+        user.setUserLoginId(userLoginMapper.selectByAccount(login.getUserLoginAccount()).getUserLoginId());
+        return user;
     }
     @Override
     public UserLogin selectUserInfo(Integer userLoginId){

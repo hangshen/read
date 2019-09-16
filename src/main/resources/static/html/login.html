@@ -330,6 +330,7 @@
                 dataType: "json",
                 success:function(data){
                     if (data != null) {
+                        sessionStorage.setItem("userLoginId", data.userLoginId);
                         sessionStorage.setItem("userName", data.userName);
                         sessionStorage.setItem("userId", data.userId);
                         window.location.href = "top.html";
