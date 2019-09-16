@@ -137,8 +137,8 @@
                     <tr>
                         <td>
                             <div class="work-title">
-                                <div class="pic" style="position: relative;">
-                                    <img src="../images/authormsgimages/fengmian.png">
+                                <div class="pic" style="position: relative;" id="bookImg">
+                                    <img src="../images/authormsgimages/fengmian.png" >
                                 </div>
                                 <p>
                                     {{book.bookName}}
@@ -205,6 +205,10 @@
 </body>
 <script src="../js/author_login_js/vue.min.js"></script>
 <script>
+
+
+
+
 
     // 显示作者名
     var aid = sessionStorage.getItem("aid");
