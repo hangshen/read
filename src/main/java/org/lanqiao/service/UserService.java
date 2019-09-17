@@ -21,4 +21,6 @@ public interface UserService {
     List<Users> selectUserByName(String UserName);
     List<Users> selectAllUser();
 
+    public UserLogin updateUserMessage(Users user,Integer userLoginId);
+
 }
