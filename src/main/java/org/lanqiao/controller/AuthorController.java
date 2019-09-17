@@ -8,6 +8,7 @@ import org.lanqiao.entity.*;
 import org.lanqiao.service.*;
 import org.lanqiao.vo.AuthorBasicDataVo;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -219,5 +220,9 @@ public class AuthorController {
     @RequestMapping("/checkAuthorAccount")
     public boolean checkAuthorAccount(String authorAccount){
         return authorLoginService.checkAccount(authorAccount);
+    }
+    @RequestMapping("/updateAuthor")
+    public int updateByPrimaryKeySelective(@RequestBody Author record){
+        return authorService.updateByPrimaryKeySelective(record);
     }
 }
