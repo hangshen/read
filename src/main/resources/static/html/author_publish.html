@@ -132,11 +132,17 @@
                     <li class="content-item">
                         <div class="item-name">作品封面：</div>
                         <div class="clearfix">
-                            <div class="bookimg-up" onclick="openFile()">
-                                <div class="pic-player">
+                            <div class="bookimg-up" >
+                                <div class="pic-player" >
+
+                                    <input type="file" name="files" accept="image/*" style="display:none"
+                                           onchange="changImg(event)" id="img">
+                                    <img id="myImg" src="../images/authormsgimages/wgd-btn-6.png" height="100px"
+                                         ,width="100px">
+
                                     <div class="u-tip">
                                         <div class="mask"></div>
-                                        <p>点击上传</p>
+                                        <p >点击上传</p>
                                     </div>
                                 </div>
                                 <!--                                <input id="btnD" name="file" class="file" type="file">-->
@@ -156,7 +162,7 @@
                         <div class="item-name"><em></em>作品类型：</div>
                         <div class="item-content" id="bookType">
                             <select name="bookTypeId" class="vanadium selectBox" id="sop">
-                                <option v-for="(bookType,index) in bookTypes"  value="{{bookType.booktypeId}}">
+                                <option v-for="(bookType,index) in bookTypes" value="{{bookType.booktypeId}}">
                                     {{bookType.booktypeName}}
                                 </option>
                             </select>
@@ -325,10 +331,9 @@
         var bookText = $("#bookIntroduce").val();
         var bookNames = $("#booknames").val();
         var bookFlags = "连载中";
-        var sel=document.getElementById("sop");//select元素的id
-        var bookTypeId=sel.selectedIndex;//获取被选中的option的索引
-        // alert(bookTypeId);
-        var bookTu = $(".file").val();
+        var sel = document.getElementById("sop");//select元素的id
+        var bookTypeId = sel.selectedIndex;//获取被选中的option的索引
+        // var bookTu = $("#img").val();
         $.ajax({
             url: "http://localhost:8080/author/publishBook",
             type: "post",
@@ -396,6 +401,30 @@
 
 </script>
 
+//图片回显
+<script>
+    $(function () {
+        $("#myImg").click(function () {
+            $('#img').click();
+        })
+    });
+
+
+    function changImg(e) {
+        for (var i = 0; i < e.target.files.length; i++) {
+            var file = e.target.files.item(i);
+            if (!(/^image\/.*$/i.test(file.type))) {
+                continue; //不是图片 就跳出这一次循环
+            }
+            //实例化FileReader API
+            var freader = new FileReader();
+            freader.readAsDataURL(file);
+            freader.onload = function (e) {
+                $("#myImg").attr("src", e.target.result);
+            }
+        }
+    }
+</script>
 <script type="text/javascript">
     function openFile() {
         document.getElementById("open").click();
