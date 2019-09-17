@@ -119,151 +119,172 @@
                 切勿以身试法，共建和谐文明的网络环境。
             </div>
             <div class="content-from">
-                <ul>
-                    <li class="content-item">
-                        <div class=" item-top"><em></em>作品名称：</div>
-                        <div class="item-content">
-                            <p><input type="text" value="" name="title" id="booknames"
-                                      class="input-txt :required :only_on_blur :max_length;18 :ajax;/checkParam.do?operation=6  vanadium">
-                            </p>
-                            <p class="content-init">18字以内，作品创建后不能更改</p>
-                        </div>
-                    </li>
-                    <li class="content-item">
-                        <div class="item-name">作品封面：</div>
-                        <div class="clearfix">
-                            <div class="bookimg-up" >
-                                <div class="pic-player" >
+                <form method="post" enctype="multipart/form-data" id="form">
 
-                                    <input type="file" name="files" accept="image/*" style="display:none"
-                                           onchange="changImg(event)" id="img">
-                                    <img id="myImg" src="../images/authormsgimages/wgd-btn-6.png" height="100px"
-                                         ,width="100px">
 
-                                    <div class="u-tip">
-                                        <div class="mask"></div>
-                                        <p >点击上传</p>
+                    <ul>
+                        <li class="content-item">
+                            <div class=" item-top"><em></em>作品名称：</div>
+                            <div class="item-content">
+                                <p><input type="text" value="" name="bookName" id="bookName"
+                                          class="input-txt :required :only_on_blur :max_length;18 :ajax;/checkParam.do?operation=6  vanadium">
+
+
+
+                                    <!--将 authorId 和 bookTypeId 赋值-->
+
+                                    <input type="text" hidden="hidden" name="authorId" value="" id="authorId">
+                                    <input type="text" hidden="hidden" name="bookTypeId" value="" id="bookTypeId">
+                                    <input type="text" hidden="hidden" name="bookFlag" value="连载中">
+
+
+
+
+                                </p>
+                                <p class="content-init">18字以内，作品创建后不能更改</p>
+                            </div>
+                        </li>
+                        <li class="content-item">
+                            <div class="item-name">作品封面：</div>
+                            <div class="clearfix">
+                                <div class="bookimg-up">
+                                    <div class="pic-player">
+
+                                        <input type="file" name="bookImg" accept="image/*" style="display:none"
+                                               onchange="changImg(event)" id="img">
+                                        <img id="myImg" src="../images/authormsgimages/wgd-btn-6.png" height="100px"
+                                             ,width="100px">
+
+                                        <div class="u-tip">
+                                            <div class="mask"></div>
+                                            <p>点击上传</p>
+                                        </div>
                                     </div>
+                                    <!--                                <input id="btnD" name="file" class="file" type="file">-->
+                                    <!--                                <div class="pic-button">-->
+                                    <!--                                    <div style="visibility: visible;"></div>-->
+                                    <!--                                    <div id="J_PicFile_1Queue" class="uploadifyQueue"></div>-->
+                                    <!--                                    <input type="file" name="bookImg" class="J_BookCover hide vanadium" value="" id="open">-->
+                                    <!--                                </div>-->
+                                    <p class="box-130-tip ">支持jpg，bmp，png</p>
                                 </div>
-                                <!--                                <input id="btnD" name="file" class="file" type="file">-->
-                                <!--                                <div class="pic-button">-->
-                                <!--                                    <div style="visibility: visible;"></div>-->
-                                <!--                                    <div id="J_PicFile_1Queue" class="uploadifyQueue"></div>-->
-                                <!--                                    <input type="file" name="bookImg" class="J_BookCover hide vanadium" value="" id="open">-->
-                                <!--                                </div>-->
-                                <p class="box-130-tip ">支持jpg，bmp，png</p>
+
                             </div>
 
-                        </div>
+                        </li>
 
-                    </li>
-
-                    <li class="content-item">
-                        <div class="item-name"><em></em>作品类型：</div>
-                        <div class="item-content" id="bookType">
-                            <select name="bookTypeId" class="vanadium selectBox" id="sop">
-                                <option v-for="(bookType,index) in bookTypes" value="{{bookType.booktypeId}}">
-                                    {{bookType.booktypeName}}
-                                </option>
-                            </select>
-                        </div>
-                    </li>
-                    <!--                    <li class="content-item">-->
-                    <!--                        <div class="item-name"><em></em>作品标签：</div>-->
-                    <!--                        <div class="tag-select clearfix">-->
-                    <!--                            <div class="tag-con" style="height: auto;">-->
-                    <!--                                &lt;!&ndash;value是初始化值，用英文逗号分隔&ndash;&gt;-->
-                    <!--                                <input name="tag" id="tags_init" type="text"-->
-                    <!--                                       class="hide :required;;J_TagRequiredTip :only_on_blur vanadium" value=""-->
-                    <!--                                       style="display: none;">-->
-                    <!--                                <div id="tags_init_tagsinput" class="tagsinput clearfix">-->
-                    <!--                                    <div id="tags_init_addTag"><input id="tags_init_tag" value="" data-default=""-->
-                    <!--                                                                      class="input-txt"-->
-                    <!--                                                                      style="color: rgb(102, 102, 102); ">-->
-                    <!--                                    </div>-->
-                    <!--                                </div>-->
-                    <!--                            </div>-->
-                    <!--                            <p class="vanadium-init kong">1-20个字，多个标签请用空格隔开</p>-->
-                    <!--                            &lt;!&ndash;<span class="select"></span>&ndash;&gt;-->
-                    <!--                            <div class="tags" id="J_AdviceTags" style="display:none;">-->
-                    <!--                                <h3>输入或选择标签：</h3>-->
-                    <!--                                <ul class="tag-list clearfix" id="J_TagList">-->
-                    <!--                                    <li><a href="javascript:void(0)">都市生活</a></li>-->
-                    <!--                                    <li><a href="javascript:void(0)">娱乐明星</a></li>-->
-                    <!--                                    <li><a href="javascript:void(0)">社会百态</a></li>-->
-                    <!--                                    <li><a href="javascript:void(0)">乡村纪实</a></li>-->
-                    <!--                                    <li><a href="javascript:void(0)">职场白领</a></li>-->
-                    <!--                                    <li><a href="javascript:void(0)">家庭生活</a></li>-->
-                    <!--                                    <li><a href="javascript:void(0)">亲情</a></li>-->
-                    <!--                                    <li><a href="javascript:void(0)">成长</a></li>-->
-                    <!--                                    <li><a href="javascript:void(0)">伦理</a></li>-->
-                    <!--                                    <li><a href="javascript:void(0)">打工</a></li>-->
-                    <!--                                    <li><a href="javascript:void(0)">求职</a></li>-->
-                    <!--                                    <li><a href="javascript:void(0)">蜗居</a></li>-->
-                    <!--                                    <li><a href="javascript:void(0)">房奴</a></li>-->
-                    <!--                                    <li><a href="javascript:void(0)">黑帮</a></li>-->
-                    <!--                                    <li><a href="javascript:void(0)">老千</a></li>-->
-                    <!--                                    <li><a href="javascript:void(0)">校园</a></li>-->
-                    <!--                                    <li><a href="javascript:void(0)">自传</a></li>-->
-                    <!--                                </ul>-->
-                    <!--                                <div class="hide"><input type="button" value="确定"></div>-->
-                    <!--                            </div>-->
-                    <!--                        </div>-->
-                    <!--                    </li>-->
-                    <li class="content-item">
-                        <div class="item-name"><em></em>写作状态：</div>
-                        <div class="item-content">
-                            <div><input type="radio" name="bookStatus" class="input-middle" value="0" disabled=""
-                                        checked="checked" id="J_WorkStatus_1"><label for="J_WorkStatus_1">连载中</label>&nbsp;
-                                &nbsp;&nbsp;&nbsp;<input type="radio" name="bookStatus" value="1" disabled=""
-                                                         class="input-middle" id="J_WorkStatus_2"><label
-                                        for="J_WorkStatus_2">已完结</label></div>
-                        </div>
-                    </li>
-                    <li class="content-item">
-                        <div class="item-name"><em></em>首发状态：</div>
-                        <div class="item-content">
-                            <div><input type="radio" name="issueStatus" class="input-middle" value="0" checked="checked"
-                                        id="J_IsFirst_1"><label
-                                    for="J_IsFirst_1">网易首发</label>&nbsp;&nbsp;&nbsp;&nbsp;<input type="radio"
-                                                                                                 name="issueStatus"
-                                                                                                 value="1"
-                                                                                                 class="input-middle"
-                                                                                                 id="J_IsFirst_2"><label
-                                    for="J_IsFirst_2">非网易首发</label></div>
-                            <p class="vanadium-init">作品审核通过后，不得更改</p>
-                        </div>
-                    </li>
-                    <li class="content-item">
-                        <div class="item-power"><em></em>授权级别：</div>
-                        <div class="item-content">
-                            <p><input type="radio" name="authorization" class="input-middle" value="0" checked="checked"
-                                      id="J_AuthGrade_1"><label for="J_AuthGrade_1">普通授权</label>&nbsp;&nbsp;&nbsp;&nbsp;<input
-                                    type="radio" name="authorization" value="1" class="input-middle" id="J_AuthGrade_2"><label
-                                    for="J_AuthGrade_2">独家授权</label></p>
-                            <p id="J_AuthGradeTip" class="attention-tip auth-status-tip">
-                                我保证我是此作品的著作权人，并将此作品非独家发表于网易云阅读，并保证不会在作品内任何位置宣传或提及其它网站网址。任何组织与个人如欲转载，须征得我同意。</p>
-                            <p class="vanadium-init">作品审核通过后，如需修改请邮件至<a href="mailto:wangyiyuanchuang@163.com">wangyiyuanchuang@163.com</a>
-                            </p>
-                        </div>
-                    </li>
-                    <li class="content-item">
-                        <div class="item-name"><em></em>作品简介：</div>
-                        <div class="item-content article-editor" id="J_ContentEditer">
-                            <div class="editor J_Editor">
-                                <textarea name="introduction"
+                        <li class="content-item">
+                            <div class="item-name"><em></em>作品类型：</div>
+                            <div class="item-content" id="bookType">
+                                <select class="vanadium selectBox" id="sop">
+                                    <option v-for="(bookType,index) in bookTypes" name="bookTypeId"
+                                            value="{{bookType.booktypeId}}">
+                                        {{bookType.booktypeName}}
+                                    </option>
+                                </select>
+                            </div>
+                        </li>
+                        <!--                    <li class="content-item">-->
+                        <!--                        <div class="item-name"><em></em>作品标签：</div>-->
+                        <!--                        <div class="tag-select clearfix">-->
+                        <!--                            <div class="tag-con" style="height: auto;">-->
+                        <!--                                &lt;!&ndash;value是初始化值，用英文逗号分隔&ndash;&gt;-->
+                        <!--                                <input name="tag" id="tags_init" type="text"-->
+                        <!--                                       class="hide :required;;J_TagRequiredTip :only_on_blur vanadium" value=""-->
+                        <!--                                       style="display: none;">-->
+                        <!--                                <div id="tags_init_tagsinput" class="tagsinput clearfix">-->
+                        <!--                                    <div id="tags_init_addTag"><input id="tags_init_tag" value="" data-default=""-->
+                        <!--                                                                      class="input-txt"-->
+                        <!--                                                                      style="color: rgb(102, 102, 102); ">-->
+                        <!--                                    </div>-->
+                        <!--                                </div>-->
+                        <!--                            </div>-->
+                        <!--                            <p class="vanadium-init kong">1-20个字，多个标签请用空格隔开</p>-->
+                        <!--                            &lt;!&ndash;<span class="select"></span>&ndash;&gt;-->
+                        <!--                            <div class="tags" id="J_AdviceTags" style="display:none;">-->
+                        <!--                                <h3>输入或选择标签：</h3>-->
+                        <!--                                <ul class="tag-list clearfix" id="J_TagList">-->
+                        <!--                                    <li><a href="javascript:void(0)">都市生活</a></li>-->
+                        <!--                                    <li><a href="javascript:void(0)">娱乐明星</a></li>-->
+                        <!--                                    <li><a href="javascript:void(0)">社会百态</a></li>-->
+                        <!--                                    <li><a href="javascript:void(0)">乡村纪实</a></li>-->
+                        <!--                                    <li><a href="javascript:void(0)">职场白领</a></li>-->
+                        <!--                                    <li><a href="javascript:void(0)">家庭生活</a></li>-->
+                        <!--                                    <li><a href="javascript:void(0)">亲情</a></li>-->
+                        <!--                                    <li><a href="javascript:void(0)">成长</a></li>-->
+                        <!--                                    <li><a href="javascript:void(0)">伦理</a></li>-->
+                        <!--                                    <li><a href="javascript:void(0)">打工</a></li>-->
+                        <!--                                    <li><a href="javascript:void(0)">求职</a></li>-->
+                        <!--                                    <li><a href="javascript:void(0)">蜗居</a></li>-->
+                        <!--                                    <li><a href="javascript:void(0)">房奴</a></li>-->
+                        <!--                                    <li><a href="javascript:void(0)">黑帮</a></li>-->
+                        <!--                                    <li><a href="javascript:void(0)">老千</a></li>-->
+                        <!--                                    <li><a href="javascript:void(0)">校园</a></li>-->
+                        <!--                                    <li><a href="javascript:void(0)">自传</a></li>-->
+                        <!--                                </ul>-->
+                        <!--                                <div class="hide"><input type="button" value="确定"></div>-->
+                        <!--                            </div>-->
+                        <!--                        </div>-->
+                        <!--                    </li>-->
+                        <li class="content-item">
+                            <div class="item-name"><em></em>写作状态：</div>
+                            <div class="item-content">
+                                <div><input type="radio" name="bookFlag" class="input-middle" value="连载中" disabled=""
+                                            checked="checked" id="J_WorkStatus_1"><label
+                                        for="J_WorkStatus_1">连载中</label>&nbsp;
+                                    &nbsp;&nbsp;&nbsp;<input type="radio" name="bookStatus" value="1" disabled=""
+                                                             class="input-middle" id="J_WorkStatus_2"><label
+                                            for="J_WorkStatus_2">已完结</label></div>
+                            </div>
+                        </li>
+                        <li class="content-item">
+                            <div class="item-name"><em></em>首发状态：</div>
+                            <div class="item-content">
+                                <div><input type="radio" name="issueStatus" class="input-middle" value="0"
+                                            checked="checked"
+                                            id="J_IsFirst_1"><label
+                                        for="J_IsFirst_1">网易首发</label>&nbsp;&nbsp;&nbsp;&nbsp;<input type="radio"
+                                                                                                     name="issueStatus"
+                                                                                                     value="1"
+                                                                                                     class="input-middle"
+                                                                                                     id="J_IsFirst_2"><label
+                                        for="J_IsFirst_2">非网易首发</label></div>
+                                <p class="vanadium-init">作品审核通过后，不得更改</p>
+                            </div>
+                        </li>
+                        <li class="content-item">
+                            <div class="item-power"><em></em>授权级别：</div>
+                            <div class="item-content">
+                                <p><input type="radio" name="authorization" class="input-middle" value="0"
+                                          checked="checked"
+                                          id="J_AuthGrade_1"><label for="J_AuthGrade_1">普通授权</label>&nbsp;&nbsp;&nbsp;&nbsp;<input
+                                        type="radio" name="authorization" value="1" class="input-middle"
+                                        id="J_AuthGrade_2"><label
+                                        for="J_AuthGrade_2">独家授权</label></p>
+                                <p id="J_AuthGradeTip" class="attention-tip auth-status-tip">
+                                    我保证我是此作品的著作权人，并将此作品非独家发表于网易云阅读，并保证不会在作品内任何位置宣传或提及其它网站网址。任何组织与个人如欲转载，须征得我同意。</p>
+                                <p class="vanadium-init">作品审核通过后，如需修改请邮件至<a href="mailto:wangyiyuanchuang@163.com">wangyiyuanchuang@163.com</a>
+                                </p>
+                            </div>
+                        </li>
+                        <li class="content-item">
+                            <div class="item-name"><em></em>作品简介：</div>
+                            <div class="item-content article-editor" id="J_ContentEditer">
+                                <div class="editor J_Editor">
+                                <textarea name="bookIntroduce"
                                           class="vanadium" id="bookIntroduce"></textarea>
+                                </div>
+                                <div class="notice"><span class="tip">字数需控制在20至300字之间</span></div>
+
+                                <div class="vanadium-advice vanadium-invalid clear J_ContentTip" style="display:none">
+                                    <em></em></div>
+
                             </div>
-                            <div class="notice"><span class="tip">字数需控制在20至300字之间</span></div>
-
-                            <div class="vanadium-advice vanadium-invalid clear J_ContentTip" style="display:none">
-                                <em></em></div>
-
-                        </div>
-                    </li>
+                        </li>
 
 
-                </ul>
+                    </ul>
+                </form>
             </div>
 
             <div class="form-submit">
@@ -293,6 +314,7 @@
 <script>
     // 显示作者名
     var aid = sessionStorage.getItem("aid");
+
     // alert(aid);
     $(function () {
         $.ajax({
@@ -331,21 +353,30 @@
         var bookText = $("#bookIntroduce").val();
         var bookNames = $("#booknames").val();
         var bookFlags = "连载中";
-        var sel = document.getElementById("sop");//select元素的id
-        var bookTypeId = sel.selectedIndex;//获取被选中的option的索引
-        // var bookTu = $("#img").val();
+
+        // var file = ();
+        var formData = new FormData($("#form")[0]);
+        // data.append("file", file);
+
         $.ajax({
             url: "http://localhost:8080/author/publishBook",
             type: "post",
-            data: {
-                'bookAuthorId': aid,
-                'bookName': bookNames,
-                // 'bookImg': bookTu,
-                'bookIntroduce': bookText,
-                'bookFlag': bookFlags,
-                'bookTypeId': bookTypeId,
+            // 告诉jQuery不要去处理发送的数据
+            processData: false,
+            // 告诉equerry不要去设置Content-Type请求头
+            contentType: false,
+            data: formData,
+            // {
 
-            },
+            // 'bookAuthorId': aid,
+            // 'bookName': bookNames,
+            // 'bookIntroduce': bookText,
+            // 'bookFlag': bookFlags,
+            // 'bookTypeId': bookTypeId,
+            //
+            //     'bookImg': data,
+            //
+            // },
             dataType: "json",
             success: function (data) {
                 if (data == 1) {
@@ -424,10 +455,28 @@
             }
         }
     }
+
 </script>
 <script type="text/javascript">
     function openFile() {
         document.getElementById("open").click();
     }
 </script>
+<!--<script>-->
+<!--    window.onload = function () {-->
+<!--        $("#sop").click(function () {-->
+<!--            var sel = document.getElementById("sop");//select元素的id-->
+<!--            var bookTypeId = sel.selectedIndex;//获取被选中的option的索引-->
+<!--            // alert(bookTypeId);-->
+<!--            $("#bookTypeId").val(bookTypeId);-->
+<!--        })-->
+<!--    }-->
+<!--</script>-->
+<!--<script type="text/javascript">-->
+<!--    // window.onload = function () {-->
+<!--    //     var aid = sessionStorage.getItem("aid");-->
+<!--    //     $("#authorId").val(aid);-->
+<!--    // }-->
+
+<!--</script>-->
 </html>

@@ -188,10 +188,9 @@ b.book_type_id = bt.booktype_id order by b.book_reward desc
 
 
     <insert id="insert" parameterType="org.lanqiao.entity.Books">
-    insert into books (book_name,book_introduce, book_flag, book_type_id,book_author_id)
-    values (#{bookName,jdbcType=VARCHAR},
-      #{bookIntroduce,jdbcType=VARCHAR},  #{bookFlag,jdbcType=VARCHAR}, #{bookTypeId,jdbcType=INTEGER},
-      #{bookAuthorId,jdbcType=INTEGER})
+    insert into books (book_name,book_introduce, book_flag, book_type_id,book_author_id,book_img)
+    values (#{bookName,jdbcType=VARCHAR}, #{bookIntroduce,jdbcType=VARCHAR},  #{bookFlag,jdbcType=VARCHAR}, #{bookTypeId,jdbcType=INTEGER},
+      #{bookAuthorId,jdbcType=INTEGER},#{bookImg,jdbcType=VARCHAR})
   </insert>
     <insert id="insertSelective" parameterType="org.lanqiao.entity.Books">
         insert into books

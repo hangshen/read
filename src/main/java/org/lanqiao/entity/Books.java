@@ -188,6 +188,7 @@ public class Books {
     public String toString() {
         return "Books{" +
                 "bookName='" + bookName + '\'' +
+                ", bookImg='" + bookImg + '\'' +
                 ", bookIntroduce='" + bookIntroduce + '\'' +
                 ", bookFlag='" + bookFlag + '\'' +
                 ", bookTypeId=" + bookTypeId +

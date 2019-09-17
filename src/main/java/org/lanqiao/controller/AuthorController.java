@@ -3,18 +3,17 @@ package org.lanqiao.controller;
 
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
+import org.apache.commons.io.FilenameUtils;
 import org.lanqiao.entity.*;
 
 import org.lanqiao.service.*;
 import org.lanqiao.vo.AuthorBasicDataVo;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 
+import javax.servlet.http.HttpServletRequest;
 import java.io.File;
 import java.io.IOException;
 
@@ -98,21 +97,41 @@ public class AuthorController {
      * 作者发表（添加）作品
      * by lhw
      *
-     * @param books
+     * @param
      * @return
      */
-    @RequestMapping("/publishBook")
-    public int insertBook(Books books) throws IOException {
-//        String filePath = "E:\\java\\project\\IDEAProject\\read\\src\\main\\resources\\static\\images\\upload";//保存图片的路径
-//        //获取原始图片的拓展名
-//        String originalFilename = file.getOriginalFilename();
-//        //新的文件名字
-//        String newFileName = UUID.randomUUID() + originalFilename;
-//        //封装上传文件位置的全路径
-//        File targetFile = new File(filePath, newFileName);
-//        //把本地文件上传到封装上传文件位置的全路径
-//        file.transferTo(targetFile);
-//        books.setBookImg(newFileName);
+    @RequestMapping(value = "/publishBook" ,method = RequestMethod.POST)
+    public int insertBook(Integer bookAuthorId, String bookName, String bookIntroduce, String bookFlag, Integer bookTypeId, @RequestParam("bookImg") MultipartFile bookImg) throws IOException {
+
+////        使用UUID给图片重命名，并去电“-”
+//        String name = UUID.randomUUID().toString().replaceAll("-", "");
+//        //获取图片的扩展名
+//        String ext = FilenameUtils.getExtension(bookImg.getOriginalFilename());
+//        //设置图片上传路径,存入数据库中的格式为:upload/文件名.后缀
+//        String url = request.getSession().getServletContext().getRealPath("/upload");
+////        System.out.println(url);
+//        //以绝对路径保存重命名后的图片
+//        bookImg.transferTo(new File(url + "/" + name + "." + ext));
+//        //把图片存储路径保存到数据库
+
+        System.out.println(bookImg);
+
+        String filePath = "E:\\java\\project\\IDEAProject\\read\\src\\main\\resources\\static\\images\\upload";//保存图片的路径
+        //获取原始图片的拓展名
+        String originalFilename = bookImg.getOriginalFilename();
+        //新的文件名字
+        String newFileName = UUID.randomUUID() + originalFilename;
+        //封装上传文件位置的全路径
+        File targetFile = new File(filePath, newFileName);
+        //把本地文件上传到封装上传文件位置的全路径
+        bookImg.transferTo(targetFile);
+        Books books = new Books();
+        books.setBookImg(newFileName);
+        books.setBookAuthorId(bookAuthorId);
+        books.setBookName(bookName);
+        books.setBookIntroduce(bookIntroduce);
+        books.setBookFlag(bookFlag);
+        books.setBookTypeId(bookTypeId);
         System.out.println(books.toString());
         return bookService.insertBooks(books);
     }
