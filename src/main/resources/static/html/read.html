@@ -210,11 +210,9 @@
     var chapterId = null;
     var pageNum = null;
 
-    $(function () {
-        userName = sessionStorage.getItem("userName");
-        bookId = sessionStorage.getItem("bookId");
-        chapterId = sessionStorage.getItem("chapterId");
-    })
+    userName = sessionStorage.getItem("userName");
+    bookId = sessionStorage.getItem("bookId");
+    chapterId = sessionStorage.getItem("chapterId");
 
     var mv2 = new Vue({
         el: '.editorrecommend',
@@ -232,7 +230,7 @@
             $.ajax({
                 url: "http://localhost:8080/getBooksInfoById",
                 type: "post",
-                data: {bookId: 5},
+                data: {bookId: bookId},
                 datatype: "json",
                 success: function (data) {
                     mv1.book = data;
@@ -256,6 +254,7 @@
             booktext: {},
         },
         created: function () {
+            alert(bookId);
             $.ajax({
                 url: "http://localhost:8080/getbooxtxt",
                 type: "post",
