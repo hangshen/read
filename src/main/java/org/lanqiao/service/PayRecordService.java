@@ -9,4 +9,5 @@ import java.util.List;
 @Repository
 public interface PayRecordService {
     List<PayRecord> selectPayRecord(PayRecordVo payRecordVo);
+    int insertSelective(PayRecord record);
 }

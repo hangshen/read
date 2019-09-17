@@ -40,4 +40,6 @@ public interface BooksMapper {
 
     List<Books> selectAll();
     List<Books> selectByBookName(String bookName);
+
+    Books selectBookById(Integer bookId);
 }

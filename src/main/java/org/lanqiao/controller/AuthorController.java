@@ -193,6 +193,8 @@ public class AuthorController {
 
     @RequestMapping("/newChapter")
     public boolean newChapter(Integer chapterSort, Integer bookId, String chapterName, String contentText) {
+
+        System.out.println(chapterSort+" "+bookId+" "+chapterName+" "+contentText);
         Content content = new Content();
         Chapter chapter = new Chapter();
         content.setContentText(contentText);

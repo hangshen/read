@@ -121,13 +121,13 @@
             <div class="cname">
                 <div class="item-title"><em></em>章节序号：</div>
                 <p style="float: left" class="sort">
-                    <input type="text" id="section" name="sort"
+                    <input type="text" id="section" name="sort" autocomplete="off"
                            class="input-txt :required :only_on_blur :max_length;20">
                 </p>
                 <div class="item-title"><em></em>章节名：</div>
                 <p style="float: left" class="into">
                     <input type="text" value="" name="title" class="input-txt :required :only_on_blur :max_length;20"
-                           id="J_ArticleTitle">
+                           id="J_ArticleTitle" autocomplete="off">
                     <span class="vanadium-advice vanadium-invalid" style="display:none" id="J_ChapterNameTip"></span>
                 </p>
                 <p class="vanadium-init">
@@ -139,7 +139,7 @@
             <div class="cconcent">
                 <div class="item-title"><em></em>章节内容：</div>
                 <div class="editor ">
-                    <textarea name="content" id="texts"></textarea>
+                    <textarea name="content" id="texts" autocomplete="off"></textarea>
                     <div class="bottom-bar"></div>
                 </div>
 
@@ -172,7 +172,7 @@
 <script>
     // 显示作者名
     var aid = sessionStorage.getItem("aid");
-    alert(aid);
+    // alert(aid);
     $(function () {
         $.ajax({
             url: "http://localhost:8080/author/getAuthorName",
@@ -184,14 +184,14 @@
                     el: "#authorName",
                     data: {authorName: data.authorName},
                 });
-                alert(mv2.authorName);
+                // alert(mv2.authorName);
             }
         })
     });
     //增加章节
 
 
-    var bookid = sessionStorage.getItem("bookid");
+    var bookid = sessionStorage.getItem("bookId");
 
 
     $(".form-submit").click(function () {
@@ -213,8 +213,8 @@
             success: function (data) {
                 if (data == true) {
                     alert("发布成功");
-                    sessionStorage.setItem("aid", result.author.authorId);
-                    window.location.href = "author_newchapter.html";
+                    // sessionStorage.setItem("aid", result.author.authorId);
+                    window.location.reload([true]);
 
                 } else {
                     alert("发布失败");
@@ -229,6 +229,7 @@
 
     //接bookName
     var bookName = sessionStorage.getItem("bookName");
+    alert(bookName);
     mv5 = new Vue({
         el: '.form-name',
         data: {
