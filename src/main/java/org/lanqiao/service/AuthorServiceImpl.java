@@ -89,4 +89,8 @@ public class AuthorServiceImpl implements AuthorService {
     public List<Author> selectAllAuthor(){
         return authorMapper.selectAllAuthor();
     }
+    @Override
+    public int updateByPrimaryKeySelective(Author record){
+        return authorMapper.updateByPrimaryKeySelective(record);
+    }
 }

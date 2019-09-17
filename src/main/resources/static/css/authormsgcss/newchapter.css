@@ -52,6 +52,20 @@
     vertical-align: middle;
     background: #fff;
 }
+.sort .input-txt {
+    border: #bbbbbb solid 1px;
+    border-radius: 3px;
+    padding: 4px 3px;
+    width: 50px;
+    line-height: 20px;
+    height: 20px;
+    margin-right: 10px;
+    vertical-align: middle;
+    background: #fff;
+}
+
+
+
 .cname{
     width: 698px;
     height: 72px;
@@ -69,6 +83,7 @@
     color: #999;
     font-size: 12px;
     clear: both;
+    margin-left: 40px;
 }
 .cconcent{
     width: 698px;
@@ -109,6 +124,8 @@
     background: url(../../images/authormsgimages/btn-sprite.png)0 -267px;
     text-indent: -9999px;
     vertical-align: middle;
+    width: 130px;
+    height: 40px;
 }
  .form-submit {
     margin: 20px 0 30px 124px;

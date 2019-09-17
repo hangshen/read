@@ -125,49 +125,50 @@
     $(function () {
         var temp_data;
         $.ajax({
-            url: "http://localhost:8080/selectAll",
-            type: "post",
-            dataType: "json",
-            success:function (data) {
-                var mv1 = new Vue({
-                    el: '#biaoge',
-                    data: {books:{}},
-                    created: function() {
-                        this.books = data;
-                    },
-                    methods:{
-                        find:function () {
-                            $.ajax({
-                                url: "http://localhost:8080/selectByBooksName",
-                                type: "post",
-                                data: {bookName: $("input[name = 'find']").val()},
-                                dataType: "json",
-                                success:function (data) {
-                                    mv1.books = data;
-                                }
-                            })
+                url: "http://localhost:8080/selectAll",
+                type: "post",
+                data:{},
+                dataType: "json",
+                success:function (data) {
+                    var mv1 = new Vue({
+                        el: '#biaoge',
+                        data: {books:{}},
+                        created: function() {
+                            this.books = data;
                         },
-                        dlt:function (i) {
-                            $.ajax({
-                                url: "http://localhost:8080/deleteBook",
-                                type: "post",
-                                data: {bookId: mv1.books[i].bookId},
-                                dataType: "json",
-                                success:function (data) {
-                                    mv1.books.splice(i, 1);
-                                }
-                            })
-                        },
-                        tanchu:function (i) {
-                            $("body").append("<div id='mask'></div>");
-                            $("#mask").addClass("mask").fadeIn("slow");
-                            $("#add").fadeIn("slow");
-                            temp_data = i;
+                        methods:{
+                            find:function () {
+                                $.ajax({
+                                    url: "http://localhost:8080/selectByBooksName",
+                                    type: "post",
+                                    data: {bookName: $("input[name = 'find']").val()},
+                                    dataType: "json",
+                                    success:function (data) {
+                                        mv1.books = data;
+                                    }
+                                })
+                            },
+                            dlt:function (i) {
+                                $.ajax({
+                                    url: "http://localhost:8080/deleteBook",
+                                    type: "post",
+                                    data: {bookId: mv1.books[i].bookId},
+                                    dataType: "json",
+                                    success:function (data) {
+                                        mv1.books.splice(i, 1);
+                                    }
+                                })
+                            },
+                            tanchu:function (i) {
+                                $("body").append("<div id='mask'></div>");
+                                $("#mask").addClass("mask").fadeIn("slow");
+                                $("#add").fadeIn("slow");
+                                temp_data = i;
+                            }
                         }
-                    }
-                });
-            }
-        })
+                    });
+                }
+            })
         $("input[name = 'insert']").click(function () {
             var record = {
                 "bookId":$(".id").eq(temp_data).html(),

@@ -18,4 +18,8 @@ public class PayRecordController {
     List<PayRecord> selectPayRecord(@RequestBody PayRecordVo payRecordVo){
         return  payRecordService.selectPayRecord(payRecordVo);
     }
+    @RequestMapping("/insertPayRecord")
+    public int insertSelective(PayRecord record){
+        return payRecordService.insertSelective(record);
+    }
 }

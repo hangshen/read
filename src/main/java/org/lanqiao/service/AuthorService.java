@@ -18,4 +18,5 @@ public interface AuthorService {
     int deleteByPrimaryKey(Integer authorId);
     List<Author> selectAllAuthor();
     Author getAuthorName(Integer authorId);
+    int updateByPrimaryKeySelective(Author record);
 }

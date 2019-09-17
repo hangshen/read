@@ -9,6 +9,7 @@
     <link href="../css/authormsgcss/authormsg.css" rel="stylesheet">
     <link href="../css/authormsgcss/useradmin.css" rel="stylesheet">
     <link href="../css/authormsgcss/authormassg.css" rel="stylesheet">
+    <link rel="Stylesheet" type="text/css" href="../css/background/addressadd.css"/>
 </head>
 <body>
 <div class="msg_box">
@@ -41,7 +42,7 @@
     <div id="massg_box" id="author">
 
         <div id="massg_top">
-            <a id="massg_right">编辑</a>
+            <a href="#" id="massg_right">编辑</a>
             <h2>基本资料：</h2>
         </div>
         <div id="massg_null"></div>
@@ -87,11 +88,50 @@
         </div>
     </div>
 </div>
+<div id="add">
+    <div class="row1">
+        修改信息<a href="javascript:void(0)" title="关闭窗口" class="close_btn" id="closeBtn">×</a>
+    </div>
+    <form id="bigbox">
+        <div id="one">
+            <span>作者笔名</span>
+            <input name="authorName" type="text">
+        </div>
+        <div class="twe">
+            <span>类型</span>
+            <input name="identity" type="text">
+        </div>
+        <div class="twe">
+            <span>qq</span>
+            <input name="qq" type="text">
+        </div>
+        <div class="twe">
+            <span>作者简介</span>
+            <input name="introduce" type="text">
+        </div>
+        <div class="twe">
+            <input name="insert" id="infor" type="submit" value="修改">
+        </div>
+    </form>
+</div>
 </body>
 <script>
+    $(function ($) {
+        //关闭
+        $(".close_btn").hover(function () {
+            $(this).css({color: 'black'})
+        }, function () {
+            $(this).css({color: '#999'})
+        }).on('click', function () {
+            $("#add").fadeOut("fast");
+            $("#mask").css({display: 'none'});
+        });
+    });
+</script>
+<script>
     // 显示作者名
-    var aid = sessionStorage.getItem("aid");
-    alert(aid);
+    // var aid = sessionStorage.getItem("aid");
+    var aid = 1;
     $(function () {
         $.ajax({
             url: "http://localhost:8080/author/getAuthorName",
@@ -103,14 +143,15 @@
                     el: "#authorName",
                     data: {authorName: data.authorName},
                 });
-                alert(mv2.authorName);
             }
         })
     });
-
+    $("#massg_right").click(function () {
+        $("body").append("<div id='mask'></div>");
+        $("#mask").addClass("mask").fadeIn("slow");
+        $("#add").fadeIn("slow");
+    })
     //显示信息
-
-
     $.ajax({
         url: "http://localhost:8080/author/authorBasicData",
         type: "post",
@@ -137,7 +178,26 @@
             });
         }
     });
-
+    $("input[name = 'insert']").click(function () {
+        var record = {
+            "authorId":aid,
+            "authorName":$("input[name = 'authorName']").val(),
+            "authorIdentity":$("input[name = 'Identity']").val(),
+            "authorQq":$("input[name = 'qq']").val(),
+            "authorIntroduce":$("input[name = 'introduce']").val(),
+        }
+        $.ajax({
+            url: "http://localhost:8080/author/updateAuthor",
+            type: "post",
+            data: JSON.stringify(record),
+            dataType: "json",
+            contentType: 'application/json;charset=UTF-8',
+            success:function (data) {
+                alert(1);
+               location.reload();
+            }
+        })
+    })
 
     // 传id
     $(function () {

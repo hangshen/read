@@ -138,7 +138,7 @@
                         <td>
                             <div class="work-title">
                                 <div class="pic" style="position: relative;" id="bookImg">
-                                    <img src="../images/authormsgimages/fengmian.png" >
+                                    <img src="../images/authormsgimages/fengmian.png">
                                 </div>
                                 <p>
                                     {{book.bookName}}
@@ -167,7 +167,7 @@
                         </td>
                         <td class="noborder op">
                             <p>
-                                <a href="author_newchapter.html" class="newc">新增章节</a>
+                                <a href="author_newchapter.html" class="newc" @click="set(index)">新增章节</a>
                             </p>
 
                             <p><a href="">管理章节</a></p>
@@ -205,9 +205,6 @@
 </body>
 <script src="../js/author_login_js/vue.min.js"></script>
 <script>
-
-
-
 
 
     // 显示作者名
@@ -258,8 +255,21 @@
                     el: "#book",
                     data: {
                         books: data,
+                        bookName: data.bookName,
                     },
+                    //传bookName
+                    methods: {
+                        set: function (index) {
+                            var bookId = this.books[index].bookId;
+                            sessionStorage.setItem("bookId", bookId);
+                            var bookName=this.books[index].bookName;
+                            sessionStorage.setItem("bookName",bookName);
+                        }
+                    }
+
                 })
+
+
             }
         })
     });

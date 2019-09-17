@@ -16,4 +16,8 @@ public class RechargeRecordController {
     public List<RechargeRecord> selectUserRechargeRecord(Integer userLoginId){
         return  rechargeRecordService.selectUserRechargeRecord(userLoginId);
     }
+    @RequestMapping("/insertRechargeRecord")
+    public int insertSelective(RechargeRecord rechargeRecord){
+        return rechargeRecordService.insertSelective(rechargeRecord);
+    }
 }

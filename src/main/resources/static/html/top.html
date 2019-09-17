@@ -46,7 +46,8 @@
                     </div>
                     <div data-reactid=".3.1">
                         <div class="ulink j-ulink" data-reactid=".3.1.0">
-                            <a class="userself" target="_blank" title="登录" data-reactid=".3.1.0.0" href="login.html">登录</a>
+                            <a class="userself" target="_blank" title="登录" data-reactid=".3.1.0.0"
+                               href="login.html">登录</a>
                             <span class="sep" data-reactid=".3.1.0.1">|</span>
                             <a target="_blank" title="注册" data-reactid=".3.1.0.2" href="zhuce.html">注册</a>
                         </div>
@@ -68,7 +69,7 @@
                     </div>
 
                     <div class="m-clouds">
-                        <a class="m-cloudsj"  target="_blank">我的书架</a>
+                        <a class="m-cloudsj" target="_blank">我的书架</a>
                     </div>
                 </div>
             </div>
@@ -95,8 +96,8 @@
                                 <img src="../images/topimages/1.jpg"/></a></li>
                         </ul>
                     </div>
-<!--                    <a class="btn left-btn j-cl" href="#"></a>-->
-<!--                    <a class="btn right-btn j-cr" href="#"></a>-->
+                    <!--                    <a class="btn left-btn j-cl" href="#"></a>-->
+                    <!--                    <a class="btn right-btn j-cr" href="#"></a>-->
                 </div>
                 <div id="J_MM" class="m-menu">
                     <div v-for="(fathertype,indexx) in fathertypes" v-if="indexx < 3">
@@ -114,7 +115,8 @@
                                 <p>
                                     <a target="_blank" data-model="index"
                                        data-opration="man" v-for="(type3, index3) in fathertype.secondSelect"
-                                       v-if="index3 > 2 && index3 < 5" @click="settype(type3.booktypeId, type3.booktypeName)">{{type3.booktypeName}}</a>
+                                       v-if="index3 > 2 && index3 < 5"
+                                       @click="settype(type3.booktypeId, type3.booktypeName)">{{type3.booktypeName}}</a>
                                     <a class="ll" target="_blank" data-model="index"
                                        data-opration="man" v-for="(type4, index4) in fathertype.secondSelect"
                                        v-if="index4 == 5" @click="settype(type4.booktypeId, type4.booktypeName)">{{type4.booktypeName}}</a>
@@ -148,8 +150,10 @@
                             <div class="tab-item">
                                 <ul class="book f-cb">
                                     <li v-for="(book, index) in books" class="bookface" @click="bookdetail(index)">
-                                        <a href="" target="_blank" data-model="jptu" data-opration="jpts_img"><img v-bind:src="book.bookImg"></a>
-                                        <h3><a href="" target="_blank" data-model="jptu" data-opration="jpts_txt">{{book.bookName}}</a></h3>
+                                        <a href="" target="_blank" data-model="jptu" data-opration="jpts_img"><img
+                                                v-bind:src="book.bookImg"></a>
+                                        <h3><a href="" target="_blank" data-model="jptu" data-opration="jpts_txt">{{book.bookName}}</a>
+                                        </h3>
                                         <p>作者：{{book.author.authorName}}</p>
                                     </li>
                                 </ul>
@@ -158,11 +162,33 @@
                     </div>
                 </div>
                 <div class="right">
-                    <header><h2>图书畅销榜</h2></header>
+                    <header><h2>图书订阅榜</h2></header>
                     <div id="J_PubBang" class="m-foldlist">
-                        <ul>
+                        <ul class="">
+                            <li v-for="(rank, index) in ranks" v-if="index < 9" @mouseover="xianshi(index)">
+                                <p class="fold" style="display: none;" v-if="index == flag"><a
+                                        href=""><i>{{index + 1}}</i>{{rank.bookName}}</a></p>
+                                <div class="unfold" style="display: block;" v-if="index == flag"><i>{{index + 1}}</i>
+                                    <div class="border f-cb"><a class="img" @click="bookdetail(rank.bookId)"
+                                                                target="_blank"><img
+                                            v-bind:src="rank.bookImg"></a>
+                                        <h3><a  @click="bookdetail(rank.bookId)" target="_blank">{{rank.bookName}}</a></h3>
+                                        <p>{{rank.author.authorName}}</p></div>
+                                </div>
+
+                                <p class="fold" style="display: block;" v-if="index != flag"><a
+                                        href=""><i>{{index + 1}}</i>{{rank.bookName}}</a></p>
+                                <div class="unfold" style="display: none;" v-if="index != flag"><i>{{index + 1}}</i>
+                                    <div class="border f-cb"><a class="img"
+                                                                @click="bookdetail(rank.bookId)"
+                                                                target="_blank"><img
+                                            v-bind:src="rank.bookImg"></a>
+                                        <h3><a  @click="bookdetail(rank.bookId)" target="_blank">{{rank.bookName}}</a></h3>
+                                        <p>{{rank.author.authorName}}</p></div>
+                                </div>
+                            </li>
                         </ul>
-                        <a class="more" href=""><i></i>查看更多</a>
+                        <a class="more" href="ranklist.html"><i></i>查看更多</a>
                     </div>
                 </div>
             </div>
@@ -191,15 +217,16 @@
                             <h3>作者中心</h3>
                             <h6>原创、自媒体、内容商、漫画</h6>
                             <p>招募作者，福利优厚</p>
-                            <a id="author" class="btn" target="_blank" href="" data-model="gyyyd" data-opration="author">&nbsp;投稿 &gt;</a>
+                            <a id="author" class="btn" target="_blank" href="" data-model="gyyyd"
+                               data-opration="author">&nbsp;投稿 &gt;</a>
                         </li>
                         <li class="fk">
                             <span class="icon"></span>
                             <h3>客服中心</h3>
                             <h6>欢迎反馈宝贵意见给我们</h6>
                             <p alt="限工作时间">客服：13280107737/p>
-                            <a class="btn" target="_blank" href=""
-                               data-model="gyyyd" data-opration="feedback">&nbsp;意见反馈 &gt;</a>
+                                <a class="btn" target="_blank" href=""
+                                   data-model="gyyyd" data-opration="feedback">&nbsp;意见反馈 &gt;</a>
                         </li>
                         <li class="hz">
                             <span class="icon"></span>
@@ -224,7 +251,8 @@
                         <h3>{{fathertype.firstSelect.booktypeName}}</h3>
                         <p>
                             <a target="_blank" data-model="more_link" data-opration="ts"
-                               v-for="(type, index) in fathertype.secondSelect" v-if="index < 7" @click="settype(type.booktypeId, type.booktypeName)">
+                               v-for="(type, index) in fathertype.secondSelect" v-if="index < 7"
+                               @click="settype(type.booktypeId, type.booktypeName)">
                                 {{type.booktypeName}}</a>
                             <a href="allbooks.html" target="_blank">更多<i></i></a>
                         </p>
@@ -298,16 +326,16 @@
     var userName;
     $(function () {
         userName = sessionStorage.getItem("userName");
-        if(userName != undefined){
+        if (userName != undefined) {
             $(".userself").text(userName)
             $(".userself").siblings().remove()
-            $(".userself").attr("href","")
+            $(".userself").attr("href", "")
         }
     })
 
     var mv1 = new Vue({
         el: '#J_MM',
-        data: {fathertypes:{} },
+        data: {fathertypes: {}},
         created: function () {
             $.ajax({
                 url: "http://localhost:8080/getAllType",
@@ -318,18 +346,18 @@
                     mv1.fathertypes = data;
                 }
             })
-        },methods:{
-            settype:function (i, name) {
-                sessionStorage.setItem("booktypeId",i);
-                sessionStorage.setItem("booktypeName",name);
-                window.location.href="allbooks.html";
+        }, methods: {
+            settype: function (i, name) {
+                sessionStorage.setItem("booktypeId", i);
+                sessionStorage.setItem("booktypeName", name);
+                window.location.href = "allbooks.html";
             }
         }
     })
 
     var mv3 = new Vue({
         el: '.m-index-cat',
-        data: {fathertypes:{} },
+        data: {fathertypes: {}},
         created: function () {
             $.ajax({
                 url: "http://localhost:8080/getAllType",
@@ -340,11 +368,11 @@
                     mv3.fathertypes = data;
                 }
             })
-        },methods:{
-            settype:function (i, name) {
-                sessionStorage.setItem("booktypeId",i);
-                sessionStorage.setItem("booktypeName",name);
-                window.location.href="allbooks.html";
+        }, methods: {
+            settype: function (i, name) {
+                sessionStorage.setItem("booktypeId", i);
+                sessionStorage.setItem("booktypeName", name);
+                window.location.href = "allbooks.html";
             }
         }
     })
@@ -370,36 +398,65 @@
             }
         }
     })
-    $("#gongzhonghao").hover(function () {
-        $(".m-codelayer").css("display","block")
-    },function () {
-        $(".m-codelayer").css("display","none")
+
+    var mv4 = new Vue({
+        el: '#J_PubBang',
+        data: {
+            ranks: {},
+            flag: 0,
+        },
+        created: function () {
+            $.ajax({
+                url: "http://localhost:8080/getDingYueOrder",
+                type: "post",
+                data: {},
+                datatype: "json",
+                success: function (data) {
+                    mv4.ranks = data;
+                }
+            })
+        },
+        methods: {
+            xianshi: function(i){
+                this.flag = i;
+            },
+            bookdetail: function (i) {
+                sessionStorage.setItem("bookId", i);
+                window.location.href = "bookdetail.html";
+            }
+        }
     })
-    
+
+    $("#gongzhonghao").hover(function () {
+        $(".m-codelayer").css("display", "block")
+    }, function () {
+        $(".m-codelayer").css("display", "none")
+    })
+
     $("input[name='find']").click(function () {
         var key = $("input[name='key']").val();
-        if(key != "" && key !="输入不能为空！"){
-            sessionStorage.setItem("key",key);
-            window.location.href="search.html";
-        }else{
+        if (key != "" && key != "输入不能为空！") {
+            sessionStorage.setItem("key", key);
+            window.location.href = "search.html";
+        } else {
             $("input[name='key']").val("输入不能为空！");
         }
     })
 
     $(".m-cloudsj").click(function () {
-        sessionStorage.getItem("userId",userId);
-        if(userId == undefined){
+        sessionStorage.getItem("userId", userId);
+        if (userId == undefined) {
             window.location.href = "login.html";
-        }else{
+        } else {
             window.location.href = "bookshelf.html";
         }
     })
 
     $(".authorcontainer").click(function () {
-        sessionStorage.getItem("authorId",authorId);
-        if(authorId == undefined){
+        sessionStorage.getItem("authorId", authorId);
+        if (authorId == undefined) {
             window.location.href = "author_login.html";
-        }else{
+        } else {
             window.location.href = "";
         }
     })
@@ -412,7 +469,7 @@
 
     function changeImg() {
         i++;
-        if(i == imgs.length){
+        if (i == imgs.length) {
             i = 0;
         }
         $(".j-slider img").attr("src", "../images/topimages/" + imgs[i]);
@@ -420,10 +477,10 @@
     };
 
     $("#author").click(function () {
-        sessionStorage.getItem("authorId",authorId);
-        if(authorId == undefined){
+        sessionStorage.getItem("authorId", authorId);
+        if (authorId == undefined) {
             window.location.href = "author_login.html";
-        }else{
+        } else {
             window.location.href = "";
         }
     })

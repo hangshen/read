@@ -82,6 +82,9 @@
     book_id, book_name, book_img, book_introduce, book_up_date, book_finish_date, book_score, 
     book_flag, book_word, book_click, book_reward, book_type_id, book_author_id
   </sql>
+    <select id="selectBookById" resultMap="BooksMap" parameterType="java.lang.Integer">
+    select * from books where book_id = #{bookId,jdbcType=INTEGER}
+  </select>
     <select id="selectBooksPayRecord" resultMap="BooksMap" parameterType="java.lang.Integer">
     select * from books b,payrecord pr,users u WHERE b.book_id = pr.payrecord_book_id AND
 pr.payrecord_user_id = u.user_id and b.book_id = #{bookId,jdbcType=INTEGER} and pr.payrecord_flag = '打赏'

@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <title>发表作品</title>
     <script src="../js/author_login_js/jquery.js"></script>
-    <script src="../js/author_login_js/vue.min.js"></script>
+
     <link href="../css/authorlogincss/base.css" rel="stylesheet">
     <link href="../css/authormsgcss/authormsg.css" rel="stylesheet">
     <link href="../css/authormsgcss/useradmin.css" rel="stylesheet">
@@ -139,12 +139,12 @@
                                         <p>点击上传</p>
                                     </div>
                                 </div>
-<!--                                <input id="btnD" name="file" class="file" type="file">-->
-                                <div class="pic-button">
-                                    <div style="visibility: visible;"></div>
-                                    <div id="J_PicFile_1Queue" class="uploadifyQueue"></div>
-                                    <input type="file" name="bookImg" class="J_BookCover hide vanadium" value="" id="open">
-                                </div>
+                                <!--                                <input id="btnD" name="file" class="file" type="file">-->
+                                <!--                                <div class="pic-button">-->
+                                <!--                                    <div style="visibility: visible;"></div>-->
+                                <!--                                    <div id="J_PicFile_1Queue" class="uploadifyQueue"></div>-->
+                                <!--                                    <input type="file" name="bookImg" class="J_BookCover hide vanadium" value="" id="open">-->
+                                <!--                                </div>-->
                                 <p class="box-130-tip ">支持jpg，bmp，png</p>
                             </div>
 
@@ -162,48 +162,48 @@
                             </select>
                         </div>
                     </li>
-                    <li class="content-item">
-                        <div class="item-name"><em></em>作品标签：</div>
-                        <div class="tag-select clearfix">
-                            <div class="tag-con" style="height: auto;">
-                                <!--value是初始化值，用英文逗号分隔-->
-                                <input name="tag" id="tags_init" type="text"
-                                       class="hide :required;;J_TagRequiredTip :only_on_blur vanadium" value=""
-                                       style="display: none;">
-                                <div id="tags_init_tagsinput" class="tagsinput clearfix">
-                                    <div id="tags_init_addTag"><input id="tags_init_tag" value="" data-default=""
-                                                                      class="input-txt"
-                                                                      style="color: rgb(102, 102, 102); ">
-                                    </div>
-                                </div>
-                            </div>
-                            <p class="vanadium-init kong">1-20个字，多个标签请用空格隔开</p>
-                            <!--<span class="select"></span>-->
-                            <div class="tags" id="J_AdviceTags" style="display:none;">
-                                <h3>输入或选择标签：</h3>
-                                <ul class="tag-list clearfix" id="J_TagList">
-                                    <li><a href="javascript:void(0)">都市生活</a></li>
-                                    <li><a href="javascript:void(0)">娱乐明星</a></li>
-                                    <li><a href="javascript:void(0)">社会百态</a></li>
-                                    <li><a href="javascript:void(0)">乡村纪实</a></li>
-                                    <li><a href="javascript:void(0)">职场白领</a></li>
-                                    <li><a href="javascript:void(0)">家庭生活</a></li>
-                                    <li><a href="javascript:void(0)">亲情</a></li>
-                                    <li><a href="javascript:void(0)">成长</a></li>
-                                    <li><a href="javascript:void(0)">伦理</a></li>
-                                    <li><a href="javascript:void(0)">打工</a></li>
-                                    <li><a href="javascript:void(0)">求职</a></li>
-                                    <li><a href="javascript:void(0)">蜗居</a></li>
-                                    <li><a href="javascript:void(0)">房奴</a></li>
-                                    <li><a href="javascript:void(0)">黑帮</a></li>
-                                    <li><a href="javascript:void(0)">老千</a></li>
-                                    <li><a href="javascript:void(0)">校园</a></li>
-                                    <li><a href="javascript:void(0)">自传</a></li>
-                                </ul>
-                                <div class="hide"><input type="button" value="确定"></div>
-                            </div>
-                        </div>
-                    </li>
+                    <!--                    <li class="content-item">-->
+                    <!--                        <div class="item-name"><em></em>作品标签：</div>-->
+                    <!--                        <div class="tag-select clearfix">-->
+                    <!--                            <div class="tag-con" style="height: auto;">-->
+                    <!--                                &lt;!&ndash;value是初始化值，用英文逗号分隔&ndash;&gt;-->
+                    <!--                                <input name="tag" id="tags_init" type="text"-->
+                    <!--                                       class="hide :required;;J_TagRequiredTip :only_on_blur vanadium" value=""-->
+                    <!--                                       style="display: none;">-->
+                    <!--                                <div id="tags_init_tagsinput" class="tagsinput clearfix">-->
+                    <!--                                    <div id="tags_init_addTag"><input id="tags_init_tag" value="" data-default=""-->
+                    <!--                                                                      class="input-txt"-->
+                    <!--                                                                      style="color: rgb(102, 102, 102); ">-->
+                    <!--                                    </div>-->
+                    <!--                                </div>-->
+                    <!--                            </div>-->
+                    <!--                            <p class="vanadium-init kong">1-20个字，多个标签请用空格隔开</p>-->
+                    <!--                            &lt;!&ndash;<span class="select"></span>&ndash;&gt;-->
+                    <!--                            <div class="tags" id="J_AdviceTags" style="display:none;">-->
+                    <!--                                <h3>输入或选择标签：</h3>-->
+                    <!--                                <ul class="tag-list clearfix" id="J_TagList">-->
+                    <!--                                    <li><a href="javascript:void(0)">都市生活</a></li>-->
+                    <!--                                    <li><a href="javascript:void(0)">娱乐明星</a></li>-->
+                    <!--                                    <li><a href="javascript:void(0)">社会百态</a></li>-->
+                    <!--                                    <li><a href="javascript:void(0)">乡村纪实</a></li>-->
+                    <!--                                    <li><a href="javascript:void(0)">职场白领</a></li>-->
+                    <!--                                    <li><a href="javascript:void(0)">家庭生活</a></li>-->
+                    <!--                                    <li><a href="javascript:void(0)">亲情</a></li>-->
+                    <!--                                    <li><a href="javascript:void(0)">成长</a></li>-->
+                    <!--                                    <li><a href="javascript:void(0)">伦理</a></li>-->
+                    <!--                                    <li><a href="javascript:void(0)">打工</a></li>-->
+                    <!--                                    <li><a href="javascript:void(0)">求职</a></li>-->
+                    <!--                                    <li><a href="javascript:void(0)">蜗居</a></li>-->
+                    <!--                                    <li><a href="javascript:void(0)">房奴</a></li>-->
+                    <!--                                    <li><a href="javascript:void(0)">黑帮</a></li>-->
+                    <!--                                    <li><a href="javascript:void(0)">老千</a></li>-->
+                    <!--                                    <li><a href="javascript:void(0)">校园</a></li>-->
+                    <!--                                    <li><a href="javascript:void(0)">自传</a></li>-->
+                    <!--                                </ul>-->
+                    <!--                                <div class="hide"><input type="button" value="确定"></div>-->
+                    <!--                            </div>-->
+                    <!--                        </div>-->
+                    <!--                    </li>-->
                     <li class="content-item">
                         <div class="item-name"><em></em>写作状态：</div>
                         <div class="item-content">
@@ -261,7 +261,7 @@
             </div>
 
             <div class="form-submit">
-                <a href="#" class="form-btn " id="J_Submit">发布</a>
+                <p href="" class="form-btn " id="J_Submit">发布</p>
             </div>
         </div>
     </div>
@@ -282,6 +282,7 @@
     </div>
 </div>
 </body>
+<script src="../js/author_login_js/vue.min.js"></script>
 
 <script>
     // 显示作者名
@@ -302,6 +303,7 @@
             }
         })
     });
+    //获取书类型
     $(function () {
 
         $.ajax({
@@ -318,13 +320,19 @@
         });
 
     });
+</script>
+    //提交新书
+<script>
 
-    var bookTxet = $("#introduction").val();
-    var bookNames = $("#booknames").val();
-    var bookFlags = 连载中;
-    var booktype = $("#tags_init").val();
-    var bookTu = $(".file").val();
-    $("#J_Submit").click(function () {
+    alert(bookType);
+    $(".form-submit").click(function () {
+        var bookTxet = $("#introduction").val();
+        var bookNames = $("#booknames").val();
+        var bookFlags = 连载中;
+        var bookTypeId = document.getElementById('bookTypeId');
+        var bookType = bookTypeId.options[bookTypeId.value].text;
+        alert(bookType);
+        var bookTu = $(".file").val();
         $.ajax({
             url: "http://localhost:8080/author/publishBook",
             type: "post",
@@ -332,15 +340,15 @@
                 'authorId': aid,
                 'bookName': bookNames,
                 'bookImg': bookTu,
-                'bookIntroduce': bookTxet,
+                'book_introduce': bookTxet,
                 'bookFlag': bookFlags,
-                'bookTypeId': booktype,
+                'bookTypeId': bookType,
 
             },
             dataType: "json",
             success: function (data) {
-                if (data == 1) {
-
+                if (data == true) {
+                    alert("提交成功");
                     sessionStorage.setItem("aid", result.author.authorId);
                     sessionStorage.setItem("bookid", result.author.bookId);
                     window.location.href = "author_newchapter.html";
