@@ -321,3 +321,11 @@ color: #000000;
     margin: 20px 0 30px 124px;
     zoom: 1;
 }
+
+.selectBox-options LI, .selectBox-options LI A {
+    display: block;
+    cursor: default;
+}
+.tag-list li a {
+    padding: 2px 3px;
+}

@@ -167,7 +167,7 @@
                         </td>
                         <td class="noborder op">
                             <p>
-                                <a href="author_newchapter.html" class="newc">新增章节</a>
+                                <a href="author_newchapter.html" class="newc" @click="set(index)">新增章节</a>
                             </p>
 
                             <p><a href="">管理章节</a></p>
@@ -258,11 +258,26 @@
                     el: "#book",
                     data: {
                         books: data,
+                       bookName:data.bookName,
                     },
+                    //传bookName
+                    methods:{
+                    set:function(index){
+                        var bookName=this.books[index].bookName;
+                       sessionStorage.setItem("bookName",bookName)
+
+                    }
+                }
+
                 })
+
+
             }
         })
     });
+
+
+
 
 
     // 传id
