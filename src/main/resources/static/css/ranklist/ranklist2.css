@@ -1,0 +1,596 @@
+.g-mn {
+    float: right;
+}
+
+.g-bdw-1 {
+    margin-top: 20px;
+}
+
+.yd-grid2col-page .g-sd {
+    width: 150px;
+    float: left;
+    overflow: hidden;
+    padding: 0;
+    border: 2px solid #e0dcd7;
+}
+
+.yd-grid2col-page .g-sd .multi strong {
+    font-weight: normal;
+}
+
+.yd-grid2col-page .g-sd .multi .crt {
+    background-color: #f4f4f4;
+}
+
+.g-cw .yd-grid2col-page .g-sd .multi .crt strong {
+    color: #c9483c;
+}
+
+.yd-grid2col-page .g-sd .multi dt {
+    position: relative;
+    height: 38px;
+    line-height: 38px;
+    cursor: pointer;
+    background-color: #fff;
+    font-size: 16px;
+    color: #655;
+    padding-left: 18px;
+    border-bottom: 1px solid #f5f0eb;
+}
+
+.yd-grid2col-page .g-sd .multi dt:hover, .yd-grid2col-page .g-sd .multi li:hover, .yd-grid2col-page .g-sd .multi dt a:hover {
+    background-color: #f4f4f4;
+}
+
+.yd-grid2col-page .g-sd .last dt {
+    border-bottom: none;
+}
+
+.yd-grid2col-page .g-sd .multi dt a {
+    display: block;
+    height: 38px;
+    color: #655;
+}
+
+.yd-grid2col-page .g-sd .multi dt a.active {
+    color: #c9483c;
+}
+
+.yd-grid2col-page .g-sd .multi dt em {
+    position: absolute;
+    top: 0;
+    right: 20px;
+    display: block;
+    cursor: pointer;
+    width: 8px;
+    height: 38px;
+
+}
+
+
+.yd-grid2col-page .g-sd .multi li {
+    height: 38px;
+    line-height: 38px;
+    background-color: #fdfdfd;
+    font-size: 14px;
+    padding-left: 34px;
+    border-bottom: 1px solid #f5f0eb;
+}
+
+.yd-grid2col-page .g-sd .multi li a {
+    display: block;
+    height: 38px;
+    color: #655;
+}
+
+.yd-grid2col-page .g-sd .multi li.last {
+    border-bottom: 1px solid #f5f0eb;
+}
+
+.yd-grid2col-page .g-sd .last li.last {
+    border-bottom: none;
+}
+
+.yd-grid2col-page .g-sd .last li.first {
+    border-top: 1px solid #f5f0eb;
+}
+
+.yd-grid2col-page .g-sd .multi li.active {
+    background-color: #f4f4f4;
+}
+
+.yd-grid2col-page .g-sd .multi li.active a {
+    color: #c9483c;
+}
+
+.yd-grid2col-page .g-sd .multi li.align-center {
+    padding-left: 0;
+    text-align: center;
+}
+
+.yd-grid2col-page .g-mn {
+    padding: 0 0 40px 0;
+    width: 805px;
+}
+
+.yd-grid2col-standard-container {
+    border: none;
+}
+
+.yd-grid2col-standard-container .page-header {
+    height: 24px;
+    margin-bottom: 17px;
+}
+
+.yd-grid2col-standard-container .page-header h1 {
+    height: 24px;
+    line-height: 24px;
+    font-weight: normal;
+    font-size: 24px;
+    color: #000;
+    text-indent: 0;
+}
+
+.yd-grid2col-standard-container .page-header .m-tabs li {
+    display: inline;
+}
+
+.yd-grid2col-standard-container .page-header .m-tabs li a, .m-tabs li .sep {
+    font-size: 14px;
+    color: #665656;
+}
+
+.yd-grid2col-standard-container .page-header .m-tabs li .sep {
+    padding: 0 7px;
+}
+
+.yd-grid2col-standard-container .page-header .m-tabs li.crt a {
+    color: #c9483c;
+}
+
+.yd-grid2col-standard-container .yd-rank-content .yd-rank-bookitem {
+    position: relative;
+    float: left;
+    border-bottom: 1px solid #e0dcd7;
+    border-right: 1px solid #e0dcd7;
+}
+
+.yd-grid2col-standard-container .yd-rank-content .yd-rank-bookitem-row-1 {
+    border-left: 1px solid #e0dcd7;
+}
+
+.yd-grid2col-standard-container .yd-rank-content .yd-rank-bookitem-line-1 {
+    border-top: 1px solid #e0dcd7;
+}
+
+.yd-grid2col-standard-container .yd-rank-content .yd-rank-bookitem a {
+    display: block;
+    width: 124px;
+    height: 261px;
+    padding: 20px 22px 0 54px;
+    background-color: #fff;
+}
+
+.yd-grid2col-standard-container .yd-rank-content .yd-rank-bookitem a:hover {
+    background-color: #fdfdfd;
+}
+
+.yd-grid2col-standard-container .yd-rank-content .yd-rank-bookitem .cover {
+    display: block;
+    margin-bottom: 10px;
+}
+
+.yd-grid2col-standard-container .yd-rank-content .yd-rank-bookitem h2 {
+    max-height: 44px;
+    _height: 44px;
+    line-height: 22px;
+    font-size: 16px;
+    color: #655;
+    margin-bottom: 4px;
+    overflow: hidden;
+}
+
+.yd-grid2col-standard-container .yd-rank-content .yd-rank-bookitem a:hover h2 {
+    color: #c9483c;
+}
+
+.yd-grid2col-standard-container .yd-rank-content .yd-rank-bookitem .author {
+    width: 124px;
+    height: 18px;
+    line-height: 18px;
+    font-size: 12px;
+    color: #888;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.yd-grid2col-standard-container .yd-rank-content .yd-rank-bookitem a:hover .author {
+    color: #666;
+}
+
+.yd-grid2col-standard-container .yd-rank-content .yd-rank-bookitem .index {
+    position: absolute;
+    top: 20px;
+    left: 22px;
+    font-size: 14px;
+    width: 34px;
+    height: 14px;
+}
+
+.yd-grid2col-standard-container .yd-rank-content .yd-rank-bookitem .top {
+    color: #c9483c;
+}
+
+.yd-grid2col-standard-container .yd-rank-content .yd-rank-bookitem .desc {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 158px;
+    height: 243px;
+    opacity: 0;
+    padding: 40px 22px 0 22px;
+    _background: none;
+}
+
+.yd-grid2col-standard-container .yd-rank-content .yd-rank-bookitem .desc p {
+    width: 157px;
+    height: 138px;
+    font-size: 14px;
+    line-height: 23px;
+    overflow: hidden;
+    color: #e6e5e5;
+}
+
+.yd-grid2col-standard-container .yd-rank-content .yd-rank-bookitem a:hover .desc {
+    opacity: 1;
+    -webkit-transition: opacity 1s;
+    transition: opacity 1s;
+}
+
+.yd-grid2col-standard-container .yd-rank-content .yd-rank-bookitem .look {
+    position: absolute;
+    top: 208px;
+    left: 60px;
+    width: 82px;
+    height: 25px;
+    opacity: 0;
+    _background: none;
+}
+
+.yd-grid2col-standard-container .yd-rank-content .yd-rank-bookitem a:hover .desc .look {
+    opacity: 1;
+    -webkit-transition: opacity 1s;
+    transition: opacity 1s;
+}
+
+.yd-grid2col-standard-container .yd-rank-content .yd-rank-bookitem a:hover .desc .look:hover {
+    opacity: 1;
+    -webkit-transition: opacity 1s;
+    transition: opacity 1s;
+}
+
+.yd-grid2col-standard-container .yd-rank-content .yd-rank-bookitem .booktype {
+    position: absolute;
+    top: 26px;
+    left: 54px;
+    width: 46px;
+    height: 18px;
+}
+
+.yd-grid2col-standard-container .yd-rank-content .yd-rank-bookitem .booktype-serial {
+    background-position: 0 0;
+}
+
+.yd-grid2col-standard-container .yd-rank-content .yd-rank-bookitem .booktype-complete {
+    background-position: 0 -18px;
+}
+
+.yd-grid2col-standard-container .yd-rank-content .yd-rank-bookitem .booktype-sample {
+    background-position: 0 -36px;
+}
+
+.m-foldlist {
+    border: #ebe6e1 solid 1px;
+}
+
+.m-foldlist a:hover {
+    color: #c9483c;
+}
+
+.m-foldlist li {
+    border-bottom: #f5f2f0 solid 1px;
+}
+
+.m-foldlist li:hover {
+    background-color: #f5f5f5;
+}
+
+.m-foldlist .fold {
+    padding: 0 14px 0 20px;
+    height: 43px;
+    line-height: 43px;
+    overflow: hidden;
+}
+
+.m-foldlist .fold a {
+    color: #655;
+    font-size: 14px;
+}
+
+.m-foldlist .fold i {
+    color: #aaa;
+    margin-right: 18px;
+    font-weight: normal;
+    font-family: arial;
+}
+
+.m-foldlist .unfold {
+    padding: 14px 14px 14px 20px;
+    position: relative;
+    height: 104px;
+}
+
+.m-foldlist .unfold i {
+    position: absolute;
+    top: 14px;
+    left: 20px;
+    color: #c9483c;
+    font-weight: bold;
+    font-size: 18px;
+    font-weight: normal;
+    font-family: arial;
+}
+
+.m-foldlist .unfold .img {
+    float: left;
+    margin-left: 34px;
+    margin-right: 14px;
+}
+
+.m-foldlist .unfold img {
+    width: 74px;
+    height: 104px;
+}
+
+.m-foldlist .unfold h3 {
+    font-size: 16px;
+    line-height: 22px;
+    max-height: 44px;
+    overflow: hidden;
+}
+
+.m-foldlist .unfold h3 a {
+    color: #655;
+}
+
+.m-foldlist .unfold p {
+    color: #888;
+    margin-top: 5px;
+    max-height: 70px;
+    overflow: hidden;
+}
+
+.m-foldlist .unfold p a {
+    color: #888;
+}
+
+.m-foldlist .more {
+    position: relative;
+    display: block;
+    height: 48px;
+    line-height: 48px;
+    padding: 0 0 0 54px;
+    font-size: 14px;
+    color: #655;
+    background-color: #fdfdfd;
+}
+
+.m-foldlist .more i {
+    position: absolute;
+    width: 10px;
+    height: 9px;
+    top: 20px;
+    left: 22px;
+    background-position: 0 0;
+}
+
+.m-bang-list-head {
+    height: 39px;
+    line-height: 39px;
+    text-align: center;
+    font-size: 16px;
+    color: #000;
+    border-top: #ebe6e1 solid 1px;
+    border-left: #ebe6e1 solid 1px;
+    border-right: #ebe6e1 solid 1px;
+    font-weight: normal;
+    background-color: #fdfdfd;
+}
+
+.m-bang-list-wrap {
+    position: relative;
+    height: 618px;
+}
+
+.m-bang-list {
+    position: absolute;
+    top: 0;
+}
+
+.m-bang-list-l {
+    right: 536px;
+}
+
+.m-bang-list-m {
+    right: 268px;
+}
+
+.m-bang-list-r {
+    right: 0;
+}
+
+.m-bang-list .wrap {
+    width: 269px;
+    float: left;
+}
+
+.m-bang-list .tabs {
+    height: 38px;
+    border-top: #ebe6e1 solid 1px;
+    border-left: #ebe6e1 solid 1px;
+    border-right: #ebe6e1 solid 1px;
+}
+
+.m-bang-list .tabs h3 {
+    float: left;
+    margin: 8px 0 0 20px;
+    font-size: 16px;
+    color: #665656;
+    font-weight: normal;
+}
+
+.m-bang-list .tabs ul {
+    float: right;
+    margin: 12px 14px 0 0;
+}
+
+.m-bang-list .tabs ul li {
+    display: inline;
+}
+
+.m-bang-list .tabs ul li a {
+    color: #655;
+}
+
+.m-bang-list .tabs ul li.crt a {
+    color: #c9483c;
+}
+
+.m-bang-list .tabs ul li:after {
+    content: '|';
+    color: #a1a1a1;
+    padding: 0 3px;
+}
+
+.m-bang-list .tabs ul li.ll:after {
+    content: '';
+    padding: 0;
+}
+
+.m-bang-list .contents {
+    height: 579px;
+}
+
+.yd-original-table {
+    border: 1px solid #e0dcd7;
+}
+
+.yd-original-table thead th, .yd-original-table tbody td {
+    position: relative;
+    padding: 0;
+    padding-left: 20px;
+    line-height: 40px;
+    font-weight: normal;
+    color: #666;
+}
+
+.yd-original-table tbody td a {
+    color: #666;
+}
+
+.yd-original-table tbody td a:hover {
+    color: #c9483c;
+}
+
+.yd-original-table tbody td a.category {
+    color: #6395c7;
+    margin-right: 4px;
+}
+
+.yd-original-table tbody td a.category:hover {
+    color: #c9483c;
+}
+
+.yd-original-table tbody tr.even td {
+    background: #fbfbfb;
+}
+
+.yd-original-table tbody tr.odd td, .yd-original-table tbody tr.even td {
+    border: 0;
+}
+
+.yd-original-table thead th {
+    background: #fafafa;
+}
+
+.yd-original-table .top3 {
+    color: #c9483c;
+}
+
+.yd-original-table .recommend {
+    position: absolute;
+    top: -40px;
+    left: 40px;
+    z-index: 100;
+    display: none;
+}
+
+.yd-original-table .recommend span {
+    display: block;
+    background: rgba(0, 0, 0, 0.7);
+    color: #fff;
+    border-radius: 2px;
+    padding: 0 20px;
+    width: 516px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.yd-original-table .recommend em {
+    position: absolute;
+    border: 7px solid #fff;
+    border-color: rgba(0, 0, 0, 0.8) transparent transparent;
+    bottom: -14px;
+    left: 80px;
+}
+
+.yd-original-table tbody tr:hover td {
+    background: #ebebeb;
+}
+
+.yd-original-table tbody tr.hover td {
+    background: #ebebeb;
+}
+
+.yd-original-table tbody tr.hover .recommend {
+    display: block;
+}
+
+.yd-rank-container .monthtickettabs li .seltime {
+    padding-right: 0;
+}
+
+.yd-rank-container .m-tabs li a:hover {
+    color: #c9483c;
+}
+
+.yd-rank-container .empty {
+    border: 1px solid #e0dcd7;
+    padding: 86px;
+    color: #989898;
+    height: 178px;
+}
+
+.g-gf .yd-grid2col-page .g-sd .multi li.active a, .g-gf .yd-grid2col-standard-container .page-header .m-tabs li.crt a, .g-gf .yd-original-table .top3, .g-gf .yd-original-table tbody td a.category:hover, .g-gf .yd-original-table tbody td a:hover, .g-gf .yd-grid2col-page .g-sd .multi .crt strong, .g-gf .m-bang-list .tabs ul li.crt a, .g-gf .m-foldlist .unfold i, .g-gf .m-foldlist a:hover {
+    color: #d50808;
+}
+
+.g-cw .yd-grid2col-page .g-sd .multi li.active a, .g-cw .yd-grid2col-standard-container .page-header .m-tabs li.crt a, .g-cw .yd-original-table .top3, .g-cw .yd-grid2col-page .g-sd .multi .crt strong, .g-cw .m-bang-list .tabs ul li.crt a, .g-cw .m-foldlist .unfold i {
+    color: #ea4b36;
+}
+
+.g-cw .yd-original-table tbody td a.category, .g-cw .yd-original-table tbody td a.category:hover, .g-cw .yd-original-table tbody td a:hover, .g-cw .m-foldlist a:hover {
+    color: #27bba6;
+}
