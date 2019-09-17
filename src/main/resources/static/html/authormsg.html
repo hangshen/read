@@ -262,6 +262,8 @@
                         set: function (index) {
                             var bookId = this.books[index].bookId;
                             sessionStorage.setItem("bookId", bookId);
+                            var bookName=this.books[index].bookName;
+                            sessionStorage.setItem("bookName",bookName);
                         }
                     }
 
