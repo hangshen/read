@@ -102,17 +102,18 @@ public class AuthorController {
      * @return
      */
     @RequestMapping("/publishBook")
-    public int insertBook(Books books, MultipartFile file) throws IOException {
-        String filePath = "E:\\java\\project\\IDEAProject\\read\\src\\main\\resources\\static\\images\\upload";//保存图片的路径
-        //获取原始图片的拓展名
-        String originalFilename = file.getOriginalFilename();
-        //新的文件名字
-        String newFileName = UUID.randomUUID() + originalFilename;
-        //封装上传文件位置的全路径
-        File targetFile = new File(filePath, newFileName);
-        //把本地文件上传到封装上传文件位置的全路径
-        file.transferTo(targetFile);
-        books.setBookImg(newFileName);
+    public int insertBook(Books books) throws IOException {
+//        String filePath = "E:\\java\\project\\IDEAProject\\read\\src\\main\\resources\\static\\images\\upload";//保存图片的路径
+//        //获取原始图片的拓展名
+//        String originalFilename = file.getOriginalFilename();
+//        //新的文件名字
+//        String newFileName = UUID.randomUUID() + originalFilename;
+//        //封装上传文件位置的全路径
+//        File targetFile = new File(filePath, newFileName);
+//        //把本地文件上传到封装上传文件位置的全路径
+//        file.transferTo(targetFile);
+//        books.setBookImg(newFileName);
+        System.out.println(books.toString());
         return bookService.insertBooks(books);
     }
 

@@ -155,8 +155,8 @@
                     <li class="content-item">
                         <div class="item-name"><em></em>作品类型：</div>
                         <div class="item-content" id="bookType">
-                            <select name="bookTypeId" class="vanadium selectBox">
-                                <option v-for="(bookType,index) in bookTypes" value="{{bookType.booktypeId}}">
+                            <select name="bookTypeId" class="vanadium selectBox" id="sop">
+                                <option v-for="(bookType,index) in bookTypes"  value="{{bookType.booktypeId}}">
                                     {{bookType.booktypeName}}
                                 </option>
                             </select>
@@ -246,7 +246,7 @@
                         <div class="item-content article-editor" id="J_ContentEditer">
                             <div class="editor J_Editor">
                                 <textarea name="introduction"
-                                          class="vanadium"></textarea>
+                                          class="vanadium" id="bookIntroduce"></textarea>
                             </div>
                             <div class="notice"><span class="tip">字数需控制在20至300字之间</span></div>
 
@@ -320,34 +320,30 @@
         });
 
     });
-</script>
-    //提交新书
-<script>
 
-    alert(bookType);
-    $(".form-submit").click(function () {
-        var bookTxet = $("#introduction").val();
+    $("#J_Submit").click(function () {
+        var bookText = $("#bookIntroduce").val();
         var bookNames = $("#booknames").val();
-        var bookFlags = 连载中;
-        var bookTypeId = document.getElementById('bookTypeId');
-        var bookType = bookTypeId.options[bookTypeId.value].text;
-        alert(bookType);
+        var bookFlags = "连载中";
+        var sel=document.getElementById("sop");//select元素的id
+        var bookTypeId=sel.selectedIndex;//获取被选中的option的索引
+        // alert(bookTypeId);
         var bookTu = $(".file").val();
         $.ajax({
             url: "http://localhost:8080/author/publishBook",
             type: "post",
             data: {
-                'authorId': aid,
+                'bookAuthorId': aid,
                 'bookName': bookNames,
-                'bookImg': bookTu,
-                'book_introduce': bookTxet,
+                // 'bookImg': bookTu,
+                'bookIntroduce': bookText,
                 'bookFlag': bookFlags,
-                'bookTypeId': bookType,
+                'bookTypeId': bookTypeId,
 
             },
             dataType: "json",
             success: function (data) {
-                if (data == true) {
+                if (data == 1) {
                     alert("提交成功");
                     sessionStorage.setItem("aid", result.author.authorId);
                     sessionStorage.setItem("bookid", result.author.bookId);

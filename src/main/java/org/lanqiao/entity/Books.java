@@ -183,4 +183,15 @@ public class Books {
     public void setBookShelfList(List<BookShelf> bookShelfList) {
         this.bookShelfList = bookShelfList;
     }
+
+    @Override
+    public String toString() {
+        return "Books{" +
+                "bookName='" + bookName + '\'' +
+                ", bookIntroduce='" + bookIntroduce + '\'' +
+                ", bookFlag='" + bookFlag + '\'' +
+                ", bookTypeId=" + bookTypeId +
+                ", bookAuthorId=" + bookAuthorId +
+                '}';
+    }
 }

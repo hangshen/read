@@ -116,22 +116,11 @@
 </div>
 </body>
 <script>
-    $(function ($) {
-        //关闭
-        $(".close_btn").hover(function () {
-            $(this).css({color: 'black'})
-        }, function () {
-            $(this).css({color: '#999'})
-        }).on('click', function () {
-            $("#add").fadeOut("fast");
-            $("#mask").css({display: 'none'});
-        });
-    });
-</script>
-<script>
     // 显示作者名
     // var aid = sessionStorage.getItem("aid");
     var aid = 1;
+    var aid = sessionStorage.getItem("aid");
+    // alert(aid);
     $(function () {
         $.ajax({
             url: "http://localhost:8080/author/getAuthorName",
@@ -143,6 +132,7 @@
                     el: "#authorName",
                     data: {authorName: data.authorName},
                 });
+                // alert(mv2.authorName);
             }
         })
     });
