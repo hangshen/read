@@ -172,7 +172,7 @@
 <script>
     // 显示作者名
     var aid = sessionStorage.getItem("aid");
-    alert(aid);
+    // alert(aid);
     $(function () {
         $.ajax({
             url: "http://localhost:8080/author/getAuthorName",
@@ -184,14 +184,14 @@
                     el: "#authorName",
                     data: {authorName: data.authorName},
                 });
-                alert(mv2.authorName);
+                // alert(mv2.authorName);
             }
         })
     });
     //增加章节
 
 
-    var bookid = sessionStorage.getItem("bookid");
+    var bookid = sessionStorage.getItem("bookId");
 
 
     $(".form-submit").click(function () {

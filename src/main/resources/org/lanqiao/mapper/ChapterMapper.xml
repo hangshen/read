@@ -25,12 +25,9 @@
     where chapter_id = #{chapterId,jdbcType=INTEGER}
   </delete>
   <insert id="insert" parameterType="org.lanqiao.entity.Chapter" >
-    insert into chapter (chapter_id, chapter_sort, chapter_name, 
-      chapter_date, chapter_fee, chapter_content_id, 
-      chapter_book_id)
-    values (#{chapterId,jdbcType=INTEGER}, #{chapterSort,jdbcType=INTEGER}, #{chapterName,jdbcType=VARCHAR}, 
-      #{chapterDate,jdbcType=TIMESTAMP}, #{chapterFee,jdbcType=INTEGER}, #{chapterContentId,jdbcType=INTEGER}, 
-      #{chapterBookId,jdbcType=INTEGER})
+    insert into chapter (chapter_sort, chapter_name,  chapter_content_id, chapter_book_id)
+    values (#{chapterSort,jdbcType=INTEGER}, #{chapterName,jdbcType=VARCHAR},
+       #{chapterContentId,jdbcType=INTEGER}, #{chapterBookId,jdbcType=INTEGER})
   </insert>
   <insert id="insertSelective" parameterType="org.lanqiao.entity.Chapter" >
     insert into chapter
