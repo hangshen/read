@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>读者评论</title>
+    <script src="../js/author_login_js/jquery.js"></script>
+    <script src="../js/author_login_js/vue.min.js"></script>
+    <link href="../css/authorlogincss/base.css" rel="stylesheet">
+</head>
+<body>
+<div id="read">
+<div  v-for="reads in read"
+        style="width: 500px; height: 200px;float: left;box-shadow: 1px 1px 2px 2px #2e6da4;padding-top: 10px" >
+
+    <div style="float: left;margin-bottom: 5px; width: 480px;padding-left: 20px">
+        时间：{{reads.commentDate}}
+    </div>
+
+    <div style="width: 200px;height: 36px;float: left;padding-left: 20px">
+        书名：{{reads.bookName}}
+    </div>
+    <div style="width: 200px;height: 36px;float: right;">
+        读者：{{reads.userName}}
+    </div>
+    <div style="width: 480px;height: 72px;float: left;padding-top: 20px ;border-top: 1px solid #2e6da4;
+padding-left: 20px">
+        评论：
+        <p>{{reads.commentMassage}}</p>
+
+    </div>
+
+</div>
+</div>
+</body>
+<script>
+    var aid = sessionStorage.getItem("aid");
+
+    $(function () {
+        $.ajax({
+            url: "http://localhost:8080/author/readerComment",
+            data: {authorId: aid,},
+            type: "post",
+            datatype: "json",
+        success: function (data) {
+            mv1 = new Vue({
+                el: '#read',
+                data: {
+                    read:data,
+
+                },
+
+
+                error: function () {
+
+                    alert("error");
+
+                }
+            });
+
+        }
+    })
+    });
+</script>
+</html>

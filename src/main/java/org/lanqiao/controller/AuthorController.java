@@ -157,13 +157,14 @@ public class AuthorController {
     }
 
     @RequestMapping("/readerComment")
-    public PageInfo<Comment> readerComment(Integer authorId, @RequestParam(value = "pageNo", defaultValue = "1") Integer pageNum) {
+    public List<Comment> readerComment(Integer authorId) {
 
-        PageHelper.startPage(pageNum, 5);
-        List<Comment> list = commentService.selectAllByAuthorId(4);
-        PageInfo<Comment> pageInfo = new PageInfo<>(list);
+//        PageHelper.startPage(pageNum, 5);
+        List<Comment> list = commentService.selectAllByAuthorId(authorId);
+        System.out.println(authorId);
+//        PageInfo<Comment> pageInfo = new PageInfo<>(list);
 
-        return pageInfo;
+        return list;
     }
 
     @RequestMapping("/selectAuthorByName")
