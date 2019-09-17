@@ -1,10 +1,7 @@
-.m-sec .tags li a.new, .m-sec .tags li a.cur, .m-pbox-2 .edit {
-    background: url(/images/sprite11.png?e442686c) 9999px 9999px no-repeat;
+.m-pbox-2 .edit {
+    background: url("../../images/personimages/sprite11.png?e442686c") 9999px 9999px no-repeat;
 }
 
-.m-tableinfo td a.bonus {
-    background: url(/images/bookicons.png?b17e991a) 9999px 9999px no-repeat;
-}
 
 .m-newpro .m-info:after, .m-mydvc ul:after, .m-sec:after, .m-sec .tags ul:after, .m-sec .bt:after, .m-sec .inner .edit1:after, .m-sec .inner .edit2:after, .m-sec .inner .edit2 ul:after, .m-newpro:after, .m-wb .item:after, .m-subbox .innerbox:after, .m-weibo ul:after, .m-tableinfo .hint:after, .m-sucessdone:after, .m-pbox .my-para p:after, .single-item:after, .m-orderwrap:after, .m-sum-order:after, .m-sucessdone:after {
     clear: both;
@@ -87,7 +84,6 @@
     height: 14px;
     width: 14px;
     overflow: hidden;
-    background: url(/images/personalinfo.png?0cb336af) no-repeat 9999px 9999px;
 }
 
 .m-mainctrl .userinfo {
@@ -383,15 +379,12 @@
 .m-newpro .t-person, .m-newpro .t-tag {
     top: 2px;
     left: 0;
-    _top: -2px;
-    _left: -60px;
 }
 
 .m-newpro .t-dev {
     top: 15px;
     left: 0;
     _top: 2px;
-    _left: -64px;
 }
 
 .m-subbox {
@@ -459,7 +452,6 @@
 .m-probar .inner .bar {
     height: 14px;
     line-height: 14px;
-    background: url(/images/probargb.png?19b59113) 0 0 repeat-x;
     text-align: right;
 }
 
@@ -1024,7 +1016,6 @@
     width: 25px;
     height: 14px;
     margin: 0 0 0 5px;
-    background: url(/images/bookicons.png?b17e991a) 0 -705px;
 }
 
 .m-tableinfo td a.bonus {
@@ -1049,7 +1040,6 @@
     position: absolute;
     width: 177px;
     height: 41px;
-    background: url(/images/viptip.png?e2356976) 0 -90px;
     z-index: 2000;
 }
 
@@ -1267,7 +1257,6 @@ a.disable {
     width: 25px;
     height: 14px;
     vertical-align: middle;
-    background: url(/images/bookicons.png?b17e991a) 0 -706px;
 }
 
 h3.orderhead {
@@ -1376,7 +1365,6 @@ h3.orderhead {
     height: 54px;
     padding: 5px 13px 5px 25px;
     border: #fc9 solid 1px;
-    background: url(/images/logicon.png?a50fb54d) 7px 8px no-repeat #ffc;
 }
 
 .paynote p {
@@ -1436,7 +1424,6 @@ h3.orderhead {
     height: 11px;
     position: absolute;
     left: 30px;
-    background: url(/images/bookicons.png?b17e991a) 9999px 9999px no-repeat;
 }
 
 .m-bselect .type1 {
@@ -1485,7 +1472,6 @@ h3.orderhead {
     height: 14px;
     margin: 0 0 0 3px;
     vertical-align: middle;
-    background: url(/images/bookicons.png?b17e991a) 0 -761px no-repeat;
 }
 
 .m-bselect a.hb:hover {
@@ -1592,7 +1578,6 @@ h3.orderhead {
     float: left;
     width: 100px;
     height: 100px;
-    background: url(/images/newface.png?6e99d6e4) 9999px 9999px no-repeat;
 }
 
 .m-sucessdone .leftpic {
@@ -1637,7 +1622,6 @@ h3.orderhead {
     display: inline-block;
     width: 16px;
     height: 16px;
-    background: url(/images/promotion/guoqin/arrow.png?c643b823) 0 0 no-repeat;
 }
 
 .m-sucessdone .rightinfo p .txt-larger {
@@ -1742,7 +1726,6 @@ h3.orderhead {
 }
 
 .m-sucessdone .rightinfo .newyear-gift-success .btn a {
-    background: url(/images/common/btn-share.png?f534b21c) no-repeat;
     display: inline-block;
     width: 110px;
     height: 34px;
@@ -1763,7 +1746,6 @@ h3.orderhead {
 }
 
 .m-sucessdone .rightinfo .newyear-gift-success .btn .yixin-code {
-    background: url(/images/common/yixin-code.png?cb913de0) no-repeat;
     width: 150px;
     height: 136px;
     position: absolute;
@@ -1841,7 +1823,6 @@ table.m-bought td.ltd a:hover {
     left: 0;
     width: 58px;
     height: 76px;
-    background: url(/images/icon-hongbao.jpg?29ff1870) 0 -139px no-repeat;
 }
 
 .m-andriodhb .icon p {
@@ -1875,7 +1856,6 @@ table.m-bought td.ltd a:hover {
     position: absolute;
     left: 70px;
     top: 0;
-    background: url(/images/icon-hongbao.jpg?29ff1870) 0 -225px no-repeat;
 }
 
 .m-andriodhb .qr p {
@@ -2010,4 +1990,10 @@ table.m-bought td.ltd a:hover {
     -moz-animation-name: bounce;
     -ms-animation-name: bounce;
     animation-name: bounce;
+}
+
+.abc{
+    top: 260px;
+    left: 50%;
+    margin-left: -325px;
 }

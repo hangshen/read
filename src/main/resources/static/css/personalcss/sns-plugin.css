@@ -26,7 +26,6 @@
 }
 
 .sns-droplist li i {
-    background: url(/images/sns/sns_9.png?7ad54a85) no-repeat;
     margin: 5px 4px 0 0;
     width: 16px;
     height: 15px;
@@ -98,7 +97,6 @@
 .sns-overlay .hd {
     height: 40px;
     line-height: 40px;
-    background: url(/images/sns/sns_1.png?6d762356);
     overflow: hidden;
     position: relative;
     font-size: 14px;
@@ -111,7 +109,6 @@
     width: 24px;
     height: 25px;
     margin: 7px 5px 0 0;
-    background: url(/images/sns/sns_10.png?13ae077b) no-repeat;
 }
 
 .sns-overlay .hd h4.t-email i {
@@ -162,7 +159,6 @@
     width: 15px;
     height: 15px;
     position: absolute;
-    background: url(/images/sns/sns_2.png?b6cb3a9d) no-repeat;
     top: 12px;
     right: 10px;
     text-indent: -9999px;
@@ -194,7 +190,6 @@
     float: left;
     width: 118px;
     height: 118px;
-    background: url(/images/sns/yixin-code.jpg?69f4784b) no-repeat;
     margin: 0 0 0 30px;
 }
 
@@ -240,7 +235,6 @@
 
 .sns-overlay .bd .friends-list {
     border: #d9d9d9 solid 1px;
-    background: url(/images/sns/sns_3.png?989fa773) repeat-x;
     height: 240px;
     overflow-y: scroll;
     border-top: none;
@@ -299,7 +293,6 @@
     height: 9px;
     display: inline-block;
     overflow: hidden;
-    background: url(/images/sns/sns_5.png?a2420fe8) no-repeat;
     margin-left: 5px;
     cursor: pointer;
     _vertical-align: middle;
@@ -357,7 +350,6 @@
     right: 0;
     width: 16px;
     height: 16px;
-    background: url(/images/image-tick.png?bcbee2af) 0 0 no-repeat;
 }
 
 .sns-overlay .bd .textarea-box label {
@@ -411,7 +403,6 @@
 }
 
 .sns-overlay .bd .success-tip {
-    background: url(/images/sns/sns_7.png?ce4557b2) no-repeat;
     height: 23px;
     line-height: 23px;
     font-size: 14px;
@@ -422,7 +413,6 @@
 }
 
 .sns-overlay .bd .fail-tip {
-    background: url(/images/sns/sns_8.png?2ce67831) no-repeat 4px 0;
     padding-left: 30px;
 }
 
@@ -620,7 +610,6 @@
     font-weight: bold;
     color: #fff;
     margin-left: 20px;
-    background: url(/images/sns/sns_4.png?13018846);
     cursor: pointer;
 }
 
@@ -633,6 +622,5 @@
     font-weight: bold;
     color: #999;
     margin-left: 20px;
-    background: url(/images/sns/sns_6.png?2e4b9e72);
     cursor: pointer;
 }

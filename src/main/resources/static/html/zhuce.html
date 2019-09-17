@@ -28,7 +28,7 @@
                 </span> </a></div>
     </div>
     <div id="app" class="m-app">
-        <div>
+        <div id="step1">
             <div class="stepguide clearfix">
                 <div>
                     <div id="first" class="step stepcurrent">
@@ -142,6 +142,834 @@
                 <div class="m-gologin">
                     已有帐号？<a href="login.html" class="u-href">去登录</a></div>
             </div> <!----> <!----></div>
+        <div id="step2" style="display: none;">
+            <div class="stepguide clearfix">
+                <div>
+                    <div class="step stepcurrent stepsuccess">
+                        <div class="number">
+                            1
+                            <p class="right">
+                            </p><div class="iconfont icon-ic-right">
+                            <svg aria-hidden="true" class="icon ">
+                                <use xlink:href="#icon-ic-right"></use>
+                            </svg>
+                        </div>
+                            <p></p></div>
+                        <div class="line"><p class="line-state line-state-ok-2"></p></div>
+                        <div>填写帐号密码</div>
+                    </div>
+                    <div class="step stepcurrent">
+                        <div class="number">
+                            2
+                            <p class="right">
+                            </p><div class="iconfont icon-ic-right">
+                            <svg aria-hidden="true" class="icon ">
+                                <use xlink:href="#icon-ic-right"></use>
+                            </svg>
+                        </div>
+                            <p></p></div>
+                        <div class="line"><p class="line-state"></p></div>
+                        <div>验证手机号码</div>
+                    </div>
+                    <div class="step">
+                        <div class="number">
+                            3
+                            <p class="right">
+                            </p><div class="iconfont icon-ic-right">
+                            <svg aria-hidden="true" class="icon ">
+                                <use xlink:href="#icon-ic-right"></use>
+                            </svg>
+                        </div>
+                            <p></p></div> <!---->
+                        <div>完成注册</div>
+                    </div>
+                </div>
+            </div>
+            <div class="box">
+                <div class="tips">
+                    为了确保帐号安全，您的手机号码将作为该帐号的安全手机，其他人不会看到您的手机号码。
+                </div>
+                <div>
+                    <form>
+                        <div class="nop-form-item nop-form-item-"><!---->
+                            <div class="nop-form-item-input">
+                                <div class="nop-form-item-input-inner">
+                                    <div>
+                                        <div class="cMobile bview-input-wrapper" style="width: 100%;">
+                                            <span class="bview-input-icon-prepend">
+                                                <span class="u-ic"><em>+86</em>
+                                                    <i class="btn"></i>
+                                                </span>
+                                            </span> <!----> <!---->
+                                            <input name="smsphone" placeholder="请输入手机号" autocomplete="off" maxlength="11" type="text" class="bview-input bview-input-with-prepend"> <span class="ieplaceholder" style="display: none;">请输入手机号</span> <!---->
+                                            <div data-ismask="1" class="m-mask" style="display: none;">
+                                                <div class="m-pop-ic">
+                                                    <ul class="u-country">
+                                                        <li><i class="tlt">常用地区</i></li>
+                                                        <li><i data-code="86"><em data-code="86">+86</em>
+                                                            中国
+                                                        </i></li>
+                                                        <li><i data-code="852"><em data-code="852">+852</em>
+                                                            中国香港
+                                                        </i></li>
+                                                        <li><i data-code="853"><em data-code="853">+853</em>
+                                                            中国澳门
+                                                        </i></li>
+                                                        <li><i data-code="886"><em data-code="886">+886</em>
+                                                            中国台湾
+                                                        </i></li>
+                                                        <li><i class="tlt">其他地区</i></li>
+                                                        <li><i data-code="355"><em data-code="355">+355</em>
+                                                            阿尔巴尼亚
+                                                        </i></li>
+                                                        <li><i data-code="213"><em data-code="213">+213</em>
+                                                            阿尔及利亚
+                                                        </i></li>
+                                                        <li><i data-code="93"><em data-code="93">+93</em>
+                                                            阿富汗
+                                                        </i></li>
+                                                        <li><i data-code="54"><em data-code="54">+54</em>
+                                                            阿根廷
+                                                        </i></li>
+                                                        <li><i data-code="971"><em data-code="971">+971</em>
+                                                            阿拉伯联合大公国
+                                                        </i></li>
+                                                        <li><i data-code="297"><em data-code="297">+297</em>
+                                                            阿鲁巴
+                                                        </i></li>
+                                                        <li><i data-code="968"><em data-code="968">+968</em>
+                                                            阿曼
+                                                        </i></li>
+                                                        <li><i data-code="994"><em data-code="994">+994</em>
+                                                            阿塞拜疆
+                                                        </i></li>
+                                                        <li><i data-code="20"><em data-code="20">+20</em>
+                                                            埃及
+                                                        </i></li>
+                                                        <li><i data-code="251"><em data-code="251">+251</em>
+                                                            埃塞俄比亚
+                                                        </i></li>
+                                                        <li><i data-code="353"><em data-code="353">+353</em>
+                                                            爱尔兰
+                                                        </i></li>
+                                                        <li><i data-code="372"><em data-code="372">+372</em>
+                                                            爱沙尼亚
+                                                        </i></li>
+                                                        <li><i data-code="376"><em data-code="376">+376</em>
+                                                            安道尔
+                                                        </i></li>
+                                                        <li><i data-code="244"><em data-code="244">+244</em>
+                                                            安哥拉
+                                                        </i></li>
+                                                        <li><i data-code="1264"><em data-code="1264">+1264</em>
+                                                            安圭拉
+                                                        </i></li>
+                                                        <li><i data-code="1268"><em data-code="1268">+1268</em>
+                                                            安提瓜和巴布达
+                                                        </i></li>
+                                                        <li><i data-code="43"><em data-code="43">+43</em>
+                                                            奥地利
+                                                        </i></li>
+                                                        <li><i data-code="61"><em data-code="61">+61</em>
+                                                            澳大利亚
+                                                        </i></li>
+                                                        <li><i data-code="1246"><em data-code="1246">+1246</em>
+                                                            巴巴多斯
+                                                        </i></li>
+                                                        <li><i data-code="675"><em data-code="675">+675</em>
+                                                            巴布亚新几内亚
+                                                        </i></li>
+                                                        <li><i data-code="1242"><em data-code="1242">+1242</em>
+                                                            巴哈马
+                                                        </i></li>
+                                                        <li><i data-code="92"><em data-code="92">+92</em>
+                                                            巴基斯坦
+                                                        </i></li>
+                                                        <li><i data-code="595"><em data-code="595">+595</em>
+                                                            巴拉圭
+                                                        </i></li>
+                                                        <li><i data-code="970"><em data-code="970">+970</em>
+                                                            巴勒斯坦领土
+                                                        </i></li>
+                                                        <li><i data-code="973"><em data-code="973">+973</em>
+                                                            巴林
+                                                        </i></li>
+                                                        <li><i data-code="507"><em data-code="507">+507</em>
+                                                            巴拿马
+                                                        </i></li>
+                                                        <li><i data-code="55"><em data-code="55">+55</em>
+                                                            巴西
+                                                        </i></li>
+                                                        <li><i data-code="375"><em data-code="375">+375</em>
+                                                            白俄罗斯
+                                                        </i></li>
+                                                        <li><i data-code="1441"><em data-code="1441">+1441</em>
+                                                            百慕大
+                                                        </i></li>
+                                                        <li><i data-code="359"><em data-code="359">+359</em>
+                                                            保加利亚
+                                                        </i></li>
+                                                        <li><i data-code="229"><em data-code="229">+229</em>
+                                                            贝宁
+                                                        </i></li>
+                                                        <li><i data-code="32"><em data-code="32">+32</em>
+                                                            比利时
+                                                        </i></li>
+                                                        <li><i data-code="354"><em data-code="354">+354</em>
+                                                            冰岛
+                                                        </i></li>
+                                                        <li><i data-code="1787"><em data-code="1787">+1787</em>
+                                                            波多黎各
+                                                        </i></li>
+                                                        <li><i data-code="48"><em data-code="48">+48</em>
+                                                            波兰
+                                                        </i></li>
+                                                        <li><i data-code="387"><em data-code="387">+387</em>
+                                                            波斯尼亚和黑塞哥维那
+                                                        </i></li>
+                                                        <li><i data-code="591"><em data-code="591">+591</em>
+                                                            玻利维亚
+                                                        </i></li>
+                                                        <li><i data-code="501"><em data-code="501">+501</em>
+                                                            伯利兹
+                                                        </i></li>
+                                                        <li><i data-code="267"><em data-code="267">+267</em>
+                                                            博茨瓦纳
+                                                        </i></li>
+                                                        <li><i data-code="975"><em data-code="975">+975</em>
+                                                            不丹
+                                                        </i></li>
+                                                        <li><i data-code="226"><em data-code="226">+226</em>
+                                                            布基纳法索
+                                                        </i></li>
+                                                        <li><i data-code="257"><em data-code="257">+257</em>
+                                                            布隆迪
+                                                        </i></li>
+                                                        <li><i data-code="850"><em data-code="850">+850</em>
+                                                            朝鲜
+                                                        </i></li>
+                                                        <li><i data-code="240"><em data-code="240">+240</em>
+                                                            赤道几内亚
+                                                        </i></li>
+                                                        <li><i data-code="45"><em data-code="45">+45</em>
+                                                            丹麦
+                                                        </i></li>
+                                                        <li><i data-code="49"><em data-code="49">+49</em>
+                                                            德国
+                                                        </i></li>
+                                                        <li><i data-code="670"><em data-code="670">+670</em>
+                                                            东帝汶
+                                                        </i></li>
+                                                        <li><i data-code="228"><em data-code="228">+228</em>
+                                                            多哥
+                                                        </i></li>
+                                                        <li><i data-code="1809"><em data-code="1809">+1809</em>
+                                                            多米尼加共和国
+                                                        </i></li>
+                                                        <li><i data-code="1767"><em data-code="1767">+1767</em>
+                                                            多米尼克
+                                                        </i></li>
+                                                        <li><i data-code="7"><em data-code="7">+7</em>
+                                                            俄罗斯
+                                                        </i></li>
+                                                        <li><i data-code="593"><em data-code="593">+593</em>
+                                                            厄瓜多尔
+                                                        </i></li>
+                                                        <li><i data-code="291"><em data-code="291">+291</em>
+                                                            厄立特里亚
+                                                        </i></li>
+                                                        <li><i data-code="33"><em data-code="33">+33</em>
+                                                            法国
+                                                        </i></li>
+                                                        <li><i data-code="298"><em data-code="298">+298</em>
+                                                            法罗群岛
+                                                        </i></li>
+                                                        <li><i data-code="689"><em data-code="689">+689</em>
+                                                            法属波利尼西亚
+                                                        </i></li>
+                                                        <li><i data-code="594"><em data-code="594">+594</em>
+                                                            法属圭亚那
+                                                        </i></li>
+                                                        <li><i data-code="63"><em data-code="63">+63</em>
+                                                            菲律宾
+                                                        </i></li>
+                                                        <li><i data-code="679"><em data-code="679">+679</em>
+                                                            斐济
+                                                        </i></li>
+                                                        <li><i data-code="358"><em data-code="358">+358</em>
+                                                            芬兰
+                                                        </i></li>
+                                                        <li><i data-code="238"><em data-code="238">+238</em>
+                                                            佛得角
+                                                        </i></li>
+                                                        <li><i data-code="220"><em data-code="220">+220</em>
+                                                            冈比亚
+                                                        </i></li>
+                                                        <li><i data-code="242"><em data-code="242">+242</em>
+                                                            刚果共和国
+                                                        </i></li>
+                                                        <li><i data-code="243"><em data-code="243">+243</em>
+                                                            刚果民主共和国
+                                                        </i></li>
+                                                        <li><i data-code="57"><em data-code="57">+57</em>
+                                                            哥伦比亚
+                                                        </i></li>
+                                                        <li><i data-code="506"><em data-code="506">+506</em>
+                                                            哥斯达黎加
+                                                        </i></li>
+                                                        <li><i data-code="1473"><em data-code="1473">+1473</em>
+                                                            格林纳达
+                                                        </i></li>
+                                                        <li><i data-code="299"><em data-code="299">+299</em>
+                                                            格陵兰
+                                                        </i></li>
+                                                        <li><i data-code="995"><em data-code="995">+995</em>
+                                                            格鲁吉亚
+                                                        </i></li>
+                                                        <li><i data-code="53"><em data-code="53">+53</em>
+                                                            古巴
+                                                        </i></li>
+                                                        <li><i data-code="590"><em data-code="590">+590</em>
+                                                            瓜德罗普岛
+                                                        </i></li>
+                                                        <li><i data-code="1671"><em data-code="1671">+1671</em>
+                                                            关岛
+                                                        </i></li>
+                                                        <li><i data-code="592"><em data-code="592">+592</em>
+                                                            圭亚那
+                                                        </i></li>
+                                                        <li><i data-code="7"><em data-code="7">+7</em>
+                                                            哈萨克斯坦
+                                                        </i></li>
+                                                        <li><i data-code="509"><em data-code="509">+509</em>
+                                                            海地
+                                                        </i></li>
+                                                        <li><i data-code="82"><em data-code="82">+82</em>
+                                                            韩国
+                                                        </i></li>
+                                                        <li><i data-code="31"><em data-code="31">+31</em>
+                                                            荷兰
+                                                        </i></li>
+                                                        <li><i data-code="599"><em data-code="599">+599</em>
+                                                            荷属安的列斯群岛
+                                                        </i></li>
+                                                        <li><i data-code="382"><em data-code="382">+382</em>
+                                                            黑山
+                                                        </i></li>
+                                                        <li><i data-code="504"><em data-code="504">+504</em>
+                                                            洪都拉斯
+                                                        </i></li>
+                                                        <li><i data-code="253"><em data-code="253">+253</em>
+                                                            吉布提
+                                                        </i></li>
+                                                        <li><i data-code="996"><em data-code="996">+996</em>
+                                                            吉尔吉斯斯坦
+                                                        </i></li>
+                                                        <li><i data-code="224"><em data-code="224">+224</em>
+                                                            几内亚
+                                                        </i></li>
+                                                        <li><i data-code="245"><em data-code="245">+245</em>
+                                                            几内亚比绍
+                                                        </i></li>
+                                                        <li><i data-code="1"><em data-code="1">+1</em>
+                                                            加拿大
+                                                        </i></li>
+                                                        <li><i data-code="233"><em data-code="233">+233</em>
+                                                            加纳
+                                                        </i></li>
+                                                        <li><i data-code="241"><em data-code="241">+241</em>
+                                                            加蓬
+                                                        </i></li>
+                                                        <li><i data-code="855"><em data-code="855">+855</em>
+                                                            柬埔寨
+                                                        </i></li>
+                                                        <li><i data-code="420"><em data-code="420">+420</em>
+                                                            捷克
+                                                        </i></li>
+                                                        <li><i data-code="263"><em data-code="263">+263</em>
+                                                            津巴布韦
+                                                        </i></li>
+                                                        <li><i data-code="237"><em data-code="237">+237</em>
+                                                            喀麦隆
+                                                        </i></li>
+                                                        <li><i data-code="974"><em data-code="974">+974</em>
+                                                            卡塔尔
+                                                        </i></li>
+                                                        <li><i data-code="1345"><em data-code="1345">+1345</em>
+                                                            开曼群岛
+                                                        </i></li>
+                                                        <li><i data-code="269"><em data-code="269">+269</em>
+                                                            科摩罗
+                                                        </i></li>
+                                                        <li><i data-code="225"><em data-code="225">+225</em>
+                                                            科特迪瓦
+                                                        </i></li>
+                                                        <li><i data-code="965"><em data-code="965">+965</em>
+                                                            科威特
+                                                        </i></li>
+                                                        <li><i data-code="385"><em data-code="385">+385</em>
+                                                            克罗地亚
+                                                        </i></li>
+                                                        <li><i data-code="254"><em data-code="254">+254</em>
+                                                            肯尼亚
+                                                        </i></li>
+                                                        <li><i data-code="682"><em data-code="682">+682</em>
+                                                            库克群岛
+                                                        </i></li>
+                                                        <li><i data-code="371"><em data-code="371">+371</em>
+                                                            拉脱维亚
+                                                        </i></li>
+                                                        <li><i data-code="266"><em data-code="266">+266</em>
+                                                            莱索托
+                                                        </i></li>
+                                                        <li><i data-code="856"><em data-code="856">+856</em>
+                                                            老挝
+                                                        </i></li>
+                                                        <li><i data-code="961"><em data-code="961">+961</em>
+                                                            黎巴嫩
+                                                        </i></li>
+                                                        <li><i data-code="370"><em data-code="370">+370</em>
+                                                            立陶宛
+                                                        </i></li>
+                                                        <li><i data-code="231"><em data-code="231">+231</em>
+                                                            利比里亚
+                                                        </i></li>
+                                                        <li><i data-code="218"><em data-code="218">+218</em>
+                                                            利比亚
+                                                        </i></li>
+                                                        <li><i data-code="423"><em data-code="423">+423</em>
+                                                            列支敦士登
+                                                        </i></li>
+                                                        <li><i data-code="262"><em data-code="262">+262</em>
+                                                            留尼旺岛
+                                                        </i></li>
+                                                        <li><i data-code="352"><em data-code="352">+352</em>
+                                                            卢森堡
+                                                        </i></li>
+                                                        <li><i data-code="250"><em data-code="250">+250</em>
+                                                            卢旺达
+                                                        </i></li>
+                                                        <li><i data-code="40"><em data-code="40">+40</em>
+                                                            罗马尼亚
+                                                        </i></li>
+                                                        <li><i data-code="261"><em data-code="261">+261</em>
+                                                            马达加斯加
+                                                        </i></li>
+                                                        <li><i data-code="960"><em data-code="960">+960</em>
+                                                            马尔代夫
+                                                        </i></li>
+                                                        <li><i data-code="356"><em data-code="356">+356</em>
+                                                            马耳他
+                                                        </i></li>
+                                                        <li><i data-code="1"><em data-code="1">+1</em>
+                                                            美国
+                                                        </i></li>
+                                                        <li><i data-code="265"><em data-code="265">+265</em>
+                                                            马拉维
+                                                        </i></li>
+                                                        <li><i data-code="60"><em data-code="60">+60</em>
+                                                            马来西亚
+                                                        </i></li>
+                                                        <li><i data-code="223"><em data-code="223">+223</em>
+                                                            马里
+                                                        </i></li>
+                                                        <li><i data-code="389"><em data-code="389">+389</em>
+                                                            马其顿
+                                                        </i></li>
+                                                        <li><i data-code="596"><em data-code="596">+596</em>
+                                                            马提尼克
+                                                        </i></li>
+                                                        <li><i data-code="230"><em data-code="230">+230</em>
+                                                            毛里求斯
+                                                        </i></li>
+                                                        <li><i data-code="222"><em data-code="222">+222</em>
+                                                            毛里塔尼亚
+                                                        </i></li>
+                                                        <li><i data-code="976"><em data-code="976">+976</em>
+                                                            蒙古
+                                                        </i></li>
+                                                        <li><i data-code="1664"><em data-code="1664">+1664</em>
+                                                            蒙特塞拉特
+                                                        </i></li>
+                                                        <li><i data-code="880"><em data-code="880">+880</em>
+                                                            孟加拉国
+                                                        </i></li>
+                                                        <li><i data-code="51"><em data-code="51">+51</em>
+                                                            秘鲁
+                                                        </i></li>
+                                                        <li><i data-code="373"><em data-code="373">+373</em>
+                                                            摩尔多瓦
+                                                        </i></li>
+                                                        <li><i data-code="212"><em data-code="212">+212</em>
+                                                            摩洛哥
+                                                        </i></li>
+                                                        <li><i data-code="377"><em data-code="377">+377</em>
+                                                            摩纳哥
+                                                        </i></li>
+                                                        <li><i data-code="258"><em data-code="258">+258</em>
+                                                            莫桑比克
+                                                        </i></li>
+                                                        <li><i data-code="52"><em data-code="52">+52</em>
+                                                            墨西哥
+                                                        </i></li>
+                                                        <li><i data-code="264"><em data-code="264">+264</em>
+                                                            纳米比亚
+                                                        </i></li>
+                                                        <li><i data-code="27"><em data-code="27">+27</em>
+                                                            南非
+                                                        </i></li>
+                                                        <li><i data-code="211"><em data-code="211">+211</em>
+                                                            南苏丹
+                                                        </i></li>
+                                                        <li><i data-code="977"><em data-code="977">+977</em>
+                                                            尼泊尔
+                                                        </i></li>
+                                                        <li><i data-code="505"><em data-code="505">+505</em>
+                                                            尼加拉瓜
+                                                        </i></li>
+                                                        <li><i data-code="227"><em data-code="227">+227</em>
+                                                            尼日尔
+                                                        </i></li>
+                                                        <li><i data-code="234"><em data-code="234">+234</em>
+                                                            尼日利亚
+                                                        </i></li>
+                                                        <li><i data-code="47"><em data-code="47">+47</em>
+                                                            挪威
+                                                        </i></li>
+                                                        <li><i data-code="351"><em data-code="351">+351</em>
+                                                            葡萄牙
+                                                        </i></li>
+                                                        <li><i data-code="81"><em data-code="81">+81</em>
+                                                            日本
+                                                        </i></li>
+                                                        <li><i data-code="46"><em data-code="46">+46</em>
+                                                            瑞典
+                                                        </i></li>
+                                                        <li><i data-code="41"><em data-code="41">+41</em>
+                                                            瑞士
+                                                        </i></li>
+                                                        <li><i data-code="503"><em data-code="503">+503</em>
+                                                            萨尔瓦多
+                                                        </i></li>
+                                                        <li><i data-code="685"><em data-code="685">+685</em>
+                                                            萨摩亚
+                                                        </i></li>
+                                                        <li><i data-code="381"><em data-code="381">+381</em>
+                                                            塞尔维亚
+                                                        </i></li>
+                                                        <li><i data-code="232"><em data-code="232">+232</em>
+                                                            塞拉利昂
+                                                        </i></li>
+                                                        <li><i data-code="221"><em data-code="221">+221</em>
+                                                            塞内加尔
+                                                        </i></li>
+                                                        <li><i data-code="357"><em data-code="357">+357</em>
+                                                            塞浦路斯
+                                                        </i></li>
+                                                        <li><i data-code="248"><em data-code="248">+248</em>
+                                                            塞舌尔
+                                                        </i></li>
+                                                        <li><i data-code="966"><em data-code="966">+966</em>
+                                                            沙特阿拉伯
+                                                        </i></li>
+                                                        <li><i data-code="239"><em data-code="239">+239</em>
+                                                            圣多美和普林西比
+                                                        </i></li>
+                                                        <li><i data-code="1869"><em data-code="1869">+1869</em>
+                                                            圣基茨和尼维斯
+                                                        </i></li>
+                                                        <li><i data-code="1758"><em data-code="1758">+1758</em>
+                                                            圣卢西亚
+                                                        </i></li>
+                                                        <li><i data-code="378"><em data-code="378">+378</em>
+                                                            圣马力诺
+                                                        </i></li>
+                                                        <li><i data-code="508"><em data-code="508">+508</em>
+                                                            圣皮埃尔和密克隆群岛
+                                                        </i></li>
+                                                        <li><i data-code="1784"><em data-code="1784">+1784</em>
+                                                            圣文森特和格林纳丁斯
+                                                        </i></li>
+                                                        <li><i data-code="94"><em data-code="94">+94</em>
+                                                            斯里兰卡
+                                                        </i></li>
+                                                        <li><i data-code="421"><em data-code="421">+421</em>
+                                                            斯洛伐克
+                                                        </i></li>
+                                                        <li><i data-code="386"><em data-code="386">+386</em>
+                                                            斯洛文尼亚
+                                                        </i></li>
+                                                        <li><i data-code="268"><em data-code="268">+268</em>
+                                                            斯威士兰
+                                                        </i></li>
+                                                        <li><i data-code="249"><em data-code="249">+249</em>
+                                                            苏丹
+                                                        </i></li>
+                                                        <li><i data-code="597"><em data-code="597">+597</em>
+                                                            苏里南
+                                                        </i></li>
+                                                        <li><i data-code="252"><em data-code="252">+252</em>
+                                                            索马里
+                                                        </i></li>
+                                                        <li><i data-code="992"><em data-code="992">+992</em>
+                                                            塔吉克斯坦
+                                                        </i></li>
+                                                        <li><i data-code="66"><em data-code="66">+66</em>
+                                                            泰国
+                                                        </i></li>
+                                                        <li><i data-code="255"><em data-code="255">+255</em>
+                                                            坦桑尼亚
+                                                        </i></li>
+                                                        <li><i data-code="676"><em data-code="676">+676</em>
+                                                            汤加
+                                                        </i></li>
+                                                        <li><i data-code="1649"><em data-code="1649">+1649</em>
+                                                            特克斯和凯科斯群岛
+                                                        </i></li>
+                                                        <li><i data-code="1868"><em data-code="1868">+1868</em>
+                                                            特里尼达和多巴哥
+                                                        </i></li>
+                                                        <li><i data-code="216"><em data-code="216">+216</em>
+                                                            突尼斯
+                                                        </i></li>
+                                                        <li><i data-code="90"><em data-code="90">+90</em>
+                                                            土耳其
+                                                        </i></li>
+                                                        <li><i data-code="993"><em data-code="993">+993</em>
+                                                            土库曼斯坦
+                                                        </i></li>
+                                                        <li><i data-code="678"><em data-code="678">+678</em>
+                                                            瓦努阿图
+                                                        </i></li>
+                                                        <li><i data-code="502"><em data-code="502">+502</em>
+                                                            危地马拉
+                                                        </i></li>
+                                                        <li><i data-code="58"><em data-code="58">+58</em>
+                                                            委内瑞拉
+                                                        </i></li>
+                                                        <li><i data-code="673"><em data-code="673">+673</em>
+                                                            文莱
+                                                        </i></li>
+                                                        <li><i data-code="256"><em data-code="256">+256</em>
+                                                            乌干达
+                                                        </i></li>
+                                                        <li><i data-code="380"><em data-code="380">+380</em>
+                                                            乌克兰
+                                                        </i></li>
+                                                        <li><i data-code="598"><em data-code="598">+598</em>
+                                                            乌拉圭
+                                                        </i></li>
+                                                        <li><i data-code="998"><em data-code="998">+998</em>
+                                                            乌兹别克斯坦
+                                                        </i></li>
+                                                        <li><i data-code="34"><em data-code="34">+34</em>
+                                                            西班牙
+                                                        </i></li>
+                                                        <li><i data-code="30"><em data-code="30">+30</em>
+                                                            希腊
+                                                        </i></li>
+                                                        <li><i data-code="65"><em data-code="65">+65</em>
+                                                            新加坡
+                                                        </i></li>
+                                                        <li><i data-code="687"><em data-code="687">+687</em>
+                                                            新喀里多尼亚
+                                                        </i></li>
+                                                        <li><i data-code="64"><em data-code="64">+64</em>
+                                                            新西兰
+                                                        </i></li>
+                                                        <li><i data-code="36"><em data-code="36">+36</em>
+                                                            匈牙利
+                                                        </i></li>
+                                                        <li><i data-code="963"><em data-code="963">+963</em>
+                                                            叙利亚
+                                                        </i></li>
+                                                        <li><i data-code="1876"><em data-code="1876">+1876</em>
+                                                            牙买加
+                                                        </i></li>
+                                                        <li><i data-code="374"><em data-code="374">+374</em>
+                                                            亚美尼亚
+                                                        </i></li>
+                                                        <li><i data-code="967"><em data-code="967">+967</em>
+                                                            也门
+                                                        </i></li>
+                                                        <li><i data-code="964"><em data-code="964">+964</em>
+                                                            伊拉克
+                                                        </i></li>
+                                                        <li><i data-code="98"><em data-code="98">+98</em>
+                                                            伊朗
+                                                        </i></li>
+                                                        <li><i data-code="972"><em data-code="972">+972</em>
+                                                            以色列
+                                                        </i></li>
+                                                        <li><i data-code="39"><em data-code="39">+39</em>
+                                                            意大利
+                                                        </i></li>
+                                                        <li><i data-code="91"><em data-code="91">+91</em>
+                                                            印度
+                                                        </i></li>
+                                                        <li><i data-code="62"><em data-code="62">+62</em>
+                                                            印度尼西亚
+                                                        </i></li>
+                                                        <li><i data-code="44"><em data-code="44">+44</em>
+                                                            英格兰
+                                                        </i></li>
+                                                        <li><i data-code="44"><em data-code="44">+44</em>
+                                                            英国
+                                                        </i></li>
+                                                        <li><i data-code="1340"><em data-code="1340">+1340</em>
+                                                            英属维尔京群岛
+                                                        </i></li>
+                                                        <li><i data-code="962"><em data-code="962">+962</em>
+                                                            约旦
+                                                        </i></li>
+                                                        <li><i data-code="84"><em data-code="84">+84</em>
+                                                            越南
+                                                        </i></li>
+                                                        <li><i data-code="260"><em data-code="260">+260</em>
+                                                            赞比亚
+                                                        </i></li>
+                                                        <li><i data-code="44"><em data-code="44">+44</em>
+                                                            泽西岛
+                                                        </i></li>
+                                                        <li><i data-code="235"><em data-code="235">+235</em>
+                                                            乍得
+                                                        </i></li>
+                                                        <li><i data-code="350"><em data-code="350">+350</em>
+                                                            直布罗陀
+                                                        </i></li>
+                                                        <li><i data-code="56"><em data-code="56">+56</em>
+                                                            智利
+                                                        </i></li>
+                                                        <li><i data-code="236"><em data-code="236">+236</em>
+                                                            中非共和国
+                                                        </i></li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="extra-tip">
+
+                                    </div>
+                                </div>
+                                <div class="nop-form-item-tip"></div>
+                            </div>
+                        </div>
+                        <div class="nop-form-item nop-form-item-"><!---->
+                            <div class="nop-form-item-input">
+                                <div class="nop-form-item-input-inner">
+                                    <div class="sms-input-wrapper">
+                                        <div class="sms-input">
+                                            <div class="bview-input-wrapper" style="width: 100%;"><!----> <!---->
+                                                <!----> <input name="smsmessage" placeholder="输入短信验证码" autocomplete="off" maxlength="6" type="text" class="bview-input"> <span id="ieplaceholdermsg" class="ieplaceholder" style="display: none;">输入短信验证码</span>
+                                                <!----> </div>
+                                        </div>
+                                        <div id="getsms" class="sms-button bview-button bview-button-size bview-button-default">
+                                            <span>获取验证码</span>
+                                        </div>
+                                    </div>
+                                    <div class="extra-tip">
+
+                                    </div>
+                                </div>
+                                <div class="nop-form-item-tip"></div>
+                            </div>
+                        </div>
+                    </form>
+                    <button id="userregister" class="reg-button bview-button bview-button-size bview-button-primary">
+                        注册
+                        <span></span>
+                        <div class="bButton-mask" style="display: none;">
+                            <div class="bButton-loading">
+                                <div class="bview-switch-loading">
+                                    <svg aria-hidden="true" class="icon ">
+                                        <use xlink:href="#icon-ic-loading"></use>
+                                    </svg>
+                                </div>
+                            </div>
+                        </div>
+                    </button>
+                </div>
+                <div class="agree" style="display:none">
+                    <div class="u-agree-area">
+                        <div class="m-agree">
+                            <div class="iconfont icon-ic-right">
+                                <svg aria-hidden="true" class="icon ">
+                                    <use xlink:href="#icon-ic-right"></use>
+                                </svg>
+                            </div>
+                        </div>
+                        用户勾选即代表同意
+                    </div>
+                    <a href="https://reg.163.com/agreement.shtml" target="_blank" class="u-agree-link">《网易邮箱服务条款》</a>和<a href="https://reg.163.com/agreement_game.shtml" target="_blank" class="u-agree-link">《网易隐私政策》</a></div>
+            </div>
+            <div class="m-realname" style="display: none;">
+                <div class="u-title">
+                    设置实名信息
+                    <div class="close">
+                        <svg aria-hidden="true" class="icon ">
+                            <use xlink:href="#icon-ic-close1"></use>
+                        </svg>
+                    </div>
+                </div>
+                <div class="m-box"><p class="u-note">
+                    为确保帐号安全，请先设置实名信息再进行后续操作
+                </p>
+                    <form>
+                        <div class="nop-form-item nop-form-item-"><!---->
+                            <div class="nop-form-item-input">
+                                <div class="nop-form-item-input-inner">
+                                    <div class="bview-input-wrapper" style="width: 100%;"><!----> <!----> <!----> <input placeholder="真实姓名" autocomplete="off" type="text" class="bview-input"> <span class="ieplaceholder" style="display: none;">真实姓名</span> <!----> </div>
+                                    <div class="extra-tip">
+
+                                    </div>
+                                </div>
+                                <div class="nop-form-item-tip"></div>
+                            </div>
+                        </div>
+                        <div class="nop-form-item nop-form-item-"><!---->
+                            <div class="nop-form-item-input">
+                                <div class="nop-form-item-input-inner">
+                                    <div class="bview-input-wrapper" style="width: 100%;"><!----> <!----> <!----> <input placeholder="身份证号码" autocomplete="off" type="text" class="bview-input">
+                                        <span class="ieplaceholder" style="display: none;">身份证号码</span> <!----> </div>
+                                    <div class="extra-tip">
+
+                                    </div>
+                                </div>
+                                <div class="nop-form-item-tip"></div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="m-btn clearfix">
+                    <button class="bview-button bview-button-sizesmall bview-button-text">
+                        取消
+                        <span></span>
+                        <div class="bButton-mask" style="display: none;">
+                            <div class="bButton-loading">
+                                <div class="bview-switch-loading">
+                                    <svg aria-hidden="true" class="icon ">
+                                        <use xlink:href="#icon-ic-loading"></use>
+                                    </svg>
+                                </div>
+                            </div>
+                        </div>
+                    </button>
+                    <button class="bview-button bview-button-sizesmall bview-button-primary">
+                        下一步
+                        <span></span>
+                        <div class="bButton-mask" style="display: none;">
+                            <div class="bButton-loading">
+                                <div class="bview-switch-loading">
+                                    <svg aria-hidden="true" class="icon ">
+                                        <use xlink:href="#icon-ic-loading"></use>
+                                    </svg>
+                                </div>
+                            </div>
+                        </div>
+                    </button>
+                </div>
+            </div> <!----></div>
     </div>
     <div class="g-ft">
         <div class="g-in">
@@ -207,47 +1035,87 @@
         })
 
         //ajax账号检测功能 检测用户注册账号是否已经被注册过
-        $("#bviewinputemail").blur(function () {
-                $("#second").removeClass("nop-form-item-error");
-                $("#second").addClass("nop-form-item-");
-                $("#first").removeClass("stepError");
-                $("#first").addClass("stepcurrent");
-                $(".nop-form-item-tip").eq(0).html("");
+        var userEmail;
+        $("#button-step0").click(function () {
+            $("#second").removeClass("nop-form-item-error");
+            $("#second").addClass("nop-form-item-");
+            $("#first").removeClass("stepError");
+            $("#first").addClass("stepcurrent");
+            $(".nop-form-item-tip").eq(0).html("");
+            // alert("下一步 账号检测")
+            if($("#bviewinputemail").val() != "" && $("#bviewinputpassword").val() != ""){
+                // alert("账号检测进入ajax")
                 $.ajax({
                     url: "http://localhost:8080/checklogin",
                     type: "post",
                     data: {
-                        "userLoginAccount":$(this).val(),
+                        "userLoginAccount":$("#bviewinputemail").val(),
                     },
                     datatype: "json",
                     success: function (data) {
+                        // alert("账号检测返回数据");
                         if(data){
                             $("#first").removeClass("stepcurrent");
                             $("#first").addClass("stepError");
                             $("#second").removeClass("nop-form-item-");
                             $("#second").addClass("nop-form-item-error");
                             $(".nop-form-item-tip").eq(0).html("该账号已被注册");
+                        }else {
+                            // alert("检测成功进入下一步");
+                            userEmail=$("#bviewinputemail").val();
+                            $("#step1").css("display","none");
+                            $("#step2").css("display","block");
                         }
                     }
                 })
-            })
-        //注册功能 将账号+密码传给后端 更新数据库的注册表
-        $("#button-step0").click(function () {
+            }
+        })
+
+        var smsCode;
+        $("#getsms").click(function () {
+            // alert("获取验证码");
             $.ajax({
-                url: "http://localhost:8080/register",
+                url:"http://localhost:8080/sendphone",
                 type: "post",
-                data: {
-                    "userLoginAccount":$("#bviewinputemail").val(),
-                    "userLoginPassword":$("#bviewinputpassword").val(),
+                data:{
+                    "mobile":$("input[name='smsphone']").val(),
                 },
                 datatype: "json",
-                success: function (data) {
-                    sessionStorage.setItem("useeId",data);
-                    sessionStorage.setItem("userAccount",$("#bviewinputemail").val());
-                    window.location.href="http://localhost:8080/html/user_register_success.html";
+                success:function (data) {
+                    // alert("验证码获取成功");
+                    smsCode=data;
+                    // alert(smsCode);
+                },
+                erroe:function () {
+                    alert("请确认好手机号以及网络状态！！！")
                 }
             })
-
+        })
+        //注册功能 将账号+密码传给后端 更新数据库的注册表
+        $("#userregister").click(function () {
+            // alert("账号注册");
+            if($("input[name='smsmessage']").val() != ""){
+                // alert("验证码检测");
+                if($("input[name='smsmessage']").val() == smsCode){
+                    $.ajax({
+                        url: "http://localhost:8080/register",
+                        type: "post",
+                        data: {
+                            "userLoginAccount":$("#bviewinputemail").val(),
+                            "userLoginPassword":$("#bviewinputpassword").val(),
+                        },
+                        datatype: "json",
+                        success: function (data) {
+                            // alert("注册成功") 跳转页面;
+                            sessionStorage.setItem("useeId",data);
+                            sessionStorage.setItem("userAccount",userEmail);
+                            window.location.href="http://localhost:8080/html/user_register_success.html";
+                        }
+                    })
+                }else {
+                    alert("验证码错误");
+                }
+            }
         })
     })
 

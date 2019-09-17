@@ -1,18 +1,3 @@
-.imgareaselect-border1 {
-    background: url(/images/border-v.gif?d451d813) repeat-y left top;
-}
-
-.imgareaselect-border2 {
-    background: url(/images/border-h.gif?033ed644) repeat-x left top;
-}
-
-.imgareaselect-border3 {
-    background: url(/images/border-v.gif?d451d813) repeat-y right top;
-}
-
-.imgareaselect-border4 {
-    background: url(/images/border-h.gif?033ed644) repeat-x left bottom;
-}
 
 .imgareaselect-border1, .imgareaselect-border2, .imgareaselect-border3, .imgareaselect-border4 {
     filter: alpha(opacity=50);
