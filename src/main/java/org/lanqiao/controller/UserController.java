@@ -33,6 +33,13 @@ public class UserController {
         //返回userid
         return userService.chenkPassword(login).getUserId();
     }
+    /*
+    *用户个人信息修改
+     */
+    @RequestMapping("/setusermessage")
+    public UserLogin setUserMessage(Users user,Integer userLoginId){
+        return userService.updateUserMessage(user,userLoginId);
+    }
 
     /*
      *用户登录接口 检测密码是否正确 传入参数用户账号+密码 返回用户的个人信息，

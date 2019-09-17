@@ -71,4 +71,12 @@ public class UserServiceImpl implements UserService{
         return usersMapper.selectAllUser();
     }
 
+    @Override
+    public UserLogin updateUserMessage(Users user,Integer userLoginId) {
+        int userId=userLoginMapper.selectUserInfo(userLoginId).getUserLoginUserId();
+        user.setUserId(userId);
+        usersMapper.updateByPrimaryKeySelective(user);
+        return userLoginMapper.selectUserInfo(userLoginId);
+    }
+
 }
