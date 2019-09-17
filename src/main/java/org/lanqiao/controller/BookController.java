@@ -103,7 +103,7 @@ public class BookController {
         return bookService.insertSelective(bookShelf);
     }
     @RequestMapping("/selectAll")
-    public List<Books> selectAll(){
+    public List<Books> selectAll(Integer pageNum){
         return bookService.selectAll();
     }
     @RequestMapping("/selectByBooksName")
@@ -117,13 +117,6 @@ public class BookController {
     }
     @RequestMapping("/updateBook")
     public int updateByPrimaryKeySelective(@RequestBody Books record){
-//        Books record = new Books();
-//        record.setBookId(bookId);
-//        record.setBookName(bookName);
-//        record.setBookIntroduce(bookIntroduce);
-//        record.setBookFinishDate(bookFinishDate);
-//        record.setBookFlag(bookFlag);
-//        record.setBookTypeId(bookTypeId);
         return bookService.updateByPrimaryKeySelective(record);
     }
     @RequestMapping("/insertBook")

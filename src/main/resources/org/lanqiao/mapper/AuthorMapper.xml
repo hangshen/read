@@ -37,17 +37,22 @@ author
 INNER JOIN authorlogin ON authorlogin.author_login_author_id = author.author_id and author.author_id = #{authorId,jdbcType=INTEGER}
   </select>
 
+  <select id="selectByPrimaryKey" resultMap="AuthorMap" parameterType="java.lang.Integer" >
+    select
+    *
+    from author
+    where author_id = #{authorId,jdbcType=INTEGER}
+  </select>
+
   <select id="selectByAuthorLoginAuthorId" resultMap="AuthorMap" parameterType="java.lang.Integer" >
     select
     <include refid="Base_Column_List" />
     from author
     where author_id = #{authorLoginAuthorId,jdbcType=INTEGER}
   </select>
-
-
   <select id="selectByAuthorRealID" resultMap="AuthorMap" parameterType="java.lang.String" >
     select
-    <include refid="Base_Column_List" />
+    *
     from author
     where real_ID = #{realID,jdbcType=VARCHAR}
   </select>

@@ -92,14 +92,14 @@
       <if test="payrecordMoney != null" >
         payrecord_money,
       </if>
-      <if test="payrecordIntroduce != null" >
-        payrecord_introduce,
-      </if>
       <if test="payrecordDate != null" >
         payrecord_date,
       </if>
       <if test="payrecordUserId != null" >
         payrecord_user_id,
+      </if>
+      <if test="payrecordBookId != null" >
+        payrecord_book_id,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
@@ -112,14 +112,14 @@
       <if test="payrecordMoney != null" >
         #{payrecordMoney,jdbcType=INTEGER},
       </if>
-      <if test="payrecordIntroduce != null" >
-        #{payrecordIntroduce,jdbcType=VARCHAR},
-      </if>
       <if test="payrecordDate != null" >
         #{payrecordDate,jdbcType=TIMESTAMP},
       </if>
       <if test="payrecordUserId != null" >
         #{payrecordUserId,jdbcType=INTEGER},
+      </if>
+      <if test="payrecordBookId != null" >
+        #{payrecordBookId,jdbcType=INTEGER},
       </if>
     </trim>
   </insert>
