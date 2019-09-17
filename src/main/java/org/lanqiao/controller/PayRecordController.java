@@ -20,10 +20,6 @@ public class PayRecordController {
     }
     @RequestMapping("/insertPayRecord")
     public int insertSelective(PayRecord record){
-        record.setPayrecordFlag("购买");
-        record.setPayrecordMoney(166);
-        record.setPayrecordBookId(3);
-        record.setPayrecordUserId(1);
         return payRecordService.insertSelective(record);
     }
 }
