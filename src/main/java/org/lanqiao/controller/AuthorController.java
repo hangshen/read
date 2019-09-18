@@ -101,10 +101,10 @@ public class AuthorController {
      * @param
      * @return
      */
-    @RequestMapping(value = "/publishBook" ,method = RequestMethod.POST)
+    @RequestMapping(value = "/publishBook", method = RequestMethod.POST)
     public int insertBook(Integer authorId, String bookName, String bookIntroduce, String bookFlag, Integer bookTypeId, @RequestParam("bookImg") MultipartFile bookImg) throws IOException {
 
-////        使用UUID给图片重命名，并去电“-”
+
 //        String name = UUID.randomUUID().toString().replaceAll("-", "");
 //        //获取图片的扩展名
 //        String ext = FilenameUtils.getExtension(bookImg.getOriginalFilename());
@@ -113,11 +113,11 @@ public class AuthorController {
 ////        System.out.println(url);
 //        //以绝对路径保存重命名后的图片
 //        bookImg.transferTo(new File(url + "/" + name + "." + ext));
-//        //把图片存储路径保存到数据库
+        //把图片存储路径保存到数据库
 
-        System.out.println(bookImg);
-
-        String filePath = ClassUtils.getDefaultClassLoader().getResource("").getPath()+"static/images/upload";;//保存图片的路径
+        String filePath = System.getProperty("user.dir")+"/src/main/resources/static/images/upload";//ClassUtils.getDefaultClassLoader().getResource("").getPath() + "static/images/upload";
+        System.out.println(filePath);
+//        String filePath = "E:\\java\\project\\IDEAProject\\read\\src\\main\\resources\\static\\images\\upload";//保存图片的路径
         //获取原始图片的拓展名
         String originalFilename = bookImg.getOriginalFilename();
         //新的文件名字
@@ -126,6 +126,7 @@ public class AuthorController {
         File targetFile = new File(filePath, newFileName);
         //把本地文件上传到封装上传文件位置的全路径
         bookImg.transferTo(targetFile);
+
         Books books = new Books();
         books.setBookImg(newFileName);
         books.setBookAuthorId(authorId);
@@ -217,7 +218,7 @@ public class AuthorController {
     @RequestMapping("/newChapter")
     public boolean newChapter(Integer chapterSort, Integer bookId, String chapterName, String contentText) {
 
-        System.out.println(chapterSort+" "+bookId+" "+chapterName+" "+contentText);
+        System.out.println(chapterSort + " " + bookId + " " + chapterName + " " + contentText);
         Content content = new Content();
         Chapter chapter = new Chapter();
         content.setContentText(contentText);
@@ -237,14 +238,15 @@ public class AuthorController {
 
 
     /*
-    *作者注册账号检测（是否可以注册）
+     *作者注册账号检测（是否可以注册）
      */
     @RequestMapping("/checkAuthorAccount")
-    public boolean checkAuthorAccount(String authorAccount){
+    public boolean checkAuthorAccount(String authorAccount) {
         return authorLoginService.checkAccount(authorAccount);
     }
+
     @RequestMapping("/updateAuthor")
-    public int updateByPrimaryKeySelective(@RequestBody Author record){
+    public int updateByPrimaryKeySelective(@RequestBody Author record) {
         return authorService.updateByPrimaryKeySelective(record);
     }
 }
