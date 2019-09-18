@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -107,84 +108,16 @@
             </div>
         </div>
         <div class="msg_content">
-            <div class="content-play" id="book">
+
                 <div class="content-name">
                     <h2>作品列表<span id="bookSize">共 {{bookSize}} 部作品</span></h2>
                     <p class="side-tag"><a href="author_publish.html" class="btn">发表作品</a></p>
                 </div>
-
-                <table class="grade-table-list" cellpadding="0" cellspacing="0" id="J_Table">
-                    <colgroup>
-                        <col width="20%">
-                        <col width="5%">
-                        <col width="20%">
-                        <col width="15%">
-                        <col width="20%">
-                        <col width="20%">
-                    </colgroup>
-                    <thead>
-                    <tr>
-                        <th>作品名称</th>
-                        <th>最新发布章节</th>
-                        <th nowrap="">审核详情</th>
-                        <th nowrap="">作品状态</th>
-                        <th nowrap="">作品定价</th>
-                        <th nowrap="">操作</th>
-                    </tr>
-                    </thead>
-                    <tbody v-for="(book,index) in books">
-                    <tr>
-                        <td>
-                            <div class="work-title">
-                                <div class="pic" style="position: relative;" id="bookImg">
-                                    <img src="../images/authormsgimages/fengmian.png">
-                                </div>
-                                <p>
-                                    {{book.bookName}}
-                                </p>
-                                <p class="word">总字数：{{book.bookWord}}</p>
-                                <p class="word">点击数：{{book.bookClick}}</p>
-                                <p class="word">收藏数：0</p>
-
-                                <p class="ops">
-                                    <a href="author_publish.html" @click="">修改作品</a>
-                                </p>
-                            </div>
-                        </td>
-                        <td>
-                            <p class="intro">{{book.chapterName}}</p>
-                            <p class="time"></p>
-                        </td>
-                        <td class="status">
-                            待审核
-                        </td>
-                        <td>
-                            待审核
-                        </td>
-                        <td class="price">
-                            -
-                        </td>
-                        <td class="noborder op">
-                            <p>
-                                <a href="author_newchapter.html" class="newc" @click="set(index)">新增章节</a>
-                            </p>
-
-                            <p><a href="">管理章节</a></p>
-                            <!-- 电子签约的状态 -->
-                            <!-- 没有开始电子签约之前，看下是否有符合审核签约的条件-->
-
-
-                        </td>
-                    </tr>
-                    </tbody>
-                </table>
-
-
-                <div class="pagination">
-                </div>
+            <iframe name="" frameborder="0"   src="author_bookz.html"
+                    style="width: 100%; height: 100%; border: none; background: none;"></iframe>
             </div>
         </div>
-    </div>
+
 
     <div class="msg_bottom">
         <div class="footer">

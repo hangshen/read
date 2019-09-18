@@ -79,8 +79,10 @@
                         // sessionStorage.setItem("authorId",result.userId);
 
                         alert("账号不存在！");
+                        location.href="author_loginz.html";
                     }else if(result.pword ==false){
                         alert("密码错误！");
+                        location.href="author_loginz.html";
                     }
                 },
                 error: function () {
