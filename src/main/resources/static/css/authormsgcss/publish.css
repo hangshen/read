@@ -309,8 +309,7 @@ color: #000000;
     cursor: pointer;
     border: none;
     display: inline-block;
-    *display: block;
-    *float: left;
+
     background: url(../../images/authormsgimages/btn-sprite.png);
     text-indent: -9999px;
     vertical-align: middle;
@@ -328,4 +327,10 @@ color: #000000;
 }
 .tag-list li a {
     padding: 2px 3px;
+}
+.push{
+    width: 30%;
+    height: 45px;
+    float: left;
+    margin-left: 40%;
 }
