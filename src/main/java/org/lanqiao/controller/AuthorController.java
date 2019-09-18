@@ -9,6 +9,7 @@ import org.lanqiao.entity.*;
 import org.lanqiao.service.*;
 import org.lanqiao.vo.AuthorBasicDataVo;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.util.ClassUtils;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -116,7 +117,7 @@ public class AuthorController {
 
         System.out.println(bookImg);
 
-        String filePath = "E:\\java\\project\\IDEAProject\\read\\src\\main\\resources\\static\\images\\upload";//保存图片的路径
+        String filePath = ClassUtils.getDefaultClassLoader().getResource("").getPath()+"static/images/upload";;//保存图片的路径
         //获取原始图片的拓展名
         String originalFilename = bookImg.getOriginalFilename();
         //新的文件名字
