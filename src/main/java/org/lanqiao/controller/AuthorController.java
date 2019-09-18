@@ -101,7 +101,7 @@ public class AuthorController {
      * @return
      */
     @RequestMapping(value = "/publishBook" ,method = RequestMethod.POST)
-    public int insertBook(Integer bookAuthorId, String bookName, String bookIntroduce, String bookFlag, Integer bookTypeId, @RequestParam("bookImg") MultipartFile bookImg) throws IOException {
+    public int insertBook(Integer authorId, String bookName, String bookIntroduce, String bookFlag, Integer bookTypeId, @RequestParam("bookImg") MultipartFile bookImg) throws IOException {
 
 ////        使用UUID给图片重命名，并去电“-”
 //        String name = UUID.randomUUID().toString().replaceAll("-", "");
@@ -127,7 +127,7 @@ public class AuthorController {
         bookImg.transferTo(targetFile);
         Books books = new Books();
         books.setBookImg(newFileName);
-        books.setBookAuthorId(bookAuthorId);
+        books.setBookAuthorId(authorId);
         books.setBookName(bookName);
         books.setBookIntroduce(bookIntroduce);
         books.setBookFlag(bookFlag);

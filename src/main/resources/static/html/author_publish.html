@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:v-bind="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <title>发表作品</title>
@@ -130,14 +130,11 @@
                                           class="input-txt :required :only_on_blur :max_length;18 :ajax;/checkParam.do?operation=6  vanadium">
 
 
-
                                     <!--将 authorId 和 bookTypeId 赋值-->
 
                                     <input type="text" hidden="hidden" name="authorId" value="" id="authorId">
                                     <input type="text" hidden="hidden" name="bookTypeId" value="" id="bookTypeId">
                                     <input type="text" hidden="hidden" name="bookFlag" value="连载中">
-
-
 
 
                                 </p>
@@ -177,8 +174,7 @@
                             <div class="item-name"><em></em>作品类型：</div>
                             <div class="item-content" id="bookType">
                                 <select class="vanadium selectBox" id="sop">
-                                    <option v-for="(bookType,index) in bookTypes" name="bookTypeId"
-                                            value="{{bookType.booktypeId}}">
+                                    <option v-for="(bookType,index) in bookTypes" value="{{bookType.booktypeId}}">
                                         {{bookType.booktypeName}}
                                     </option>
                                 </select>
@@ -349,11 +345,16 @@
 
     });
 
+    var authorId = document.getElementById('authorId');
+    authorId.value = aid;
+
     $("#J_Submit").click(function () {
         var bookText = $("#bookIntroduce").val();
         var bookNames = $("#booknames").val();
         var bookFlags = "连载中";
-
+        var sel = document.getElementById("sop");//select元素的id
+        var bookTypeId = sel.selectedIndex;//获取被选中的option的索引
+        $("#bookTypeId").val(bookTypeId);
         // var file = ();
         var formData = new FormData($("#form")[0]);
         // data.append("file", file);
@@ -432,7 +433,6 @@
 
 </script>
 
-//图片回显
 <script>
     $(function () {
         $("#myImg").click(function () {
@@ -465,18 +465,14 @@
 <!--<script>-->
 <!--    window.onload = function () {-->
 <!--        $("#sop").click(function () {-->
-<!--            var sel = document.getElementById("sop");//select元素的id-->
-<!--            var bookTypeId = sel.selectedIndex;//获取被选中的option的索引-->
-<!--            // alert(bookTypeId);-->
-<!--            $("#bookTypeId").val(bookTypeId);-->
+
 <!--        })-->
 <!--    }-->
 <!--</script>-->
 <!--<script type="text/javascript">-->
-<!--    // window.onload = function () {-->
-<!--    //     var aid = sessionStorage.getItem("aid");-->
-<!--    //     $("#authorId").val(aid);-->
-<!--    // }-->
+
+<!--   var aid = sessionStorage.getItem("aid");-->
+
 
 <!--</script>-->
 </html>
