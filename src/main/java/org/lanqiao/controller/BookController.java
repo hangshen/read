@@ -28,21 +28,19 @@ public class BookController {
     //solr模糊查询接口
     @RequestMapping("/solrSelect")
     public List<SolrBooksPageVo> searchBooks(String keyword,Integer pageNum) {
-        int pageSize = 1;
+        int pageSize = 5;
         int totalPage;
-        SolrBooksPageVo solrBooksPageVo = new SolrBooksPageVo();
         List<SolrBooksPageVo> solrBooksVoList = new ArrayList<SolrBooksPageVo>();
-        List<SolrBooksVo> list = bookService.queryByKeyword(keyword);
+        List<SolrBooksVo> list = new ArrayList<SolrBooksVo>();
+        list = bookService.queryByKeyword(keyword);
         if(list.size() % pageSize == 0){
             totalPage = list.size() / pageSize;
         }else {
             totalPage = (list.size() / pageSize)+1;
         }
         if(totalPage!=0){
-            for (int i = (pageNum - 1) * pageSize; i < pageNum * pageSize; i++) {
-                solrBooksPageVo.setSolrBooksVo(list.get(i));
-                solrBooksPageVo.setTotalPage(totalPage);
-                solrBooksVoList.add(solrBooksPageVo);
+            for (int i = (pageNum - 1) * pageSize; i < pageNum * pageSize && i<list.size(); i++) {
+                solrBooksVoList.add(new SolrBooksPageVo(list.get(i),totalPage));
             }
         }
         return solrBooksVoList;
