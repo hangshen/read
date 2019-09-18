@@ -92,23 +92,26 @@ public class BookServiceImpl implements BookService{
         SolrUtil solrUtil=new SolrUtil();
         List<SolrBooksVo> content1=solrUtil.searchKeyValue("bookName",keyword,solrTemplate);
         List<SolrBooksVo> content2=solrUtil.searchKeyValue("authorName",keyword,solrTemplate);
+        List<SolrBooksVo> result=new ArrayList<SolrBooksVo>();
         if(content1.size() >= content2.size()){
             if(content1.size() == 0){
                 return content1;
             }
+            result.addAll(content1);
             for (SolrBooksVo sb:content2) {
                 if(!content1.contains(sb)){
-                    content1.add(sb);
+                    result.add(sb);
                 }
             }
-            return content1;
+            return result;
         } else {
+            result.addAll(content2);
             for (SolrBooksVo sb:content1) {
                 if(!content2.contains(sb)){
-                    content2.add(sb);
+                    result.add(sb);
                 }
             }
-            return content2;
+            return result;
         }
     }
     @Override
