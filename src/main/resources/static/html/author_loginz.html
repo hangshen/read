@@ -11,33 +11,36 @@
 </head>
 <body>
 <div id="loginz">
-<div id="loginz_go4" >
-<div id="loginz_go2"> 登录</div>
-</div>
-<div id="loginz_go5">
-    <div id="loginz_go3">
-        <div class="u-logo" >
-            <div class="inputbox">
-            <div class="u-logo-img1 u-input" ></div>
-                    <input type="text" name="loginname" class="u-input" >
+    <div id="loginz_go4">
+        <div id="loginz_go2"> 登录</div>
+    </div>
+    <div id="loginz_go5">
+        <div id="loginz_go3">
+            <div class="u-logo">
+                <form id="formlogin">
+                    <div class="inputbox">
+                        <div class="u-logo-img1 u-input"></div>
+                        <input type="email" name="loginname" class="u-input">
+                    </div>
+                    <div class="u-logo">
+                        <div class="inputbox">
+                            <div class="u-logo-img2 u-input"></div>
+                            <input type="password" name="loginpassword" class="u-input">
+<!--                            <input type="submit" style="display: none">-->
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div id="loginz_go7">
+                <div id="captcha" style="position: relative"></div>
+                <div id="msg"></div>
+            </div>
+
         </div>
-            <div class="u-logo" >
-                <div class="inputbox">
-                    <div class="u-logo-img2 u-input" ></div>
-                    <input type="password" name="loginpassword" class="u-input" >
-                </div>
+        <div id="loginz_go6" class="inputbox">
+            <a class="u-loginbtn">登录</a>
         </div>
     </div>
-<div id="loginz_go7">
-    <div id="captcha" style="position: relative"></div>
-    <div id="msg"></div>
-</div>
-
-</div>
-<div id="loginz_go6" class="inputbox">
-    <a class="u-loginbtn">登录</a>
-</div>
-</div>
 </div>
 </body>
 
@@ -45,8 +48,9 @@
 <script src="../js/author_login_js/jquery.js"></script>
 <script src="../js/author_login_js/vue.min.js"></script>
 <script src="../js/author_login_js/jquery.slider.min.js"></script>
+<script src="../js/jquery.validate.js"></script>
 <script>
-    $(document).ready(function(){
+    $(document).ready(function () {
         $('#loginz_go6').hide();
     })</script>
 <script>
@@ -70,19 +74,19 @@
                 },
                 dataType: "json",
                 success: function (result) {
-                    if(result.author!=null){
-                        sessionStorage.setItem("aid",result.author.authorId);
+                    if (result.author != null) {
+                        sessionStorage.setItem("aid", result.author.authorId);
                         // alert("登录成功！用户名为"+result.author.authorName);
-                        top.location.href="authormsg.html";
+                        top.location.href = "authormsg.html";
 
-                    }else if(result.authorLogin==null){
+                    } else if (result.authorLogin == null) {
                         // sessionStorage.setItem("authorId",result.userId);
 
                         alert("账号不存在！");
-                        location.href="author_loginz.html";
-                    }else if(result.pword ==false){
+                        location.href = "author_loginz.html";
+                    } else if (result.pword == false) {
                         alert("密码错误！");
-                        location.href="author_loginz.html";
+                        location.href = "author_loginz.html";
                     }
                 },
                 error: function () {
@@ -96,26 +100,23 @@
             rules: {
                 loginname: {
                     required: true,
-                    rangelength: [11, 12],
-                    regex:/ ^(((13[0-9]{1})|159|153)+\d{8})$/g
+                    email: true
 
                 },
 
                 loginpassword: {
                     required: true,
                     rangelength: [6, 16],
-                    regex:/^(?![a-zA-Z]+$)(?!\d+$)(?![\W_]+$)\S{6,16}$/
                 }
             },
             messages: {
                 loginname: {
-                    required: "请输入手机号",
-
-                    rangelength: "手机号格式不正确"
+                    required: "输入邮箱",
+                    email: "格式错误"
                 },
-                nloginpwd: {
-                    required: "请输入密码",
-                    rangelength: "密码格式不正确"
+                loginpassword: {
+                    required: "输入密码",
+                    rangelength: "格式错误"
                 }
             }
         })
