@@ -396,9 +396,11 @@
                     </div>
                     <div data-reactid=".3.1">
                         <div class="ulink j-ulink" data-reactid=".3.1.0"><a target="_blank" title="登录"
-                                                                            data-reactid=".3.1.0.0" href="login.html">登录</a><span
+                                                                            data-reactid=".3.1.0.0"
+                                                                            href="login.html">登录</a><span
                                 class="sep" data-reactid=".3.1.0.1">|</span><a target="_blank" title="注册"
-                                                                               data-reactid=".3.1.0.2" href="zhuce.html">注册</a>
+                                                                               data-reactid=".3.1.0.2"
+                                                                               href="zhuce.html">注册</a>
                         </div>
                         <noscript data-reactid=".3.1.1"></noscript>
                     </div>
@@ -471,7 +473,8 @@
                         </tr>
                         <tr>
                             <td>分类：</td>
-                            <td><a @click="allbooks(book.bookType.booktypeId, book.bookType.booktypeName)">{{book.bookType.booktypeName}}</a></td>
+                            <td><a @click="allbooks(book.bookType.booktypeId, book.bookType.booktypeName)">{{book.bookType.booktypeName}}</a>
+                            </td>
                         </tr>
                     </table>
                 </div>
@@ -507,7 +510,8 @@
                                     <div class="border f-cb"><a class="img" @click="bookdetail(rank.bookId)"
                                                                 target="_blank"><img
                                             v-bind:src="rank.bookImg"></a>
-                                        <h3><a  @click="bookdetail(rank.bookId)" target="_blank">{{rank.bookName}}</a></h3>
+                                        <h3><a @click="bookdetail(rank.bookId)" target="_blank">{{rank.bookName}}</a>
+                                        </h3>
                                         <p>{{rank.author.authorName}}</p></div>
                                 </div>
 
@@ -518,7 +522,8 @@
                                                                 @click="bookdetail(rank.bookId)"
                                                                 target="_blank"><img
                                             v-bind:src="rank.bookImg"></a>
-                                        <h3><a  @click="bookdetail(rank.bookId)" target="_blank">{{rank.bookName}}</a></h3>
+                                        <h3><a @click="bookdetail(rank.bookId)" target="_blank">{{rank.bookName}}</a>
+                                        </h3>
                                         <p>{{rank.author.authorName}}</p></div>
                                 </div>
                             </li>
@@ -532,7 +537,8 @@
                 <div class="m-bookdetail" id="identify" data-uuid="bd_4b05f5dda48643c998f1dc6bb7a5faa1_4"
                      data-partner=2957008>
                     <a href="javascript:;" class="cover">
-                        <img v-bind:src="book.bookImg" width="172" height="237" style="transform: scale(1.7); margin-top: 40px"/>
+                        <img v-bind:src="book.bookImg" width="172" height="237"
+                             style="transform: scale(1.7); margin-top: 40px"/>
                     </a>
                     <div class="f-fl" style="width:506px;">
                         <h3>
@@ -566,7 +572,8 @@
                     <ul class="tabs">
                         <li class="crt" style="display:block;">最近更新</li>
                         <li style="display:block;"><a href="allchapter.html"
-                                target="_blank">全部目录<span>({{book.chapterSet[0].chapterSort}}章)</span></a></li>
+                                                      target="_blank">全部目录<span>({{book.chapterSet[0].chapterSort}}章)</span></a>
+                        </li>
                     </ul>
                     <div class="contents">
                         <div class="tab-item crt">
@@ -600,7 +607,8 @@
                     <ul class="contents">
                         <li class="tip J_content crt">
                             <div class="detail">
-                                <div class="sum"><span>共{{dashangs.payRecordList.length}}人打赏{{dashangs.bookReward}}阅点</span></div>
+                                <div class="sum">
+                                    <span>共{{dashangs.payRecordList.length}}人打赏{{dashangs.bookReward}}阅点</span></div>
                                 <div class="list" id="J_DSList">
                                     <ul style="top: 0px;">
                                         <li v-for="(dashang, index) in dashangs.payRecordList">
@@ -616,37 +624,45 @@
                                                                                       data-reactid=".2.1.0.0">金额</span>
                                             <div class="tipsec tipsec-h1" id="J_ssec_DS" data-reactid=".2.1.0.1">
                                                 <ul class="f-cb" data-reactid=".2.1.0.1.0">
-                                                    <li data-num="100" class="" data-reactid=".2.1.0.1.0.0:$100"><span
+                                                    <li data-num="100" :class="{'selected':money == 100}"
+                                                        @click="changemoney(100)" data-reactid=".2.1.0.1.0.0:$100"><span
                                                             data-reactid=".2.1.0.1.0.0:$100.0"><span
                                                             data-reactid=".2.1.0.1.0.0:$100.0.0">100</span><span
                                                             data-reactid=".2.1.0.1.0.0:$100.0.1">阅点</span></span><em
                                                             data-reactid=".2.1.0.1.0.0:$100.1"></em></li>
-                                                    <li data-num="500" class=" selected"
-                                                        data-reactid=".2.1.0.1.0.0:$500"><span
+                                                    <li data-num="500" :class="{'selected':money == 500}"
+                                                        @click="changemoney(500)" data-reactid=".2.1.0.1.0.0:$500"><span
                                                             data-reactid=".2.1.0.1.0.0:$500.0"><span
                                                             data-reactid=".2.1.0.1.0.0:$500.0.0">500</span><span
                                                             data-reactid=".2.1.0.1.0.0:$500.0.1">阅点</span></span><em
                                                             data-reactid=".2.1.0.1.0.0:$500.1"></em></li>
-                                                    <li data-num="1000" class="last" data-reactid=".2.1.0.1.0.0:$1000">
+                                                    <li data-num="1000" class="last"
+                                                        :class="{'last selected':money == 1000}"
+                                                        @click="changemoney(1000)" data-reactid=".2.1.0.1.0.0:$1000">
                                                         <span data-reactid=".2.1.0.1.0.0:$1000.0"><span
                                                                 data-reactid=".2.1.0.1.0.0:$1000.0.0">1000</span><span
                                                                 data-reactid=".2.1.0.1.0.0:$1000.0.1">阅点</span></span><em
                                                             data-reactid=".2.1.0.1.0.0:$1000.1"></em></li>
-                                                    <li data-num="5000" class="" data-reactid=".2.1.0.1.0.0:$5000"><span
+                                                    <li data-num="5000" :class="{'selected':money == 5000}"
+                                                        @click="changemoney(5000)"
+                                                        data-reactid=".2.1.0.1.0.0:$5000"><span
                                                             data-reactid=".2.1.0.1.0.0:$5000.0"><span
                                                             data-reactid=".2.1.0.1.0.0:$5000.0.0">5000</span><span
                                                             data-reactid=".2.1.0.1.0.0:$5000.0.1">阅点</span></span><em
                                                             data-reactid=".2.1.0.1.0.0:$5000.1"></em></li>
-                                                    <li data-num="10000" class="" data-reactid=".2.1.0.1.0.0:$10000">
+                                                    <li data-num="10000" :class="{'selected':money == 10000}"
+                                                        @click="changemoney(10000)" data-reactid=".2.1.0.1.0.0:$10000">
                                                         <span data-reactid=".2.1.0.1.0.0:$10000.0"><span
                                                                 data-reactid=".2.1.0.1.0.0:$10000.0.0">10000</span><span
                                                                 data-reactid=".2.1.0.1.0.0:$10000.0.1">阅点</span></span><em
                                                             data-reactid=".2.1.0.1.0.0:$10000.1"></em></li>
-                                                    <li class="last" data-reactid=".2.1.0.1.0.1"><input class="optional"
-                                                                                                        type="text"
-                                                                                                        placeholder="最低100000阅点"
-                                                                                                        data-reactid=".2.1.0.1.0.1.0"><em
-                                                            data-reactid=".2.1.0.1.0.1.1"></em></li>
+                                                    <li data-num="100000" class="last"
+                                                        :class="{'last selected':money == 100000}"
+                                                        @click="changemoney(100000)" data-reactid=".2.1.0.1.0.0:$10000">
+                                                        <span data-reactid=".2.1.0.1.0.0:$10000.0"><span
+                                                                data-reactid=".2.1.0.1.0.0:$10000.0.0">100000</span><span
+                                                                data-reactid=".2.1.0.1.0.0:$10000.0.1">阅点</span></span><em
+                                                            data-reactid=".2.1.0.1.0.0:$10000.1"></em></li>
                                                 </ul>
                                                 <div class="warning J_tip2" style="display:none;"
                                                      data-reactid=".2.1.0.1.1"><em class="warn"
@@ -655,7 +671,7 @@
                                             </div>
                                         </div>
                                         <div class="button" data-reactid=".2.1.2"><a class="btn-ok btn-red-fill"
-                                                                                     href="javascript:;"
+                                                                                     @click="shang()"
                                                                                      data-reactid=".2.1.2.0">确定打赏</a>
                                         </div>
                                     </div>
@@ -666,8 +682,7 @@
                             <div class="detail">
                             </div>
                             <div class="ops">
-                                <a href="javascript:;" class="btn" id="J_QueryYP"
-                                   onclick="_gaq.push(['_trackEvent', 'booksource', 'vote','buttom']);">投月票&gt;</a>
+                                <a href="javascript:;" class="btn" id="J_QueryYP">投月票&gt;</a>
                                 <div id="J_textYP" class="textimg">
                                 </div>
                             </div>
@@ -758,7 +773,8 @@
                         data-reactid=".0.1.1.0"><img src="https://yuedu.163.com/images/down/QR_All.png"
                                                      data-reactid=".0.1.1.0.0"></a></div>
             </div>
-            <a href="/report.do" target="_blank" style="right:0px;" title="举报中心" class="m-report" data-reactid=".0.2"></a>
+            <a href="/report.do" target="_blank" style="right:0px;" title="举报中心" class="m-report"
+               data-reactid=".0.2"></a>
         </div>
     </div>
 </div>
@@ -782,10 +798,10 @@
     var userName;
     $(function () {
         userName = sessionStorage.getItem("userName");
-        if(userName != undefined){
+        if (userName != undefined) {
             $(".userself").text(userName)
             $(".userself").siblings().remove()
-            $(".userself").attr("href","")
+            $(".userself").attr("href", "personal.html")
         }
     })
 
@@ -837,9 +853,10 @@
             current: 1,
             input: 1,
             otherbooks: {},
-            dashangs:{},
-            rank:{},
-            flag:0
+            dashangs: {},
+            rank: {},
+            flag: 0,
+            money: 0
         },
         created: function () {
             $.ajax({
@@ -954,9 +971,9 @@
                 })
             },
             allbooks: function (i, name) {
-                sessionStorage.setItem("booktypeId",i);
-                sessionStorage.setItem("booktypeName",name);
-                window.location.href="allbooks.html";
+                sessionStorage.setItem("booktypeId", i);
+                sessionStorage.setItem("booktypeName", name);
+                window.location.href = "allbooks.html";
             },
             bookdetail: function (i) {
                 sessionStorage.setItem("bookId", i);
@@ -967,9 +984,9 @@
                 window.location.href = "read.html";
             },
             bookshelf: function () {
-                if(userId == undefined){
+                if (userId == undefined) {
                     window.location.href = "login.html";
-                }else{
+                } else {
                     $.ajax({
                         url: "http://localhost:8080/insertToBookSelf",
                         type: "post",
@@ -987,8 +1004,30 @@
                 sessionStorage.setItem("chapterId", i);
                 window.location.href = "read.html";
             },
-            xianshi: function(i){
+            xianshi: function (i) {
                 this.flag = i;
+            },
+            changemoney: function (i) {
+                this.money = i;
+            },
+            shang:function () {
+                if(userId == undefined){
+                    window.location.href = "login.html";
+                }else{
+                    $.ajax({
+                        url: "http://localhost:8080/insertPayRecord",
+                        type: "post",
+                        data: {payrecordFlag: "打赏", payrecordMoney: mv1.money, payrecordBookId: bookId, payrecordUserId: userId},
+                        datatype: "json",
+                        success: function (data) {
+                            if(data == 1){
+
+                            }else{
+
+                            }
+                        }
+                    })
+                }
             }
         }
     })
@@ -1001,29 +1040,29 @@
 
     $(".m-cloudsj").click(function () {
         userId = sessionStorage.getItem("userId");
-        if(userId == undefined){
+        if (userId == undefined) {
             window.location.href = "login.html";
-        }else{
+        } else {
             window.location.href = "bookshelf.html";
         }
     })
 
     $("input[name='find']").click(function () {
         var key = $("input[name='key']").val();
-        if(key != "" && key !="输入不能为空！"){
-            sessionStorage.setItem("key",key);
-            window.location.href="search.html";
-        }else{
+        if (key != "" && key != "输入不能为空！") {
+            sessionStorage.setItem("key", key);
+            window.location.href = "search.html";
+        } else {
             $("input[name='key']").val("输入不能为空！");
         }
     })
 
     $(".authorcontainer").click(function () {
         authorId = sessionStorage.getItem("authorId");
-        if(authorId == undefined){
+        if (authorId == undefined) {
             window.location.href = "author_login.html";
-        }else{
-            window.location.href = "";
+        } else {
+            window.location.href = "authormsg.html";
         }
     })
 

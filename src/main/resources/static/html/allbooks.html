@@ -300,7 +300,7 @@
         if(userName != undefined){
             $(".userself").text(userName)
             $(".userself").siblings().remove()
-            $(".userself").attr("href","")
+            $(".userself").attr("href","personal.html")
         }
     })
 
@@ -464,7 +464,7 @@
     })
 
     $(".m-cloudsj").click(function () {
-        sessionStorage.getItem("userId",userId);
+        userId = sessionStorage.getItem("userId");
         if(userId == undefined){
             window.location.href = "login.html";
         }else{
@@ -473,11 +473,11 @@
     })
 
     $(".authorcontainer").click(function () {
-        sessionStorage.getItem("authorId",authorId);
+        authorId = sessionStorage.getItem("authorId");
         if(authorId == undefined){
             window.location.href = "author_login.html";
         }else{
-            window.location.href = "";
+            window.location.href = "authormsg.html";
         }
     })
 

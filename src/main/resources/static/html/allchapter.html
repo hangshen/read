@@ -109,17 +109,10 @@
     <div class="g-bdw g-bdw-1">
         <div class="g-bd g-bd-large f-cb">
             <div class="bookchapters">
-                <div class="m-breadcrumbs">
-                    当前位置：
-                    <a href="allbooks.html">全部作品</a><span class="sep">&gt;</span>
-                    <a href="">玄幻</a><span class="sep">&gt;</span>
-                    {{chapters.bookName}}
-                </div>
                 <div class="m-directory">
                     <h2 class="title">{{chapters.bookName}}</h2>
                     <p class="author">
-                        <a href=""
-                           target="_blank">{{chapters.author.authorName}}</a>
+                        <a target="_blank">{{chapters.author.authorName}}</a>
                     </p>
                     <div class="count">
                         <span class="chapters">本书共{{chapters.chapterSet.length}}章</span>
@@ -134,7 +127,7 @@
 
                                     <li v-for="(chapter, index) in chapters.chapterSet" class="item even">
 
-                                        <a href=""
+                                        <a @click="read(chapter.chapterSort)"
                                            target="_blank" title="第x章：xxxx">
                                             <span class="title-2">第{{chapter.chapterSort}}章：{{chapter.chapterName}}</span>
                                             <span class="sep"></span>
@@ -228,6 +221,20 @@
 <script src="../js/topjs/jquery-3.4.1.js"></script>
 <script src="../js/topjs/vue.min.js"></script>
 <script type="text/javascript">
+
+    var bookId = sessionStorage.getItem("bookId");
+    var authorId;
+    var userId = sessionStorage.getItem("userId");
+    var userName;
+    $(function () {
+        userName = sessionStorage.getItem("userName");
+        if(userName != undefined){
+            $(".userself").text(userName)
+            $(".userself").siblings().remove()
+            $(".userself").attr("href","personal.html")
+        }
+    })
+
     var mv1 = new Vue({
         el: '.bookchapters',
         data: {chapters: {}},
@@ -235,7 +242,7 @@
             $.ajax({
                 url: "http://localhost:8080/getBooksById",
                 type: "post",
-                data: {bookId: 5},
+                data: {bookId: bookId},
                 datatype: "json",
                 success: function (data) {
                     for(var i = 0; i < data.chapterSet.length; i++){
@@ -244,8 +251,48 @@
                     mv1.chapters = data;
                 }
             })
+        },
+        methods: {
+            read:function (i) {
+                sessionStorage.setItem("chapterId", i);
+                window.location.href = "read.html";
+            }
         }
     });
+
+    $("#gongzhonghao").hover(function () {
+        $(".m-codelayer").css("display", "block")
+    }, function () {
+        $(".m-codelayer").css("display", "none")
+    })
+
+    $(".m-cloudsj").click(function () {
+        userId = sessionStorage.getItem("userId");
+        if(userId == undefined){
+            window.location.href = "login.html";
+        }else{
+            window.location.href = "bookshelf.html";
+        }
+    })
+
+    $("input[name='find']").click(function () {
+        var key = $("input[name='key']").val();
+        if(key != "" && key !="输入不能为空！"){
+            sessionStorage.setItem("key",key);
+            window.location.href="search.html";
+        }else{
+            $("input[name='key']").val("输入不能为空！");
+        }
+    })
+
+    $(".authorcontainer").click(function () {
+        authorId = sessionStorage.getItem("authorId");
+        if(authorId == undefined){
+            window.location.href = "author_login.html";
+        }else{
+            window.location.href = "authormsg.html";
+        }
+    })
 </script>
 </body>
 </html>
