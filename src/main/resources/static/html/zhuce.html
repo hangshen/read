@@ -16,6 +16,9 @@
     <script src="../js/zhucejs/finger.js"></script>
     <script src="../js/zhucejs/load.min.js" async></script>
     <link href="../css/zhucecss/zhuce.css" rel="stylesheet">
+    <link  type="text/css" rel="stylesheet" href="../layui/css/modules/layer/default/layer.css">
+    <link type="text/css" href="../layui/css/layui.css" rel="stylesheet">
+    <script type="text/javascript" src="../layui/layui.js"></script>
 </head>
 
 <body>
@@ -1008,6 +1011,10 @@
 <script src="../js/topjs/jquery-3.4.1.js"></script>
 <script src="../js/zhucejs/jquery.validate.js"></script>
 <script>
+    var layer ;
+    layui.use('layer', function(){
+        layer = layui.layer;
+    });
     $(function () {
         //form表单vcalidate验证  账号必须为邮箱格式，密码为6-12位
         $("#formlogin").validate({
@@ -1113,7 +1120,10 @@
                         }
                     })
                 }else {
-                    alert("验证码错误");
+                    layer.alert('验证码错误', {
+                        icon: 2,
+                        skin: 'layer-ext-moon'
+                    });
                 }
             }
         })

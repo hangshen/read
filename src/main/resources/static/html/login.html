@@ -11,7 +11,9 @@
     <script type="text/javascript" src="../js/userloginjs/da.js"></script>
     <script type="text/javascript" src="../js/userloginjs/jq.cookie.js"></script>
     <link type="text/css" rel="stylesheet" href="../css/logincss/loginone.css">
-
+    <link  type="text/css" rel="stylesheet" href="../layui/css/modules/layer/default/layer.css">
+    <link type="text/css" href="../layui/css/layui.css" rel="stylesheet">
+    <script type="text/javascript" src="../layui/layui.js"></script>
     <style>
         .m-container .inner {
             width: 100%;
@@ -276,6 +278,10 @@
 <script src="../js/topjs/jquery-3.4.1.js"></script>
 <script src="../js/zhucejs/jquery.validate.js"></script>
 <script>
+    var layer ;
+    layui.use('layer', function(){
+        layer = layui.layer;
+    });
     $(function () {
         $("input[name='email']").click(function () {
             $("#auto-id-1568166855815").html("");
@@ -320,7 +326,10 @@
                     }
                 },
                 error:function () {
-                    alert("访问失败")
+                    layer.alert('访问失败', {
+                        icon: 2,
+                        skin: 'layer-ext-moon'
+                    });
                 }
             });
         })

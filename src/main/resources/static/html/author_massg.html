@@ -10,6 +10,9 @@
     <link href="../css/authormsgcss/useradmin.css" rel="stylesheet">
     <link href="../css/authormsgcss/authormassg.css" rel="stylesheet">
     <link rel="Stylesheet" type="text/css" href="../css/background/addressadd.css"/>
+    <link  type="text/css" rel="stylesheet" href="../layui/css/modules/layer/default/layer.css">
+    <link type="text/css" href="../layui/css/layui.css" rel="stylesheet">
+    <script type="text/javascript" src="../layui/layui.js"></script>
 </head>
 <body>
 <div class="msg_box">
@@ -121,6 +124,9 @@
     var aid = 1;
     var aid = sessionStorage.getItem("aid");
     // alert(aid);
+    layui.use('layer', function(){
+        layer = layui.layer;
+    });
     $(function () {
         $.ajax({
             url: "http://localhost:8080/author/getAuthorName",
@@ -161,8 +167,10 @@
 
 
                 error: function () {
-
-                    alert("error");
+                    layer.alert('Error!!!', {
+                        icon: 2,
+                        skin: 'layer-ext-moon'
+                    });
 
                 }
             });
@@ -183,7 +191,6 @@
             dataType: "json",
             contentType: 'application/json;charset=UTF-8',
             success:function (data) {
-                alert(1);
                location.reload();
             }
         })

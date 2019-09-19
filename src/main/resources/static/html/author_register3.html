@@ -18,6 +18,9 @@
     <!-- @STYLE -->
     <link rel="stylesheet" href="https://open.yuedu.163.com/assets/css/register/register.css"/>
 <link rel="stylesheet" href="../css/author_register/register.css"/>
+    <link  type="text/css" rel="stylesheet" href="../layui/css/modules/layer/default/layer.css">
+    <link type="text/css" href="../layui/css/layui.css" rel="stylesheet">
+    <script type="text/javascript" src="../layui/layui.js"></script>
 
 
     <!-- @NOPARSE -->
@@ -101,7 +104,7 @@
 
 
         <!-- @NOPARSE -->
-        <script src="../js/author_login_js/jquery.js"></script>
+        <script src="../js/jquery-1.8.3.min.js"></script>
         <script src="../js/author_login_js/vue.min.js"></script>
 
 
@@ -133,6 +136,10 @@
     // alert(c);
     // alert(authid);
     // alert(authqq);
+    var layer ;
+    layui.use('layer', function(){
+        layer = layui.layer;
+    });
     $(function () {
 
         $("#conmer").click(function () {
@@ -163,11 +170,17 @@
 
                     }
                     else {
-                        alert("注册失败");
+                        layer.alert('注册失败', {
+                            icon: 2,
+                            skin: 'layer-ext-moon'
+                        });
                     }
                 },
                 error : function () {
-                    alert("Error!!!");
+                    layer.alert('Error!!!', {
+                        icon: 2,
+                        skin: 'layer-ext-moon'
+                    });
                 }
             });
 

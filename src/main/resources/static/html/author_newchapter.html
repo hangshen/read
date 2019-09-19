@@ -9,6 +9,9 @@
     <link href="../css/authormsgcss/authormsg.css" rel="stylesheet">
     <link href="../css/authormsgcss/useradmin.css" rel="stylesheet">
     <link href="../css/authormsgcss/newchapter.css" rel="stylesheet">
+    <link  type="text/css" rel="stylesheet" href="../layui/css/modules/layer/default/layer.css">
+    <link type="text/css" href="../layui/css/layui.css" rel="stylesheet">
+    <script type="text/javascript" src="../layui/layui.js"></script>
 </head>
 <body>
 <div class="msg_box">
@@ -172,6 +175,10 @@
 <script>
     // 显示作者名
     var aid = sessionStorage.getItem("aid");
+    var layer ;
+    layui.use('layer', function(){
+        layer = layui.layer;
+    });
     // alert(aid);
     $(function () {
         $.ajax({
@@ -212,16 +219,26 @@
             dataType: "json",
             success: function (data) {
                 if (data == true) {
-                    alert("发布成功");
+                    // layer.alert('发布成功!!!', {
+                    //     icon: 1,
+                    //     skin: 'layer-ext-moon'
+                    // });
                     // sessionStorage.setItem("aid", result.author.authorId);
                     window.location.reload([true]);
 
                 } else {
-                    alert("发布失败");
+                    layer.alert('发布失败!!!', {
+                        icon: 2,
+                        skin: 'layer-ext-moon'
+                    });
+
                 }
             },
             error: function () {
-                alert("Error!!!");
+                layer.alert('Error!!!', {
+                    icon: 2,
+                    skin: 'layer-ext-moon'
+                });
             }
         });
 
@@ -229,7 +246,6 @@
 
     //接bookName
     var bookName = sessionStorage.getItem("bookName");
-    alert(bookName);
     mv5 = new Vue({
         el: '.form-name',
         data: {

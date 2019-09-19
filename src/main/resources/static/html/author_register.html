@@ -179,7 +179,6 @@
         })
 
         $("#next").click(function () {
-            alert($("#username-input").val());
             $.ajax({
                 url: "http://localhost:8080/author/checkAuthorAccount",
                 type: "post",
@@ -198,9 +197,6 @@
                         $("#errormsg").css("display","block").html("账号已注册！");
                     }
                 },
-                error:function () {
-                  alert("error");
-                }
             })
         })
 
