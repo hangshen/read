@@ -129,7 +129,7 @@ public class AuthorController {
         bookImg.transferTo(targetFile);
 
         Books books = new Books();
-        books.setBookImg("../images/upload" + newFileName);
+        books.setBookImg("../images/upload/" + newFileName);
         books.setBookAuthorId(authorId);
         books.setBookName(bookName);
         books.setBookIntroduce(bookIntroduce);
