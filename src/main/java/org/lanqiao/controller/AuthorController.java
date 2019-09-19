@@ -225,7 +225,8 @@ public class AuthorController {
         bookWord = Math.ceil((double)contentText.length()/10000)*0.1;
         System.out.println(bookWord);
         content.setContentText(contentText);
-        int contentId = contentService.insert(content);
+        contentService.insert(content);
+        int contentId = content.getContentId();
 
         chapter.setChapterBookId(bookId);
         chapter.setChapterContentId(contentId);

@@ -25,7 +25,7 @@
     delete from content
     where content_id = #{contentId,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="org.lanqiao.entity.Content" keyProperty="contentId">
+  <insert id="insert" parameterType="org.lanqiao.entity.Content" useGeneratedKeys="true" keyProperty="contentId">
     insert into content (content_text)
     values (#{contentText,jdbcType=LONGVARCHAR})
   </insert>
