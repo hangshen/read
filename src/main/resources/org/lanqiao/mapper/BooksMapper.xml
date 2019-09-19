@@ -335,4 +335,10 @@ b.book_type_id = bt.booktype_id order by b.book_reward desc
       book_author_id = #{bookAuthorId,jdbcType=INTEGER}
     where book_id = #{bookId,jdbcType=INTEGER}
   </update>
+
+    <update id="updateBookWordByBookId" parameterType="org.lanqiao.entity.Books">
+        update books
+        set book_word = #{bookWord,jdbcType=DOUBLE}
+        where book_id = #{bookId,jdbcType=INTEGER}
+    </update>
 </mapper>

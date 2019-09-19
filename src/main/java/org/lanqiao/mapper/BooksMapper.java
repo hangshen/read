@@ -42,4 +42,5 @@ public interface BooksMapper {
     List<Books> selectByBookName(String bookName);
 
     Books selectBookById(Integer bookId);
+    int updateBookWordByBookId(Double bookWord,Integer bookId);
 }

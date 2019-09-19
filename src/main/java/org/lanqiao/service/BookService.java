@@ -40,5 +40,6 @@ public interface BookService {
     int deleteByPrimaryKey(Integer bookId);
     int updateByPrimaryKeySelective(Books record);
     int insertSelective(Books record);
-
+    Books selectByBookId(Integer bookId);
+    int updateBookWordByBookId(Double bookWord,Integer bookId);
 }

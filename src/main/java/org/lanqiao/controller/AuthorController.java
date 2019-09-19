@@ -27,6 +27,7 @@ import java.util.UUID;
 @RequestMapping("/author")
 public class AuthorController {
 
+    private Double bookWord;
 
     @Autowired
     AuthorLoginService authorLoginService;
@@ -115,7 +116,7 @@ public class AuthorController {
 //        bookImg.transferTo(new File(url + "/" + name + "." + ext));
         //把图片存储路径保存到数据库
 
-        String filePath = System.getProperty("user.dir")+"/src/main/resources/static/images/upload";//ClassUtils.getDefaultClassLoader().getResource("").getPath() + "static/images/upload";
+        String filePath = System.getProperty("user.dir") + "/src/main/resources/static/images/upload";//ClassUtils.getDefaultClassLoader().getResource("").getPath() + "static/images/upload";
         System.out.println(filePath);
 //        String filePath = "E:\\java\\project\\IDEAProject\\read\\src\\main\\resources\\static\\images\\upload";//保存图片的路径
         //获取原始图片的拓展名
@@ -128,7 +129,7 @@ public class AuthorController {
         bookImg.transferTo(targetFile);
 
         Books books = new Books();
-        books.setBookImg("../images/upload"+newFileName);
+        books.setBookImg("../images/upload" + newFileName);
         books.setBookAuthorId(authorId);
         books.setBookName(bookName);
         books.setBookIntroduce(bookIntroduce);
@@ -221,6 +222,8 @@ public class AuthorController {
         System.out.println(chapterSort + " " + bookId + " " + chapterName + " " + contentText);
         Content content = new Content();
         Chapter chapter = new Chapter();
+        bookWord = Math.ceil((double)contentText.length()/10000)*0.1;
+        System.out.println(bookWord);
         content.setContentText(contentText);
         int contentId = contentService.insert(content);
 
@@ -230,6 +233,8 @@ public class AuthorController {
         chapter.setChapterSort(chapterSort);
         int characterFlag = chapterService.insert(chapter);
         if (characterFlag == 1) {
+           Books books = bookService.selectByBookId(bookId);
+           bookService.updateBookWordByBookId(books.getBookWord()+bookWord,bookId);
             return true;
         } else {
             return false;

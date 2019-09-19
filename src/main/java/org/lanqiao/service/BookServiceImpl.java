@@ -222,4 +222,14 @@ public class BookServiceImpl implements BookService{
         }
         return booksMapper.insertSelective(record);
     }
+
+    @Override
+    public Books selectByBookId(Integer bookId) {
+        return booksMapper.selectBookById(bookId);
+    }
+
+    @Override
+    public int updateBookWordByBookId(Double bookWord,Integer bookId) {
+        return booksMapper.updateBookWordByBookId(bookWord,bookId);
+    }
 }
