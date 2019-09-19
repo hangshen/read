@@ -38,7 +38,6 @@ public class UserController {
      */
     @RequestMapping("/setusermessage")
     public UserLogin setUserMessage(Users user,Integer userLoginId){
-        userLoginId = 1;
         return userService.updateUserMessage(user,userLoginId);
     }
 
@@ -52,7 +51,7 @@ public class UserController {
     }
     @RequestMapping("/getUserInfo")
     public UserLogin selectUserInfo(Integer userLoginId){
-        return userService.selectUserInfo(1);
+        return userService.selectUserInfo(userLoginId);
     }
     @RequestMapping("/selectUserByName")
     public List<Users> selectUserByName(String userName){

@@ -25,131 +25,13 @@
     </style>
     <link type="text/css" rel="stylesheet" href="../css/personalcss/profile.css">
     <link type="text/css" rel="stylesheet" href="../css/personalcss/imgareaselect.css">
-
+    <link type="text/css" rel="stylesheet" href="../css/topcss/top1.css"/>
     <script type="text/javascript" async=""
             src="../js/personaljs/DATracker.js"></script>
     <script type="text/javascript" async="" src="../js/personaljs/wr.da.js"></script>
     <script type="text/javascript" src="../js/topjs/jquery-3.4.1.js"></script>
     <script type="text/javascript" src="../js/topjs/vue.min.js"></script>
-<!--    <script type="text/javascript">-->
-<!--        var _gaq = _gaq || [];-->
-<!--        _gaq.push(['_setAccount', 'UA-25074971-1'], ['_setLocalGifPath', '/UA-25074971-1/__utm.gif'], ['_setLocalRemoteServerMode']);-->
-<!--        _gaq.push(['_addOrganic', 'baidu', 'word']);-->
-<!--        _gaq.push(['_addOrganic', 'soso', 'w']);-->
-<!--        _gaq.push(['_addOrganic', 'youdao', 'q']);-->
-<!--        _gaq.push(['_addOrganic', 'sogou', 'query']);-->
-<!--        _gaq.push(['_addOrganic', 'so.360.cn', 'q']);-->
-<!--        _gaq.push(['_trackPageview']);-->
-<!--        _gaq.push(['_trackPageLoadTime']);-->
-<!--        (function () {-->
-<!--            var ga = document.createElement('script');-->
-<!--            ga.type = 'text/javascript';-->
-<!--            ga.async = true;-->
-<!--            ga.src = '../js/personaljs/wr.da.js';-->
-<!--            var s = document.getElementsByTagName('script')[0];-->
-<!--            s.parentNode.insertBefore(ga, s);-->
-<!--        })();-->
-<!--    </script>-->
-
-    <!-- 哈勃打点 -->
-<!--    <script type="text/javascript">-->
-<!--        (function (document, datracker, root) {-->
-<!--            function loadJsSDK() {-->
-<!--                var script, first_script;-->
-<!--                script = document.createElement("script");-->
-<!--                script.type = "text/javascript";-->
-<!--                script.async = true;-->
-<!--                script.src = "../js/personaljs/DATracker.js";-->
-<!--                first_script = document.getElementsByTagName("script")[0];-->
-<!--                first_script.parentNode.insertBefore(script, first_script)-->
-<!--            }-->
-
-<!--            if (!datracker["__SV"]) {-->
-<!--                var win = window;-->
-<!--                var gen_fn, functions, i, lib_name = "DATracker";-->
-<!--                window[lib_name] = datracker;-->
-<!--                datracker["_i"] = [];-->
-<!--                datracker["init"] = function (token, config, name) {-->
-<!--                    var target = datracker;-->
-<!--                    if (typeof (name) !== "undefined") {-->
-<!--                        target = datracker[name] = []-->
-<!--                    } else {-->
-<!--                        name = lib_name-->
-<!--                    }-->
-<!--                    target["people"] = target["people"] || [];-->
-<!--                    target["abtest"] = target["abtest"] || [];-->
-<!--                    target["toString"] = function (no_stub) {-->
-<!--                        var str = lib_name;-->
-<!--                        if (name !== lib_name) {-->
-<!--                            str += "." + name-->
-<!--                        }-->
-<!--                        if (!no_stub) {-->
-<!--                            str += " (stub)"-->
-<!--                        }-->
-<!--                        return str-->
-<!--                    };-->
-<!--                    target["people"]["toString"] = function () {-->
-<!--                        return target.toString(1) + ".people (stub)"-->
-<!--                    };-->
-
-<!--                    function _set_and_defer(target, fn) {-->
-<!--                        var split = fn.split(".");-->
-<!--                        if (split.length == 2) {-->
-<!--                            target = target[split[0]];-->
-<!--                            fn = split[1]-->
-<!--                        }-->
-<!--                        target[fn] = function () {-->
-<!--                            target.push([fn].concat(Array.prototype.slice.call(arguments, 0)))-->
-<!--                        }-->
-<!--                    }-->
-
-<!--                    functions = "get_user_id track_heatmap register_attributes register_attributes_once clear_attributes unregister_attributes current_attributes single_pageview disable time_event get_appStatus track set_userId track_pageview track_links track_forms register register_once alias unregister identify login logout signup name_tag set_config reset people.set people.set_once people.set_realname people.set_country people.set_province people.set_city people.set_age people.set_gender people.increment people.append people.union people.track_charge people.clear_charges people.delete_user people.set_populationWithAccount  people.set_location people.set_birthday people.set_region people.set_account abtest.get_variation abtest.async_get_variable".split(" ");-->
-<!--                    for (i = 0; i < functions.length; i++) {-->
-<!--                        _set_and_defer(target, functions[i])-->
-<!--                    }-->
-<!--                    datracker["_i"].push([token, config, name])-->
-<!--                };-->
-<!--                datracker["__SV"] = 1.6;-->
-<!--                loadJsSDK()-->
-<!--            }-->
-<!--        })(document, window["DATracker"] || [], window);-->
-<!--        // 初始化-->
-<!--        // 注意： 在Hubble平台创建一个类型为`Web`应用，复制对应的appkey，替换下面的 `88888888`-->
-<!--        // truncateLength:上报数据字段的长度设置-->
-<!--        // persistence: 存储到本地的方式-->
-<!--        // cross_subdomain_cookie : 若是存储到cookie，是否支持跨二级域-->
-<!--        DATracker.init('MA-891C-BF35BECB05C1', {-->
-<!--            truncateLength: 255,-->
-<!--            persistence: "localStorage",-->
-<!--            cross_subdomain_cookie: false-->
-<!--        });-->
-<!--        window.hubbleLogYd = function () {-->
-<!--            var _arguements = Array.prototype.slice.apply(arguments)-->
-<!--            var evetId = _arguements[0]-->
-<!--            var props = {-->
-<!--                category: _arguements[1]-->
-<!--            }-->
-<!--            var regkey = /^[^\s:]+/-->
-<!--            var regValue = /^[^\s:]+:/-->
-<!--            for (var j = 2, len = _arguements.length; j < len; j++) {-->
-<!--                var _argument = _arguements[j]-->
-<!--                var keyMatch = _argument.match(regkey)-->
-<!--                if (keyMatch) {-->
-<!--                    props[keyMatch[0]] = _argument.replace(regValue, '')-->
-<!--                }-->
-<!--            }-->
-<!--            console.log(props)-->
-<!--            DATracker.track(evetId, props)-->
-<!--        }-->
-<!--    </script>-->
-
-<!--    <script>-->
-<!--        var defaultHeadUrl = 'https://yuedust.yuedu.126.net/images/txdefault.png?$IMG_V';-->
-<!--    </script>-->
-    <!--[if lte IE 8]>
     <script src="//yuedust.yuedu.126.net/js/vendor/json2.js?92acd921"></script>
-    <script src="//yuedust.yuedu.126.net/assets/js/es5/es5-shim-4.1.9.min.js?74a35b2f"></script>
-    <script src="//yuedust.yuedu.126.net/assets/js/es5/es5-sham-4.1.9.min.js?6bbb6d8d"></script>
     <style>.ng-hide {
         display: none !important;
     }</style>
@@ -161,7 +43,8 @@
             margin-bottom: 40px;
         }
     </style>
-    <style type="text/css">.clear-float, .m-browsers, .m-newlayer .inner .button {
+    <style type="text/css">
+        .clear-float, .m-browsers, .m-newlayer .inner .button {
         zoom: 1
     }
 
@@ -833,294 +716,81 @@
         border: 1px solid #fc9;
         white-space: nowrap
     }</style>
-    <style type="text/css">/*
-* @Author: hzwushuoshuo
-* @Date:   2016-11-30 15:34:05
-* @Last Modified by:   hzwushuoshuo
-* @Last Modified time: 2017-01-16 15:55:39
-*/
-
-    .sec-header, .m-sch ul li.parent b {
-        background: url(https://easyreadfs.nosdn.127.net/web/trunk/1479954847357/sec-header.png) no-repeat 9999px 9999px;
-    }
-
-    .m-sch {
-        float: left;
-        width: 400px;
-        height: 36px;
-        margin: 40px 0 0 88px;
-    }
-
-    .m-sch input {
-        float: left;
-        width: 336px;
-        height: 14px;
-        line-height: 14px;
-        padding: 10px;
-        border: #c9483c 1px solid;
-        background: #fff;
-        font-size: 14px;
-    }
-
-    .m-sch input.s-placeholder {
-        color: #868686;
-        font-size: 14px;
-        line-height: 14px;
-    }
-
-    .m-sch button {
-        float: left;
-        display: block;
-        width: 42px;
-        height: 36px;
-        border: none;
-        background-position: -2px -56px;
-        cursor: pointer;
-    }
-
-    .m-sch ul {
-        width: 396px;
-        clear: both;
-        border-bottom: #c9483c solid 1px;
-        border-left: #c9483c solid 1px;
-        border-right: #c9483c solid 1px;
-        background-color: #fff;
-    }
-
-    .m-sch ul li {
-        height: 38px;
-        line-height: 40px;
-        overflow: hidden;
-    }
-
-    .m-sch ul li.parent {
-        border-top: #d9d9d9 solid 1px;
-        position: relative;
-    }
-
-    .m-sch ul li.parent b {
-        position: absolute;
-        width: 12px;
-        height: 13px;
-        top: 13px;
-        left: 20px;
-    }
-
-    .m-sch ul li.parent b.book {
-        background-position: -194px -403px;
-    }
-
-    .m-sch ul li.parent b.info {
-        background-position: -206px -403px;
-    }
-
-    .m-sch ul li.parent b.user {
-        background-position: -218px -403px;
-    }
-
-    .m-sch ul li.parent a {
-        padding-left: 39px;
-        color: #333;
-        font-weight: bold;
-    }
-
-    .m-sch ul li.children {
-        height: 24px;
-        line-height: 24px;
-    }
-
-    .m-sch ul li.children img {
-        float: left;
-        margin: 0 10px 0 0;
-    }
-
-    .m-sch ul li.children a {
-        padding: 0 20px 0 40px;
-    }
-
-    .m-sch ul li.children-last {
-        margin: 0 0 10px 0;
-    }
-
-    .m-sch ul li.children-u {
-        height: 30px;
-        line-height: 30px;
-        margin: 0 0 10px;
-    }
-
-    .m-sch ul li a {
-        display: block;
-        padding-left: 10px;
-        height: 100%;
-        color: #333;
-        position: relative;
-    }
-
-    .m-sch ul li a em {
-        color: #bf6261;
-    }
-
-    .m-sch ul li a .v {
-        background: url(https://easyreadfs.nosdn.127.net/web/trunk/1479955042067/snswidget.png) 9999px 9999px no-repeat;
-        position: absolute;
-        width: 15px;
-        height: 15px;
-        left: 55px;
-        top: 15px;
-        background-position: -125px -66px;
-    }
-
-    .m-sch ul li a:hover {
-        background-color: #ececec;
-    }
-
-    .m-sch ul li.topli {
-        border-top: none;
-    }
-
-    .m-sch ul li.crt {
-        background-color: #ececec;
-    }
-    </style>
-    <style type="text/css">/* 提示 */
-    .m-tipss {
-        position: fixed;
-        top: 100px;
-        left: 0;
-        width: 100%;
-        height: 38px;
-        text-align: center;
-        z-index: 99999;
-    }
-
-    .m-tipss .inner {
-        position: relative;
-        display: inline-block;
-        margin: 0 auto;
-        background-color: #ffc;
-        border-radius: 3px 3px 3px 3px;
-        box-shadow: 0 0 2px rgba(100, 100, 100, 0.3);
-        height: 38px;
-        line-height: 38px;
-        padding: 0 20px;
-        text-align: center;
-        border: #fc9 solid 1px;
-        white-space: nowrap;
-    }</style>
     <link type="text/css" rel="stylesheet" href="../css/personalcss/sns-plugin.css">
     <script type="text/javascript" src="../js/personaljs/art-template.js"></script>
     <link id="ursStyle" rel="stylesheet" type="text/css" href="../css/personalcss/ursLogin.css">
+    <script src="../js/topjs/components.js"></script>
+    <script src="../js/topjs/index.bundle.js"></script>
 </head>
 <body id="page-163-com" class="page-myInfor ">
 <noscript><a href="#">请使用支持脚本的浏览器！</a></noscript>
 <div style="display: none;"><input type="password"></div>
 <div class="g-doc">
-    <div id="J_FIXED" class="m-tipss" style="display:none;">
-        <div id="J_TIPS" class="inner"></div>
-    </div>
-
+    <!-- 头部导航 -->
     <div class="g-hdw">
-        <div id="J_Header" class="g-hd">
+        <div id="J_Header" class="g-hd ">
             <div class="m-topbar">
-                <div class="inner f-cb" data-reactid=".2">
-                    <div data-reactid=".2.0">
-                        <ul class="sns f-cb" data-reactid=".2.0.0">
-                            <li data-reactid=".2.0.0.0"><a href="//yuedu.163.com/" title="网易云阅读"
-                                                           data-reactid=".2.0.0.0.0">网易云阅读</a></li>
-                            <li data-reactid=".2.0.0.1"><span class="sep" data-reactid=".2.0.0.1.0">|</span></li>
-                            <li data-reactid=".2.0.0.2"><a href="/yc" title="国风中文网" data-reactid=".2.0.0.2.0">国风中文网</a>
+                <div class="inner f-cb" data-reactid=".3">
+                    <div data-reactid=".3.0">
+                        <ul class="sns f-cb" data-reactid=".3.0.0">
+                            <li data-reactid=".3.0.0.0"><a href="top.html" title="read"
+                                                           data-reactid=".3.0.0.0.0">爱阅读</a></li>
+                            <li data-reactid=".3.0.0.1"><span class="sep" data-reactid=".3.0.0.1.0">|</span></li>
+                            <li data-reactid=".3.0.0.2"><a href="allbooks.html" title="全部作品" data-reactid=".3.0.0.2.0">全部作品</a>
                             </li>
-                            <li data-reactid=".2.0.0.3"><span class="sep" data-reactid=".2.0.0.3.0">|</span></li>
-                            <li data-reactid=".2.0.0.4"><a href="/ycmm" title="采薇书院" data-reactid=".2.0.0.4.0">采薇书院</a>
-                            </li>
-                            <li data-reactid=".2.0.0.5"><span class="sep" data-reactid=".2.0.0.5.0">|</span></li>
-                            <li data-reactid=".2.0.0.6"><a href="/snsMessage.do" title="消息"
-                                                           data-reactid=".2.0.0.6.0"><span data-reactid=".2.0.0.6.0.0">消息</span><span
-                                    class="dot" style="display:none;" data-reactid=".2.0.0.6.0.1"></span></a></li>
-                            <li data-reactid=".2.0.0.7"><span class="sep" data-reactid=".2.0.0.7.0">|</span></li>
-                            <li data-reactid=".2.0.0.8"><a href="/myspace.do?operation=list" title="从电脑上导入书籍"
-                                                           data-reactid=".2.0.0.8.0">从电脑上导入书籍</a></li>
-                            <li data-reactid=".2.0.0.9"><span class="sep" data-reactid=".2.0.0.9.0">|</span></li>
-                            <li data-reactid=".2.0.0.a"><a href="javascript:;" title="公众号"
-                                                           data-reactid=".2.0.0.a.0">公众号</a></li>
-                            <li data-reactid=".2.0.0.b"><span class="sep" data-reactid=".2.0.0.b.0">|</span></li>
-                            <li data-reactid=".2.0.0.c"><a href="//bi.yuedu.163.com/spa/goReg" title="渠道推广平台"
-                                                           target="_blank" data-reactid=".2.0.0.c.0">渠道推广平台</a></li>
+                            <li data-reactid=".3.0.0.5"><span class="sep" data-reactid=".3.0.0.5.0">|</span></li>
+                            <li data-reactid=".3.0.0.6"><a title="从电脑上导入书籍"
+                                                           data-reactid=".3.0.0.6.0">从电脑上导入书籍</a></li>
+                            <li data-reactid=".3.0.0.7"><span class="sep" data-reactid=".3.0.0.7.0">|</span></li>
+                            <li data-reactid=".3.0.0.8"><a id="gongzhonghao" href="" title="公众号"
+                                                           data-reactid=".3.0.0.8.0">公众号</a></li>
+                            <li data-reactid=".3.0.0.9"><span class="sep" data-reactid=".3.0.0.9.0">|</span></li>
+                            <li data-reactid=".3.0.0.a"><a title="渠道推广平台"
+                                                           target="_blank" data-reactid=".3.0.0.a.0">渠道推广平台</a></li>
                         </ul>
-                        <div class="m-snsbox m-snsbox-1" style="display:none;" data-reactid=".2.0.1">
-                            <ul data-reactid=".2.0.1.0"><b data-reactid=".2.0.1.0.0"></b>
-                                <li data-reactid=".2.0.1.0.1"><a href="/snsMessage.do" title="查看私信"
-                                                                 data-reactid=".2.0.1.0.1.0"><span
-                                        data-reactid=".2.0.1.0.1.0.0">查看私信</span><em data-reactid=".2.0.1.0.1.0.1"></em></a>
-                                </li>
-                                <li class="ll" data-reactid=".2.0.1.0.2"><a href="/sns/comment" title="查看评论"
-                                                                            data-reactid=".2.0.1.0.2.0"><span
-                                        data-reactid=".2.0.1.0.2.0.0">查看评论</span><em data-reactid=".2.0.1.0.2.0.1"></em></a>
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="m-codelayer" style="display:none;" data-reactid=".2.0.2"><img
-                                src="https://easyreadfs.nosdn.127.net/web/trunk/1488264973044/code-gzh.png"
-                                data-reactid=".2.0.2.0"></div>
+                        <div class="m-codelayer" style="display: none; left: 200px;" data-reactid=".3.0.1"><img
+                                src="../images/topimages/weixin.png" data-reactid=".3.0.1.0"></div>
                     </div>
-                    <div data-reactid=".2.1">
-                        <div class="ulink" data-reactid=".2.1.0"><a class="name" href="/myinfor" title="m15695922868"
-                                                                    data-reactid=".2.1.0.0"><span
-                                data-reactid=".2.1.0.0.0">m15695922868</span></a><span class="sep"
-                                                                                       data-reactid=".2.1.0.1">|</span><a
-                                class="chong" href="/report.do" target="_blank" title="举报"
-                                data-reactid=".2.1.0.2">举报</a></div>
-                        <noscript data-reactid=".2.1.1"></noscript>
+                    <div data-reactid=".3.1">
+                        <div class="ulink j-ulink" data-reactid=".3.1.0">
+                            <a class="userself" target="_blank" title="登录" data-reactid=".3.1.0.0" href="login.html">登录</a>
+                            <span class="sep" data-reactid=".3.1.0.1">|</span>
+                            <a target="_blank" title="注册" data-reactid=".3.1.0.2" href="zhuce.html">注册</a>
+                        </div>
+                        <noscript data-reactid=".3.1.1"></noscript>
                     </div>
                 </div>
             </div>
             <div class="m-headertop">
                 <div class="inner">
-                    <h1 class="m-logo"><a href="/">网易阅读</a></h1>
-                    <div class="m-sch">
-                        <div data-reactid=".1">
-                            <form class="J_Form" action="/search.do" data-reactid=".1.0"><input type="text"
-                                                                                                class="s-placeholder"
-                                                                                                name="key"
-                                                                                                autocomplete="off"
-                                                                                                value="好人平安"
-                                                                                                data-reactid=".1.0.0"><input
-                                    type="hidden" name="type" value="4" data-reactid=".1.0.1">
-                                <button type="submit" id="123" data-reactid=".1.0.2"><span data-reactid=".1.0.2.0">&nbsp;&nbsp;&nbsp;&nbsp;</span>
-                                </button>
-                            </form>
-                            <span data-reactid=".1.1"></span></div>
+                    <h1 class="m-logo">
+                        <a href="">i阅读</a></h1>
+                    <!--                    搜索-->
+
+                    <div id="first_2_3_1">
+                        <input name="key" type="text" style="width: 425px; height: 26px" id="i1">
+                        <input name="find" type="button" value=" " style="width: 58px; height: 34px" id="i2">
                     </div>
+
                     <div class="m-clouds">
-                        <a class="m-cloudsj" href="bookshelf.html" target="_blank">我的书架</a>
+                        <a class="m-cloudsj" target="_blank">我的书架</a>
                     </div>
                 </div>
             </div>
             <div class="m-headerbottom">
                 <div class="inner">
                     <ul class="m-mianlist">
-                        <li><a class="" href="/index" onclick="_gaq.push(['_trackEvent', 'navi', 'home']);">首页</a></li>
-                        <li><a class="" href="/book" onclick="_gaq.push(['_trackEvent', 'navi', 'publish']);">出版图书</a>
-                        </li>
-                        <li><a class="" href="/yc" onclick="_gaq.push(['_trackEvent', 'navi', 'yc']);">国风中文网</a></li>
-                        <li><a class="" href="/ycmm" onclick="_gaq.push(['_trackEvent', 'navi', 'ycmm']);">采薇书院</a></li>
-                        <li><a class="" href="/rank" onclick="_gaq.push(['_trackEvent', 'navi', 'rank']);">排行榜</a></li>
-                        <li class="fr"><a href="/client" target="_blank"
-                                          onclick="_gaq.push(['_trackEvent', 'navi', 'client']);"><b
-                                class="icon-download"></b>客户端</a></li>
-                        <li class="fr"><a class="" href="/recharge.do?operation=form"
-                                          onclick="_gaq.push(['_trackEvent', 'navi', 'recharge']);"><b
-                                class="icon-recharge"></b>充值</a></li>
-                        <li class="fr"><a href="http://open.yuedu.163.com/" target="_blank"
-                                          onclick="_gaq.push(['_trackEvent', 'navi', 'open']);"><b
-                                class="icon-open"></b>作者中心</a></li>
+                        <li><a class="" href="top.html">首页</a></li>
+                        <li><a class="" href="allbooks.html">全部作品</a></li>
+                        <li><a class="" href="ranklist.html">排行榜</a></li>
+                        <li class="fr"><a href=""><b class="icon-recharge"></b>充值</a></li>
+                        <li class="fr"><a class="authorcontainer"><b class="icon-open"></b>作者中心</a></li>
                     </ul>
                 </div>
             </div>
-
         </div>
-
     </div>
+
 
     <script type="text/javascript" src="../js/personaljs/jquery-ui.min.js"></script>
     <script type="text/javascript" src="../js/personaljs/jquery.imgareaselect.js"></script>
@@ -1136,10 +806,7 @@
                                     <a class="inner" href="">个人信息</a>
                                 </li>
                                 <li class="crt">
-                                    <a href="/myinfor">个人资料</a>
-                                </li>
-                                <li>
-                                    <a href="/weibo.do?operation=getBindings">账号绑定</a>
+                                    <a href="personal.html">个人资料</a>
                                 </li>
                             </ul>
                         </div>
@@ -1153,36 +820,7 @@
                                     <a href="recharge.html">余额查询</a>
                                 </li>
                                 <li>
-                                    <a href="reward.html">消费记录</a>
-                                </li>
-                                <li>
-                                    <a href="/userPoint.do?operation=list">积分详情</a>
-                                </li>
-                                <li>
-                                    <a href="/quan.do?operation=listHongBao">我的红包</a>
-                                </li>
-                                <li>
-                                    <a href="/exchange.do?operation=list">书籍兑换记录</a>
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="widget-content">
-                            <ul>
-                                <li class="title">
-                                    <span class="icon computer"></span>
-                                    <a class="inner" href="javascript:;">我的云阅读</a>
-                                </li>
-                                <li>
-                                    <a href="/sns/feed/home" target="_blank">我的主页</a>
-                                </li>
-                                <li>
-                                    <a href="/snsMessageConfig.do">消息设置</a>
-                                </li>
-                                <li>
-                                    <a href="/trade.do?operation=list_auto_purchases">自动订阅</a>
-                                </li>
-                                <li class="ll">
-                                    <a href="/fansList.do">原创粉丝榜</a>
+                                    <a href="costrecord.html">消费记录</a>
                                 </li>
                             </ul>
                         </div>
@@ -1214,30 +852,30 @@
                             </div>
 
                             <div class="m-subbox">
-                                <h3>个人信息</h3>
-                                <div class="innerbox">
-                                    <div class="cell">
-                                        <p>我的等级：<em>1</em></p>
-                                    </div>
-                                    <div class="cell pb">
-                                        <label>进度：</label>
-                                        <span class="lv">LV1&nbsp;</span>
-                                        <div class="m-probar">
-                                            <div class="inner">
-                                                <div id="J_Pbar" class="bar" style="width: 34px;"><span>0</span>/<span>224&nbsp;</span>
-                                                </div>
+                            <h3>个人信息</h3>
+                            <div class="innerbox">
+                                <div class="cell">
+                                    <p>我的等级：<em>1</em></p>
+                                </div>
+                                <div class="cell pb">
+                                    <label>进度：</label>
+                                    <span class="lv">LV1&nbsp;</span>
+                                    <div class="m-probar">
+                                        <div class="inner">
+                                            <div id="J_Pbar" class="bar" style="width: 34px;"><span>0</span>/<span>224&nbsp;</span>
                                             </div>
                                         </div>
-                                        <span class="lv">&nbsp;LV2</span>
                                     </div>
-                                    <div class="cell">
-                                        <p>可用积分：<em>0&nbsp;</em>分<a href="/userPoint.do?operation=list">查看积分详情</a></p>
-                                    </div>
-                                    <div class="cell">
-                                        <p>经验值：<em>0&nbsp;</em>分<a href="/help/grade" target="_blank">经验值说明</a></p>
-                                    </div>
+                                    <span class="lv">&nbsp;LV2</span>
+                                </div>
+                                <div class="cell">
+                                    <p>可用积分：<em>0&nbsp;</em>分<a href="/userPoint.do?operation=list">查看积分详情</a></p>
+                                </div>
+                                <div class="cell">
+                                    <p>经验值：<em>0&nbsp;</em>分<a href="/help/grade" target="_blank">经验值说明</a></p>
                                 </div>
                             </div>
+                        </div>
 
                             <div class="m-subbox">
                                 <h3>账户管理</h3>
@@ -1391,11 +1029,12 @@
 <!--    <script type="text/javascript" src="../js/personaljs/pop.js"></script>-->
 
 
+    <!-- 尾部导航 -->
     <div class="g-ftw">
-        <div class="g-ft">
+        <div class="g-ft" class="f-cb">
             <div class="m-foot">
                 <p class="link">
-                    <a href="http://www.163.com" target="_blank">网易首页</a><span class="sep">|</span>
+                    <a href="http://www.163.com" target="_blank">i首页</a><span class="sep">|</span>
                     <a href="http://gb.corp.163.com/gb/about/overview.html" target="_blank">公司简介</a><span
                         class="sep">|</span>
                     <a href="http://help.163.com/" target="_blank">客户服务</a><span class="sep">|</span>
@@ -1406,37 +1045,23 @@
                     <a href="http://open.yuedu.163.com/" target="_blank">作者中心</a>
                 </p>
             </div>
-            <div class="m-right"><p>网易公司版权所有©1997-<span id="j-year">2019</span> &nbsp;&nbsp;网络出版服务许可证（总）网出证（粤）字第030号
+            <div class="m-right"><p>网易公司版权所有&#169;1997-<span id="j-year">2017</span> &nbsp;&nbsp;网络出版服务许可证（总）网出证（粤）字第030号
                 &nbsp;&nbsp;信息网络传播视听节目许可证号1908260 &nbsp;&nbsp;增值电信业务经营许可证 粤B2-20090191</p></div>
             <div class="m-share f-cb">
                 <label>分享到：</label>
                 <div class="share"><a href="javascript:;" class="s2 j-wxwx" data-type="xo">微信</a></div>
                 <div class="share"><a href="javascript:;" class="s4 j-yxyx" data-type="xo">易信</a></div>
                 <div class="share"><a id="_share_b_tsina"
-                                      href="javascript:(function(){window.open('http://v.t.sina.com.cn/share/share.php?appkey=1560988037&amp;url='+encodeURIComponent('https://yuedu.163.com/')+'&amp;title='+encodeURIComponent('网易云阅读内容丰富、操作便捷，适合作为平时阅读、充电的软件工具，推荐大家都来下载！')+'&amp;pic='+encodeURIComponent('https://yuedust.yuedu.126.net/images/weibo_v3.jpg?2_20120731162723'),'_blank');})()"
+                                      href="javascript:(function(){window.open('http://v.t.sina.com.cn/share/share.php?appkey=1560988037&url='+encodeURIComponent('https://yuedu.163.com/')+'&title='+encodeURIComponent('网易云阅读内容丰富、操作便捷，适合作为平时阅读、充电的软件工具，推荐大家都来下载！')+'&pic='+encodeURIComponent('https://yuedust.yuedu.126.net/images/weibo_v3.jpg?2_20120731162723'),'_blank');})()"
                                       class="s1">微博</a></div>
                 <div class="share"><a
-                        href="javascript:(function(){window.open('http://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?site='+encodeURIComponent('网易云阅读官方网站')+'&amp;url='+encodeURIComponent('https://yuedu.163.com/')+'&amp;title='+encodeURIComponent('网易云阅读--随时随地，品质阅读')+'&amp;pics='+encodeURIComponent('https://yuedust.yuedu.126.net/images/weibo_v3.jpg?3_20131202100833')+'&amp;summary='+encodeURIComponent('网易云阅读内容丰富、操作便捷，适合作为平时阅读、充电的软件工具，推荐大家都来下载！'),'_blank');})()"
+                        href="javascript:(function(){window.open('http://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?site='+encodeURIComponent('网易云阅读官方网站')+'&url='+encodeURIComponent('https://yuedu.163.com/')+'&title='+encodeURIComponent('网易云阅读--随时随地，品质阅读')+'&pics='+encodeURIComponent('https://yuedust.yuedu.126.net/images/weibo_v3.jpg?3_20131202100833')+'&summary='+encodeURIComponent('网易云阅读内容丰富、操作便捷，适合作为平时阅读、充电的软件工具，推荐大家都来下载！'),'_blank');})()"
                         class="s3">QQ空间</a></div>
             </div>
 
         </div>
     </div>
-    <div class="m-pop-qr ma" id="J_WXM" style="display:none;"><a class="close" href="javascript:;"></a></div>
-    <div class="m-pop-qr ma2" id="J_YXM" style="display:none;"><a class="close" href="javascript:;"></a></div>
-    <div class="m-pop-qr ma3" id="J_WBM" style="display:none;"><a class="close" href="javascript:;"></a></div>
-    <div id="J_ServiceNum" class="m-layer m-layer-5" style="display:none;">
-        <div class="inner">
-            <div class="up"><a href="javascript:void(0);"></a></div>
-            <div class="down">
-                <p>购买书籍后无法阅读等问题<br></p>
-                <p>可拨打：0571-89853801</p>
-            </div>
-        </div>
-    </div>
-<!--    <script type="text/javascript">-->
-<!--        document.getElementById('j-year').innerText = new Date().getFullYear();-->
-<!--    </script>-->
+
 
     <div id="J_rightsidebar">
         <div data-reactid=".0"><a href="javascript:;" class="m-gotop" style="display: none; right: 131px;" title="回到顶部"
@@ -1452,259 +1077,13 @@
             <a href="/report.do" target="_blank" style="right: 131px;" title="举报中心" class="m-report"
                data-reactid=".0.2"></a></div>
     </div>
-
-    <!--[if IE 6]>
-    <script type="text/javascript" src="//yuedust.yuedu.126.net/js/pngfix.js?d59ab621"></script>
-    <![endif]-->
-    <script type="text/javascript"
-            src="//yuedust.yuedu.126.net/js/gen/gen_e7cd1b5996feb5f3daa6abd18c3dd7a3.js?a32ec1bb"></script>
-<!--    <script type="text/javascript">-->
-<!--        new SearchWidget();-->
-<!--    </script>-->
-<!--    <script>-->
-<!--        // YD.initZoom();-->
-<!--        // logInfo.init();-->
-<!--        // YD.Header.toggleFixHeader();-->
-<!--        // YD.Header.toggleMoreHeaderMenu();-->
-<!--    </script>-->
-<!--    <script>-->
-<!--        var G_USER = (function getLoginInfo() {-->
-<!--            var e = {-->
-<!--                    isLogin: !1,-->
-<!--                    userId: null-->
-<!--                },-->
-<!--                t = $.cookie("P_INFO"),-->
-<!--                n = $.cookie("S_INFO");-->
-<!--            if (t) {-->
-<!--                t = t.split("|"),-->
-<!--                    e.userId = t[0];-->
-<!--                if (t[2] == 1 || t[2] == 0 && n)-->
-<!--                    e.isLogin = !0-->
-<!--            }-->
-<!--            return e;-->
-<!--        })();-->
-<!--    </script>-->
-
 </div>
 
-<div id="login-layer" class="m-login-layer m-login-layer-wy" style="display: none;">
-    <div class="lytt yy"><a class="lyclose j-close" style="display:block;">关闭</a>
-        <h4>网易邮箱登录</h4></div>
-    <div class="content">
-        <div class="m-loginwrap">
-            <div class="m-loginwrap__main">
-                <div class="m-login" id="login-container" style="width: 300px;">
-
-                </div>
-            </div>
-            <div class="m-loginswitch">
-                <h6>其他帐号登录：</h6>
-                <ul>
-                    <li class="sj"><a><span class="login-icon"></span>
-                        <div>手机号</div>
-                    </a></li>
-                    <li class="xl xllogin"><a><span class="login-icon"></span>
-                        <div>新浪微博</div>
-                    </a></li>
-                    <li class="wx wxlogin"><a><span class="login-icon"></span>
-                        <div>微信</div>
-                    </a></li>
-                </ul>
-            </div>
-        </div>
-    </div>
-</div>
-
-<div id="eroTip" style="display:none;" class="m-layer m-layer-3">
-    <div class="lytt yy"><h4></h4><a href="#" class="lyclose j-close">关闭</a></div>
-    <div class="lyct">
-        <div class="m-actip">
-            <h3></h3>
-            <a href="#" class="btn j-close">我知道了</a>
-        </div>
-    </div>
-    <div class="lybt">
-        <button class="j-close">我知道了</button>
-    </div>
-</div>
-<div id="openFirst" class="m-open m-open-1 f-dn">
-    <div class="inner">
-        <h4>Hi，m15695922868，</h4>
-        <div class="tx"><img src="//yuedust.yuedu.126.net/images/txdefault.png?9b117455"></div>
-        <p class="id">m15695922868</p>
-        <a class="ok closeit_first_login"></a>
-        <a class="clbtn closeit_first_login"></a>
-
-    </div>
-</div>
-<div id="layer4" class="m-newlayer m-newlayer-s3" style="display:none;">
-    <h2><span>订阅成功</span><a class="lyclose" href="javascript:void(0)"></a></h2>
-    <div class="inner">
-        <div class="m-addyuan">
-            <div class="m-inf">
-                <div class="w-img">
-                    <img src="https://easyreadfs.nosdn.127.net/L7UMtMO6H4adgKkFh4SroQ==/3942338523811683680" alt="">
-                    <div class="tick"></div>
-                </div>
-                <div class="txt">
-                    <h4></h4>
-                    <div class="w-star w-star1"></div>
-                    <br>
-                    <div class="has"><span></span>人订阅</div>
-                </div>
-            </div>
-            <div class="fromto"></div>
-            <div class="pmsg">
-                <p class="acn">m15695922868</p>
-            </div>
-            <p class="tip">在客户端“资讯”首页刷新后,即可阅读此内容。</p>
-            <div class="button">
-                <a class="ok lyclose" href="javascript:;">我知道了</a>
-            </div>
-        </div>
-    </div>
-</div>
-
-<div id="J_Success" class="m-newlayer m-booklayer-2 m-newlayer-s3" style="display:none;">
-    <h2><span>放入书架</span><a class="lyclose j-close" href="javascript:void(0)"></a></h2>
-    <div class="inner">
-        <div class="m-addyuan">
-            <div class="m-bookele m-bookele-1" style="float:left;">
-                <div class="w-bimg w-bimg-m f-db2">
-                    <a href="#"><img src="https://yuedust.yuedu.126.net/images/bookDefaultIcon.png?$IMG_V" alt=""></a>
-                    <span class="tick"></span>
-                </div>
-                <div class="t-info">
-                    <h3></h3>
-                    <div class="w-star w-star1"></div>
-                    <p></p>
-                </div>
-            </div>
-
-            <div class="fromto"></div>
-            <div class="pmsg">
-                <p class="acn">m15695922868</p>
-            </div>
-            <p class="tip">在客户端“书籍”首页刷新后，即可阅读此书籍。</p>
-            <div class="button">
-                <a class="ok lyclose" href="javascript:;">我知道了</a>
-            </div>
-        </div>
-    </div>
-</div>
-
-<div id="layer7" style="display:none;" class="m-layer m-layer-2">
-    <div class="lytt yy"><h4>订阅成功</h4><a href="#" class="lyclose j-close">关闭</a></div>
-    <div class="lyct">
-        <div class="m-steps">
-            <p>还差两步，你就能在客户端上阅读此内容。</p>
-            <div class="illus"></div>
-            <div class="bt">
-                <button class="j-close" type="button">知道了</button>
-            </div>
-        </div>
-    </div>
-    <div class="lybt">
-        <button class="j-close">我知道了</button>
-    </div>
-</div>
-<div id="infoTip" style="display:none;" class="m-layer m-layer-2 m-layer-4">
-    <div class="lytt yy"><h4>提示</h4><a href="#" class="lyclose j-close">关闭</a></div>
-    <div class="lyct">
-        <div class="m-removeyuan">
-            <h3 style="line-height:26px;height:71px;"></h3>
-            <div class="bt">
-                <button class="j-close">知道了</button>
-            </div>
-        </div>
-    </div>
-    <div class="lybt">
-        <button class="j-close">我知道了</button>
-    </div>
-</div>
-<div id="sucTip" style="display:none;" class="m-layer m-layer-3">
-    <div class="lytt yy"><h4></h4><a href="#" class="lyclose j-close">关闭</a></div>
-    <div class="lyct">
-        <div class="m-actip m-actip-1">
-            <h3>排序保存成功！</h3>
-            <a href="#" class="btn j-close">我知道了</a>
-        </div>
-    </div>
-    <div class="lybt">
-        <button class="j-close">我知道了</button>
-    </div>
-</div>
-<div id="J_IntroS1" class="m-newintro m-newintro-1" style="display:none;">
-    <div class="inner">
-        <a class="close-s" href="javascript:;"></a>
-        <a class="next" href="javascript:;"></a>
-    </div>
-</div>
-<div id="J_IntroS2" class="m-newintro m-newintro-2" style="display:none;">
-    <div class="inner">
-        <a class="close-s" href="javascript:;"></a>
-        <a class="close-s close-ss" href="javascript:;"></a>
-    </div>
-</div>
-<div id="blacklistcmtTip" class="m-newlayer m-newlayer-s2" style="display:none;">
-    <h2><span>提示</span><a href="javascript:void(0)" class="j-close"></a></h2>
-    <div class="inner">
-        <div class="content">
-            <p>您的帐号因发表不适宜的言论，评论已被禁止。</p>
-            <p>如有任何问题请邮件至reader@188.com反馈给我们。谢谢~</p>
-            <div class="f-cb">
-                <a class="j-close btn-cmt btn-primary-cmt">确定</a>
-            </div>
-        </div>
-    </div>
-</div>
-<input id="J_IFIE6" type="hidden" value="no">
-<div class="m-mask f-dn"></div>
-<!--<script type="text/javascript">-->
-<!--    jQuery(function () {-->
-
-<!--        jQuery('.w-ding, .w-ding-has').live('click', function () {-->
-<!--            var jq = jQuery(this);-->
-<!--            var jqNum = jq.parent().parent().find('.has span');-->
-<!--            onSubOrUnsubSource(jq, jqNum, null, 'w-ding-has');-->
-<!--        });-->
-
-<!--        jQuery('.w-ding, .w-ding-has, .o1, .o3').bind('mouseover', function () {-->
-<!--            var jq = jQuery(this);-->
-<!--            if (jq.hasClass('w-ding-has') || jq.hasClass('o3')) {-->
-<!--                jq.text('取消订阅');-->
-<!--            }-->
-<!--        }).bind('mouseout', function () {-->
-<!--            var jq = jQuery(this);-->
-<!--            if (jq.hasClass('w-ding-has') || jq.hasClass('o3')) {-->
-<!--                jq.text('已经订阅');-->
-<!--            }-->
-<!--        });-->
-
-<!--        jQuery('.m_bksub').live('click', function () {-->
-<!--            var jq = jQuery(this);-->
-<!--            subscribeBook(jq, 's1', 's2');-->
-<!--        });-->
-
-<!--        jQuery('.m-share .share a, #get-yd').bind('click', function () {-->
-<!--            if (this.id) {-->
-<!--                logRequest(this.id);-->
-<!--            }-->
-<!--        });-->
-
-<!--        var hideLog = function () {-->
-<!--            $('#J_tb .options .ll').hide();-->
-<!--            $('#J_tb .options').css({'height': 'auto'})-->
-<!--        };-->
-<!--    });-->
-<!--</script>-->
-
-
-<ul class="sns-droplist" style="display: none;"></ul>
-<!--<script src="../js/personaljs/message.js" id="ursScript"></script>-->
 <script>
 
     var userLoginId;
+    var authorId;
+    var userName;
     var msg = new Vue({
         el: "#ainfo",
         data: {
@@ -1718,7 +1097,14 @@
         }
     })
     window.onload=function () {
-        userLoginId=sessionStorage.getItem("userLoginId")
+        userName = sessionStorage.getItem("userName");
+        if (userName != undefined) {
+            $(".userself").text(userName)
+            $(".userself").siblings().remove()
+            $(".userself").attr("href", "personal.html")
+        }
+
+        userLoginId=sessionStorage.getItem("userLoginId");
 
         $.ajax({
             url: "http://localhost:8080/getUserInfo",
@@ -1728,18 +1114,9 @@
             },
             datatype: "json",
             success: function (data) {
-                // alert("1");
-                // alert(data.userName);
-                // alert(data.userLoginAccount);
-                // msg.userLoginId = data;
-                var str1;
                 msg.user=data;
             }
-
         })
-
-
-
         // })
     }
     //取消编辑
@@ -1770,6 +1147,40 @@
             }
 
         })
+    })
+
+    $("#gongzhonghao").hover(function () {
+        $(".m-codelayer").css("display", "block")
+    }, function () {
+        $(".m-codelayer").css("display", "none")
+    })
+
+    $("input[name='find']").click(function () {
+        var key = $("input[name='key']").val();
+        if (key != "" && key != "输入不能为空！") {
+            sessionStorage.setItem("key", key);
+            window.location.href = "search.html";
+        } else {
+            $("input[name='key']").val("输入不能为空！");
+        }
+    })
+
+    $(".m-cloudsj").click(function () {
+        userId = sessionStorage.getItem("userId");
+        if (userId == undefined) {
+            window.location.href = "login.html";
+        } else {
+            window.location.href = "bookshelf.html";
+        }
+    })
+
+    $(".authorcontainer").click(function () {
+        authorId = sessionStorage.getItem("authorId");
+        if (authorId == undefined) {
+            window.location.href = "author_login.html";
+        } else {
+            window.location.href = "authormsg.html";
+        }
     })
 </script>
 </body>

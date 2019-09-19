@@ -46,8 +46,7 @@
                     </div>
                     <div data-reactid=".3.1">
                         <div class="ulink j-ulink" data-reactid=".3.1.0">
-                            <a class="userself" target="_blank" title="登录" data-reactid=".3.1.0.0"
-                               href="login.html">登录</a>
+                            <a class="userself" target="_blank" title="登录" data-reactid=".3.1.0.0" href="login.html">登录</a>
                             <span class="sep" data-reactid=".3.1.0.1">|</span>
                             <a target="_blank" title="注册" data-reactid=".3.1.0.2" href="zhuce.html">注册</a>
                         </div>
@@ -224,7 +223,7 @@
                             <span class="icon"></span>
                             <h3>客服中心</h3>
                             <h6>欢迎反馈宝贵意见给我们</h6>
-                            <p alt="限工作时间">客服：13280107737/p>
+                            <p alt="限工作时间">客服：13280107737</p>
                                 <a class="btn" target="_blank" href=""
                                    data-model="gyyyd" data-opration="feedback">&nbsp;意见反馈 &gt;</a>
                         </li>
@@ -293,25 +292,25 @@
 
         </div>
     </div>
-
-</div>
-<!-- 共用结构 -->
-<!-- 右侧悬浮 -->
-<div id="J_BonusPack"></div>
-<div id="J_rightsidebar">
-    <div data-reactid=".0"><a href="javascript:;" class="m-gotop" style="display: block; right: 0px;" title="回到顶部"
-                              data-reactid=".0.0"></a>
-        <div data-reactid=".0.1"><a class="m-qr" target="_blank" href="/download?act=rdpages_20130925_02"
-                                    style="display:none;" data-reactid=".0.1.0"><img
-                src="https://yuedu.163.com/images/down/QR_All.png" data-reactid=".0.1.0.0"></a>
-            <div class="m-qr-icon" href="javascript:;" style="display:block;right:0px;" data-reactid=".0.1.1"><a
-                    class="m-qr-hover" href="/download?act=rdpages_20130925_02" style="display: none; right: 50px;"
-                    data-reactid=".0.1.1.0"><img src="https://yuedu.163.com/images/down/QR_All.png"
-                                                 data-reactid=".0.1.1.0.0"></a></div>
+    <!-- 共用结构 -->
+    <!-- 右侧悬浮 -->
+    <div id="J_BonusPack"></div>
+    <div id="J_rightsidebar">
+        <div data-reactid=".0"><a href="javascript:;" class="m-gotop" style="display: block; right: 0px;" title="回到顶部"
+                                  data-reactid=".0.0"></a>
+            <div data-reactid=".0.1"><a class="m-qr" target="_blank" href="/download?act=rdpages_20130925_02"
+                                        style="display:none;" data-reactid=".0.1.0"><img
+                    src="https://yuedu.163.com/images/down/QR_All.png" data-reactid=".0.1.0.0"></a>
+                <div class="m-qr-icon" href="javascript:;" style="display:block;right:0px;" data-reactid=".0.1.1"><a
+                        class="m-qr-hover" href="/download?act=rdpages_20130925_02" style="display: none; right: 50px;"
+                        data-reactid=".0.1.1.0"><img src="https://yuedu.163.com/images/down/QR_All.png"
+                                                     data-reactid=".0.1.1.0.0"></a></div>
+            </div>
+            <a href="/report.do" target="_blank" style="right:0px;" title="举报中心" class="m-report" data-reactid=".0.2"></a>
         </div>
-        <a href="/report.do" target="_blank" style="right:0px;" title="举报中心" class="m-report" data-reactid=".0.2"></a>
     </div>
 </div>
+
 <div class="m-mask" style="z-index: 8000"></div>
 <div class="m-bonus-success"></div>
 
@@ -329,9 +328,17 @@
         if (userName != undefined) {
             $(".userself").text(userName)
             $(".userself").siblings().remove()
-            $(".userself").attr("href", "")
+            $(".userself").attr("href", "personal.html")
         }
     })
+
+    // $(".userself").click(function () {
+    //     if(userName == undefined){
+    //         window.location.href = "login.html";
+    //     }else{
+    //         window.location.href = "personal.html";
+    //     }
+    // })
 
     var mv1 = new Vue({
         el: '#J_MM',
@@ -444,7 +451,7 @@
     })
 
     $(".m-cloudsj").click(function () {
-        sessionStorage.getItem("userId", userId);
+        userId = sessionStorage.getItem("userId");
         if (userId == undefined) {
             window.location.href = "login.html";
         } else {
@@ -453,11 +460,11 @@
     })
 
     $(".authorcontainer").click(function () {
-        sessionStorage.getItem("authorId", authorId);
+        authorId = sessionStorage.getItem("authorId");
         if (authorId == undefined) {
             window.location.href = "author_login.html";
         } else {
-            window.location.href = "";
+            window.location.href = "authormsg.html";
         }
     })
 
@@ -477,11 +484,11 @@
     };
 
     $("#author").click(function () {
-        sessionStorage.getItem("authorId", authorId);
+        authorId = sessionStorage.getItem("authorId");
         if (authorId == undefined) {
             window.location.href = "author_login.html";
         } else {
-            window.location.href = "";
+            window.location.href = "authormsg.html";
         }
     })
 </script>

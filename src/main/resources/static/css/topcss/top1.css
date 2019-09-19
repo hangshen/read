@@ -1606,7 +1606,6 @@ body {
 .m-layer {
     position: absolute;
     top: 0;
-    left: 0;
     border: 1px solid #ccc;
     background: #fff;
     z-index: 12;
