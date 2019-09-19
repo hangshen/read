@@ -301,7 +301,7 @@
     })
 
     $(".m-cloudsj").click(function () {
-        sessionStorage.getItem("userId", userId);
+        userId = sessionStorage.getItem("userId");
         if (userId == undefined) {
             window.location.href = "login.html";
         } else {
@@ -310,7 +310,7 @@
     })
 
     $(".authorcontainer").click(function () {
-        sessionStorage.getItem("authorId",authorId);
+        authorId = sessionStorage.getItem("authorId");
         if(authorId == undefined){
             window.location.href = "author_login.html";
         }else{

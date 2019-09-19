@@ -187,8 +187,7 @@
                                href=""
                                title="大汉光武">{{otherbook.bookName}}</a></h5>
                         <div class="price"></div>
-                        <div class="cover"><a target="_blank"
-                                              href="http://guofeng.yuedu.163.com/source/a2a4841d50e04a31a6185becd23ff999_4"
+                        <div class="cover"><a target="_blank" @click="bookdetail(otherbook.bookId)"
                                               title="大汉光武"><img
                                 v-bind:src="otherbook.bookImg"
                                 alt="大汉光武"></a></div>
@@ -211,6 +210,7 @@
     var pageNum = null;
 
     userName = sessionStorage.getItem("userName");
+    userId = sessionStorage.getItem("userId");
     bookId = sessionStorage.getItem("bookId");
     chapterId = sessionStorage.getItem("chapterId");
 
@@ -218,6 +218,12 @@
         el: '.editorrecommend',
         data: {
             otherbooks: {},
+        },
+        methods:{
+            bookdetail:function (i) {
+                sessionStorage.setItem("bookId", i);
+                window.location.href = "bookdetail.html";
+            }
         }
     })
 
@@ -248,13 +254,19 @@
         }
     })
 
+    var mv4 = new Vue({
+        el: '#J_ChapterTitle',
+        data: {
+            booktext: {},
+        }
+    })
+
     var mv3 = new Vue({
         el: '.article-content',
         data: {
             booktext: {},
         },
         created: function () {
-            alert(bookId);
             $.ajax({
                 url: "http://localhost:8080/getbooxtxt",
                 type: "post",
@@ -262,6 +274,7 @@
                 datatype: "json",
                 success: function (data) {
                     mv3.booktext = data;
+                    mv4.booktext = data;
                 }
             })
         }
@@ -286,6 +299,7 @@
             datatype: "json",
             success: function (data) {
                 mv3.booktext = data;
+                mv4.booktext = data;
             }
         })
     })
@@ -307,6 +321,7 @@
             datatype: "json",
             success: function (data) {
                 mv3.booktext = data;
+                mv4.booktext = data;
             }
         })
     })
