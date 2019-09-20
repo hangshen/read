@@ -922,7 +922,7 @@
             addComment: function (data) {
                 commentupdate.commentMassage = data;
                 commentupdate.commentBookId = this.book.bookId;
-                commentupdate.commentUserId = 1;
+                commentupdate.commentUserId = userId;
                 $.ajax({
                     url: "/insertComment",
                     type: "post",

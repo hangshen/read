@@ -182,7 +182,7 @@ public class AuthorController {
     public List<Comment> readerComment(Integer authorId) {
 
 //        PageHelper.startPage(pageNum, 5);
-        List<Comment> list = commentService.selectAllByAuthorId(authorId);
+        List<Comment> list = commentService.selectAllByAuthorId(1);
         System.out.println(authorId);
 //        PageInfo<Comment> pageInfo = new PageInfo<>(list);
 

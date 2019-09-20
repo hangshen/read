@@ -320,7 +320,7 @@
     // alert(aid);
     $(function () {
         $.ajax({
-            url: "http://localhost:8080/author/getAuthorName",
+            url: "/author/getAuthorName",
             data: {authorId: aid},
             type: "post",
             dataType: "json",
@@ -337,7 +337,7 @@
     $(function () {
 
         $.ajax({
-            url: "http://localhost:8080/author/getAllBookType",
+            url: "/author/getAllBookType",
             type: "post",
             dataType: "json",
             success: function (data) {
@@ -366,7 +366,7 @@
         // data.append("file", file);
 
         $.ajax({
-            url: "http://localhost:8080/author/publishBook",
+            url: "/author/publishBook",
             type: "post",
             // 告诉jQuery不要去处理发送的数据
             processData: false,

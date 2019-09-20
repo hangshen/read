@@ -42,19 +42,7 @@ b.book_id = c.comment_book_id and c.comment_book_id = #{commentBookId,jdbcType=I
   </select>
 
     <select id="selectAllByAuthorId" resultMap="CommentMap" parameterType="java.lang.Integer">
-SELECT
-`comment`.comment_id,
-`comment`.comment_massage,
-`comment`.comment_date,
-`comment`.comment_book_id,
-`comment`.comment_user_id,
-books.book_id,
-author.author_id,
-books.book_author_id
-FROM
-`comment`
-INNER JOIN books ON `comment`.comment_book_id = books.book_id
-INNER JOIN author ON books.book_author_id = author.author_id and author_id = #{authorId,jdbcType=INTEGER} ORDER BY comment_date desc
+SELECT * from comment c,books b,users u WHERE c.comment_book_id = b.book_id and c.comment_user_id = u.user_id and b.book_author_id = #{authorId,jdbcType=INTEGER} ORDER BY comment_date desc
   </select>
 
     <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">

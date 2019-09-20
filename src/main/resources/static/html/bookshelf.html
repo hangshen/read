@@ -50,7 +50,7 @@
                                 data-reactid=".3.0.1.0"></div>
                     </div>
                     <div data-reactid=".3.1">
-                        <div class="ulink j-ulink" data-reactid=".3.1.0"><a target="_blank" title="登录"
+                        <div class="ulink j-ulink" data-reactid=".3.1.0"><a class="userself" target="_blank" title="登录"
                                                                             data-reactid=".3.1.0.0" href="">登录</a><span
                                 class="sep" data-reactid=".3.1.0.1">|</span><a target="_blank" title="注册"
                                                                                data-reactid=".3.1.0.2" href="">注册</a></div>
@@ -266,6 +266,15 @@
 <script src="../js/topjs/vue.min.js"></script>
 <script type="text/javascript">
     var userId;
+    var userName;
+    $(function () {
+        userName = sessionStorage.getItem("userName");
+        if (userName != undefined) {
+            $(".userself").text(userName)
+            $(".userself").siblings().remove()
+            $(".userself").attr("href", "personal.html")
+        }
+    })
     var vu = new Vue({
         el:"#shelfbooks",
         data:{

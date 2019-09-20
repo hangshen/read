@@ -851,50 +851,13 @@
                                 <a id="J_Edit" class="edit" @click="editdata()">编辑资料</a>
                             </div>
 
-                            <div class="m-subbox">
-                            <h3>个人信息</h3>
-                            <div class="innerbox">
-                                <div class="cell">
-                                    <p>我的等级：<em>1</em></p>
-                                </div>
-                                <div class="cell pb">
-                                    <label>进度：</label>
-                                    <span class="lv">LV1&nbsp;</span>
-                                    <div class="m-probar">
-                                        <div class="inner">
-                                            <div id="J_Pbar" class="bar" style="width: 34px;"><span>0</span>/<span>224&nbsp;</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <span class="lv">&nbsp;LV2</span>
-                                </div>
-                                <div class="cell">
-                                    <p>可用积分：<em>0&nbsp;</em>分<a href="/userPoint.do?operation=list">查看积分详情</a></p>
-                                </div>
-                                <div class="cell">
-                                    <p>经验值：<em>0&nbsp;</em>分<a href="/help/grade" target="_blank">经验值说明</a></p>
-                                </div>
-                            </div>
-                        </div>
 
                             <div class="m-subbox">
                                 <h3>账户管理</h3>
                                 <div class="innerbox">
                                     <div class="cell">
                                         <p>账户余额：
-                                            <em>0&nbsp;</em>阅点<a href="/recharge.do?operation=balance">余额查询</a><a
-                                                    href="/trade.do?operation=list">消费记录</a>
-                                        </p>
-                                    </div>
-                                    <div class="cell">
-                                        <p>本月月票：<em>0&nbsp;</em>张<a href="/monthlyTicketList.do">月票记录</a><a
-                                                href="/help/ticket" target="_blank">月票作用</a><a href="/help/ticket"
-                                                                                               target="_blank">如何获得月票</a>
-                                        </p>
-                                    </div>
-                                    <div class="cell">
-                                        <p>红包余额：
-                                            <em>0&nbsp;</em>阅点<a href="/quan.do?operation=listHongBao">查看我的红包</a>
+                                            <em>{{user.users.userMoney}}</em>阅点
                                         </p>
                                     </div>
                                 </div>
@@ -904,11 +867,10 @@
                                 <h3>我的云阅读</h3>
                                 <div class="innerbox">
                                     <div class="cell">
-                                        <p>我的书架：<em>0&nbsp;</em>本在读<a href="/shelf.do?operation=query_current"
-                                                                      target="_blank">前往我的书架</a></p>
+                                        <p>我的书架：<em>0&nbsp;</em>本在读</p>
                                     </div>
                                     <div class="cell">
-                                        <p>购书单：<em>0&nbsp;</em>本书籍<a href="/cart.do?operation=list">查看购书单</a></p>
+                                        <p>购书单：<em>0&nbsp;</em>本书籍</p>
                                     </div>
                                 </div>
                             </div>
@@ -1085,7 +1047,7 @@
     var authorId;
     var userName;
     var msg = new Vue({
-        el: "#ainfo",
+        el: ".m-mainbox",
         data: {
             user:"",
         },
