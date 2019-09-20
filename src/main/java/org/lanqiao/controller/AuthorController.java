@@ -242,7 +242,6 @@ public class AuthorController {
         }
     }
 
-
     /*
      *作者注册账号检测（是否可以注册）
      */
