@@ -151,7 +151,7 @@
                                 <div class="contents">
                                     <div class="tab-item m-foldlist">
                                         <ul class="">
-                                            <li v-for="(rankRead,index6) in rankRead" v-if="index6 < 10" @click="bookdetail(rankList.bookId)">
+                                            <li v-for="(rankRead,index6) in rankRead" v-if="index6 < 10" @click="bookdetail(rankRead.bookId)">
                                                 <p class="fold" :style="{'display':(index6 == 0?'none':'')}">
                                                     <a target="_blank">
                                                         <i>
@@ -185,7 +185,7 @@
                                 <div class="contents">
                                     <div class="tab-item m-foldlist">
                                         <ul class="">
-                                            <li v-for="(rankMoney,index1) in rankMoney" v-if="index1 < 10" @click="bookdetail(rankList.bookId)">
+                                            <li v-for="(rankMoney,index1) in rankMoney" v-if="index1 < 10" @click="bookdetail(rankMoney.bookId)">
                                                 <p class="fold" :style="{'display':(index1 == 0?'none':'')}">
                                                     <a target="_blank">
                                                         <i>

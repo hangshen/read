@@ -789,7 +789,6 @@
 <div class="m-mask f-dn"></div>
 <script src="../js/topjs/jquery-3.4.1.js"></script>
 <script src="../js/topjs/vue.min.js"></script>
-<script src="../js/topjs/vue.min.js"></script>
 <script type="text/javascript">
     var layer ;
     layui.use('layer', function(){
@@ -1049,6 +1048,61 @@
             }
         }
     })
+
+    $(function () {
+        $.ajax({
+            url: "/getBooksInfoById",
+            type: "post",
+            data: {bookId: bookId},
+            datatype: "json",
+            success: function (data) {
+                data.chapterSet[0].chapterDate = data.chapterSet[0].chapterDate.substring(0, 10) + " " + data.chapterSet[0].chapterDate.substring(11, 19);
+                mv1.book = data;
+                $.ajax({
+                    url: "/author/getAllBooksByAuthorId",
+                    type: "post",
+                    data: {authorId: mv1.book.author.authorId},
+                    datatype: "json",
+                    success: function (data) {
+                        mv1.otherbooks = data;
+                    }
+                })
+            }
+        }),
+            $.ajax({
+                url: "/getCommentForBooks",
+                type: "post",
+                data: JSON.stringify(temp),
+                datatype: "json",
+                contentType: 'application/json;charset=UTF-8',
+                success: function (data) {
+                    for (var i = 0; i < data.list.length; i++) {
+                        data.list[i].commentDate = data.list[i].commentDate.substring(0, 10) + " " + data.list[i].commentDate.substring(11, 19);
+                    }
+                    mv1.comment = data.list;
+                    mv1.page = data.pages;
+
+                }
+            }),
+            $.ajax({
+                url: "/getBooksPayRecord",
+                type: "post",
+                data: {bookId: bookId},
+                datatype: "json",
+                success: function (data) {
+                    mv1.dashangs = data;
+                }
+            })
+        $.ajax({
+            url: "/getClickOrder",
+            type: "post",
+            data: {},
+            datatype: "json",
+            success: function (data) {
+                mv1.ranks = data;
+            }
+        })
+    }),
 
     $("#gongzhonghao").hover(function () {
         $(".m-codelayer").css("display", "block")
