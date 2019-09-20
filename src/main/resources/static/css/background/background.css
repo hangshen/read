@@ -5,15 +5,16 @@
 }
 
 #header img{
-    margin-top: -70px;
-    margin-left: -50px;
-    transform: scale(0.3);
+    height: 80px;
+    width: 180px;
+    margin-left: 170px;
 }
 
 #header span{
     font-size: 40px;
     color: #005EA7;
     float: top;
+    margin-left: 150px;
 }
 
 #daohang{

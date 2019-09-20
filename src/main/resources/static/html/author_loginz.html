@@ -65,6 +65,10 @@
 <script>
     var aid;
     var authorIds;
+    var layer ;
+    layui.use('layer', function(){
+        layer = layui.layer;
+    });
     $(function () {
         $("#loginz_go6").click(function () {
             var account = $("input[name='loginname']").val();
