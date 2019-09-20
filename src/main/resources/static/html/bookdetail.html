@@ -19,6 +19,9 @@
     <script src="../js/topjs/ursLogin.js"></script>
     <script src="../js/topjs/components.js"></script>
     <script src="../js/topjs/index.bundle.js"></script>
+    <link  type="text/css" rel="stylesheet" href="../layui/css/modules/layer/default/layer.css">
+    <link type="text/css" href="../layui/css/layui.css" rel="stylesheet">
+    <script type="text/javascript" src="../layui/layui.js"></script>
     <link type="text/css" rel="stylesheet"
           href="../css/bookdetail/detail1.css"/>
     <style>
@@ -473,7 +476,7 @@
                         </tr>
                         <tr>
                             <td>点击：</td>
-                            <td v-clock>{{book.bookClick}}万</td>
+                            <td v-clock>{{book.bookClick}}</td>
                         </tr>
                         <tr>
                             <td>分类：</td>
@@ -792,6 +795,10 @@
 <script src="../js/topjs/vue.min.js"></script>
 <script src="../js/topjs/vue.min.js"></script>
 <script type="text/javascript">
+    var layer ;
+    layui.use('layer', function(){
+        layer = layui.layer;
+    });
     var bookId=sessionStorage.getItem("bookId") ;
     var temp = new Object();
     var commentupdate = new Object();
@@ -1005,6 +1012,10 @@
                                         data: {userId: userId, bookId: mv1.book.bookId},
                                         datatype: "json",
                                         success: function (data) {
+                                            layer.alert('已加入书架!!!', {
+                                                icon: 1,
+                                                skin: 'layer-ext-moon'
+                                            });
                                         },
                                         error: function () {
                                         }
@@ -1039,7 +1050,6 @@
                                                 });
                                                 sessionStorage.setItem("userId",userId);
                                                 sessionStorage.setItem("bookId",bookId);
-                                                window.location.href = "bookdetail.html";
                                                 setTimeout(function(){ window.location.href = "bookdetail.html"; }, 2000);
                                             }else{
                                                 layer.alert('余额不足!!!', {

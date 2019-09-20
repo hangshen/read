@@ -38,7 +38,7 @@ public class PayRecordServiceImpl implements PayRecordService{
         int s3 = author.getAuthorMoney()+(int)(record.getPayrecordMoney()*0.7);
         if(s1>0){
             users.setUserMoney(s1);
-            if(record.getPayrecordFlag() == "打赏"){
+            if(record.getPayrecordFlag().equals("打赏")){
                 books.setBookReward(s2);
                 booksMapper.updateByPrimaryKeySelective(books);
             }

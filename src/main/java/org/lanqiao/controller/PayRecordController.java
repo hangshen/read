@@ -20,6 +20,7 @@ public class PayRecordController {
     }
     @RequestMapping("/insertPayRecord")
     public int insertSelective(PayRecord record){
+
         return payRecordService.insertSelective(record);
     }
 }

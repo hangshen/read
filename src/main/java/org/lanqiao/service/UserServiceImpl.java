@@ -2,6 +2,7 @@ package org.lanqiao.service;
 
 import org.lanqiao.entity.UserLogin;
 import org.lanqiao.entity.Users;
+import org.lanqiao.mapper.BookShelfMapper;
 import org.lanqiao.mapper.ReadMapper;
 import org.lanqiao.mapper.UserLoginMapper;
 import org.lanqiao.mapper.UsersMapper;
@@ -21,7 +22,8 @@ public class UserServiceImpl implements UserService{
     UsersMapper usersMapper;
     @Autowired
     ReadMapper readMapper;
-
+    @Autowired
+    BookShelfMapper bookShelfMapper;
     /*
      *检测注册账号是否已被注册
      */
@@ -77,6 +79,10 @@ public class UserServiceImpl implements UserService{
         user.setUserId(userId);
         usersMapper.updateByPrimaryKeySelective(user);
         return userLoginMapper.selectUserInfo(userLoginId);
+    }
+    @Override
+    public int countBookself(Integer userId){
+        return bookShelfMapper.countBookself(userId);
     }
 
 }

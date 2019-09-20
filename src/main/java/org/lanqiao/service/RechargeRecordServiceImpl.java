@@ -17,6 +17,10 @@ public class RechargeRecordServiceImpl implements RechargeRecordService{
     UsersMapper usersMapper;
     @Override
     public List<RechargeRecord> selectUserRechargeRecord(Integer userLoginId){
+//        List<RechargeRecord> records=
+//        for(RechargeRecord re:records){
+//            re.setRechargerecordDate(re.getRechargerecordDate().subStr(0, 10) + " " + data[i].rechargerecordDate.substring(11, 19));
+//        }
         return  rechargeRecordMapper.selectUserRechargeRecord(userLoginId);
     }
     @Override

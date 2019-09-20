@@ -20,4 +20,5 @@ public interface BookShelfMapper {
     int updateByPrimaryKey(BookShelf record);
 
     List<BookShelf> selectAllBookSelf();
+    int countBookself(Integer userId);
 }

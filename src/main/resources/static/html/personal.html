@@ -867,10 +867,7 @@
                                 <h3>我的云阅读</h3>
                                 <div class="innerbox">
                                     <div class="cell">
-                                        <p>我的书架：<em>0&nbsp;</em>本在读</p>
-                                    </div>
-                                    <div class="cell">
-                                        <p>购书单：<em>0&nbsp;</em>本书籍</p>
+                                        <p>我的书架：<em id="bookcount">0&nbsp;</em>本在读</p>
                                     </div>
                                 </div>
                             </div>
@@ -1046,6 +1043,7 @@
     var userLoginId;
     var authorId;
     var userName;
+    var userId;
     var msg = new Vue({
         el: ".m-mainbox",
         data: {
@@ -1067,16 +1065,27 @@
         }
 
         userLoginId=sessionStorage.getItem("userLoginId");
-
+        userId=sessionStorage.getItem("userId");
         $.ajax({
             url: "/getUserInfo",
             type: "post",
             data: {
                 "userLoginId":userLoginId,
             },
-            datatype: "json",
+            dataType: "json",
             success: function (data) {
                 msg.user=data;
+            }
+        })
+        $.ajax({
+            url: "/countBookself",
+            type: "post",
+            data: {
+                "userId":userId,
+            },
+            dataType: "json",
+            success: function (data) {
+                $("#bookcount").html(data+" ");
             }
         })
         // })

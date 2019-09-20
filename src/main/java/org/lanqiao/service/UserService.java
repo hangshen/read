@@ -22,5 +22,6 @@ public interface UserService {
     List<Users> selectAllUser();
 
     public UserLogin updateUserMessage(Users user,Integer userLoginId);
+    int countBookself(Integer userId);
 
 }

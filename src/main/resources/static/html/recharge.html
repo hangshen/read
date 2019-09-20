@@ -1026,8 +1026,7 @@
                             <div class="contents">
                                 <div id="iiii" class="czjl j-contents">
                                     <div class="hint" v-for="(record,index) in recharge" style="font-size: large;color: red">
-                                       充值{{record.rechargerecordId}}&nbsp;&nbsp;充值时间： {{record.rechargerecordDate}}&nbsp;&nbsp;充值金额：{{record.rechargerecordMoney}}￥
-                                        <p><a href="/recharge.do?operation=form">去充值</a></p>
+                                       &nbsp;&nbsp;充值时间： {{record.rechargerecordDate}}&nbsp;&nbsp;充值金额：{{record.rechargerecordMoney}}
                                     </div>
                                 </div>
                             </div>
@@ -1195,7 +1194,7 @@
 <ul class="sns-droplist" style="display: none;"></ul>
 <script src="https://urswebzj.nosdn.127.net/webzj_cdn101/message.js?random=1568289527345" id="ursScript"></script>
 
-<script>
+<script type="text/javascript">
     var userLoginId;
     var authorId;
     var userName;
@@ -1222,8 +1221,8 @@
             },
             datatype: "json",
             success: function (data) {
-                for(var i in data){
-                    data[i].rechargerecordDate = data[i].rechargerecordDate.substring(0, 10) + " " + data[i].rechargerecordDate.substring(11, 19);
+                for(var i=0;i < data.length;i++){
+                    data[i].rechargerecordDate= data[i].rechargerecordDate = data[i].rechargerecordDate.substring(0, 10) + " " + data[i].rechargerecordDate.substring(11, 19);
                 }
                 msg.recharge=data;
 

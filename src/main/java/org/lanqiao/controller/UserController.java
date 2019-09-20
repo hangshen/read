@@ -66,4 +66,8 @@ public class UserController {
     public List<Users> selectAllUser(){
         return userService.selectAllUser();
     }
+    @RequestMapping("/countBookself")
+    public int countBookself(Integer userId){
+        return userService.countBookself(userId);
+    }
 }
