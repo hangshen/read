@@ -6,9 +6,15 @@ import org.lanqiao.entity.Users;
 import org.lanqiao.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.List;
+import java.util.UUID;
 
 @RestController
 public class UserController {
@@ -69,5 +75,23 @@ public class UserController {
     @RequestMapping("/countBookself")
     public int countBookself(Integer userId){
         return userService.countBookself(userId);
+    }
+
+    @RequestMapping(value = "/updateUserImg",method = RequestMethod.POST)
+    public int updateUserImg(Integer userId,@RequestParam("userImg") MultipartFile userImg) throws IOException {
+        String filePath = System.getProperty("user.dir") + "/src/main/resources/static/images/upload";//ClassUtils.getDefaultClassLoader().getResource("").getPath() + "static/images/upload";
+        System.out.println(filePath);
+//        String filePath = "E:\\java\\project\\IDEAProject\\read\\src\\main\\resources\\static\\images\\upload";//保存图片的路径
+        //获取原始图片的拓展名
+        String originalFilename = userImg.getOriginalFilename();
+        //新的文件名字
+        String newFileName = UUID.randomUUID() + originalFilename;
+        //封装上传文件位置的全路径
+        File targetFile = new File(filePath, newFileName);
+        //把本地文件上传到封装上传文件位置的全路径
+        userImg.transferTo(targetFile);
+        Users users = new Users();
+        String userImgFilePath="../images/upload/" + newFileName;
+        return userService.updateUserImg(userImgFilePath,userId);
     }
 }

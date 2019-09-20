@@ -107,4 +107,10 @@
       user_introduce = #{userIntroduce,jdbcType=VARCHAR}
     where user_id = #{userId,jdbcType=INTEGER}
   </update>
+
+  <update id="updateUserImg" parameterType="org.lanqiao.entity.Users">
+    update users
+    set user_img = #{userImg,jdbcType=VARCHAR}
+    where user_id = #{userId,jdbcType=INTEGER}
+  </update>
 </mapper>

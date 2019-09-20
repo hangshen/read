@@ -22,6 +22,7 @@ public interface UserService {
     List<Users> selectAllUser();
 
     public UserLogin updateUserMessage(Users user,Integer userLoginId);
+    int updateUserImg(String userImg,Integer userId);
     int countBookself(Integer userId);
 
 }

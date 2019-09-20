@@ -1066,8 +1066,6 @@
             },
             imgClick:function () {
                     $('#img').click();
-            },
-            upImg:function () {
                 var formData = new FormData($("#userImgForm")[0]);
                 $.ajax({
                     url: "/updateUserImg",
@@ -1075,16 +1073,23 @@
                     data: formData,
                     datatype: "json",
                     success: function (data) {
-                        msg.user=data;
+                        if(data==1)
+                        {
+                            alert(1);
+                        }
                     }
                 })
-            }
+            },
+            // upImg:function () {
+            //
+            // }
         },
     });
 
-    $("userId").blur(function () {
-        msg.upImg();
-    })
+    // $("#userImg").blur(function () {
+    //     alert(1)
+    //     msg.upImg();
+    // })
     window.onload=function () {
         userName = sessionStorage.getItem("userName");
         if (userName != undefined) {

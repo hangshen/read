@@ -85,4 +85,8 @@ public class UserServiceImpl implements UserService{
         return bookShelfMapper.countBookself(userId);
     }
 
+    @Override
+    public int updateUserImg(String userImg,Integer userId) {
+        return usersMapper.updateUserImg(userImg,userId);
+    }
 }

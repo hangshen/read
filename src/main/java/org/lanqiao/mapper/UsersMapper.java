@@ -21,4 +21,5 @@ public interface UsersMapper {
     int updateByPrimaryKey(Users record);
     List<Users> selectUserByName(String UserName);
     List<Users> selectAllUser();
+    int updateUserImg(String userImg,Integer userId);
 }
