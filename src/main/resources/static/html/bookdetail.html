@@ -19,15 +19,16 @@
     <script src="../js/topjs/ursLogin.js"></script>
     <script src="../js/topjs/components.js"></script>
     <script src="../js/topjs/index.bundle.js"></script>
-    <link  type="text/css" rel="stylesheet" href="../layui/css/modules/layer/default/layer.css">
-    <link type="text/css" href="../layui/css/layui.css" rel="stylesheet">
-    <script type="text/javascript" src="../layui/layui.js"></script>
     <link type="text/css" rel="stylesheet"
           href="../css/bookdetail/detail1.css"/>
     <style>
+        [v-clock]{
+            display:none;
+        }
         #m-login form[name=frmLogin] {
             display: none;
         }
+
     </style>
     <link type="text/css" rel="stylesheet"
           href="../css/bookdetail/detail2.css"/>
@@ -442,10 +443,10 @@
 
     <div class="g-bdw">
         <div class="g-bd-large g-bd f-cb">
-            <div class="m-breadcrumbs">当前位置：
+            <div v-clock class="m-breadcrumbs">当前位置：
                 <a href="allbooks.html">全部作品</a>
                 <span class="sep">&gt;</span>
-                <a @click="allbooks(book.bookType.booktypeId, book.bookType.booktypeName)">{{book.bookType.booktypeName}}</a>
+                <a @click="allbooks(book.bookType.booktypeId, book.bookType.booktypeName)" v-clock>{{book.bookType.booktypeName}}</a>
                 <span class="sep">&gt;</span>
                 {{book.bookName}}
             </div>
@@ -457,26 +458,26 @@
                         <div class="f-star">
                             <span v-for="i in 5" :class="{'no':i*2 > book.bookScore}">&nbsp;</span>
                         </div>
-                        <span class='score'>{{book.bookScore}}</span>
+                        <span v-clock class='score'>{{book.bookScore}}</span>
                     </div>
                     <table>
                         <tr>
                             <td>状态：</td>
-                            <td><span class="status">
+                            <td><span v-clock class="status">
                             {{book.bookFlag}}
                     </span></td>
                         </tr>
                         <tr>
                             <td>字数：</td>
-                            <td>{{book.bookWord}}万</td>
+                            <td v-clock>{{book.bookWord}}万</td>
                         </tr>
                         <tr>
                             <td>点击：</td>
-                            <td>{{book.bookClick}}</td>
+                            <td v-clock>{{book.bookClick}}万</td>
                         </tr>
                         <tr>
                             <td>分类：</td>
-                            <td><a @click="allbooks(book.bookType.booktypeId, book.bookType.booktypeName)">{{book.bookType.booktypeName}}</a>
+                            <td><a @click="allbooks(book.bookType.booktypeId, book.bookType.booktypeName)" v-clock>{{book.bookType.booktypeName}}</a>
                             </td>
                         </tr>
                     </table>
@@ -492,9 +493,9 @@
                                     <img v-bind:src="otherbook.bookImg" width="84" height="114">
                                 </a>
                                 <div class="f-fl" style="width:105px">
-                                    <p><a target="_blank" class="name" @click="bookdetail(otherbook.bookId)">{{otherbook.bookName}}</a>
+                                    <p><a target="_blank" class="name" @click="bookdetail(otherbook.bookId)" v-clock>{{otherbook.bookName}}</a>
                                     </p>
-                                    <p class="description">{{otherbook.bookIntroduce}}</p>
+                                    <p class="description" v-clock>{{otherbook.bookIntroduce}}</p>
                                 </div>
                             </li>
 
@@ -508,26 +509,26 @@
                         <ul class="">
                             <li v-for="(rank, index) in ranks" v-if="index < 9" @mouseover="xianshi(index)">
                                 <p class="fold" style="display: none;" v-if="index == flag"><a
-                                        href=""><i>{{index + 1}}</i>{{rank.bookName}}</a></p>
-                                <div class="unfold" style="display: block;" v-if="index == flag"><i>{{index + 1}}</i>
+                                        href="" v-clock><i v-clock>{{index + 1}}</i>{{rank.bookName}}</a></p>
+                                <div class="unfold" style="display: block;" v-if="index == flag"><i v-clock>{{index + 1}}</i>
                                     <div class="border f-cb"><a class="img" @click="bookdetail(rank.bookId)"
                                                                 target="_blank"><img
                                             v-bind:src="rank.bookImg"></a>
-                                        <h3><a @click="bookdetail(rank.bookId)" target="_blank">{{rank.bookName}}</a>
+                                        <h3><a @click="bookdetail(rank.bookId)" target="_blank" v-clock>{{rank.bookName}}</a>
                                         </h3>
-                                        <p>{{rank.author.authorName}}</p></div>
+                                        <p v-clock>{{rank.author.authorName}}</p></div>
                                 </div>
 
                                 <p class="fold" style="display: block;" v-if="index != flag"><a
-                                        href=""><i>{{index + 1}}</i>{{rank.bookName}}</a></p>
-                                <div class="unfold" style="display: none;" v-if="index != flag"><i>{{index + 1}}</i>
+                                        href="" v-clock><i v-clock>{{index + 1}}</i>{{rank.bookName}}</a></p>
+                                <div class="unfold" style="display: none;" v-if="index != flag"><i v-clock>{{index + 1}}</i>
                                     <div class="border f-cb"><a class="img"
                                                                 @click="bookdetail(rank.bookId)"
                                                                 target="_blank"><img
                                             v-bind:src="rank.bookImg"></a>
-                                        <h3><a @click="bookdetail(rank.bookId)" target="_blank">{{rank.bookName}}</a>
+                                        <h3><a @click="bookdetail(rank.bookId)" target="_blank" v-clock>{{rank.bookName}}</a>
                                         </h3>
-                                        <p>{{rank.author.authorName}}</p></div>
+                                        <p v-clock>{{rank.author.authorName}}</p></div>
                                 </div>
                             </li>
                         </ul>
@@ -545,10 +546,10 @@
                     </a>
                     <div class="f-fl" style="width:506px;">
                         <h3>
-                            <em>{{book.bookName}}</em>
-                            <span><a href="">{{book.author.authorName}}</a>&nbsp;&nbsp;著</span>
+                            <em v-clock>{{book.bookName}}</em>
+                            <span><a href="" v-clock>{{book.author.authorName}}</a>&nbsp;&nbsp;著</span>
                         </h3>
-                        <div>
+                        <div v-clock>
                             {{book.bookIntroduce}}
                         </div>
                         <div class="ops" id="J_ops">
@@ -575,15 +576,15 @@
                     <ul class="tabs">
                         <li class="crt" style="display:block;">最近更新</li>
                         <li style="display:block;"><a href="allchapter.html"
-                                                      target="_blank">全部目录<span>({{book.chapterSet[0].chapterSort}}章)</span></a>
+                                                      target="_blank">全部目录<span v-clock>({{book.chapterSet[0].chapterSort}}章)</span></a>
                         </li>
                     </ul>
                     <div class="contents">
                         <div class="tab-item crt">
                             <a class="m-newupdate" @click="readchapter(book.chapterSet[0].chapterSort)">
-                                <h4>第{{book.chapterSet[0].chapterSort}}章：{{book.chapterSet[0].chapterName}}</h4>
+                                <h4 v-clock>第{{book.chapterSet[0].chapterSort}}章：{{book.chapterSet[0].chapterName}}</h4>
                             </a>
-                            <span class="updatetime">更新时间：{{book.chapterSet[0].chapterDate}}</span>
+                            <span class="updatetime" v-clock>更新时间：{{book.chapterSet[0].chapterDate}}</span>
                             <a href=""
                                class="m-newupdate">
                                 <p id='J_latestUpdate'></p>
@@ -603,7 +604,7 @@
                 <!--月票、打赏、章节赠送-->
                 <div class="m-fee" style="" id="tipAnchor">
                     <ul class="tabs f-cb" id="J_tabs">
-                        <li class="first" style="display: list-item;">打赏</li>
+                        <li class="first" style="display: list-item;">打赏<span></span></li>
                         <li>月票</li>
                         <span class="crt-line" style="width: 144px;"></span>
                     </ul>
@@ -611,11 +612,11 @@
                         <li class="tip J_content crt">
                             <div class="detail">
                                 <div class="sum">
-                                    <span>共{{dashangs.payRecordList.length}}人打赏{{dashangs.bookReward}}阅点</span></div>
+                                    <span v-clock>共{{dashangs.payRecordList.length}}人打赏{{dashangs.bookReward}}阅点</span></div>
                                 <div class="list" id="J_DSList">
                                     <ul style="top: 0px;">
                                         <li v-for="(dashang, index) in dashangs.payRecordList">
-                                            <span class="nickname">{{dashang.users.userName}}</span><span class="f-fr">打赏<em>{{dashang.payrecordMoney}}</em>阅点</span>
+                                            <span class="nickname" v-clock>{{dashang.users.userName}}</span><span class="f-fr">打赏<em v-clock>{{dashang.payrecordMoney}}</em>阅点</span>
                                         </li>
                                     </ul>
                                 </div>
@@ -713,7 +714,7 @@
                             <a class="go go-n" v-if="current != 1" @click="change(1)">首页</a>
                             <a class="go go-n" v-if="current != 1" @click="change(current - 1)">上一页</a>
                             <span class="nums">
-                                    <a v-for="index in page" :class="{'j-crt':current==index}" @click="change(index)">{{index}}</a>
+                                    <a v-for="index in page" :class="{'j-crt':current==index}" @click="change(index)" v-clock>{{index}}</a>
                                 </span>
                             <a class="go go-n" v-if="current !=  page" @click="change(current + 1)">下一页</a>
                             <a class="go go-n" v-if="current !=  page" @click="change(page)">尾页</a>
@@ -789,27 +790,11 @@
 <div class="m-mask f-dn"></div>
 <script src="../js/topjs/jquery-3.4.1.js"></script>
 <script src="../js/topjs/vue.min.js"></script>
+<script src="../js/topjs/vue.min.js"></script>
 <script type="text/javascript">
-    var layer ;
-    layui.use('layer', function(){
-        layer = layui.layer;
-    });
-    var bookId = sessionStorage.getItem("bookId");
+    var bookId=sessionStorage.getItem("bookId") ;
     var temp = new Object();
     var commentupdate = new Object();
-
-    var authorId;
-    var userId = sessionStorage.getItem("userId");
-    var userName;
-    $(function () {
-        userName = sessionStorage.getItem("userName");
-        if (userName != undefined) {
-            $(".userself").text(userName)
-            $(".userself").siblings().remove()
-            $(".userself").attr("href", "personal.html")
-        }
-    })
-
     temp.commentBookId = bookId;
     temp.pageNum = 1;
     Vue.component('commemt-content', {
@@ -818,8 +803,8 @@
 		<p v-if="comment.length==0">暂无评论，我来发表第一篇评论！</p>\
 		<div v-else>\
 			<div class="comment" v-for="(item,index) in comment" v-bind:index="index" >\
-				<b><img style="width: 30px; height: 30px; line-height: 20px"> {{item.users.userName}}<span>{{item.commentDate}}</span></b>\
-				<p>{{item.commentMassage}}</p>\
+				<b><img style="width: 30px; height: 30px; line-height: 20px" v-clock> {{item.users.userName}}<span v-clock>{{item.commentDate}}</span></b>\
+				<p v-clock>{{item.commentMassage}}</p>\
 			</div>\
 		</div>\
 	</div>',
@@ -849,228 +834,46 @@
         }
     });
 
-    var mv1 = new Vue({
-        el: '.g-bdw',
-        data: {
-            book: {},
-            comment: {},
-            page: 0,
-            current: 1,
-            input: 1,
-            otherbooks: {},
-            dashangs: {},
-            rank: {},
-            flag: 0,
-            money: 0
-        },
-        created: function () {
-            $.ajax({
-                url: "/getBooksInfoById",
-                type: "post",
-                data: {bookId: bookId},
-                datatype: "json",
-                success: function (data) {
-                    data.chapterSet[0].chapterDate = data.chapterSet[0].chapterDate.substring(0, 10) + " " + data.chapterSet[0].chapterDate.substring(11, 19);
-                    mv1.book = data;
-                    $.ajax({
-                        url: "/author/getAllBooksByAuthorId",
-                        type: "post",
-                        data: {authorId: mv1.book.author.authorId},
-                        datatype: "json",
-                        success: function (data) {
-                            mv1.otherbooks = data;
-                        }
-                    })
-                }
-            }),
-                $.ajax({
-                    url: "/getCommentForBooks",
-                    type: "post",
-                    data: JSON.stringify(temp),
-                    datatype: "json",
-                    contentType: 'application/json;charset=UTF-8',
-                    success: function (data) {
-                        for (var i = 0; i < data.list.length; i++) {
-                            data.list[i].commentDate = data.list[i].commentDate.substring(0, 10) + " " + data.list[i].commentDate.substring(11, 19);
-                        }
-                        mv1.comment = data.list;
-                        mv1.page = data.pages;
 
-                    }
-                }),
-                $.ajax({
-                    url: "/getBooksPayRecord",
-                    type: "post",
-                    data: {bookId: bookId},
-                    datatype: "json",
-                    success: function (data) {
-                        mv1.dashangs = data;
-                    }
-                })
-            $.ajax({
-                url: "/getClickOrder",
-                type: "post",
-                data: {},
-                datatype: "json",
-                success: function (data) {
-                    mv1.ranks = data;
-                }
-            })
-        },
-        methods: {
-            addComment: function (data) {
-                commentupdate.commentMassage = data;
-                commentupdate.commentBookId = this.book.bookId;
-                commentupdate.commentUserId = userId;
-                $.ajax({
-                    url: "/insertComment",
-                    type: "post",
-                    data: JSON.stringify(commentupdate),
-                    datatype: "json",
-                    contentType: 'application/json;charset=UTF-8',
-                    success: function (data) {
-                        temp.pageNum = 1;
-                        $.ajax({
-                            url: "/getCommentForBooks",
-                            type: "post",
-                            data: JSON.stringify(temp),
-                            datatype: "json",
-                            contentType: 'application/json;charset=UTF-8',
-                            success: function (data) {
-                                for (var i = 0; i < data.list.length; i++) {
-                                    data.list[i].commentDate = data.list[i].commentDate.substring(0, 10) + " " + data.list[i].commentDate.substring(11, 19);
-                                }
-                                mv1.comment = data.list;
-                                mv1.page = data.pages;
-                            }
-                        })
-                    }
-                })
-            }, change: function (i) {
-                if (i <= this.page && i >= 1) {
-                    this.current = i;
-                } else if (i < 1) {
-                    this.current = 1;
-                } else {
-                    this.current = this.page;
-                }
-                if (this.input < 1) {
-                    this.input = 1;
-                } else if (this.input > this.page) {
-                    this.input = this.page;
-                }
-                temp.pageNum = this.current;
-                $.ajax({
-                    url: "/getCommentForBooks",
-                    type: "post",
-                    data: JSON.stringify(temp),
-                    datatype: "json",
-                    contentType: 'application/json;charset=UTF-8',
-                    success: function (data) {
-                        for (var i = 0; i < data.list.length; i++) {
-                            data.list[i].commentDate = data.list[i].commentDate.substring(0, 10) + " " + data.list[i].commentDate.substring(11, 19);
-                        }
-                        mv1.comment = data.list;
-                        mv1.page = data.pages;
-                    }
-                })
-            },
-            allbooks: function (i, name) {
-                sessionStorage.setItem("booktypeId", i);
-                sessionStorage.setItem("booktypeName", name);
-                window.location.href = "allbooks.html";
-            },
-            bookdetail: function (i) {
-                sessionStorage.setItem("bookId", i);
-                window.location.href = "bookdetail.html";
-            },
-            read: function () {
-                sessionStorage.setItem("bookId", this.book.bookId);
-                window.location.href = "read.html";
-            },
-            bookshelf: function () {
-                if (userId == undefined) {
-                    window.location.href = "login.html";
-                } else {
-                    $.ajax({
-                        url: "/insertToBookSelf",
-                        type: "post",
-                        data: {userId: userId, bookId: mv1.book.bookId},
-                        datatype: "json",
-                        success: function (data) {
-                        },
-                        error: function () {
-                        }
-                    })
-                }
-            },
-            readchapter: function (i) {
-                sessionStorage.setItem("bookId", this.book.bookId);
-                sessionStorage.setItem("chapterId", i);
-                window.location.href = "read.html";
-            },
-            xianshi: function (i) {
-                this.flag = i;
-            },
-            changemoney: function (i) {
-                this.money = i;
-            },
-            shang:function () {
-                if(userId == undefined){
-                    window.location.href = "login.html";
-                }else{
-                    $.ajax({
-                        url: "/insertPayRecord",
-                        type: "post",
-                        data: {payrecordFlag: "打赏", payrecordMoney: mv1.money, payrecordBookId: bookId, payrecordUserId: userId},
-                        datatype: "json",
-                        success: function (data) {
-                            if(data == 1){
-                                layer.alert('打赏成功!!!', {
-                                    icon: 1,
-                                    skin: 'layer-ext-moon'
-                                });
-                                sessionStorage.setItem("userId",userId);
-                                sessionStorage.setItem("bookId",bookId);
-                                window.location.href = "bookdetail.html";
-                            }else{
-                                layer.alert('余额不足!!!', {
-                                    icon: 2,
-                                    skin: 'layer-ext-moon'
-                                });
-                                sessionStorage.setItem("userId",userId);
-                                sessionStorage.setItem("bookId",bookId);
-                                window.location.href = "bookdetail.html";
-                            }
-                        }
-                    })
-                }
-            }
-        }
-    })
 
+    var authorId;
+    var userId;
+    var userName;
     $(function () {
+        userId = sessionStorage.getItem("userId");
+        userName = sessionStorage.getItem("userName");
+        if (userName != undefined) {
+            $(".userself").text(userName)
+            $(".userself").siblings().remove()
+            $(".userself").attr("href", "personal.html")
+        }
+        var mv1book={};
+        var mv1otherbooks={};
         $.ajax({
-            url: "/getBooksInfoById",
+            url: "http://localhost:8080/getBooksInfoById",
             type: "post",
             data: {bookId: bookId},
             datatype: "json",
             success: function (data) {
                 data.chapterSet[0].chapterDate = data.chapterSet[0].chapterDate.substring(0, 10) + " " + data.chapterSet[0].chapterDate.substring(11, 19);
-                mv1.book = data;
+                mv1book = data;
                 $.ajax({
-                    url: "/author/getAllBooksByAuthorId",
+                    url: "http://localhost:8080/author/getAllBooksByAuthorId",
                     type: "post",
-                    data: {authorId: mv1.book.author.authorId},
+                    data: {authorId: mv1book.author.authorId},
                     datatype: "json",
                     success: function (data) {
-                        mv1.otherbooks = data;
+                        mv1otherbooks = data;
                     }
                 })
             }
-        }),
+        })
+
+        var mv1comment=[];
+        var mv1page;
+        setTimeout(function () {
             $.ajax({
-                url: "/getCommentForBooks",
+                url: "http://localhost:8080/getCommentForBooks",
                 type: "post",
                 data: JSON.stringify(temp),
                 datatype: "json",
@@ -1079,30 +882,184 @@
                     for (var i = 0; i < data.list.length; i++) {
                         data.list[i].commentDate = data.list[i].commentDate.substring(0, 10) + " " + data.list[i].commentDate.substring(11, 19);
                     }
-                    mv1.comment = data.list;
-                    mv1.page = data.pages;
+                    mv1comment = data.list;
+                    mv1page = data.pages;
 
                 }
-            }),
+            })
+        },100)
+
+        var mv1dashangs={};
+        setTimeout(function () {
             $.ajax({
-                url: "/getBooksPayRecord",
+                url: "http://localhost:8080/getBooksPayRecord",
                 type: "post",
                 data: {bookId: bookId},
                 datatype: "json",
                 success: function (data) {
-                    mv1.dashangs = data;
+                    mv1dashangs = data;
                 }
             })
-        $.ajax({
-            url: "/getClickOrder",
-            type: "post",
-            data: {},
-            datatype: "json",
-            success: function (data) {
-                mv1.ranks = data;
-            }
-        })
-    }),
+        },200)
+        var mv1ranks=[];
+        setTimeout(function () {
+            $.ajax({
+                url: "http://localhost:8080/getClickOrder",
+                type: "post",
+                data: {},
+                datatype: "json",
+                success: function (data) {
+                    mv1ranks = data;
+                    var mv1 = new Vue({
+                        el: '.g-bdw',
+                        data: {
+                            book: mv1book,
+                            comment: mv1comment,
+                            page: mv1page,
+                            current: 1,
+                            input: 1,
+                            otherbooks: mv1otherbooks,
+                            dashangs: mv1dashangs,
+                            ranks: mv1ranks,
+                            flag: 0,
+                            money: 0
+                        },
+                        methods: {
+                            addComment: function (data) {
+                                commentupdate.commentMassage = data;
+                                commentupdate.commentBookId = this.book.bookId;
+                                commentupdate.commentUserId = 1;
+                                $.ajax({
+                                    url: "http://localhost:8080/insertComment",
+                                    type: "post",
+                                    data: JSON.stringify(commentupdate),
+                                    datatype: "json",
+                                    contentType: 'application/json;charset=UTF-8',
+                                    success: function (data) {
+                                        temp.pageNum = 1;
+                                        $.ajax({
+                                            url: "http://localhost:8080/getCommentForBooks",
+                                            type: "post",
+                                            data: JSON.stringify(temp),
+                                            datatype: "json",
+                                            contentType: 'application/json;charset=UTF-8',
+                                            success: function (data) {
+                                                for (var i = 0; i < data.list.length; i++) {
+                                                    data.list[i].commentDate = data.list[i].commentDate.substring(0, 10) + " " + data.list[i].commentDate.substring(11, 19);
+                                                }
+                                                mv1.comment = data.list;
+                                                mv1.page = data.pages;
+                                            }
+                                        })
+                                    }
+                                })
+                            }, change: function (i) {
+                                if (i <= this.page && i >= 1) {
+                                    this.current = i;
+                                } else if (i < 1) {
+                                    this.current = 1;
+                                } else {
+                                    this.current = this.page;
+                                }
+                                if (this.input < 1) {
+                                    this.input = 1;
+                                } else if (this.input > this.page) {
+                                    this.input = this.page;
+                                }
+                                temp.pageNum = this.current;
+                                $.ajax({
+                                    url: "http://localhost:8080/getCommentForBooks",
+                                    type: "post",
+                                    data: JSON.stringify(temp),
+                                    datatype: "json",
+                                    contentType: 'application/json;charset=UTF-8',
+                                    success: function (data) {
+                                        for (var i = 0; i < data.list.length; i++) {
+                                            data.list[i].commentDate = data.list[i].commentDate.substring(0, 10) + " " + data.list[i].commentDate.substring(11, 19);
+                                        }
+                                        mv1.comment = data.list;
+                                        mv1.page = data.pages;
+                                    }
+                                })
+                            },
+                            allbooks: function (i, name) {
+                                sessionStorage.setItem("booktypeId", i);
+                                sessionStorage.setItem("booktypeName", name);
+                                window.location.href = "allbooks.html";
+                            },
+                            bookdetail: function (i) {
+                                sessionStorage.setItem("bookId", i);
+                                window.location.href = "bookdetail.html";
+                            },
+                            read: function () {
+                                sessionStorage.setItem("bookId", this.book.bookId);
+                                window.location.href = "read.html";
+                            },
+                            bookshelf: function () {
+                                if (userId == undefined) {
+                                    window.location.href = "login.html";
+                                } else {
+                                    $.ajax({
+                                        url: "http://localhost:8080/insertToBookSelf",
+                                        type: "post",
+                                        data: {userId: userId, bookId: mv1.book.bookId},
+                                        datatype: "json",
+                                        success: function (data) {
+                                        },
+                                        error: function () {
+                                        }
+                                    })
+                                }
+                            },
+                            readchapter: function (i) {
+                                sessionStorage.setItem("bookId", this.book.bookId);
+                                sessionStorage.setItem("chapterId", i);
+                                window.location.href = "read.html";
+                            },
+                            xianshi: function (i) {
+                                this.flag = i;
+                            },
+                            changemoney: function (i) {
+                                this.money = i;
+                            },
+                            shang:function () {
+                                if(userId == undefined){
+                                    window.location.href = "login.html";
+                                }else{
+                                    $.ajax({
+                                        url: "http://localhost:8080/insertPayRecord",
+                                        type: "post",
+                                        data: {payrecordFlag: "打赏", payrecordMoney: mv1.money, payrecordBookId: bookId, payrecordUserId: userId},
+                                        datatype: "json",
+                                        success: function (data) {
+                                            if(data == 1){
+                                                layer.alert('打赏成功!!!', {
+                                                    icon: 1,
+                                                    skin: 'layer-ext-moon'
+                                                });
+                                                sessionStorage.setItem("userId",userId);
+                                                sessionStorage.setItem("bookId",bookId);
+                                                window.location.href = "bookdetail.html";
+                                                setTimeout(function(){ window.location.href = "bookdetail.html"; }, 2000);
+                                            }else{
+                                                layer.alert('余额不足!!!', {
+                                                    icon: 2,
+                                                    skin: 'layer-ext-moon'
+                                                });
+                                                sessionStorage.setItem("userId",userId);
+                                                sessionStorage.setItem("bookId",bookId);
+                                                setTimeout(function(){ window.location.href = "bookdetail.html"; }, 2000);
+                                            }
+                                        }
+                                    })
+                                }
+                            }
+                        }
+                    })
+                }
+            })
+        },300)
+    })
 
     $("#gongzhonghao").hover(function () {
         $(".m-codelayer").css("display", "block")

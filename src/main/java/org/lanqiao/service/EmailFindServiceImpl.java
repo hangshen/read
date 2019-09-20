@@ -25,7 +25,7 @@ public class EmailFindServiceImpl implements EmailFindService{
         SendMail mySendMail = new SendMail();
         if(userLogin != null) {
             //设置收件人和消息内容
-            mySendMail.sendMail(email, "活阅读系统提醒，您的密码为："+userLogin.getUserLoginPassword());
+            mySendMail.sendMail(email, "爱阅读系统提醒，您的密码为："+userLogin.getUserLoginPassword());
             return true;
         } else {
             return false;
@@ -40,7 +40,7 @@ public class EmailFindServiceImpl implements EmailFindService{
         SendMail mySendMail = new SendMail();
         if(authorLogin != null) {
             //设置收件人和消息内容
-            mySendMail.sendMail(email, "活阅读系统提醒，您的密码为："+authorLogin.getAuthorLoginPassword());
+            mySendMail.sendMail(email, "爱阅读系统提醒，您的密码为："+authorLogin.getAuthorLoginPassword());
             return true;
         } else {
             return false;

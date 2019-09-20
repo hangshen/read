@@ -388,7 +388,11 @@
             success: function (data) {
                 if (data == 1) {
                     sessionStorage.setItem("aid", aid);
-                    window.location.href = "authormsg.html";
+                    layer.alert('发布成功!!!', {
+                        icon: 1,
+                        skin: 'layer-ext-moon'
+                    });
+                    setTimeout(function(){ window.location.href = "authormsg.html"; }, 2000);
 
                 } else {
                     layer.alert('发布失败!!!', {

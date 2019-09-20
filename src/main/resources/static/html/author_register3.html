@@ -165,9 +165,11 @@
                 dataType: "json",
                 success: function (data) {
                     if(data == true){
-
-                        window.location.href = "author_login.html";
-
+                        layer.alert('注册成功!!!', {
+                            icon: 1,
+                            skin: 'layer-ext-moon'
+                        });
+                        setTimeout(function(){  window.location.href = "author_login.html"; }, 2000);
                     }
                     else {
                         layer.alert('注册失败', {

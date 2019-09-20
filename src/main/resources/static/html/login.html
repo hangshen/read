@@ -336,6 +336,7 @@
         //邮箱找回密码
         $("#forgetpassword").click(function () {
             var emailFind = $("input[name='email']").val();
+            $("#dologin").html("……");
             if( emailFind != ""){
                 $.ajax({
                     url: "/getpassword",
@@ -346,6 +347,11 @@
                     dataType: "json",
                     success:function (data) {
                         if(data){
+                            $("#dologin").html("登 录");
+                            // layer.alert('邮件已发送!!!', {
+                            //     icon: 1,
+                            //     skin: 'layer-ext-moon'
+                            // });
                             $("#auto-id-1568166855815").html("密码找回成功！请登录邮箱查看");
                         }else {
                             $("#auto-id-1568166855815").html("该账号未被注册");
