@@ -11,7 +11,7 @@
     <groupId>org.lanqiao</groupId>
     <artifactId>read</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <packaging>jar</packaging>
+
 
     <name>read</name>
     <description>Demo project for Spring Boot</description>
