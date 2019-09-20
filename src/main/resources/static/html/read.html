@@ -234,14 +234,14 @@
         },
         created: function () {
             $.ajax({
-                url: "http://localhost:8080/getBooksInfoById",
+                url: "/getBooksInfoById",
                 type: "post",
                 data: {bookId: bookId},
                 datatype: "json",
                 success: function (data) {
                     mv1.book = data;
                     $.ajax({
-                        url: "http://localhost:8080/author/getAllBooksByAuthorId",
+                        url: "/author/getAllBooksByAuthorId",
                         type: "post",
                         data: {authorId: mv1.book.author.authorId},
                         datatype: "json",
@@ -268,7 +268,7 @@
         },
         created: function () {
             $.ajax({
-                url: "http://localhost:8080/getbooxtxt",
+                url: "/getbooxtxt",
                 type: "post",
                 data: {userId: userId, bookId: bookId, chapterId: chapterId, pageNum: pageNum},
                 datatype: "json",
@@ -293,7 +293,7 @@
             }
         }
         $.ajax({
-            url: "http://localhost:8080/getbooxtxt",
+            url: "/getbooxtxt",
             type: "post",
             data: {userId: userId, bookId: bookId, chapterId: chapterId, pageNum: pageNum},
             datatype: "json",
@@ -315,7 +315,7 @@
             chapterId = chapterId + 1;
         }
         $.ajax({
-            url: "http://localhost:8080/getbooxtxt",
+            url: "/getbooxtxt",
             type: "post",
             data: {userId: userId, bookId: bookId, chapterId: chapterId, pageNum: pageNum},
             datatype: "json",
@@ -400,7 +400,7 @@
             window.location.href = "login.html";
         }else{
             $.ajax({
-                url: "http://localhost:8080/insertToBookSelf",
+                url: "/insertToBookSelf",
                 type: "post",
                 data: {userId: userId, bookId: bookId},
                 datatype: "json",

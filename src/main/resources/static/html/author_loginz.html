@@ -73,7 +73,7 @@
         $("#loginz_go6").click(function () {
             var account = $("input[name='loginname']").val();
             $.ajax({
-                url: "http://localhost:8080/author/login",
+                url: "/author/login",
                 type: "post",
                 data: {
                     'authorAccount': account,

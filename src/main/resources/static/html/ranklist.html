@@ -292,7 +292,7 @@
     // 畅销榜
     $(function () {
         $.ajax({
-            url: "http://localhost:8080/getXiaoLiangOrder",
+            url: "/getXiaoLiangOrder",
             type: "post",
             dataType: "json",
             success: function (data) {
@@ -313,7 +313,7 @@
     // 订阅榜
     $(function () {
         $.ajax({
-            url: "http://localhost:8080//getDingYueOrder",
+            url: "//getDingYueOrder",
             type: "post",
             dataType: "json",
             success: function (data) {
@@ -334,7 +334,7 @@
     // 打赏榜
     $(function () {
         $.ajax({
-            url: "http://localhost:8080//getRewardOrder",
+            url: "//getRewardOrder",
             type: "post",
             dataType: "json",
             success: function (data) {

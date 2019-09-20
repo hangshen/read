@@ -718,7 +718,7 @@
                 payRecordVo.flag = i;
                 msg.flag2 = i;
                 $.ajax({
-                    url: "http://localhost:8080/getPayRecord",
+                    url: "/getPayRecord",
                     type: "post",
                     data: JSON.stringify(payRecordVo),
                     datatype: "json",

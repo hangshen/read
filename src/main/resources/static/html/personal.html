@@ -1107,7 +1107,7 @@
         userLoginId=sessionStorage.getItem("userLoginId");
 
         $.ajax({
-            url: "http://localhost:8080/getUserInfo",
+            url: "/getUserInfo",
             type: "post",
             data: {
                 "userLoginId":userLoginId,
@@ -1132,7 +1132,7 @@
     })
     $("#keepedit").click(function () {
         $.ajax({
-            url: "http://localhost:8080/setusermessage",
+            url: "/setusermessage",
             type: "post",
             data: {
                 "userLoginId":userLoginId,
@@ -1143,7 +1143,7 @@
             },
             datatype: "json",
             success: function (data) {
-                window.location.href="http://localhost:8080/html/personal.html";
+                window.location.href="/html/personal.html";
             }
 
         })

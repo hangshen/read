@@ -240,7 +240,7 @@
         data: {chapters: {}},
         created: function () {
             $.ajax({
-                url: "http://localhost:8080/getBooksById",
+                url: "/getBooksById",
                 type: "post",
                 data: {bookId: bookId},
                 datatype: "json",

@@ -1053,7 +1053,7 @@
             if($("#bviewinputemail").val() != "" && $("#bviewinputpassword").val() != ""){
                 // alert("账号检测进入ajax")
                 $.ajax({
-                    url: "http://localhost:8080/checklogin",
+                    url: "/checklogin",
                     type: "post",
                     data: {
                         "userLoginAccount":$("#bviewinputemail").val(),
@@ -1082,7 +1082,7 @@
         $("#getsms").click(function () {
             // alert("获取验证码");
             $.ajax({
-                url:"http://localhost:8080/sendphone",
+                url:"/sendphone",
                 type: "post",
                 data:{
                     "mobile":$("input[name='smsphone']").val(),
@@ -1105,7 +1105,7 @@
                 // alert("验证码检测");
                 if($("input[name='smsmessage']").val() == smsCode){
                     $.ajax({
-                        url: "http://localhost:8080/register",
+                        url: "/register",
                         type: "post",
                         data: {
                             "userLoginAccount":$("#bviewinputemail").val(),
@@ -1116,7 +1116,7 @@
                             // alert("注册成功") 跳转页面;
                             sessionStorage.setItem("useeId",data);
                             sessionStorage.setItem("userAccount",userEmail);
-                            window.location.href="http://localhost:8080/html/user_register_success.html";
+                            window.location.href="/html/user_register_success.html";
                         }
                     })
                 }else {

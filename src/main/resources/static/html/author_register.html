@@ -103,7 +103,7 @@
 
             </div>
             <div class="pull-left ap-register-login-col-login">
-                <p class="ap-login-shortcut"><span class="dot">•</span> 已有作者中心帐号？<a href="http://localhost:8080/html/author_login.html">立即登录<span class="f-ff0">&gt;&gt;</span></a>
+                <p class="ap-login-shortcut"><span class="dot">•</span> 已有作者中心帐号？<a href="/html/author_login.html">立即登录<span class="f-ff0">&gt;&gt;</span></a>
                 </p>
             </div>
         </div>
@@ -180,7 +180,7 @@
 
         $("#next").click(function () {
             $.ajax({
-                url: "http://localhost:8080/author/checkAuthorAccount",
+                url: "/author/checkAuthorAccount",
                 type: "post",
                 data:{
                     "authorAccount":$("#username-input").val(),
@@ -209,7 +209,7 @@
             var emailFind = $("input[name='username']").val();
             if( emailFind != ""){
                 $.ajax({
-                    url: "http://localhost:8080/getauthorpassword",
+                    url: "/getauthorpassword",
                     type: "post",
                     data : {
                         "email":emailFind,

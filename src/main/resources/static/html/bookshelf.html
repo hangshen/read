@@ -309,7 +309,7 @@
     $(function () {
         userId = sessionStorage.getItem("userId");
         $.ajax({
-            url: "http://localhost:8080/getshelfbooks",
+            url: "/getshelfbooks",
             type: "post",
             data: {
                 "bookState": 0,
@@ -326,7 +326,7 @@
         $("#mybookshelf").removeClass("linkcolorclic").addClass("linkcolordef");
         $("#delectBookOne").removeClass("linkcolordef").addClass("linkcolorclic");
         $.ajax({
-            url: "http://localhost:8080/getshelfbooks",
+            url: "/getshelfbooks",
             type: "post",
             data: {
                 "bookState": 1,
@@ -343,7 +343,7 @@
         $("#delectBookOne").removeClass("linkcolorclic").addClass("linkcolordef");
         $("#mybookshelf").removeClass("linkcolordef").addClass("linkcolorclic");
         $.ajax({
-            url: "http://localhost:8080/getshelfbooks",
+            url: "/getshelfbooks",
             type: "post",
             data: {
                 "bookState": 0,
@@ -366,7 +366,7 @@
     $("#J_DelSelect").click(function () {
         for(var i = 0;i < $(".tick-o").length;i++){
             $.ajax({
-                url: "http://localhost:8080/delectshelfbooks",
+                url: "/delectshelfbooks",
                 type: "post",
                 data: {
                     "bookId":$(".tick-o").eq(i).parent().parent().find("p[class='bookId']").html(),
@@ -398,7 +398,7 @@
     })
     $("input[name='find']").click(function () {
         $.ajax({
-            url: "http://localhost:8080/solrSelect",
+            url: "/solrSelect",
             type: "post",
             data: {keyword:$("input[id='i1']").val()},
             datatype: "json",
@@ -411,7 +411,7 @@
         $("#delectBookOne").removeClass("linkcolorclic").addClass("linkcolordef");
         $("#mybookshelf").removeClass("linkcolordef").addClass("linkcolorclic");
         $.ajax({
-            url: "http://localhost:8080/getshelfbooks",
+            url: "/getshelfbooks",
             type: "post",
             data: {
                 "bookState": 0,

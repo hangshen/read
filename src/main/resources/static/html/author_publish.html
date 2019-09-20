@@ -387,7 +387,7 @@
             dataType: "json",
             success: function (data) {
                 if (data == 1) {
-                    sessionStorage.setItem("aid", result.author.authorId);
+                    sessionStorage.setItem("aid", aid);
                     window.location.href = "authormsg.html";
 
                 } else {

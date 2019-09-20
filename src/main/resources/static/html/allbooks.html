@@ -316,7 +316,7 @@
                 $(".m-breadcrumbs span").text(name);
             }
             $.ajax({
-                url: "http://localhost:8080/getAllType",
+                url: "/getAllType",
                 type: "post",
                 data: {},
                 datatype: "json",
@@ -330,7 +330,7 @@
                 factor.bookTypeId = i;
                 $(".m-breadcrumbs span").text(name);
                 $.ajax({
-                    url: "http://localhost:8080/getBooksByType",
+                    url: "/getBooksByType",
                     type: "post",
                     data: JSON.stringify(factor),
                     datatype: "json",
@@ -375,7 +375,7 @@
             }
         }
         $.ajax({
-            url: "http://localhost:8080/getBooksByType",
+            url: "/getBooksByType",
             type: "post",
             data: JSON.stringify(factor),
             datatype: "json",
@@ -399,7 +399,7 @@
         },
         created: function () {
             $.ajax({
-                url: "http://localhost:8080/getBooksByType",
+                url: "/getBooksByType",
                 type: "post",
                 data: JSON.stringify(factor),
                 datatype: "json",
@@ -427,7 +427,7 @@
                 }
                 factor.pageNum = this.current;
                 $.ajax({
-                    url: "http://localhost:8080/getBooksByType",
+                    url: "/getBooksByType",
                     type: "post",
                     data: JSON.stringify(factor),
                     datatype: "json",

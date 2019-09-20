@@ -144,7 +144,7 @@
     // alert(aid);
     $(function () {
         $.ajax({
-            url: "http://localhost:8080/author/getAuthorName",
+            url: "/author/getAuthorName",
             data: {authorId: aid},
             type: "post",
             dataType: "json",
@@ -160,7 +160,7 @@
 
     $(function () {
         $.ajax({
-            url: "http://localhost:8080/author/bookSize",
+            url: "/author/bookSize",
             data: {authorId: aid},
             type: "post",
             dataType: "json",
@@ -178,7 +178,7 @@
     //显示作品
     $(function () {
         $.ajax({
-            url: "http://localhost:8080/author/getAllBooksByAuthorId",
+            url: "/author/getAllBooksByAuthorId",
             data: {authorId: aid},
             type: "post",
             dataType: "json",

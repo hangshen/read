@@ -92,7 +92,7 @@
     //显示作品
     $(function () {
         $.ajax({
-            url: "http://localhost:8080/author/getAllBooksByAuthorId",
+            url: "/author/getAllBooksByAuthorId",
             data: {authorId: aid},
             type: "post",
             dataType: "json",

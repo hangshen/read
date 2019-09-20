@@ -170,7 +170,7 @@
     // alert(aid);
     $(function () {
         $.ajax({
-            url: "http://localhost:8080/author/getAuthorName",
+            url: "/author/getAuthorName",
             data: {authorId: aid},
             type: "post",
             dataType: "json",
@@ -239,7 +239,7 @@
     //     },
     //     created: function () {
     //         $.ajax({
-    //             url: "http://localhost:8080/author/readerComment",
+    //             url: "/author/readerComment",
     //             type: "post",
     //             data: {authorId: aid},
     //             datatype: "json",

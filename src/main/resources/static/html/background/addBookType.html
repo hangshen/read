@@ -57,7 +57,7 @@
         $("input[id = 'submit']").click(function () {
             if($("input[name = 'num']").val() > 0) {
                 $.ajax({
-                    url: "http://localhost:8080/insertBookType",
+                    url: "/insertBookType",
                     type: "post",
                     data: {bookTypeName: $("input[name = 'name']").val(), fatherTypeId:$("input[name = 'num']").val()},
                     dataType: "json",

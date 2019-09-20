@@ -43,7 +43,7 @@ padding-left: 20px">
     var aid = sessionStorage.getItem("aid");
     $(function () {
         $.ajax({
-            url: "http://localhost:8080/author/readerComment",
+            url: "/author/readerComment",
             data: {authorId: aid,},
             type: "post",
             datatype: "json",

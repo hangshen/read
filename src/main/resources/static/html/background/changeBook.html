@@ -123,7 +123,7 @@
     $(function () {
         var temp_data;
         $.ajax({
-                url: "http://localhost:8080/selectAll",
+                url: "/selectAll",
                 type: "post",
                 data:{},
                 dataType: "json",
@@ -137,7 +137,7 @@
                         methods:{
                             find:function () {
                                 $.ajax({
-                                    url: "http://localhost:8080/selectByBooksName",
+                                    url: "/selectByBooksName",
                                     type: "post",
                                     data: {bookName: $("input[name = 'find']").val()},
                                     dataType: "json",
@@ -148,7 +148,7 @@
                             },
                             dlt:function (i) {
                                 $.ajax({
-                                    url: "http://localhost:8080/deleteBook",
+                                    url: "/deleteBook",
                                     type: "post",
                                     data: {bookId: mv1.books[i].bookId},
                                     dataType: "json",
@@ -177,7 +177,7 @@
                 "bookTypeId":$("input[name = 'type']").val(),
             }
             $.ajax({
-                url: "http://localhost:8080/updateBook",
+                url: "/updateBook",
                 type: "post",
                 data: JSON.stringify(record),
                 dataType: "json",

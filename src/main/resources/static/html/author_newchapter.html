@@ -182,7 +182,7 @@
     // alert(aid);
     $(function () {
         $.ajax({
-            url: "http://localhost:8080/author/getAuthorName",
+            url: "/author/getAuthorName",
             data: {authorId: aid},
             type: "post",
             dataType: "json",
@@ -207,7 +207,7 @@
         var chapterNames = $("#J_ArticleTitle").val();
 
         $.ajax({
-            url: "http://localhost:8080/author/newChapter",
+            url: "/author/newChapter",
             type: "post",
             data: {
                 'bookId': bookid,

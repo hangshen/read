@@ -860,7 +860,7 @@
         },
         created: function () {
             $.ajax({
-                url: "http://localhost:8080/getBooksInfoById",
+                url: "/getBooksInfoById",
                 type: "post",
                 data: {bookId: bookId},
                 datatype: "json",
@@ -868,7 +868,7 @@
                     data.chapterSet[0].chapterDate = data.chapterSet[0].chapterDate.substring(0, 10) + " " + data.chapterSet[0].chapterDate.substring(11, 19);
                     mv1.book = data;
                     $.ajax({
-                        url: "http://localhost:8080/author/getAllBooksByAuthorId",
+                        url: "/author/getAllBooksByAuthorId",
                         type: "post",
                         data: {authorId: mv1.book.author.authorId},
                         datatype: "json",
@@ -879,7 +879,7 @@
                 }
             }),
                 $.ajax({
-                    url: "http://localhost:8080/getCommentForBooks",
+                    url: "/getCommentForBooks",
                     type: "post",
                     data: JSON.stringify(temp),
                     datatype: "json",
@@ -894,7 +894,7 @@
                     }
                 }),
                 $.ajax({
-                    url: "http://localhost:8080/getBooksPayRecord",
+                    url: "/getBooksPayRecord",
                     type: "post",
                     data: {bookId: bookId},
                     datatype: "json",
@@ -903,7 +903,7 @@
                     }
                 })
             $.ajax({
-                url: "http://localhost:8080/getClickOrder",
+                url: "/getClickOrder",
                 type: "post",
                 data: {},
                 datatype: "json",
@@ -918,7 +918,7 @@
                 commentupdate.commentBookId = this.book.bookId;
                 commentupdate.commentUserId = 1;
                 $.ajax({
-                    url: "http://localhost:8080/insertComment",
+                    url: "/insertComment",
                     type: "post",
                     data: JSON.stringify(commentupdate),
                     datatype: "json",
@@ -926,7 +926,7 @@
                     success: function (data) {
                         temp.pageNum = 1;
                         $.ajax({
-                            url: "http://localhost:8080/getCommentForBooks",
+                            url: "/getCommentForBooks",
                             type: "post",
                             data: JSON.stringify(temp),
                             datatype: "json",
@@ -956,7 +956,7 @@
                 }
                 temp.pageNum = this.current;
                 $.ajax({
-                    url: "http://localhost:8080/getCommentForBooks",
+                    url: "/getCommentForBooks",
                     type: "post",
                     data: JSON.stringify(temp),
                     datatype: "json",
@@ -988,7 +988,7 @@
                     window.location.href = "login.html";
                 } else {
                     $.ajax({
-                        url: "http://localhost:8080/insertToBookSelf",
+                        url: "/insertToBookSelf",
                         type: "post",
                         data: {userId: userId, bookId: mv1.book.bookId},
                         datatype: "json",
@@ -1015,7 +1015,7 @@
                     window.location.href = "login.html";
                 }else{
                     $.ajax({
-                        url: "http://localhost:8080/insertPayRecord",
+                        url: "/insertPayRecord",
                         type: "post",
                         data: {payrecordFlag: "打赏", payrecordMoney: mv1.money, payrecordBookId: bookId, payrecordUserId: userId},
                         datatype: "json",

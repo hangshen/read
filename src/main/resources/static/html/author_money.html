@@ -146,7 +146,7 @@
     // alert(aid);
     $(function () {
         $.ajax({
-            url: "http://localhost:8080/author/getAuthorName",
+            url: "/author/getAuthorName",
             data: {authorId: aid},
             type: "post",
             dataType: "json",
@@ -166,7 +166,7 @@
     })
     $(function () {
         $.ajax({
-            url: "http://localhost:8080/author/myIncome",
+            url: "/author/myIncome",
             data: {authorId: aid},
             type: "post",
             dataType: "json",

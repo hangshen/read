@@ -236,7 +236,7 @@
                 sessionStorage.removeItem("key");
                 $("input[id='i1']").val(key);
                 $.ajax({
-                    url: "http://localhost:8080/solrSelect",
+                    url: "/solrSelect",
                     type: "post",
                     data: {keyword: $("input[id='i1']").val(), pageNum: tempPageNum},
                     datatype: "json",
@@ -263,7 +263,7 @@
                 }
                 tempPageNum = this.current;
                 $.ajax({
-                    url: "http://localhost:8080/solrSelect",
+                    url: "/solrSelect",
                     type: "post",
                     data: {keyword: $("input[id='i1']").val(), pageNum: tempPageNum},
                     datatype: "json",
@@ -280,7 +280,7 @@
         key = $("input[id='i1']").val();
         if (key != "" && key != "输入不能为空！") {
             $.ajax({
-                url: "http://localhost:8080/solrSelect",
+                url: "/solrSelect",
                 type: "post",
                 data: {keyword: $("input[id='i1']").val(), pageNum: tempPageNum},
                 datatype: "json",

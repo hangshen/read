@@ -81,7 +81,7 @@
 <script>
     $(function () {
         $.ajax({
-            url: "http://localhost:8080/author/selectAllAuthor",
+            url: "/author/selectAllAuthor",
             type: "post",
             dataType: "json",
             success:function (data) {
@@ -94,7 +94,7 @@
                     methods:{
                         find:function () {
                             $.ajax({
-                                url: "http://localhost:8080/author/selectAuthorByName",
+                                url: "/author/selectAuthorByName",
                                 type: "post",
                                 data: {authorName: $("input[name = 'find']").val()},
                                 dataType: "json",
@@ -105,7 +105,7 @@
                         },
                         dlt:function (i) {
                             $.ajax({
-                                url: "http://localhost:8080/author/deleteAuthor",
+                                url: "/author/deleteAuthor",
                                 type: "post",
                                 data: {authorId: mv1.authors[i].authorId},
                                 dataType: "json",

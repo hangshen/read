@@ -130,7 +130,7 @@
     });
     $(function () {
         $.ajax({
-            url: "http://localhost:8080/author/getAuthorName",
+            url: "/author/getAuthorName",
             data: {authorId: aid},
             type: "post",
             dataType: "json",
@@ -150,7 +150,7 @@
     })
     //显示信息
     $.ajax({
-        url: "http://localhost:8080/author/authorBasicData",
+        url: "/author/authorBasicData",
         type: "post",
         data: {authorId: aid},
         dataType: "json",
@@ -186,7 +186,7 @@
             "authorIntroduce":$("input[name = 'introduce']").val(),
         }
         $.ajax({
-            url: "http://localhost:8080/author/updateAuthor",
+            url: "/author/updateAuthor",
             type: "post",
             data: JSON.stringify(record),
             dataType: "json",

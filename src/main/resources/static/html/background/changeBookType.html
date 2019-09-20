@@ -111,7 +111,7 @@
     $(function () {
         var temp_data;
         $.ajax({
-            url: "http://localhost:8080/getAllBookType",
+            url: "/getAllBookType",
             type: "post",
             dataType: "json",
             success:function (data) {
@@ -124,7 +124,7 @@
                     methods:{
                         find:function () {
                             $.ajax({
-                                url: "http://localhost:8080/selectByTypeName",
+                                url: "/selectByTypeName",
                                 type: "post",
                                 data: {booktypeName: $("input[name = 'find']").val()},
                                 dataType: "json",
@@ -135,7 +135,7 @@
                         },
                         dlt:function (i) {
                             $.ajax({
-                                url: "http://localhost:8080/deleteByType",
+                                url: "/deleteByType",
                                 type: "post",
                                 data: {booktypeId: mv1.types[i].booktypeId},
                                 dataType: "json",
@@ -157,7 +157,7 @@
 
         $("input[name = 'insert']").click(function () {
             $.ajax({
-                url: "http://localhost:8080/updateBookType",
+                url: "/updateBookType",
                 type: "post",
                 data: {typeId:$(".id").eq(temp_data).html(), typeName: $("input[name = 'rename']").val(), fatherId:$("input[name = 'reid']").val()},
                 dataType: "json",
