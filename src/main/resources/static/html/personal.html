@@ -829,11 +829,17 @@
                         <div class="m-newpro">
                             <div class="m-pbox m-pbox-1">
                                 <div class="m-info">
-                                    <div class="photo">
-                                        <a id="epa" href="javascript:void(0);">
-                                            <img src="/images/tx.png" alt="">
-                                            <span id="ep">编辑头像</span>
-                                        </a>
+                                    <div class="photo" id="photo" style="box-shadow: 1px 1px 2px 2px #2e6da4">
+                                        <form method="post" id="userImgForm" enctype="multipart/form-data">
+                                        <input type="file" name="userImg" accept="image/*"
+                                               onchange="changImg(event)" id="img" style="display: none">
+<!--                                        <img id="myImg" src="/images/tx.png" height="92px"-->
+<!--                                             ,width="92px">-->
+
+
+                                        <img id="userImg" src="/static/images/personimages/tx.png" alt="" @Click="imgClick()">
+                                            <input type="number" name="userId" hidden="hidden"value="" id="uId">
+                                        </form>
                                     </div>
                                 </div>
                             </div>
@@ -1044,6 +1050,10 @@
     var authorId;
     var userName;
     var userId;
+    userId=sessionStorage.getItem("userId");
+    var uid = document.getElementById("uId");
+    uid.value=userId;
+    var userId;
     var msg = new Vue({
         el: ".m-mainbox",
         data: {
@@ -1053,8 +1063,27 @@
             //弹出编辑资料窗口
             editdata:function () {
                 $("#profile").removeClass("f-dn");
+            },
+            imgClick:function () {
+                    $('#img').click();
+            },
+            upImg:function () {
+                var formData = new FormData($("#userImgForm")[0]);
+                $.ajax({
+                    url: "/updateUserImg",
+                    type: "post",
+                    data: formData,
+                    datatype: "json",
+                    success: function (data) {
+                        msg.user=data;
+                    }
+                })
             }
-        }
+        },
+    });
+
+    $("userId").blur(function () {
+        msg.upImg();
     })
     window.onload=function () {
         userName = sessionStorage.getItem("userName");
@@ -1153,6 +1182,30 @@
             window.location.href = "authormsg.html";
         }
     })
+
 </script>
+
+<script>
+
+
+
+    function changImg(e) {
+        for (var i = 0; i < e.target.files.length; i++) {
+            var file = e.target.files.item(i);
+            if (!(/^image\/.*$/i.test(file.type))) {
+                continue; //不是图片 就跳出这一次循环
+            }
+            //实例化FileReader API
+            var freader = new FileReader();
+            freader.readAsDataURL(file);
+            freader.onload = function (e) {
+                $("#userImg").attr("src", e.target.result);
+            }
+        }
+    }
+
+</script>
+
+
 </body>
 </html>
