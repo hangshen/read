@@ -19,6 +19,9 @@
     <script src="../js/topjs/ursLogin.js"></script>
     <script src="../js/topjs/components.js"></script>
     <script src="../js/topjs/index.bundle.js"></script>
+    <link  type="text/css" rel="stylesheet" href="../layui/css/modules/layer/default/layer.css">
+    <link type="text/css" href="../layui/css/layui.css" rel="stylesheet">
+    <script type="text/javascript" src="../layui/layui.js"></script>
     <link type="text/css" rel="stylesheet"
           href="../css/bookdetail/detail1.css"/>
     <style>
@@ -395,7 +398,7 @@
                                 data-reactid=".3.0.1.0"></div>
                     </div>
                     <div data-reactid=".3.1">
-                        <div class="ulink j-ulink" data-reactid=".3.1.0"><a target="_blank" title="登录"
+                        <div class="ulink j-ulink" data-reactid=".3.1.0"><a class="userself" target="_blank" title="登录"
                                                                             data-reactid=".3.1.0.0"
                                                                             href="login.html">登录</a><span
                                 class="sep" data-reactid=".3.1.0.1">|</span><a target="_blank" title="注册"
@@ -600,7 +603,7 @@
                 <!--月票、打赏、章节赠送-->
                 <div class="m-fee" style="" id="tipAnchor">
                     <ul class="tabs f-cb" id="J_tabs">
-                        <li class="first" style="display: list-item;">打赏<span>(420300阅点)</span></li>
+                        <li class="first" style="display: list-item;">打赏</li>
                         <li>月票</li>
                         <span class="crt-line" style="width: 144px;"></span>
                     </ul>
@@ -788,7 +791,10 @@
 <script src="../js/topjs/vue.min.js"></script>
 <script src="../js/topjs/vue.min.js"></script>
 <script type="text/javascript">
-
+    var layer ;
+    layui.use('layer', function(){
+        layer = layui.layer;
+    });
     var bookId = sessionStorage.getItem("bookId");
     var temp = new Object();
     var commentupdate = new Object();
@@ -1021,9 +1027,21 @@
                         datatype: "json",
                         success: function (data) {
                             if(data == 1){
-
+                                layer.alert('打赏成功!!!', {
+                                    icon: 1,
+                                    skin: 'layer-ext-moon'
+                                });
+                                sessionStorage.setItem("userId",userId);
+                                sessionStorage.setItem("bookId",bookId);
+                                window.location.href = "bookdetail.html";
                             }else{
-
+                                layer.alert('余额不足!!!', {
+                                    icon: 2,
+                                    skin: 'layer-ext-moon'
+                                });
+                                sessionStorage.setItem("userId",userId);
+                                sessionStorage.setItem("bookId",bookId);
+                                window.location.href = "bookdetail.html";
                             }
                         }
                     })

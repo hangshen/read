@@ -28,7 +28,7 @@ public class BookController {
     //solr模糊查询接口
     @RequestMapping("/solrSelect")
     public List<SolrBooksPageVo> searchBooks(String keyword,Integer pageNum) {
-        int pageSize = 5;
+        int pageSize = 3;
         int totalPage;
         List<SolrBooksPageVo> solrBooksVoList = new ArrayList<SolrBooksPageVo>();
         List<SolrBooksVo> list = new ArrayList<SolrBooksVo>();
