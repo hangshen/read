@@ -810,7 +810,7 @@
 		<p v-if="comment.length==0">暂无评论，我来发表第一篇评论！</p>\
 		<div v-else>\
 			<div class="comment" v-for="(item,index) in comment" v-bind:index="index" >\
-				<b><img style="width: 30px; height: 30px; line-height: 20px" v-clock> {{item.users.userName}}<span v-clock>{{item.commentDate}}</span></b>\
+				<b v-clock>{{item.users.userName}}<span v-clock>{{item.commentDate}}</span></b>\
 				<p v-clock>{{item.commentMassage}}</p>\
 			</div>\
 		</div>\
@@ -935,7 +935,7 @@
                             addComment: function (data) {
                                 commentupdate.commentMassage = data;
                                 commentupdate.commentBookId = this.book.bookId;
-                                commentupdate.commentUserId = 1;
+                                commentupdate.commentUserId = userId;
                                 $.ajax({
                                     url: "http://localhost:8080/insertComment",
                                     type: "post",
